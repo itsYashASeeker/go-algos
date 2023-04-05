@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Share+Tech&family=Ubuntu:wght@300&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Share Tech', sans-serif;
+    /* font-family: "Ubuntu", sans-serif; */
+    font-size: 1rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.fullbg {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column; */
+    min-height: 100vh;
+    background: rgb(37, 37, 37);
+    background: linear-gradient(289deg, rgba(37, 37, 37, 1) 0%, rgba(71, 71, 71, 1) 35%, rgba(77, 77, 77, 1) 71%, rgba(125, 125, 125, 1) 100%);
+    color: white;
+}
+
+.fullbgH{
+    flex-direction: column;
+}
+
+.navbar {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4rem;
+    background: rgb(11, 11, 11);
+    box-shadow: 0 0 0.8rem black;
+}
+
+.navbar .play {
+    position: absolute;
+    right: 1rem;
+    background: white;
+    border: 0.2rem solid rgb(195, 195, 195);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    box-shadow: inset 0 0 0.2rem black;
+}
+
+.navbar .navHome{
+    position: absolute;
+    left: 1rem;
+    font-size: 1rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.algos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    background: rgb(93, 93, 93);
+    margin: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: inset 0 0 0.5rem rgb(110, 110, 110);
+}
+
+.algos button{
+    background: rgb(125, 125, 125);
+    margin: 0.5rem 0;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    transition: 0.4s all ease-out;
+    cursor: pointer;
+}
+
+.algos button:hover{
+    background: rgb(161, 161, 161);
+}
+
+.procsTable {
+    /* position: absolute;
+    left: 5vw; */
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+.procsTable th {
+    background: rgb(100, 100, 100);
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.procsTable td {
+    text-align: center;
+}
+
+.procsTable,
+th,
+td {
+    border: 0.2rem solid rgb(168, 168, 168);
+
+    border-collapse: collapse;
+    padding: 0.8rem;
+    /* background: rgb(234, 234, 234); */
+    /* box-shadow: inset 0 0 0.5rem white; */
+}
+
+.right-side {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    width: 35vw;
+    margin-left: 1rem;
+}
+
+
+
+.ganttChart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Boxes {
+    display: inline-flex;
+    border-right: 0.3rem solid whitesmoke;
+    border-top: 0.3rem solid whitesmoke;
+    border-bottom: 0.3rem solid whitesmoke;
+}
+
+.Box {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    height: 5rem;
+    border-left: 0.3rem solid whitesmoke;
+    text-align: center;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.deadlinesBoxes {
+    display: inline-block;
+}
+
+.dBox {
+    text-align: right;
+    display: inline-block;
+    width: 5.3rem;
+    height: auto;
+}
+
+.dBox:nth-child(1) {
+    text-align: left;
+    position: absolute;
+}
+
+.theory-content {
+    /* background: wheat; */
+    font-size: 1.5rem;
+    margin: 2rem 0;
+}
+
+.theory-content button {
+    background: white;
+    border: 0.2rem solid rgb(195, 195, 195);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    box-shadow: inset 0 0 0.2rem black;
+    margin: 1rem 0;
+}
+
+.mod {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    z-index: 10;
+    backdrop-filter: blur(0.2rem);
+}
+
+.mod .title {
+    margin-top: 2rem;
+}
+
+.mod .cancel {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 0.5rem;
+    left: 1rem;
+    font-size: 3rem;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.mod .playIns {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    background: rgb(87, 86, 86);
+    height: 27rem;
+    width: 22rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    border: 0.2rem solid rgb(123, 123, 123);
+}
+
+.mod .adds {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 1rem; */
+}
+
+.mod .playIns .adds input {
+    display: inline-flex;
+    width: 7rem;
+    margin: 0.5rem;
+    padding: 0.2rem;
+    border-radius: 0.2rem;
+    box-shadow: 0 0 0.2rem white;
+    border: none;
+}
+
+.mod .playIns .adds button {
+    display: inline-flex;
+    padding: 0.2rem;
+    cursor: pointer;
+    border-radius: 0.2rem;
+    box-shadow: 0 0 0.2rem white;
+    border: none;
+}
+
+.mod .playIns .save-changes {
+    margin-top: 1rem;
+    background: white;
+    border: 0.2rem solid rgb(195, 195, 195);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    box-shadow: inset 0 0 0.2rem black;
+    cursor: pointer;
+}
+
+.showArr {
+    margin-top: 1rem;
+    overflow: auto;
+    height: 15rem;
+    overflow-x: hidden;
+    scrollbar-width: 0;
+}
+
+.showArr table {
+    border-collapse: collapse;
+}
+
+
+
+
+
+
+
+
+
+
+.selectedBox {
+    background: red;
+    color: white;
+}
+
+.goBox {
+    background: yellow;
+    color: black;
+}
+
+.matchBox {
+    background: green;
+    color: black;
+}
