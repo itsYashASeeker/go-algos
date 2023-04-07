@@ -17,6 +17,7 @@ function JobSched() {
     const [newProf, setNewProf] = useState();
     const [newDead, setNewDead] = useState();
     const [newProcs, setNewProcs] = useState();
+    // const [isEdited, setIsEdited] = useState(0);
 
     useEffect(() => {
         setProcs(procs);
@@ -46,36 +47,55 @@ function JobSched() {
     }
 
     async function sortProfits(e) {
-        var maxP = 0;
-        var temp1;
-        document.getElementById("sortButton").disabled = true;
-        // var procs = procs;
+
+        // ----For deadline
         var maxDD = procs[0].deadline;
         for (var i = 0; i < procs.length; i++) {
-            await timer(1000);
-            maxP = i;
-            document.getElementById(i + 1 + "rP").classList.add("selectedBox");
-            // ----For deadline
             if (procs[i].deadline > maxDD) {
                 maxDD = procs[i].deadline;
             }
-            // ----Deadline finish
-            await timer(1000);
+        }
+        var allDeads = [];
+        for (var i = 1; i <= maxDD; i++) {
+            allDeads.push(i);
+        }
+        setAllDeads(allDeads);
+        // ----Deadline finish
+
+        // ----For slots
+        var slots = [];
+        for (var i = 0; i < maxDD; i++) {
+            slots.push(0);
+        }
+        setSlotG(slots);
+        // ----Slot finish
+
+        // Sorting starts
+        var maxP = 0;
+        var temp1;
+        var ELproc = document.querySelectorAll("#allRP");
+        document.getElementById("sortButton").disabled = true;
+
+        for (var i = 0; i < procs.length; i++) {
+            await timer(800);
+            maxP = i;
+            ELproc[i].classList.add("selectedBox");
+            await timer(800);
             for (var j = i + 1; j < procs.length; j++) {
-                document.getElementById(j + 1 + "rP").classList.add("goBox");
+                ELproc[j].classList.add("goBox");
                 if (procs[maxP].profit < procs[j].profit) {
                     maxP = j;
                     await timer(500);
-                    document.getElementById(j + 1 + "rP").classList.add("matchBox");
+                    ELproc[j].classList.add("matchBox");
                 }
-                await timer(1000);
-                document.getElementById(j + 1 + "rP").classList.remove("goBox");
-                document.getElementById(j + 1 + "rP").classList.remove("matchBox");
+                await timer(800);
+                ELproc[j].classList.remove("goBox", "matchBox");
             }
-            await timer(1000);
-            document.getElementById(i + 1 + "rP").classList.remove("selectedBox");
-            document.getElementById(i + 1 + "rP").classList.add("matchBox");
-            document.getElementById(maxP + 1 + "rP").classList.add("matchBox");
+            await timer(800);
+            ELproc[i].classList.remove("selectedBox");
+            ELproc[i].classList.add("matchBox");
+            ELproc[maxP].classList.add("matchBox");
+
             temp1 = procs[i];
             procs[i] = procs[maxP];
             procs[maxP] = temp1;
@@ -83,25 +103,15 @@ function JobSched() {
 
             setProcs(procs);
             setTesting([{ "name": "Yoo" }]);
-            document.getElementById(i + 1 + "rP").classList.remove("matchBox");
-            document.getElementById(maxP + 1 + "rP").classList.remove("matchBox");
-
-            document.getElementById(maxP + 1 + "rP").id = i + 1 + "rP";
-            document.getElementById(i + 1 + "rP").id = maxP + 1 + "rP";
+            ELproc[i].classList.remove("matchBox");
+            ELproc[maxP].classList.remove("matchBox");
 
         }
-        var allDeads = [];
-        for (var i = 1; i <= maxDD; i++) {
-            allDeads.push(i);
-        }
-        console.log(allDeads);
-        setAllDeads(allDeads);
+
+
+        // Sorting done, now show the gantt chart
         setShChart(1);
-        var slots = [];
-        for (var i = 0; i < maxDD; i++) {
-            slots.push(0);
-        }
-        setSlotG(slots);
+
     }
 
     function scheduleNext() {
@@ -127,15 +137,15 @@ function JobSched() {
                 break;
             }
         }
-        if (isFull == 1) {
+        if (isFull == 1 || currNo === allDeads.length) {
             setDA(1);
         }
         setCurrNo(currNo + 1);
     }
 
-    function saveChanges(){
-        setProcs(newProcs); 
-        setEdit(0); 
+    function saveChanges() {
+        setProcs(newProcs);
+        setEdit(0);
         setShChart(0);
         setAllDeads([]);
         setSlotG([]);
@@ -154,9 +164,9 @@ function JobSched() {
                 transition={{ duration: 1 }}
             >
                 <div className="navbar">
-                    <button className="navHome" onClick={()=>{navigate("/")}}>Home</button>
+                    <button className="navHome" onClick={() => { navigate("/") }}>Home</button>
                     <h1 className="title">Job Scheduling</h1>
-                    <button className="play" onClick={() => { setEdit(1) }}>Play!</button>
+                    <button className="play" onClick={() => { setEdit(1) }}>New</button>
                 </div>
                 <motion.table className="procsTable"
                     initial={{ x: -90 }}
@@ -170,15 +180,17 @@ function JobSched() {
                             <th>Deadline</th>
                         </tr>
                         {procs && procs.map((proc) => {
-                            var uniqueKeys = proc.no + "rP";
                             return (
-                                <tr id={proc.no + "rP"} key={proc.no + "rP"}>
+                                <tr id="allRP" accessKey={proc.no + "rP"} className="allRowP">
                                     <motion.td>{proc.no}</motion.td>
                                     <motion.td>{proc.profit}</motion.td>
                                     <motion.td>{proc.deadline}</motion.td>
                                 </tr>
                             )
-                        })}
+                        }
+                        )
+                        }
+
                     </tbody>
                 </motion.table>
                 <motion.div className="right-side"
@@ -197,14 +209,14 @@ function JobSched() {
                                 >Sort the Processes</motion.button>
                             </div>
                         </>
-                        : 
+                        :
                         <motion.div className="ganttChart"
                             initial={{ opacity: 0.5, y: 50 }}
                             animate={{ opacity: 1, y: 0 }}
                         >
                             <div className="theory-content">
 
-                                {(currNo <= allDeads.length) ?
+                                {(doneAlg == 0) ?
                                     <>
                                         <p>Now, we place the jobs based on their deadlines...</p>
                                         <motion.button onClick={scheduleNext}
@@ -224,13 +236,14 @@ function JobSched() {
                             <div className="Boxes">
                                 {allDeads.map((inP) => {
                                     var uniqueKeys = inP + "Bx";
-                                    return <div id={uniqueKeys} className="Box"></div>
+                                    return <div id={uniqueKeys} accessKey={uniqueKeys} className="Box"></div>
                                 })}
                             </div>
                             <div className="deadlinesBoxes">
-                                <div className="dBox">0</div>
+                                <div className="dBox" key="0Dead">0</div>
                                 {allDeads.map((inD) => {
-                                    return <div className="dBox">{inD}</div>
+                                    var uniqueKeys = inD + "Bx";
+                                    return <div className="dBox" accessKey={uniqueKeys}>{inD}</div>
                                 })}
                             </div>
                         </motion.div>
@@ -258,22 +271,22 @@ function JobSched() {
                                             <th>Profit</th>
                                             <th>Deadline</th>
                                         </tr>
-                                        {newProcs ?
-                                            (newProcs.map((proc) => {
-                                                var uniqueKeys = proc.no + "nRP";
-                                                return (
-                                                    <tr id={uniqueKeys} key={uniqueKeys}>
-                                                        <motion.td>{proc.no}</motion.td>
-                                                        <motion.td>{proc.profit}</motion.td>
-                                                        <motion.td>{proc.deadline}</motion.td>
-                                                    </tr>
-                                                )
-                                            })) : <></>}
+                                        {newProcs && newProcs.map((proc) => {
+                                            var uniqueKeys = proc.no + "nRP";
+                                            return (
+                                                <tr id={uniqueKeys} key={uniqueKeys}>
+                                                    <motion.td>{proc.no}</motion.td>
+                                                    <motion.td>{proc.profit}</motion.td>
+                                                    <motion.td>{proc.deadline}</motion.td>
+                                                </tr>
+                                            )
+                                        })
+                                        }
                                     </tbody>
                                 </table>
                             </motion.div>
                             <button className="save-changes"
-                                onClick={saveChanges }
+                                onClick={saveChanges}
                             >Save</button>
                         </motion.div>
                     </motion.div>
