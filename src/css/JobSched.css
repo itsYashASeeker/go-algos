@@ -7,11 +7,47 @@ body {
     font-family: 'Share Tech', sans-serif;
     /* font-family: "Ubuntu", sans-serif; */
     font-size: 1rem;
+    background: black;
+    color: white;
 }
 
 * {
     margin: 0;
     padding: 0;
+
+}
+
+button {
+    background: none;
+    border: none;
+    outline: none;
+}
+
+input {
+    background: black;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    transition: 0.3s all ease-out;
+}
+
+input:focus {
+    outline: none;
+    background: rgba(0, 0, 0, 0.689);
+}
+
+.alButton {
+    background: white;
+    border: 0.2rem solid rgb(195, 195, 195);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    box-shadow: inset 0 0 0.2rem black;
+    margin: 1rem 0;
+    color: black;
+}
+
+.alButton[disabled] {
+    opacity: 0.5;
 }
 
 .fullbg {
@@ -62,6 +98,15 @@ body {
     border: none;
     color: white;
     cursor: pointer;
+}
+
+.goBack {
+    position: absolute;
+    font-size: 1.5rem;
+    text-decoration: dashed;
+    cursor: pointer;
+    top: 5rem;
+    left: 1rem;
 }
 
 .algos {
@@ -188,15 +233,7 @@ td {
     margin: 2rem 0;
 }
 
-button {
-    background: white;
-    border: 0.2rem solid rgb(195, 195, 195);
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    font-size: 1.5rem;
-    box-shadow: inset 0 0 0.2rem black;
-    margin: 1rem 0;
-}
+
 
 .mod {
     display: flex;
@@ -252,9 +289,10 @@ button {
     display: inline-flex;
     width: 7rem;
     margin: 0.5rem;
-    padding: 0.2rem;
-    border-radius: 0.2rem;
+    /* padding: 0.2rem; */
+    border-radius: 0.4rem;
     box-shadow: 0 0 0.2rem white;
+    color: white;
     border: none;
     font-size: 1rem;
 }
@@ -298,20 +336,35 @@ button {
 
 
 
+.makeBold {
+    font-weight: 600;
+}
 
+.t2 {
+    font-size: 1.5rem;
+}
 
 
 .selectedBox {
     background: red;
     color: white;
+    background: rgb(224, 224, 224);
+    color: black;
+    font-weight: 600;
 }
 
 .goBox {
-    background: yellow;
+    background: rgb(227, 227, 0);
+    color: black;
+    background: rgb(147, 147, 147);
     color: black;
 }
 
 .matchBox {
     background: green;
     color: black;
+    background: rgb(224, 224, 224);
+    color: black;
+    box-shadow: 0 0 0.5rem white;
+    font-weight: 600;
 }
