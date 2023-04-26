@@ -1,0 +1,80 @@
+:root {
+    --theaderColors: rgb(31, 23, 23);
+    --tdataColors: rgb(54, 45, 45);
+    --tfontSize: 2rem;
+    --tdataSize: 3rem;
+    --thightDC: rgb(0, 183, 255);
+    --thightDBg: rgb(77, 77, 77);
+}
+
+
+#root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(37, 37, 37);
+    background: linear-gradient(289deg, rgba(37, 37, 37, 1) 0%, rgba(71, 71, 71, 1) 35%, rgba(77, 77, 77, 1) 71%, rgba(125, 125, 125, 1) 100%);
+    min-height: 100vh;
+}
+
+.lcsTable{
+    display: flex;
+    flex-direction: column;
+    font-size: var(--tfontSize);
+}
+
+.lcsTable .row{
+    display: inline-flex;
+}
+
+.lcsTable .row .lcsBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--tdataSize);
+    height: var(--tdataSize);
+    background: var(--tdataColors);
+    border-bottom: 0.2rem solid black;
+    border-right: 0.2rem solid black;
+}
+
+.lcsTable .row .lcsBox:nth-child(1) {
+    background: none;
+    border: none;
+    border-right: 0.2rem solid rgba(0, 0, 0, 0);
+}
+
+.lcsTable .row:nth-child(1) .lcsBox {
+    background: none;
+    padding: 0 0.2rem 0 0;
+    border: none;
+}
+
+.lcsTable .row:nth-child(1) .lcsBox:nth-child(1) {
+    background: none;
+}
+
+.lcsTable .row .th2 {
+    background: var(--theaderColors);
+}
+
+.iconsS {
+    position: relative;
+    right: -0.2rem;
+    bottom: -0.5rem;
+    font-size: 0.8rem;
+}
+
+.lcsTable .row .lcsBox .upIcons {}
+
+.lcsTable .row .lcsBox .diagonalIcons {
+
+    transform: rotate(315deg);
+}
+
+.lcsTable .row .lcsBox .leftIcons {
+    transform: rotate(270deg);
+}
+
+
+

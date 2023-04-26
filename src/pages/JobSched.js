@@ -3,49 +3,80 @@ import jobSdata from "../data/jobsch";
 import "../css/JobSched.css";
 import { animate, delay, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import "../css/Lcs.css";
+import "../css/Home.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp, faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 
 function JobSched() {
 
-    const [procs, setProcs] = useState(jobSdata);
-    const [testing, setTesting] = useState([{ "name": "Yash" }]);
+    const [stepC, setStepC] = useState(0);
+    const [procs, setProcs] = useState([]);
     const [allDeads, setAllDeads] = useState();
-    const [showChart, setShChart] = useState(0);
     const [currNo, setCurrNo] = useState(1);
     const [slotG, setSlotG] = useState([]);
-    const [doneAlg, setDA] = useState(0);
-    const [openEdit, setEdit] = useState(0);
     const [newProf, setNewProf] = useState();
     const [newDead, setNewDead] = useState();
-    const [newProcs, setNewProcs] = useState();
     const [totalProfit, setTotalProfit] = useState(0);
-    const [algoStarted, setAlgoStarted] = useState(0);
-    // const [isEdited, setIsEdited] = useState(0);
-
-    useEffect(() => {
-        setProcs(procs);
-        setNewProcs(newProcs);
-        setTesting([{ "name": "Yoo" }]);
-    }, [procs, newProcs])
 
     const timer = ms => new Promise(res => setTimeout(res, ms));
 
-    function addNewProc() {
-        var currNum, nnewPro = [];
-        if (!newProcs) {
-            currNum = 1;
+    useEffect(() => {
+        setProcs(procs);
+        // setNewProcs(newProcs);
+    }, [procs]);
+
+    useEffect(() => {
+        console.log(retElId(`${stepC}STDN`));
+        for (var i = 1; i < stepC; i++) {
+            if (retElId(`${i}STDN`) != null) {
+                retElId(`${i}STDN`).classList.add("algoDone");
+                retElId(`${i}STDN`).classList.remove("goanime");
+            }
+        }
+        if (retElId(`${stepC - 1}STDN`) != null) {
+
+            retElId(`${stepC - 1}STDN`).classList.remove("goanime");
+            retElId(`${stepC - 1}STDN`).classList.add("algoDone");
+        }
+        if (retElId(`${stepC}STDN`) != null) {
+            retElId(`${stepC}STDN`).classList.add("goanime");
+            retElId(`${stepC}STDN`).classList.remove("algoDone");
+        }
+        retElId("idAllSteps").lastChild.scrollIntoView({ behavior: "smooth" });
+    }, [stepC]);
+
+
+
+    function retElId(idname) {
+        return document.getElementById(idname);
+    }
+
+    function checkIfInt() {
+        const regex = /[^0-9]/;
+        if (newProf.search(regex) === -1 && newDead.search(regex) === -1) {
+            addNewProc();
+            setNewProf("");
+            setNewDead("");
         }
         else {
-            currNum = newProcs.length + 1;
-            nnewPro = newProcs;
+            setNewProf("");
+            setNewDead("");
+            window.alert("Please enter only Integer");
         }
+    }
+
+    function addNewProc() {
         const data = {
-            "no": Number(currNum),
+            "no": Number(currNo),
             "profit": Number(newProf),
             "deadline": Number(newDead)
         }
-        nnewPro.push(data);
-        setNewProcs(nnewPro);
-        setTesting([{ "name": "Yash" }]);
+        var dProc = procs;
+        dProc.push(data);
+        setProcs(dProc);
+        setCurrNo(currNo + 1);
     }
 
     function refreshSlotDead() {
@@ -73,25 +104,24 @@ function JobSched() {
     }
 
     async function sortProfits() {
-        document.getElementById("sortButton").disabled = true;
-
         refreshSlotDead();
 
         // Sorting starts
         var maxP = 0;
         var temp1;
         var ELproc = document.querySelectorAll("#allRP");
-        var t1=400;
-        var t2=300;
+        var t1 = 400;
+        var t2 = 300;
+        var dProc = procs;
 
-        for (var i = 0; i < procs.length; i++) {
+        for (var i = 0; i < dProc.length; i++) {
             await timer(t1);
             maxP = i;
             ELproc[i].classList.add("selectedBox");
             await timer(t1);
-            for (var j = i + 1; j < procs.length; j++) {
+            for (var j = i + 1; j < dProc.length; j++) {
                 ELproc[j].classList.add("goBox");
-                if (procs[maxP].profit < procs[j].profit) {
+                if (dProc[maxP].profit < dProc[j].profit) {
                     maxP = j;
                     await timer(t2);
                     ELproc[j].classList.add("matchBox");
@@ -104,30 +134,30 @@ function JobSched() {
             ELproc[i].classList.add("matchBox");
             ELproc[maxP].classList.add("matchBox");
 
-            temp1 = procs[i];
-            procs[i] = procs[maxP];
-            procs[maxP] = temp1;
+            for (var k = 0; k < 2; k++) {
+                temp1 = ELproc[i].childNodes[k].innerText;
+                ELproc[i].childNodes[k].innerText = ELproc[maxP].childNodes[k].innerText;
+                ELproc[maxP].childNodes[k].innerText = temp1;
+            }
+            temp1 = dProc[i];
+            dProc[i] = dProc[maxP];
+            dProc[maxP] = temp1;
+            temp1 = ELproc[i].accessKey;
+            ELproc[i].accessKey = ELproc[maxP].accessKey;
+            ELproc[maxP].accessKey = temp1;
             await timer(t2);
 
-            setProcs(procs);
-            setTesting([{ "name": "Yoo" }]);
+            setProcs(dProc);
             ELproc[i].classList.remove("matchBox");
             ELproc[maxP].classList.remove("matchBox");
 
         }
 
-
-        // Sorting done, now show the gantt chart
-        setShChart(1);
-        // Setting Total profit as 0
-        setTotalProfit(0);
-
-        // Algo started
-        setAlgoStarted(1);
+        setStepC(2);
+        setCurrNo(1);
     }
 
     function scheduleNext() {
-        setAlgoStarted(1);
         var slotArr = slotG;
         var isSelect = 0;
         for (var j = Math.min(procs.length, procs[currNo - 1].deadline) - 1; j >= 0; j--) {
@@ -152,8 +182,10 @@ function JobSched() {
             }
         }
         if (isFull == 1 || currNo === allDeads.length) {
-            setDA(1);
+            var sts = stepC + 1;
+            setStepC(sts);
             setCurrNo(1);
+            document.getElementById("schedNext").setAttribute("disabled", true);
         }
         else {
             setCurrNo(currNo + 1);
@@ -161,136 +193,62 @@ function JobSched() {
 
     }
 
-    function saveChanges() {
-        setAlgoStarted(1);
-        setProcs(newProcs);
-        setNewProcs([]);
-        setEdit(0);
-        setShChart(0);
-        setAllDeads([]);
-        setSlotG([]);
+
+    function restart() {
+        setStepC(0);
+        setProcs([]);
         setCurrNo(1);
-        setDA(0);
         setTotalProfit(0);
+        setSlotG([]);
     }
 
-    function goBack() {
-        console.log("Done algo" + doneAlg);
-        if (doneAlg === 1) {
-            refreshSlotDead();
-            for (var j = 1; j <= allDeads.length; j++) {
-                document.getElementById(j + "Bx").innerHTML = "";
-            }
-            setCurrNo(1);
-            setShChart(1);
-            setDA(0);
-            setTotalProfit(0);
-        }
-        else {
-            refreshSlotDead();
-            setCurrNo(1);
-            setShChart(0);
-            setDA(0);
-            setAlgoStarted(0);
-            setTotalProfit(0);
-            setProcs(jobSdata);
-        }
+    async function updateStep() {
+        setStepC(stepC + 1);
     }
 
-    const navigate = useNavigate();
-
+    function disBut(e) {
+        document.getElementById(e.target.id).setAttribute("disabled", true);
+    }
     return (
         <>
-
+            <Navbar />
             <motion.div className="fullbg"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1 }}
             >
-                <div className="navbar">
-                    <button className="navHome" onClick={() => { navigate("/") }}>Home</button>
-                    <h1 className="title">Job Scheduling</h1>
-                    <button className="alButton play" onClick={() => { setEdit(1) }}>New</button>
-                </div>
-                {algoStarted ?
+                {/* {algoStarted ?
                     <button className="goBack" onClick={goBack}>Back</button>
                     : <></>
-                }
-
-                <motion.table className="procsTable"
-                    initial={{ x: -90 }}
-                    animate={{ x: 0 }}
-                    transition={{ duration: 0.5 }}
-                >
-                    <tbody>
-                        <tr>
-                            <th>Process</th>
-                            <th>Profit</th>
-                            <th>Deadline</th>
-                        </tr>
+                } */}
+                <motion.div className="left-side">
+                    <motion.div className="Table"
+                        initial={{ x: -90 }}
+                        animate={{ x: 0 }}
+                        transition={{ duration: 0.5 }}
+                    >
+                        <div id="RowHead" className="row">
+                            <div className="JSBox BTitle">Process</div>
+                            <div className="JSBox BTitle">Profit</div>
+                            <div className="JSBox BTitle">Deadline</div>
+                        </div>
                         {procs && procs.map((proc) => {
                             return (
-                                <tr id="allRP" accessKey={proc.no + "rP"} className="allRowP">
-                                    <motion.td>{proc.no}</motion.td>
-                                    <motion.td>{proc.profit}</motion.td>
-                                    <motion.td>{proc.deadline}</motion.td>
-                                </tr>
+                                <div id="allRP" accessKey={proc.no + "rP"} className="row">
+                                    <div className="JSBox">{proc.no}</div>
+                                    <div className="JSBox">{proc.profit}</div>
+                                    <div className="JSBox">{proc.deadline}</div>
+                                </div>
                             )
                         }
                         )
                         }
-
-                    </tbody>
-                </motion.table>
-                <motion.div className="right-side"
-                    initial={{ x: 90 }}
-                    animate={{ x: 0 }}
-                    transition={{ duration: 0.5 }}
-                >
-                    {(showChart === 0) ?
-                        <>
-                            <div className="theory-content">
-                                <p className="makeBold t2">First, we sort the process on decreasing order of profits!</p>
-                                <p>Selection Sort is used for sorting</p>
-                                <motion.button
-                                    whileHover={{ scale: 1.1 }}
-                                    onClick={sortProfits}
-                                    id="sortButton" className="alButton"
-                                >Sort the Processes</motion.button>
-                            </div>
-                        </>
-                        :
+                    </motion.div>
+                    {stepC >= 2 ?
                         <motion.div className="ganttChart"
                             initial={{ opacity: 0.5, y: 50 }}
                             animate={{ opacity: 1, y: 0 }}
                         >
-                            <div className="theory-content">
-
-                                {(doneAlg === 0) ?
-                                    <>
-                                        <p className="makeBold t2">Now, we place the jobs based on their deadlines...</p>
-                                        <p>We take process P{procs[currNo - 1].no}</p>
-                                        <motion.button onClick={scheduleNext}
-                                            whileHover={{ scale: 1.1 }}
-                                            className="alButton"
-                                        >Schedule</motion.button>
-                                    </>
-                                    : <>
-                                        <motion.p
-                                            initial={{ x: 180 }}
-                                            animate={{ x: 0 }}
-                                            transition={{ duration: 0.2 }}
-                                        >You did it, Congrats!</motion.p>
-                                        <motion.p
-                                            initial={{ x: -180 }}
-                                            animate={{ x: 0 }}
-                                            transition={{ duration: 0.2 }}
-                                            className="makeBold t2"
-                                        >Total Profit: {totalProfit}</motion.p>
-                                    </>
-                                }
-
-                            </div>
                             <div className="Boxes">
                                 {allDeads.map((inP) => {
                                     var uniqueKeys = inP + "Bx";
@@ -304,53 +262,92 @@ function JobSched() {
                                     return <div className="dBox" accessKey={uniqueKeys}>{inD}</div>
                                 })}
                             </div>
-                        </motion.div>
+                        </motion.div> : <></>
                     }
                 </motion.div>
-                {(openEdit === 1) ?
-                    <motion.div className="mod"
-                        initial={{ opacity: 0, x: 400, y: -300, scale: 0 }}
-                        animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
-                        transition={{ duration: 0.2 }}
-                    >
-                        <button className="cancel" onClick={() => { setEdit(0) }}>x</button>
-                        <motion.div className="playIns">
-                            <h1 className="title">Add the values:</h1>
-                            <motion.div className="adds">
-                                <input placeholder="Profit" onChange={(e) => { setNewProf(e.target.value) }}></input>
-                                <input placeholder="Deadline" onChange={(e) => { setNewDead(e.target.value) }}></input>
-                                <button onClick={addNewProc} className="alButton">Add</button>
-                            </motion.div>
-                            <motion.div className="showArr">
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <th>Process</th>
-                                            <th>Profit</th>
-                                            <th>Deadline</th>
-                                        </tr>
-                                        {newProcs && newProcs.map((proc) => {
-                                            var uniqueKeys = proc.no + "nRP";
-                                            return (
-                                                <tr id={uniqueKeys} key={uniqueKeys}>
-                                                    <motion.td>{proc.no}</motion.td>
-                                                    <motion.td>{proc.profit}</motion.td>
-                                                    <motion.td>{proc.deadline}</motion.td>
-                                                </tr>
-                                            )
-                                        })
-                                        }
-                                    </tbody>
-                                </table>
-                            </motion.div>
-                            <button className="alButton save-changes"
-                                onClick={saveChanges}
-                            >Save</button>
+                <motion.div className="right-side">
+                    <motion.div id="idAllSteps" className="allSteps">
+                        <motion.div className="stepCard" id="0STDN"
+                            initial={{ y: 20 }}
+                            animate={{ y: 0 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <p id="step0" className="stepH">Step0: </p>
+                            <div className="content">
+                                <p>We Greedily choose the jobs with maximum profit first, by <button onClick={updateStep}>sorting</button> the jobs in decreasing order of their profit. This would help to maximize the total profit as choosing the job with maximum profit for every time slot will eventually maximize the total profit</p>
+                                <p className="enHead">Enter jobs and their deadlines</p>
+                                <input placeholder="Profit" value={newProf} onChange={(e) => { setNewProf(e.target.value) }}></input>
+                                <input placeholder="Deadline" value={newDead} onChange={(e) => { setNewDead(e.target.value) }}></input>
+                                {(newProf && newDead) ?
+                                    <button style={{ "marginLeft": "1rem" }} onClick={checkIfInt}>Add</button> : <></>
+                                }
+                                {procs.length >= 3 ?
+                                    <motion.button
+                                        initial={{ scale: 0 }}
+                                        animate={{ scale: 1 }}
+                                        transition={{ duration: 1 }}
+                                        id="goToStep1" style={{ "display": "block" }} onClick={(e) => { disBut(e); setStepC(1); }} className="spec">Next Step</motion.button> : <></>
+                                }
+                            </div>
+                            <FontAwesomeIcon id="0STDN" className="stepDoneIcon" icon={faCircleCheck} />
                         </motion.div>
+                        {stepC >= 1 ?
+                            <motion.div className="stepCard" id="1STDN"
+                                initial={{ y: 20 }}
+                                animate={{ y: 0 }}
+                                transition={{ duration: 0.5 }}
+                            >
+                                <p id="step1" className="stepH">Step1: </p>
+                                <div className="content">
+                                    <p>Sorting of processes happens based on their Profit</p>
+                                    <p>Here, we have used Selection Sorting</p>
+                                    <motion.button id="DoSorting" className="spec" onClick={(e) => { disBut(e); sortProfits() }}>Sort the Processes</motion.button>
+                                </div>
+                                <FontAwesomeIcon id="0STDN" className="stepDoneIcon" icon={faCircleCheck} />
+                            </motion.div> : <></>
+                        }
+                        {stepC >= 2 ?
+                            <motion.div className="stepCard" id="2STDN"
+                                initial={{ y: 20 }}
+                                animate={{ y: 0 }}
+                                transition={{ duration: 0.5 }}
+                            >
+                                <p id="step2" className="stepH">Step2: </p>
+                                <div className="content">
+                                    <p>We Iterate on jobs in decreasing order of profit.For each job, we do the following :</p>
+                                    <p>Find a time slot i, such that slot is empty and i {"<"} deadline and i is greatest.</p>
+                                    <p>Put the job in this slot and mark this slot filled.</p>
+                                    <p>If no such i exists, then ignore the job. </p>
+                                    <p>We take process P{procs[currNo - 1].no}</p>
+                                    <button id="schedNext" onClick={(e) => { scheduleNext(); }} className="spec">Schedule</button>
+                                </div>
+                                <FontAwesomeIcon id="0STDN" className="stepDoneIcon" icon={faCircleCheck} />
+                            </motion.div> : <></>
+                        }
+                        {stepC >= 3 ?
+                            <motion.div className="stepCard" id="3STDN"
+                                initial={{ y: 20 }}
+                                animate={{ y: 0 }}
+                                transition={{ duration: 0.5 }}
+                            >
+                                <p id="step3" className="stepH">Step3: </p>
+                                <div className="content">
+                                    <p>Total profit is calculated by adding individual profits of each Processes selected in the algorithm</p>
+                                    <motion.button
+                                        initial={{ scale: 0 }}
+                                        animate={{ scale: 1 }}
+                                        transition={{ duration: 1, delay: 1 }}
+                                        onClick={updateStep}
+                                        className="enHead pgreen">Total Profit: {totalProfit}</motion.button>
+                                </div>
+                                <FontAwesomeIcon id="0STDN" className="stepDoneIcon" icon={faCircleCheck} />
+                            </motion.div> : <></>
+                        }
+                        {stepC >= 4 ?
+                            <button onClick={restart}>Restart</button> : <></>
+                        }
                     </motion.div>
-                    :
-                    <></>
-                }
+                </motion.div>
             </motion.div>
 
         </>

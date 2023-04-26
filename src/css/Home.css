@@ -1,0 +1,344 @@
+:root {
+    --theaderColors: rgb(31, 23, 23);
+    --tdataColors: rgb(54, 45, 45);
+    --tfontSize: 2rem;
+    --tdataSize: 3rem;
+    --thightDC: rgb(0, 183, 255);
+    --thightDBg: rgb(77, 77, 77);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Share+Tech&family=Ubuntu:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Share Tech', sans-serif;
+    /* font-family: "Ubuntu", sans-serif; */
+    font-size: 1rem;
+    background: black;
+    color: white;
+
+}
+
+::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+    /* -webkit-box-shadow: inset 0 0 6px rgb(252, 252, 252); */
+    border-radius: 0.1rem;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 0.4rem;
+    background: rgb(53, 50, 50);
+    /* -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.5); */
+}
+
+#root {
+    background: rgb(37, 37, 37);
+    background: linear-gradient(289deg, rgba(37, 37, 37, 1) 0%, rgba(71, 71, 71, 1) 35%, rgba(77, 77, 77, 1) 71%, rgba(125, 125, 125, 1) 100%);
+    min-height: 100vh;
+}
+
+button {
+    background: none;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 0.5rem;
+    cursor: pointer;
+    background: black;
+    border-radius: 0.2rem;
+
+}
+
+input {
+    background: black;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    transition: 0.3s all ease-out;
+    color: white;
+}
+
+input:focus {
+    outline: none;
+    background: rgba(0, 0, 0, 0.689);
+}
+
+.fullbg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column; */
+    width: 100%;
+    margin-top: 4rem;
+    color: white;
+    padding: 1rem;
+}
+
+.fullbgHOME {
+    flex-direction: column;
+}
+
+.algos {
+    display: flex;
+    flex-direction: column;
+    background: rgb(54, 54, 54);
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+    backdrop-filter: blur(5rem);
+}
+
+.algos button {
+    background: rgb(49, 49, 49);
+    margin: 0.5rem;
+    font-size: 1.5rem;
+    padding: 0.8rem;
+    transition: 0.3s all ease-out;
+}
+
+.algos button:hover {
+    background: rgb(0, 0, 0);
+}
+
+.left-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50vw;
+    /* background: rgba(255, 255, 255, 0.37); */
+    height: 70vh;
+    margin-right: 0.5rem;
+}
+
+.right-side {
+    position: relative;
+    display: flex;
+    height: 70vh;
+    width: 30rem;
+}
+
+.fullbgHOME {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* min-height: 100vh; */
+    padding: 1rem;
+    color: white;
+}
+
+.Table {
+    display: table-row-group;
+    font-size: var(--tfontSize);
+}
+
+.Table .row {
+    display: table-row;
+}
+
+.Table .BTitle {
+    background: var(--theaderColors);
+}
+
+.allSteps {
+    position: relative;
+    width: 100%;
+    margin-left: 0.5rem;
+    padding: 2rem 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    font-size: 1rem;
+}
+
+.right-side p {
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+}
+
+.right-side .enHead {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.right-side .pgreen {
+    color: white;
+    background: green;
+    padding: 0.3rem;
+    /* margin: 0 0.5rem; */
+}
+
+.right-side .inputsDiv {
+    margin-bottom: 1rem;
+}
+
+.stepCard {
+    position: relative;
+    background: black;
+    color: rgb(0, 255, 0);
+    border: 0.2rem solid rgb(218, 218, 218);
+    display: flex;
+    padding: 1rem;
+    padding-bottom: 2rem;
+    margin: 0.5rem 1rem;
+    border-radius: 0.3rem;
+    text-align: left;
+}
+
+
+
+.stepCard .stepH {
+    font-weight: 650;
+    margin-right: 0.5rem;
+}
+
+.stepCard .content button {
+    background: none;
+    padding: 0;
+    font-size: 1.1rem;
+    color: rgb(155, 155, 255);
+    transition: 0.3s all ease-out;
+}
+
+.stepCard .content button:hover {
+    color: rgb(94, 94, 194);
+}
+
+
+.stepCard .stepDoneIcon {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    font-size: 1.2rem;
+    transition: 0.1s all ease-out;
+    opacity: 0.8;
+    border: 0.2rem solid rgb(228, 228, 228);
+    background: rgb(255, 255, 255);
+    border-radius: 50%;
+}
+
+.stepCard .inStepDivs1 {
+    background: rgb(49, 49, 49);
+    padding: 0.3rem;
+    box-shadow: inset 0 0 0.2rem white;
+    margin-bottom: 0.5rem;
+}
+
+
+
+
+
+.goanime {
+    animation: goanimate 1s normal infinite;
+}
+
+.Table .row .hight,
+.lcsTable .row .hight {
+    /* background: var(--thightDBg); */
+    /* color: var(--thightDC); */
+    animation: anHight 0.5s 2;
+}
+
+.Table .row .Fhight,
+.lcsTable .row .Fhight {
+    /* background: var(--thightDBg); */
+    /* color: var(--thightDC); */
+    animation: anFHight 0.5s 2;
+}
+
+.Table .row .hightStr,
+.lcsTable .row .hightStr {
+    /* background: var(--thightDBg); */
+    /* color: var(--thightDC); */
+}
+
+@keyframes goanimate {
+    0% {
+        /* opacity: 0.5; */
+        background: rgb(49, 49, 49);
+        border: 0.2rem solid grey;
+    }
+
+    100% {
+        background: black;
+        border: 0.2rem solid rgb(255, 255, 255);
+    }
+}
+
+@keyframes anHight {
+    0% {
+        background: var(--tdataColors);
+        color: white;
+    }
+
+    100% {
+        background: var(--thightDBgwhite);
+        color: var(--thightDC);
+    }
+}
+
+@keyframes anFHight {
+    0% {
+        background: var(--tdataColors);
+        color: white;
+    }
+
+    100% {
+        background: var(--thightDBgwhite);
+        color: red;
+    }
+}
+
+
+.algoDone {
+    background: rgb(0, 0, 0);
+    color: rgb(48, 48, 255);
+    border: 0.2rem solid rgb(110, 110, 255);
+}
+
+
+.dNone {
+    display: none;
+}
+
+.stepCard .content .spec {
+    margin: 0.5rem 0;
+    background: rgb(73, 73, 73);
+    padding: 0.3rem;
+    color: white;
+}
+
+.stepCard .content .spec:disabled {
+    opacity: 0.5;
+    cursor: auto;
+}
+
+.stepCard .content .spec:disabled:hover {
+    /* opacity: 0.8; */
+    background: rgb(73, 73, 73);
+    padding: 0.3rem;
+    color: white;
+}
+
+.stepCard .content .spec:hover {
+    color: white;
+    background: green;
+}
+
+.Table .row .bStrs,
+.lcsTable .row .bStrs {
+    background: green;
+    color: white;
+}
