@@ -28,7 +28,6 @@ function JobSched() {
     }, [procs]);
 
     useEffect(() => {
-        console.log(retElId(`${stepC}STDN`));
         for (var i = 1; i < stepC; i++) {
             if (retElId(`${i}STDN`) != null) {
                 retElId(`${i}STDN`).classList.add("algoDone");
@@ -136,7 +135,7 @@ function JobSched() {
             ELproc[i].classList.remove("selectedBox");
             ELproc[i].classList.add("matchBox");
             ELproc[maxP].classList.add("matchBox");
-
+            await timer(t2);
             for (var k = 0; k < 2; k++) {
                 temp1 = ELproc[i].childNodes[k].innerText;
                 ELproc[i].childNodes[k].innerText = ELproc[maxP].childNodes[k].innerText;
