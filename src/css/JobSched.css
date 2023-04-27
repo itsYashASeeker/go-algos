@@ -1,3 +1,8 @@
+:root {
+    --gChartBoxSize: 5rem;
+    --gChartBoxFontSize: 1rem;
+}
+
 
 .goBack {
     position: absolute;
@@ -12,45 +17,41 @@
     transition: 0.3s all ease-out;
 }
 
-.right-side {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    width: 35vw;
-    margin-left: 1rem;
-}
-
-
-
 .ganttChart {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     margin-top: 1rem;
+    flex-wrap: wrap;
 }
 
 .Boxes {
-    display: inline-flex;
-    border-right: 0.3rem solid whitesmoke;
-    border-top: 0.3rem solid whitesmoke;
-    border-bottom: 0.3rem solid whitesmoke;
+    display: flexbox;
 }
 
-.Box {
+.BoxContainer {
+    position: relative;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 5rem;
-    height: 5rem;
-    border-left: 0.3rem solid whitesmoke;
+    width: var(--gChartBoxSize);
+    height: var(--gChartBoxSize);
+    margin: 1.5rem 0;
+}
+
+.Box {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
     text-align: center;
     font-weight: 600;
     font-size: 2rem;
     transition: 0.3s all ease-out;
+    border: 0.3rem solid whitesmoke;
 }
 
 .deadlinesBoxes {
@@ -58,19 +59,19 @@
 }
 
 .dBox {
+    position: absolute;
     text-align: right;
     display: inline-block;
-    width: 5.3rem;
+    width: 100%;
     height: auto;
+    bottom: -1.5rem;
 }
 
-.dBox:nth-child(1) {
+.BoxContainer .zeroDBox {
     text-align: left;
-    position: absolute;
 }
 
 .theory-content {
-    /* background: wheat; */
     font-size: 1.5rem;
     margin: 2rem 0;
 }

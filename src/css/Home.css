@@ -28,21 +28,32 @@ body {
 }
 
 ::-webkit-scrollbar {
-    width: 0.5rem;
+    width: 0.3rem;
+    height: 0.3rem;
+}
+
+::-webkit-scrollbar-button{
+    /* height: 10rem; */
+    /* background: white; */
 }
 
 ::-webkit-scrollbar-track {
+    /* height: 1rem; */
     /* -webkit-box-shadow: inset 0 0 6px rgb(252, 252, 252); */
     border-radius: 0.1rem;
 }
 
 ::-webkit-scrollbar-thumb {
     border-radius: 0.4rem;
-    background: rgb(53, 50, 50);
+    background: grey;
     /* -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.5); */
 }
 
 #root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column; */
     background: rgb(37, 37, 37);
     background: linear-gradient(289deg, rgba(37, 37, 37, 1) 0%, rgba(71, 71, 71, 1) 35%, rgba(77, 77, 77, 1) 71%, rgba(125, 125, 125, 1) 100%);
     min-height: 100vh;
@@ -57,7 +68,11 @@ button {
     cursor: pointer;
     background: black;
     border-radius: 0.2rem;
+    transition: 0.3s all ease-out;
+}
 
+button:hover{
+    opacity: 0.5;
 }
 
 input {
@@ -82,32 +97,35 @@ input:focus {
     margin-top: 4rem;
     color: white;
     padding: 1rem;
+    
 }
 
 .fullbgHOME {
-    flex-direction: column;
+    /* flex-direction: column; */
+    margin-top: 0;
 }
 
 .algos {
     display: flex;
     flex-direction: column;
-    background: rgb(54, 54, 54);
+    background: #5d5d5d;
     padding: 1rem;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     border-radius: 0.5rem;
     backdrop-filter: blur(5rem);
 }
 
 .algos button {
-    background: rgb(49, 49, 49);
+    background: #7d7d7d;
     margin: 0.5rem;
     font-size: 1.5rem;
-    padding: 0.8rem;
+    padding: 1rem;
     transition: 0.3s all ease-out;
+    border-radius: 0.5rem;
 }
 
 .algos button:hover {
-    background: rgb(0, 0, 0);
+    background: #999999;
 }
 
 .left-side {
@@ -115,17 +133,20 @@ input:focus {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 50vw;
+    width: 40vw;
     /* background: rgba(255, 255, 255, 0.37); */
     height: 70vh;
-    margin-right: 0.5rem;
+    margin-right: 5vw;
 }
 
 .right-side {
     position: relative;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     height: 70vh;
-    width: 30rem;
+    width: 40vw;
 }
 
 .fullbgHOME {
@@ -155,8 +176,7 @@ input:focus {
 .allSteps {
     position: relative;
     width: 100%;
-    margin-left: 0.5rem;
-    padding: 2rem 0;
+    padding: 2rem 0.5rem;
     overflow-y: scroll;
     overflow-x: hidden;
     scroll-behavior: smooth;
@@ -192,7 +212,7 @@ input:focus {
     display: flex;
     padding: 1rem;
     padding-bottom: 2rem;
-    margin: 0.5rem 1rem;
+    margin: 0.5rem 0;
     border-radius: 0.3rem;
     text-align: left;
 }
@@ -341,4 +361,10 @@ input:focus {
 .lcsTable .row .bStrs {
     background: green;
     color: white;
+}
+
+@media (max-width: 700px) {
+    *{
+        font-size: 0.5rem;
+    }
 }

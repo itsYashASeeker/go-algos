@@ -13,7 +13,7 @@ function JobSched() {
 
     const [stepC, setStepC] = useState(0);
     const [procs, setProcs] = useState([]);
-    const [allDeads, setAllDeads] = useState();
+    const [allDeads, setAllDeads] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
     const [currNo, setCurrNo] = useState(1);
     const [slotG, setSlotG] = useState([]);
     const [newProf, setNewProf] = useState();
@@ -88,6 +88,9 @@ function JobSched() {
             }
         }
         var allDeads = [];
+        if (procs.length < maxDD) {
+            maxDD = procs.length;
+        }
         for (var i = 1; i <= maxDD; i++) {
             allDeads.push(i);
         }
@@ -181,7 +184,7 @@ function JobSched() {
                 break;
             }
         }
-        if (isFull == 1 || currNo === allDeads.length) {
+        if (isFull == 1 || currNo === allDeads.length || currNo === procs.length) {
             var sts = stepC + 1;
             setStepC(sts);
             setCurrNo(1);
@@ -252,15 +255,21 @@ function JobSched() {
                             <div className="Boxes">
                                 {allDeads.map((inP) => {
                                     var uniqueKeys = inP + "Bx";
-                                    return <div id={uniqueKeys} accessKey={uniqueKeys} className="Box"></div>
+                                    return (inP === 1 ?
+                                        (
+                                            <div className="BoxContainer">
+                                                <div id={uniqueKeys} accessKey={uniqueKeys} className="Box"></div>
+                                                <div className="dBox zeroDBox" accessKey="0Dead">0</div>
+                                                <div className="dBox" accessKey={uniqueKeys}>{inP}</div>
+                                            </div>
+                                        )
+                                        : <div className="BoxContainer">
+                                            <div id={uniqueKeys} accessKey={uniqueKeys} className="Box"></div>
+                                            <div className="dBox" accessKey={uniqueKeys}>{inP}</div>
+                                        </div>
+                                    )
                                 })}
-                            </div>
-                            <div className="deadlinesBoxes">
-                                <div className="dBox" key="0Dead">0</div>
-                                {allDeads.map((inD) => {
-                                    var uniqueKeys = inD + "Bx";
-                                    return <div className="dBox" accessKey={uniqueKeys}>{inD}</div>
-                                })}
+
                             </div>
                         </motion.div> : <></>
                     }
@@ -318,7 +327,9 @@ function JobSched() {
                                     <p>Find a time slot i, such that slot is empty and i {"<"} deadline and i is greatest.</p>
                                     <p>Put the job in this slot and mark this slot filled.</p>
                                     <p>If no such i exists, then ignore the job. </p>
-                                    <p>We take process P{procs[currNo - 1].no}</p>
+                                    {stepC === 2 ?
+                                        <p>We take process P{procs[currNo - 1].no}</p> : <></>
+                                    }
                                     <button id="schedNext" onClick={(e) => { scheduleNext(); }} className="spec">Schedule</button>
                                 </div>
                                 <FontAwesomeIcon id="0STDN" className="stepDoneIcon" icon={faCircleCheck} />
@@ -336,7 +347,7 @@ function JobSched() {
                                     <motion.button
                                         initial={{ scale: 0 }}
                                         animate={{ scale: 1 }}
-                                        transition={{ duration: 1, delay: 1 }}
+                                        transition={{ duration: 1, delay: 0.5 }}
                                         onClick={updateStep}
                                         className="enHead pgreen">Total Profit: {totalProfit}</motion.button>
                                 </div>
