@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import jobSdata from "../data/jobsch";
-import "../css/JobSched.css";
+
 import { animate, delay, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import "../css/Lcs.css";
-import "../css/Home.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 
+import "../css/Lcs.css";
+import "../css/Home.css";
+import "../css/JobSched.css";
 function JobSched() {
 
     const [stepC, setStepC] = useState(0);
@@ -112,8 +113,8 @@ function JobSched() {
         var maxP = 0;
         var temp1;
         var ELproc = document.querySelectorAll("#allRP");
-        var t1 = 400;
-        var t2 = 300;
+        var t1 = 300;
+        var t2 = 200;
         var dProc = procs;
 
         for (var i = 0; i < dProc.length; i++) {
@@ -282,7 +283,7 @@ function JobSched() {
                         >
                             <p id="step0" className="stepH">Step0: </p>
                             <div className="content">
-                                <p>We Greedily choose the jobs with maximum profit first, by <button onClick={updateStep}>sorting</button> the jobs in decreasing order of their profit. This would help to maximize the total profit as choosing the job with maximum profit for every time slot will eventually maximize the total profit</p>
+                                <p>We Greedily choose the jobs with maximum profit first, by <button>sorting</button> the jobs in decreasing order of their profit. This would help to maximize the total profit as choosing the job with maximum profit for every time slot will eventually maximize the total profit</p>
                                 <p className="enHead">Enter jobs and their deadlines</p>
                                 <input placeholder="Profit" value={newProf} onChange={(e) => { setNewProf(e.target.value) }}></input>
                                 <input placeholder="Deadline" value={newDead} onChange={(e) => { setNewDead(e.target.value) }}></input>

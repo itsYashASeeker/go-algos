@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 
 import { animate, delay, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import "../css/Lcs.css";
 import Navbar from "../components/Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faCircleCheck } from '@fortawesome/free-solid-svg-icons';
+
+import "../css/Home.css";
+import "../css/Lcs.css";
 
 function Lcs() {
     const navigate = useNavigate();
@@ -17,14 +19,16 @@ function Lcs() {
     const [currI, setCurrI] = useState([-1, -1, -1]);
     const [algoPart, setAlgoPart] = useState(0);
     const [finalSeq, setFinalSeq] = useState("");
+    const [anDuration, setAnDuration] = useState(800);
     const timer = ms => new Promise(res => setTimeout(res, ms));
 
     useEffect(() => {
-        if (inStr1 && inStr2) {
-
-            setStepC(1);
-            retElId("0STDN").classList.add("algoDone");
-            retElId("0STDN").classList.remove("goanime");
+        if (inStr1 && inStr2 && subLcsStrings()) {
+            if(stepC===0){
+                setStepC(1);
+                retElId("0STDN").classList.add("algoDone");
+                retElId("0STDN").classList.remove("goanime");
+            }
         }
 
 
@@ -59,17 +63,17 @@ function Lcs() {
     function subLcsStrings() {
         const regex = /[^A-Za-z ]/;
         if (inStr1.search(regex) === -1 && inStr2.search(regex) === -1) {
-            setStr1(inStr1.toUpperCase().split(""));
-            setStr2(inStr2.toUpperCase().split(""));
-            setInStr1("");
-            setInStr2("");
-            setStepC(2);
+            return true;
         }
         else {
-            setInStr1("");
-            setInStr2("");
-            window.alert("Please enter valid String");
+            return false;
         }
+    }
+
+    function saveString() {
+        setStr1(inStr1.toUpperCase().split(""));
+        setStr2(inStr2.toUpperCase().split(""));
+        setStepC(2);
     }
 
     async function hightRow(rowNo) {
@@ -78,7 +82,7 @@ function Lcs() {
                 retElId(`M${rowNo}${j}`).classList.add("hight");
             }
         }
-        await timer(1000);
+        await timer(anDuration);
         for (var j = 1; j <= str1.length; j++) {
             if (retElId(`M${rowNo}${j}`)) {
                 retElId(`M${rowNo}${j}`).classList.remove("hight");
@@ -92,7 +96,7 @@ function Lcs() {
                 retElId(`M${i}${colNo}`).classList.add("hight");
             }
         }
-        await timer(1000);
+        await timer(anDuration);
         for (var i = 1; i <= str2.length; i++) {
             if (retElId(`M${i}${colNo}`)) {
                 retElId(`M${i}${colNo}`).classList.remove("hight");
@@ -100,12 +104,11 @@ function Lcs() {
         }
     }
 
-
     async function hightBox(i, j) {
         if (retElId(`M${i}${j}`)) {
             retElId(`M${i}${j}`).classList.add("hight");
         }
-        await timer(1000);
+        await timer(anDuration);
         if (retElId(`M${i}${j}`)) {
             retElId(`M${i}${j}`).classList.remove("hight");
         }
@@ -119,7 +122,7 @@ function Lcs() {
         if (retElId(`S1M${j}`) && retElId(`S2M${i}`)) {
             retElId(`S1M${j}`).classList.add(glow);
             retElId(`S2M${i}`).classList.add(glow);
-            await timer(1000);
+            await timer(anDuration);
             retElId(`S1M${j}`).classList.remove(glow);
             retElId(`S2M${i}`).classList.remove(glow);
         }
@@ -151,13 +154,12 @@ function Lcs() {
         for (var x = i; x < li; x++) {
             for (var y = j; y < lj; y++) {
 
-
                 const st2 = retElId(`S2M${x - 1}`).childNodes[0].innerText;
                 const st1 = retElId(`S1M${y - 1}`).childNodes[0].innerText;
 
                 if (st1 === st2) {
                     hightStr(x - 1, y - 1, 1);
-                    await timer(1000);
+                    await timer(anDuration);
                     dC = [x, y, 1];
                     setCurrI(dC);
                     retElId(`M${x}${y}`).childNodes[0].innerText = Number(retElId(`M${x - 1}${y - 1}`).childNodes[0].innerText) + 1;
@@ -166,7 +168,7 @@ function Lcs() {
                 }
                 else {
                     hightStr(x - 1, y - 1, 0);
-                    await timer(1000);
+                    await timer(anDuration);
                     dC = [x, y, 0];
                     setCurrI(dC);
                     var left = Number(retElId(`M${x}${y - 1}`).childNodes[0].innerText);
@@ -182,13 +184,13 @@ function Lcs() {
                         retElId(`M${x}${y}`).childNodes[1].classList.add("upIcons");
                     }
                 }
+                await timer(100);
             }
             j = 1;
         }
         await timer(1);
 
         if (dC[0] === str2.length && dC[1] === str1.length) {
-            console.log("Done")
             setAlgoPart(1);
             setStepC(3);
         }
@@ -208,7 +210,6 @@ function Lcs() {
         var gx = str2.length;
         var gy = str1.length;
         var seq = "";
-        console.log(gx + " " + gy);
         while (go == 1) {
             if (gx === 0 || gy === 0) {
                 go = 0;
@@ -217,7 +218,7 @@ function Lcs() {
 
             if (retElId(`M${gx}${gy}`).childNodes[1].classList.contains("diagonalIcons")) {
                 hightBox(gx, gy);
-                await timer(1000);
+                await timer(anDuration);
                 retElId(`M${gx}${gy}`).classList.add("bStrs");
                 seq += retElId(`S2M${gx - 1}`).childNodes[0].innerText;
                 gx = gx - 1;
@@ -225,12 +226,12 @@ function Lcs() {
             }
             else if (retElId(`M${gx}${gy}`).childNodes[1].classList.contains("leftIcons")) {
                 hightBox(gx, gy);
-                await timer(1000);
+                await timer(anDuration);
                 gy = gy - 1;
             }
             else if (retElId(`M${gx}${gy}`).childNodes[1].classList.contains("upIcons")) {
                 hightBox(gx, gy);
-                await timer(1000);
+                await timer(anDuration);
                 gx = gx - 1;
             }
             else {
@@ -330,7 +331,7 @@ function Lcs() {
                                     <p>It is a <i>(n x m) matrix</i></p>
                                     <p>where, <i>n</i> is length of <i>String 1</i></p>
                                     <p>and <i>m</i> is length of <i>String 2</i></p>
-                                    <p>Create the <button id="createLCS" className={"spec"} onClick={(e) => { disBut(e); subLcsStrings() }}>Lcs Matrix</button></p>
+                                    <p>Create the <button id="createLCS" className={"spec"} onClick={(e) => { disBut(e); saveString() }}>Lcs Matrix</button></p>
                                 </div>
                                 <FontAwesomeIcon id="1STDN" className="stepDoneIcon" icon={faCircleCheck} />
 

@@ -1,0 +1,101 @@
+
+
+.showArr {
+    margin-top: 1rem;
+    overflow: auto;
+    height: 15rem;
+    overflow-x: hidden;
+    scrollbar-width: 0;
+}
+
+.showArr table {
+    border-collapse: collapse;
+}
+
+
+
+
+
+
+
+.makeBold {
+    font-weight: 600;
+}
+
+.t2 {
+    font-size: 1.5rem;
+}
+
+
+.selectedBox {
+    background: red;
+    color: white;
+    background: rgb(224, 224, 224);
+    color: black;
+    font-weight: 600;
+}
+
+.goBox {
+    background: rgb(227, 227, 0);
+    color: black;
+    background: rgb(147, 147, 147);
+    color: black;
+}
+
+.matchBox {
+    background: green;
+    color: black;
+    background: rgb(224, 224, 224);
+    color: black;
+    box-shadow: 0 0 0.5rem white;
+    font-weight: 600;
+}
+
+.cell{
+    width: 50px;
+    height: 50px;
+    border: 2px solid black;
+
+    cursor: pointer;
+    font-size: 35px;
+    
+    text-align: center;
+    color: rgb(95, 94, 93);
+    
+    font-family: cursive;
+    
+}
+
+
+
+#cellContainer4{
+    display: grid;
+    grid-template-columns: repeat(4,auto);
+    
+    background-color: rgb(248, 249, 247);
+   
+    border-radius: 10px;
+    
+    margin: 20px;
+}
+#cellContainer4 h3{
+   font-size: larger;
+   width: 50px;
+    height: 50px;
+}
+#cellContainer8{
+    display: grid;
+    grid-template-columns: repeat(8,auto);
+    
+    background-color: rgb(248, 249, 247);
+   
+    border-radius: 10px;
+    
+    margin: 20px;
+}
+
+#cellContainer8 h3{
+    font-size: larger;
+    width: 50px;
+     height: 50px;
+ }

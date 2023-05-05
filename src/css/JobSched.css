@@ -103,6 +103,7 @@
 
 .Table .selectedBox {
     background: rgb(71, 71, 0);
+    background: black;
     color: white;
 
     font-weight: 600;
@@ -110,15 +111,15 @@
 
 .Table .goBox {
     background: rgb(37, 37, 3);
+    background: yellow;
     color: white;
 }
 
 .Table .matchBox {
     background: green;
     color: white;
-    background: rgb(71, 71, 0);
-    color: white;
     font-weight: 600;
+    box-shadow: none;
 }
 
 .selHight {

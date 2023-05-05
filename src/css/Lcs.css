@@ -17,13 +17,13 @@
     min-height: 100vh;
 }
 
-.lcsTable{
+.lcsTable {
     display: flex;
     flex-direction: column;
     font-size: var(--tfontSize);
 }
 
-.lcsTable .row{
+.lcsTable .row {
     display: inline-flex;
 }
 
@@ -36,6 +36,11 @@
     background: var(--tdataColors);
     border-bottom: 0.2rem solid black;
     border-right: 0.2rem solid black;
+}
+
+.lcsTable .row .bStrs {
+    background: green;
+    color: white;
 }
 
 .lcsTable .row .lcsBox:nth-child(1) {
@@ -75,6 +80,3 @@
 .lcsTable .row .lcsBox .leftIcons {
     transform: rotate(270deg);
 }
-
-
-

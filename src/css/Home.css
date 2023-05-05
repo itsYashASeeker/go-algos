@@ -145,7 +145,7 @@ input:focus {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    min-height: 70vh;
+    height: 70vh;
     width: 40vw;
 }
 
@@ -177,7 +177,6 @@ input:focus {
     position: relative;
     height: auto;
     width: 100%;
-    width: auto;
     padding: 2rem 0.5rem;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -270,14 +269,14 @@ input:focus {
 .lcsTable .row .hight {
     /* background: var(--thightDBg); */
     /* color: var(--thightDC); */
-    animation: anHight 0.5s 2;
+    animation: anHight 0.4s 2;
 }
 
 .Table .row .Fhight,
 .lcsTable .row .Fhight {
     /* background: var(--thightDBg); */
     /* color: var(--thightDC); */
-    animation: anFHight 0.5s 2;
+    animation: anFHight 0.4s 2;
 }
 
 .Table .row .hightStr,
@@ -357,6 +356,7 @@ input:focus {
 .stepCard .content .spec:hover {
     color: white;
     background: green;
+    opacity: 1;
 }
 
 .Table .row .bStrs,
@@ -369,19 +369,38 @@ input:focus {
     .fullbg {
         flex-direction: column-reverse;
     }
+
     * {
         font-size: 1rem;
+    }
+
+    .fullbgHOME,
+    .fullbgHOME h1 {
+        flex-direction: column;
+        font-size: 1.5rem;
     }
 }
 
 @media (max-width: 400px) {
-    *{
+    * {
         font-size: 0.7rem;
+    }
+
+    .fullbgHOME,
+    .fullbgHOME h1 {
+        flex-direction: column;
+        font-size: 1.5rem;
     }
 }
 
 @media (max-width: 300px) {
     * {
         font-size: 0.5rem;
+    }
+
+    .fullbgHOME,
+    .fullbgHOME h1 {
+        flex-direction: column;
+        font-size: 1.5rem;
     }
 }

@@ -12,6 +12,14 @@
     z-index: 10;
 }
 
+.navbar * {
+    font-size: 1.5rem !important;
+}
+
+.navbar h1 {
+    font-size: 2rem !important;
+}
+
 .navbar .play {
     position: absolute;
     right: 1rem;

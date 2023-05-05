@@ -21,8 +21,9 @@ function Home() {
                 <h1>Welcome to Go-Algos!</h1>
                 <div className="algos">
                     <button name="job-scheduling" onClick={naviTo}>Job Scheduling</button>
-                    <button name="kruskals" onClick={naviTo}>Kruskals</button>
                     <button name="lcs" onClick={naviTo}>Lcs</button>
+                    <button name="dijkstra" onClick={naviTo}>Dijkstra</button>
+                    <button name="nqueens" onClick={naviTo}>N-Queens</button>
                 </div>
 
             </motion.div>
