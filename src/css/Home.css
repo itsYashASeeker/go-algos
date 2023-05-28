@@ -173,7 +173,7 @@ input:focus {
     align-items: center;
     flex-direction: column;
     width: 67.5vw;
-    height: 70vh;
+    height: 70%;
     /* resize: both; */
     /* margin-right: 5vw; */
 }
@@ -504,6 +504,7 @@ input:focus {
 
     .left-side {
         width: 80vw;
+        height: 25rem;
     }
 
     .right-side {
