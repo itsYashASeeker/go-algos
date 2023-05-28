@@ -126,9 +126,12 @@ input:focus {
     align-items: center;
     /* flex-direction: column; */
     /* background: wheat; */
+    padding-top: 4rem;
+    padding-bottom: 4rem;
     width: 100%;
-    margin-top: 4rem;
-    padding: 1rem;
+    min-height: 100vh;
+    box-sizing: border-box;
+    height: 100vh;
     gap: 5vw;
     /* backdrop-filter: blur(0.2rem); */
 }
@@ -169,7 +172,7 @@ input:focus {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 40vw;
+    width: 67.5vw;
     height: 70vh;
     /* resize: both; */
     /* margin-right: 5vw; */
@@ -195,8 +198,8 @@ input:focus {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 70vh;
-    width: 40vw;
+    height: 70%;
+    width: 22.5vw;
 }
 
 
@@ -335,6 +338,7 @@ input:focus {
 .goanime {
     animation: goanimate 1s normal infinite;
 }
+
 
 .Table .row .hight,
 .lcsTable .row .hight {
@@ -495,6 +499,7 @@ input:focus {
     .fullbg {
         flex-direction: column-reverse;
         gap: 5rem;
+        height: 100%;
     }
 
     .left-side {
