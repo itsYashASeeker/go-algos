@@ -225,54 +225,60 @@ function JobSched() {
                     : <></>
                 } */}
                 <motion.div className="left-side">
-                    <motion.div className="Table"
-                        initial={{ x: -90 }}
+                    <motion.div
+                        className="simulation"
+                        initial={{ x: 50 }}
                         animate={{ x: 0 }}
                         transition={{ duration: 0.5 }}
                     >
-                        <div id="RowHead" className="row">
-                            <div className="JSBox BTitle">Process</div>
-                            <div className="JSBox BTitle">Profit</div>
-                            <div className="JSBox BTitle">Deadline</div>
-                        </div>
-                        {procs && procs.map((proc) => {
-                            return (
-                                <div id="allRP" accessKey={proc.no + "rP"} className="row">
-                                    <div className="JSBox">{proc.no}</div>
-                                    <div className="JSBox">{proc.profit}</div>
-                                    <div className="JSBox">{proc.deadline}</div>
-                                </div>
-                            )
-                        }
-                        )
-                        }
-                    </motion.div>
-                    {stepC >= 2 ?
-                        <motion.div className="ganttChart"
-                            initial={{ opacity: 0.5, y: 50 }}
-                            animate={{ opacity: 1, y: 0 }}
+                        <motion.div className="Table"
+                            initial={{ x: -90 }}
+                            animate={{ x: 0 }}
+                            transition={{ duration: 0.5 }}
                         >
-                            <div className="Boxes">
-                                {allDeads.map((inP) => {
-                                    var uniqueKeys = inP + "Bx";
-                                    return (inP === 1 ?
-                                        (
-                                            <div className="BoxContainer">
+                            <div id="RowHead" className="row">
+                                <div className="JSBox BTitle">Process</div>
+                                <div className="JSBox BTitle">Profit</div>
+                                <div className="JSBox BTitle">Deadline</div>
+                            </div>
+                            {procs && procs.map((proc) => {
+                                return (
+                                    <div id="allRP" accessKey={proc.no + "rP"} className="row">
+                                        <div className="JSBox">{proc.no}</div>
+                                        <div className="JSBox">{proc.profit}</div>
+                                        <div className="JSBox">{proc.deadline}</div>
+                                    </div>
+                                )
+                            }
+                            )
+                            }
+                        </motion.div>
+                        {stepC >= 2 ?
+                            <motion.div className="ganttChart"
+                                initial={{ opacity: 0.5, y: 50 }}
+                                animate={{ opacity: 1, y: 0 }}
+                            >
+                                <div className="Boxes">
+                                    {allDeads.map((inP) => {
+                                        var uniqueKeys = inP + "Bx";
+                                        return (inP === 1 ?
+                                            (
+                                                <div className="BoxContainer">
+                                                    <div id={uniqueKeys} accessKey={uniqueKeys} className="Box"></div>
+                                                    <div className="dBox zeroDBox" accessKey="0Dead">0</div>
+                                                    <div className="dBox" accessKey={uniqueKeys}>{inP}</div>
+                                                </div>
+                                            )
+                                            : <div className="BoxContainer">
                                                 <div id={uniqueKeys} accessKey={uniqueKeys} className="Box"></div>
-                                                <div className="dBox zeroDBox" accessKey="0Dead">0</div>
                                                 <div className="dBox" accessKey={uniqueKeys}>{inP}</div>
                                             </div>
                                         )
-                                        : <div className="BoxContainer">
-                                            <div id={uniqueKeys} accessKey={uniqueKeys} className="Box"></div>
-                                            <div className="dBox" accessKey={uniqueKeys}>{inP}</div>
-                                        </div>
-                                    )
-                                })}
+                                    })}
 
-                            </div>
-                        </motion.div> : <></>
-                    }
+                                </div>
+                            </motion.div> : <></>
+                        }</motion.div>
                 </motion.div>
                 <motion.div className="right-side">
                     <motion.div id="idAllSteps" className="allSteps">
@@ -283,19 +289,25 @@ function JobSched() {
                         >
                             <p id="step0" className="stepH">Step0: </p>
                             <div className="content">
-                                <p>We Greedily choose the jobs with maximum profit first, by <button>sorting</button> the jobs in decreasing order of their profit. This would help to maximize the total profit as choosing the job with maximum profit for every time slot will eventually maximize the total profit</p>
+                                <p>We Greedily choose the jobs with maximum profit first, by <button className={"cbutton"}>sorting</button> the jobs in decreasing order of their profit. This would help to maximize the total profit as choosing the job with maximum profit for every time slot will eventually maximize the total profit</p>
                                 <p className="enHead">Enter jobs and their deadlines</p>
-                                <input placeholder="Profit" value={newProf} onChange={(e) => { setNewProf(e.target.value) }}></input>
-                                <input placeholder="Deadline" value={newDead} onChange={(e) => { setNewDead(e.target.value) }}></input>
+                                {stepC == 0 ?
+                                    <>
+                                        <input placeholder="Profit" value={newProf} onChange={(e) => { setNewProf(e.target.value) }}></input>
+                                        <input placeholder="Deadline" value={newDead} onChange={(e) => { setNewDead(e.target.value) }}></input>
+                                    </> : <></>
+                                }
+
                                 {(newProf && newDead) ?
-                                    <button style={{ "marginLeft": "1rem" }} onClick={checkIfInt}>Add</button> : <></>
+                                    <button className="cbutton" style={{ "marginLeft": "1rem" }} onClick={checkIfInt}>Add</button> : <></>
                                 }
                                 {procs.length >= 3 ?
                                     <motion.button
-                                        initial={{ scale: 0 }}
+                                        initial={{ scale: 0.5 }}
                                         animate={{ scale: 1 }}
                                         transition={{ duration: 1 }}
-                                        id="goToStep1" style={{ "display": "block" }} onClick={(e) => { disBut(e); setStepC(1); }} className="spec">Next Step</motion.button> : <></>
+                                        className={"spec"}
+                                        id="goToStep1" style={{ "display": "block" }} onClick={(e) => { disBut(e); setStepC(1); }}>Next Step</motion.button> : <></>
                                 }
                             </div>
                             <FontAwesomeIcon id="0STDN" className="stepDoneIcon" icon={faCircleCheck} />
@@ -330,7 +342,7 @@ function JobSched() {
                                     {stepC === 2 ?
                                         <p>We take process P{procs[currNo - 1].no}</p> : <></>
                                     }
-                                    <button id="schedNext" onClick={(e) => { scheduleNext(); }} className="spec">Schedule</button>
+                                    <button id="schedNext" className="spec" onClick={(e) => { scheduleNext(); }}>Schedule</button>
                                 </div>
                                 <FontAwesomeIcon id="0STDN" className="stepDoneIcon" icon={faCircleCheck} />
                             </motion.div> : <></>
@@ -349,13 +361,13 @@ function JobSched() {
                                         animate={{ scale: 1 }}
                                         transition={{ duration: 1, delay: 0.5 }}
                                         onClick={updateStep}
-                                        className="enHead pgreen">Total Profit: {totalProfit}</motion.button>
+                                        className="cbutton enHead pgreen">Total Profit: {totalProfit}</motion.button>
                                 </div>
                                 <FontAwesomeIcon id="0STDN" className="stepDoneIcon" icon={faCircleCheck} />
                             </motion.div> : <></>
                         }
                         {stepC >= 4 ?
-                            <button onClick={restart}>Restart</button> : <></>
+                            <button className="spec restartb" onClick={restart}>Restart</button> : <></>
                         }
                     </motion.div>
                 </motion.div>

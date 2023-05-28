@@ -4,7 +4,7 @@ import { animate, delay, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUp, faCircleCheck } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUp, faCheck, faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 
 import "../css/Home.css";
 import "../css/Lcs.css";
@@ -15,6 +15,7 @@ function Lcs() {
     const [str2, setStr2] = useState();
     const [inStr1, setInStr1] = useState("");
     const [inStr2, setInStr2] = useState("");
+    const [doneIns, setDoneIns] = useState(false);
     const [stepC, setStepC] = useState(0);
     const [currI, setCurrI] = useState([-1, -1, -1]);
     const [algoPart, setAlgoPart] = useState(0);
@@ -24,15 +25,17 @@ function Lcs() {
 
     useEffect(() => {
         if (inStr1 && inStr2 && subLcsStrings()) {
-            if(stepC===0){
-                setStepC(1);
-                retElId("0STDN").classList.add("algoDone");
-                retElId("0STDN").classList.remove("goanime");
+            if (stepC === 0) {
+                setDoneIns(true);
+            }
+            else {
+                setDoneIns(false);
             }
         }
-
-
-    }, [inStr1, inStr2, str1, str2]);
+        else {
+            setDoneIns(false);
+        }
+    }, [inStr1, inStr2]);
 
     useEffect(() => {
         for (var i = 1; i < stepC; i++) {
@@ -60,6 +63,17 @@ function Lcs() {
         return document.getElementById(idname);
     }
 
+    function saveIns() {
+        setDoneIns(false);
+        setStepC(1);
+        retElId("0STDN").classList.add("algoDone");
+        retElId("0STDN").classList.remove("goanime");
+        setStr1(inStr1.toUpperCase().split(""));
+        setStr2(inStr2.toUpperCase().split(""));
+        retElId("wordIn1").setAttribute("readonly", "readonly");
+        retElId("wordIn2").setAttribute("readonly", "readonly");
+    }
+
     function subLcsStrings() {
         const regex = /[^A-Za-z ]/;
         if (inStr1.search(regex) === -1 && inStr2.search(regex) === -1) {
@@ -68,12 +82,6 @@ function Lcs() {
         else {
             return false;
         }
-    }
-
-    function saveString() {
-        setStr1(inStr1.toUpperCase().split(""));
-        setStr2(inStr2.toUpperCase().split(""));
-        setStepC(2);
     }
 
     async function hightRow(rowNo) {
@@ -198,11 +206,15 @@ function Lcs() {
 
     async function restart() {
         setStr1("");
+        setStr2("");
+        setInStr1("");
         setInStr2("");
         setStepC(0);
         setCurrI([-1, -1, -1]);
         setAlgoPart(0);
         setFinalSeq("");
+        retElId("wordIn1").removeAttribute("readonly", "readonly");
+        retElId("wordIn2").removeAttribute("readonly", "readonly");
     }
 
     async function afterAlgo() {
@@ -227,11 +239,15 @@ function Lcs() {
             else if (retElId(`M${gx}${gy}`).childNodes[1].classList.contains("leftIcons")) {
                 hightBox(gx, gy);
                 await timer(anDuration);
+                retElId(`M${gx}${gy}`).classList.add("wStrs");
+
                 gy = gy - 1;
             }
             else if (retElId(`M${gx}${gy}`).childNodes[1].classList.contains("upIcons")) {
                 hightBox(gx, gy);
                 await timer(anDuration);
+                retElId(`M${gx}${gy}`).classList.add("wStrs");
+
                 gx = gx - 1;
             }
             else {
@@ -260,17 +276,19 @@ function Lcs() {
                 transition={{ duration: 1 }}
             >
                 <motion.div className="left-side">
-                    {str1 && str2 ?
-                        <motion.div className="lcsTable"
+                    {str1 && str2 && (stepC >= 2) ?
+                        <motion.div
+                            className="simulation"
                             initial={{ x: 50 }}
                             animate={{ x: 0 }}
                             transition={{ duration: 0.5 }}
                         >
+                        <motion.div className="lcsTable">
                             <div id="RowHead" className="row">
                                 <div className="lcsBox"></div>
                                 <div className="lcsBox"></div>
                                 {str1 && str1.map((el, index1) => {
-                                    return <div id={`S1M${index1}`} className="lcsBox"><p>{el}</p></div>
+                                    return <div id={`S1M${index1}`} className="lcsBox letter"><p>{el}</p></div>
                                 })}
                             </div>
 
@@ -284,7 +302,7 @@ function Lcs() {
                             {str2 && str2.map((el, index1) => {
                                 return (
                                     <div id={`Row${index1 + 1}`} className="row">
-                                        <div id={`S2M${index1}`} className="lcsBox"><p>{el}</p></div>
+                                        <div id={`S2M${index1}`} className="lcsBox letter"><p>{el}</p></div>
                                         <div id={`M${index1 + 1}0`} className="lcsBox th2"><p>0</p></div>
                                         {str1 && str1.map((el, index2) => {
                                             return (
@@ -294,7 +312,7 @@ function Lcs() {
                                     </div>
                                 )
                             })}
-
+                            </motion.div>
                         </motion.div> : <></>}
                 </motion.div>
                 <motion.div className="right-side">
@@ -307,13 +325,18 @@ function Lcs() {
                             <p id="step0" className="stepH">Step0: </p>
                             <div className="content">
                                 <p className="enHead">Enter two random words</p>
-                                <input placeholder="String1" value={inStr1}
+                                <input id="wordIn1" placeholder="String1" value={inStr1}
                                     onChange={(e) => { setInStr1(e.target.value) }}>
 
                                 </input>
-                                <input placeholder="String2" value={inStr2}
+                                <input id="wordIn2" placeholder="String2" value={inStr2}
                                     onChange={(e) => { setInStr2(e.target.value) }}>
                                 </input>
+                                {doneIns ?
+                                    <button className={"cbutton"} onClick={saveIns}><FontAwesomeIcon className="writeCheck" icon={faCheck} /></button>
+                                    : <></>
+                                }
+
                             </div>
                             <FontAwesomeIcon id="0STDN" className="stepDoneIcon" icon={faCircleCheck} />
 
@@ -331,7 +354,7 @@ function Lcs() {
                                     <p>It is a <i>(n x m) matrix</i></p>
                                     <p>where, <i>n</i> is length of <i>String 1</i></p>
                                     <p>and <i>m</i> is length of <i>String 2</i></p>
-                                    <p>Create the <button id="createLCS" className={"spec"} onClick={(e) => { disBut(e); saveString() }}>Lcs Matrix</button></p>
+                                    <p>Create the <button id="createLCS" className={"spec"} onClick={(e) => { disBut(e); setStepC(2); }}>Lcs Matrix</button></p>
                                 </div>
                                 <FontAwesomeIcon id="1STDN" className="stepDoneIcon" icon={faCircleCheck} />
 
@@ -364,12 +387,12 @@ function Lcs() {
                                         transition={{ delay: 0.5, duration: 0.5 }}
                                     >
                                         <p>LCS Algorithm traverses Row wise</p>
-                                        <p>Firstly, <button onClick={() => { hightRow(1) }}>{"{i=1}"}</button>,
-                                            <button onClick={() => { hightCol(1) }}>{" {j=1} "}</button>
+                                        <p>Firstly, <button className="cbutton" onClick={() => { hightRow(1) }}>{"{i=1}"}</button>,
+                                            <button className="cbutton" onClick={() => { hightCol(1) }}>{" {j=1} "}</button>
                                             {" "}is selected {" => "}
-                                            <button onClick={() => { hightBox(1, 1) }}> (1,1) </button>
+                                            <button className="cbutton" onClick={() => { hightBox(1, 1) }}> (1,1) </button>
                                         </p>
-                                        <p>which <button onClick={() => { hightStr(0, 0, 1) }}>points to</button>
+                                        <p>which <button className="cbutton" onClick={() => { hightStr(0, 0, 1) }}>points to</button>
                                             {" "}<b>{str1[0]}</b> and <b>{str2[0]}</b>
                                         </p>
                                         <motion.button
@@ -410,28 +433,33 @@ function Lcs() {
                                 <div className="content">
                                     <p>We find the Longest Common Subsequence, by going backwards from last index</p>
                                     <motion.button id="CalculateLCS" style={{ "display": "block" }} className={"spec"} onClick={(e) => { disBut(e); afterAlgo() }}>Calculate</motion.button>
-                                    {(algoPart >= 2) ?
+                                    {(algoPart >= 2) && (finalSeq.length >= 1) ?
                                         <motion.div
-                                            initial={{ scale: 0.3 }}
+                                            initial={{ scale: 0.6 }}
                                             animate={{ scale: 1 }}
                                             transition={{ duration: 1 }}
                                         >
-                                            <p className="enHead"
-                                            // style={{ "display": "inline-flex" }}
-                                            >Longest Common Subsequence is: </p>
-                                            <p className="enHead pgreen"
-                                            // style={{ "display": "inline-flex" }}
-                                            >
-                                                {finalSeq}
-                                            </p>
+                                            <p className="enHead">Longest Common Subsequence is: </p>
+                                            <p className="enHead pgreen">{finalSeq}</p>
                                         </motion.div>
+                                        : <></>}
+                                    {(algoPart >= 2) && (finalSeq.length === 0) ?
+                                        <motion.div
+                                            initial={{ scale: 0.6 }}
+                                            animate={{ scale: 1 }}
+                                            transition={{ duration: 1 }}
+                                        >
+                                            <p className="enHead">There is no Longest Common Subsequence !</p>
+                                        </motion.div>
+
                                         : <></>
                                     }
                                 </div>
+                                <FontAwesomeIcon id="0STDN" className="stepDoneIcon" icon={faCircleCheck} />
                             </motion.div> : <></>
                         }
                         {(algoPart >= 2) ?
-                            <motion.button onClick={restart}>Restart</motion.button> : <></>
+                            <motion.button className="cbutton" onClick={restart}>Restart</motion.button> : <></>
                         }
                     </motion.div>
                 </motion.div>

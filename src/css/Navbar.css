@@ -8,6 +8,7 @@
     width: 100%;
     height: 4rem;
     background: rgb(11, 11, 11);
+    background: white;
     box-shadow: 0 0 0.8rem black;
     z-index: 10;
 }
@@ -37,6 +38,7 @@
     font-size: 1rem;
     background: none;
     border: none;
-    color: white;
+    /* color: white; */
+    color: var(--somColor);
     cursor: pointer;
 }
