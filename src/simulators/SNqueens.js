@@ -4,7 +4,7 @@ import "../css/Nqueens.css";
 import {motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
-function NQueens() {
+function SNQueens() {
     const [sel, setSel] = useState("");
     
     const navigate = useNavigate();
@@ -279,4 +279,4 @@ function nQueenssolve(option, col,n){
     );
 }
 
-export default NQueens;
+export default SNQueens;

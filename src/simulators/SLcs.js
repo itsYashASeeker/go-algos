@@ -8,8 +8,9 @@ import { faArrowUp, faCheck, faCircleCheck } from '@fortawesome/free-solid-svg-i
 
 import "../css/Home.css";
 import "../css/Lcs.css";
+import FNavbar from "../components/FNavbar";
 
-function Lcs() {
+function SLcs() {
     const navigate = useNavigate();
     const [str1, setStr1] = useState();
     const [str2, setStr2] = useState();
@@ -270,6 +271,7 @@ function Lcs() {
     return (
         <>
             <Navbar />
+            <FNavbar />
             <motion.div className="fullbg"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -469,4 +471,4 @@ function Lcs() {
     );
 }
 
-export default Lcs;
+export default SLcs;

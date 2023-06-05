@@ -3,16 +3,18 @@ import { useNavigate } from "react-router-dom";
 
 import { animate, delay, motion } from "framer-motion";
 import "../css/Home.css";
+import Navbar from "../components/Navbar";
 
 function Home() {
     const navigate = useNavigate();
 
     const naviTo = (e) => {
-        navigate(e.target.name);
+        navigate("/" + e.target.name);
     }
 
     return (
         <>
+            <Navbar />
             <motion.div className="fullbg fullbgHOME"
                 initial={{ opacity: 0, }}
                 animate={{ opacity: 1 }}
@@ -26,13 +28,13 @@ function Home() {
                         <button name="dijkstra" onClick={naviTo}>Dijkstra</button>
                         <button name="nqueens" onClick={naviTo}>N-Queens</button>
                         <button name="kruskals" onClick={naviTo}>Kruskal's</button>
+                        <button name="knapsack" onClick={naviTo}>Knapsack</button>
                     </div>
                 </div>
-                
+
 
             </motion.div>
         </>
-
     );
 }
 

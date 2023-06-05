@@ -10,7 +10,8 @@ import { faArrowUp, faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import "../css/Lcs.css";
 import "../css/Home.css";
 import "../css/JobSched.css";
-function JobSched() {
+import FNavbar from "../components/FNavbar";
+function SJobSched() {
 
     const [stepC, setStepC] = useState(0);
     const [procs, setProcs] = useState([]);
@@ -215,6 +216,7 @@ function JobSched() {
     return (
         <>
             <Navbar />
+            <FNavbar />
             <motion.div className="fullbg"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -378,4 +380,4 @@ function JobSched() {
     );
 }
 
-export default JobSched;
+export default SJobSched;

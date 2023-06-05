@@ -13,9 +13,10 @@ import "vis-network/styles/vis-network.css";
 import "../css/Lcs.css";
 import "../css/graph.css";
 import graphD from "../data/graphD";
+import FNavbar from "../components/FNavbar";
 
 
-function Dijkstra() {
+function SDijkstra() {
     const [stepC, setStepC] = useState(0);
 
     const [gMatrix, setGMatrix] = useState([[]]);
@@ -203,10 +204,10 @@ function Dijkstra() {
 
     async function nextDij(curM, eT) {
 
+
         retElId(eT.id).setAttribute("disabled", "disable");
 
-        var count = curM[0];
-        var u = mU;
+        var u = curM[0];
         var v = curM[1];
         var dist = distanceA;
         var sptSet = selSet;
@@ -349,16 +350,6 @@ function Dijkstra() {
 
         }
         iAsc++;
-        if (u == V - 1) {
-            try {
-                snodes.update({
-                    id: v + 1,
-                    ...nopt
-                });
-            } catch (error) {
-                console.log(error);
-            }
-        }
         // }
         setDistA(dist);
         setSelSet(sptSet);
@@ -366,8 +357,8 @@ function Dijkstra() {
         setPrevsA(prevS);
 
         retElId(eT.id).disabled = false;
-        console.log(edH);
-        console.log(prevS);
+        // console.log(edH);
+        // console.log(prevS);
     }
 
     async function dijkstra(graph) {
@@ -433,14 +424,15 @@ function Dijkstra() {
         return document.getElementById(idname);
     }
 
-    async function initForELoop() {
+    function initForELoop() {
         var sptSet = selSet;
         var dist = distanceA;
         let u = minDistance(dist, sptSet);
-
+        console.log(u);
         sptSet[u] = true;
-        await setMU(u);
-        await setSelSet(sptSet);
+        // await setMU(u);
+        setSelSet(sptSet);
+        return u;
     }
 
     async function goToNextDij(eT) {
@@ -448,43 +440,50 @@ function Dijkstra() {
         var v = currSI[1];
         var cI = count + 1;
         var vI = (v + 1);
-        var MostC = gMatrix.length - 1;
+        var u=mU;
 
         var found = true;
         while (found) {
             if (vI === 0) {
-                await initForELoop();
+                u = initForELoop();
+                setMU(u);
             }
-            if (gMatrix[mU][vI] != 0) {
+            else if(vI<gMatrix.length && cI<gMatrix.length){
+                // you can go ahead
+            }
+            else if (vI === gMatrix.length && cI<gMatrix.length-1) {
+                vI = 0;
+                cI++;
+                u = initForELoop();
+                setMU(u);
+            }
+            else if (cI===gMatrix.length || vI===gMatrix.length){
+                retElId(eT.id).setAttribute("disabled", "disable");
+                setStepC(2);
+                retElId("answerStat").classList.add("successC");
+                retElId("answerStat").innerHTML = "We obtained the shortest path from source A to all nodes";
+                retElId("edgeStat1").innerHTML = "";
+                try {
+                    snodes.update({
+                        id: u + 1,
+                        ...nopt
+                    });
+                } catch (error) {
+                    console.log(error);
+                }
 
-                if (vI === MostC && cI === MostC) {
-                    retElId(eT.id).setAttribute("disabled", "disable");
-                    setStepC(2);
-                }
-                else if (vI === MostC + 1) {
-                    vI = 0;
-                    cI++;
-                    await initForELoop();
-                }
-                nextDij([cI - 1, vI], eT);
+                break;
+            }
+
+            if (gMatrix[u][vI] && (gMatrix[u][vI] != 0 || gMatrix[vI][u] != 0)) {
+
+                nextDij([u, vI], eT);
                 setCurrSI([cI - 1, vI]);
 
                 found = false;
             }
             else {
-                if (vI === MostC && cI === MostC) {
-                    retElId(eT.id).setAttribute("disabled", "disable");
-                    setStepC(2);
-                    found = false;
-                }
-                else if (vI === MostC) {
-                    vI = 0;
-                    cI++;
-                }
-                else {
-                    vI++;
-                }
-                console.log("u: " + mU + ", v: " + vI + " -> " + gMatrix[mU][vI]);
+                vI++;
             }
         }
     }
@@ -499,6 +498,7 @@ function Dijkstra() {
     return (
         <>
             <Navbar />
+            <FNavbar />
             <motion.div className="fullbg"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -557,4 +557,4 @@ function Dijkstra() {
         </>)
 }
 
-export default Dijkstra;
+export default SDijkstra;

@@ -13,8 +13,9 @@ import "vis-network/styles/vis-network.css";
 import "../css/Lcs.css";
 import "../css/graph.css";
 import graphD from "../data/graphD";
+import FNavbar from "../components/FNavbar";
 
-function Kruskals() {
+function SKruskals() {
 
     const [stepC, setStepC] = useState(0);
 
@@ -290,7 +291,7 @@ function Kruskals() {
 
         await timer(500);
         if (v1 != v2) {
-            retElId("answerStat").innerHTML = "Loop will not be created, so select edge "+wt;
+            retElId("answerStat").innerHTML = "Loop will not be created, so select edge " + wt;
             await timer(300);
             unionSet(v1, v2, parent, rank, n);
             mCost += wt;
@@ -306,7 +307,7 @@ function Kruskals() {
             }
         }
         else {
-            retElId("answerStat").innerHTML = "Loop will be created, so discard edge "+wt;
+            retElId("answerStat").innerHTML = "Loop will be created, so discard edge " + wt;
             try {
                 sedges.update({
                     id: `${selV1}${selV2}`,
@@ -338,8 +339,7 @@ function Kruskals() {
         }
         setMinCost(mCost);
         if (i === n - 1) {
-            retElId(i + "E").classList.remove("selEShow");
-            retElId("answerStat").innerHTML = "Minimum Cost is " + mCost;
+
         }
         retElId(eT.id).disabled = false;
     }
@@ -387,13 +387,21 @@ function Kruskals() {
 
     function goNextEdge(eT) {
         var cI = currI + 1;
+        var mCost = minCost;
         if (cI < edgeMatrix.length) {
             nextEdge(cI, eT);
             setCurrI(cI);
         }
         else {
+            var i = cI - 1;
+            retElId(i + "E").classList.remove("selEShow");
+            retElId("answerStat").classList.add("successC");
+            retElId("answerStat").innerHTML = "Minimum Cost is " + mCost;
             retElId(eT.id).setAttribute("disabled", "disable");
             setStepC(2);
+        }
+        if (cI === edgeMatrix.length - 1) {
+            retElId("nextEd").innerHTML = "Answer";
         }
     }
 
@@ -401,6 +409,7 @@ function Kruskals() {
     return (
         <>
             <Navbar />
+            <FNavbar />
             <motion.div className="fullbg"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -413,18 +422,18 @@ function Kruskals() {
                         animate={{ x: 0 }}
                         transition={{ duration: 0.5 }}
                     >
-                            <div id="algoStatus" className="algStat">
-                                <div className="statContent">
-                                    <p id="edgeStat"></p>
-                                    <p id="answerStat"></p>
-                                </div>
-                                {parrentA.length>0 ? 
+                        <div id="algoStatus" className="algStat">
+                            <div className="statContent">
+                                <p id="edgeStat" style={{ fontWeight: 600 }}></p>
+                                <p id="answerStat"></p>
+                            </div>
+                            {parrentA.length > 0 ?
                                 <button id="nextEd" className="spec" onClick={(e) => { goNextEdge(e.target) }}>Next</button>
                                 : <></>
-                                }
-                                
-                            </div>
-                        
+                            }
+
+                        </div>
+
 
                         <div id="mynetwork" className="myNetwork"></div>
 
@@ -464,4 +473,4 @@ function Kruskals() {
     )
 }
 
-export default Kruskals;
+export default SKruskals;

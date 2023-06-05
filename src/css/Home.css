@@ -5,8 +5,8 @@
     --thightDBgwhite: white;
     --theaderColors: #9b0000;
     --tdataColors: rgb(204, 204, 204);
-    --tfontSize: 1rem;
-    --tdataSize: 2rem;
+    --tfontSize: 1.2rem;
+    --tdataSize: 2.2rem;
     --thightDC: rgb(0, 82, 114);
     --thightDBg: rgb(161, 161, 161);
 }
@@ -16,6 +16,14 @@
 * {
     margin: 0;
     padding: 0;
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE10+/Edge */
+    user-select: none;
+    /* Standard */
 
 }
 
@@ -95,7 +103,7 @@ button {
     color: white;
     padding: 0.5rem;
     cursor: pointer;
-    background: black;
+    background: rgb(53, 53, 53);
     border-radius: 0.2rem;
     transition: 0.3s all ease-out;
 }
@@ -120,14 +128,16 @@ input:focus {
     outline: none;
 }
 
+
+
 .fullbg {
     display: flex;
     justify-content: center;
     align-items: center;
     /* flex-direction: column; */
     /* background: wheat; */
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: 8rem;
+    /* padding-bottom: 4rem; */
     width: 100%;
     min-height: 100vh;
     box-sizing: border-box;
@@ -137,6 +147,7 @@ input:focus {
 }
 
 .fullbgHOME {
+    padding-top: 4rem;
     /* flex-direction: column; */
     margin-top: 0;
 }
@@ -146,7 +157,7 @@ input:focus {
     flex-direction: column;
     background: transparent;
     padding: 1rem;
-    margin-top: 1.5rem;
+    margin-top: 0.5rem;
     border-radius: 0.5rem;
     /* backdrop-filter: blur(0.1rem); */
 }
@@ -173,7 +184,7 @@ input:focus {
     align-items: center;
     flex-direction: column;
     width: 67.5vw;
-    height: 70%;
+    height: 95%;
     /* resize: both; */
     /* margin-right: 5vw; */
 }
@@ -198,7 +209,7 @@ input:focus {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 70%;
+    height: 95%;
     width: 22.5vw;
 }
 
@@ -298,11 +309,20 @@ input:focus {
     font-size: 1rem;
     min-width: 2rem;
     max-width: 4rem;
-    box-shadow: 0 0 0.1rem 0.1rem darkblue;
+    box-shadow: 0 0 0rem 0.1rem rgb(110, 124, 255);
+    transition: 0.3s all ease-out;
 }
 
 .stepCard input:focus {
-    box-shadow: 0 0 0.1rem 0.2rem darkblue;
+    background: rgb(224, 224, 224);
+    box-shadow: 0 0 0rem 0.2rem rgb(110, 124, 255);
+}
+
+.stepCard input:read-only,
+.stepCard input:read-only:focus {
+    background: rgb(186, 186, 255);
+    color: rgb(7, 0, 75);
+    box-shadow: 0 0 0rem 0.15rem rgb(110, 124, 255);
 }
 
 .algoDone input {
@@ -424,11 +444,12 @@ input:focus {
     margin: 0.3rem;
     box-shadow: 0 0 0rem 0.1rem rgb(110, 124, 255);
     transition: 0.3s all ease-out;
+    transform: scale(1);
 }
 
-.spec:focus{
-    transform: scale(0.5);
-    box-shadow: 0 0 0rem 0.1rem rgb(110, 124, 255);
+.spec:focus {
+    transform: scale(0.8);
+    box-shadow: 0 0 0rem 0.4rem rgb(110, 124, 255);
 }
 
 .spec:disabled {
@@ -459,7 +480,7 @@ input:focus {
     /* text-shadow: 0 0 0.2rem var(--lightSomColor); */
     -webkit-text-stroke-color: rgb(255, 108, 108);
     -webkit-text-stroke-width: 0.01rem;
-    background: rgb(255, 247, 233);
+    /* background: rgb(255, 247, 233); */
     transition: 0.3s all ease-out;
     /* border: 0.2rem solid rgb(0, 0, 172); */
 
@@ -476,13 +497,15 @@ input:focus {
     box-shadow: 0 0 0rem 0.1rem rgb(255, 110, 110);
 }
 
-.restartb:hover{
+.restartb:hover {
     opacity: 1;
     box-shadow: 0 0 0rem 0.25rem rgb(255, 110, 110);
 }
 
 .writeCheck {
     color: rgb(0, 24, 129);
+    background: none;
+    font-size: 1.2rem;
 }
 
 .Table .row .bStrs,
@@ -490,6 +513,12 @@ input:focus {
     background: green;
     color: white;
 }
+
+.inValidIn {
+    box-shadow: 0 0 0.1rem 0.1rem rgb(139, 0, 0);
+}
+
+
 
 @media (max-width: 700px) {
     * {

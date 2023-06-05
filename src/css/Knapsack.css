@@ -1,0 +1,50 @@
+
+
+
+.nBox {
+    /* display: table-cell; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: var(--tdataSize); */
+    /* height: var(--tdataSize); */
+    font-size: var(--tfontSize);
+    padding: 0.2rem;
+    background: var(--tdataColors);
+    color: black;
+    box-sizing: border-box;
+    text-align: center;
+    width: 2.2rem;
+}
+
+.c12 {
+    width: 5rem;
+}
+
+.brB {
+    border-right: 0.2rem solid black;
+}
+
+.blB {
+    border-left: 0.2rem solid black;
+}
+
+.btB {
+    border-top: 0.2rem solid black;
+}
+
+.bbB {
+    border-bottom: 0.2rem solid black;
+}
+
+.mainB2 {
+    font-weight: 600;
+    background: var(--somColor);
+    color: white;
+}
+
+.mainB1 {
+    font-weight: 600;
+    background: var(--lightSomColor);
+    color: black;
+}
