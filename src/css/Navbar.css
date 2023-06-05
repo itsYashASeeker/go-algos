@@ -33,8 +33,8 @@
     flex-grow: 1;
     box-sizing: border-box;
     /* background: rgb(226, 226, 226); */
-    
-    
+
+
 }
 
 .navbar .headLink {
@@ -46,20 +46,20 @@
     color: var(--somColor);
 }
 
-.navbar .naviLinks{
+.navbar .naviLinks {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-grow: 4;   
+    flex-grow: 4;
     gap: 1rem;
 }
 
-.naviLinks .dropNav{
+.naviLinks .dropNav {
     position: relative;
     /* background: grey; */
 }
 
-.dropNav .nL{
+.dropNav .nL {
     font-size: 1.5rem;
     /* font-weight: 600; */
     background: rgba(255, 238, 205, 0.205);
@@ -71,17 +71,17 @@
     margin-bottom: 0.5rem;
 }
 
-.dropNav .nL:hover{
+.dropNav .nL:hover {
     background: rgba(255, 238, 205, 0.7);
 }
 
-.naviLinks .chosen .nL{
+.naviLinks .chosen .nL {
     background: rgb(255, 238, 205);
     font-weight: 600;
 }
 
 
-.naviLinks .chosen span{
+.naviLinks .chosen span {
     position: absolute;
     bottom: 0;
     left: 10%;
@@ -90,11 +90,11 @@
     background: var(--somColor);
 }
 
-.navbar .contactus{
+.navbar .contactus {
     background: rgb(0, 0, 97);
 }
 
-.dropNav .drop{
+.dropNav .drop {
     position: absolute;
     top: 3rem;
     right: 0;
@@ -109,52 +109,88 @@
     border: 0.2rem solid rgb(218, 148, 148);
 }
 
-.drop .dropItem{
+.drop .dropItem {
     text-align: center;
     text-decoration: none;
     transition: 0.3s all ease-out;
     width: 100%;
 }
 
-.dropItem .dropLink{
+.dropItem .dropLink {
     text-decoration: none;
 }
 
-.drop .dropItem:hover p{
+.drop .dropItem:hover p {
     background: rgba(255, 255, 255, 0.6);
 }
 
-.drop .dropItem p{
+.drop .dropItem p {
     /* background: white; */
     padding: 0.5rem;
     font-size: 1.3rem;
     color: var(--somColor);
     transition: 0.3s all ease-out;
-        /* border-bottom: 0.15rem solid rgb(185, 185, 185); */
+    /* border-bottom: 0.15rem solid rgb(185, 185, 185); */
 }
 
-.dropItem .chosen, .dropItem .dropItem:hover .chosen{
+.dropItem .chosen,
+.dropItem .dropItem:hover .chosen {
     background: white !important;
     font-weight: 600;
 }
 
+.sideBar {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(0.6rem);
+}
 
+.sideBar .naviLinks {
+    flex-direction: column;
+    flex-grow: 0;
+    margin-bottom: 1rem;
+}
 
+.sideBar .cancel {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
 
-@media (max-width: 800px) {
-    .navbar .somLogo{
-        position: absolute;
-        left: 0;
-        width: 8rem;
-    }
+.menuBar{
+    display: none;
 }
 
 
 
+@media (max-width: 800px) {
+    .navbar .somLogo {
+        position: absolute;
+        left: 0;
+        width: 8rem;
+    }
 
+    #idnavLink {
+        display: none;
+    }
 
+    #idcontact {
+        display: none;
+    }
+    .menuBar{
+        display: block;
+    }
+}
 
-
-
-
-
+@media (max-width: 550px) {
+    .somLogo {
+            display: none;
+        }
+}

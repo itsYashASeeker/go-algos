@@ -1,35 +1,29 @@
 .fnav {
+    display: flex;
     position: fixed;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
     text-align: center;
     left: 0rem;
     top: 4rem;
     width: 100%;
-    /* height: 2rem; */
     padding: 0.5rem;
     background: linear-gradient(rgba(209, 209, 209, 0.5), rgba(233, 233, 233, 0.411), rgba(255, 255, 255, 0.616));
-    /* background: transparent; */
-    /* box-shadow: 0 0 0.8rem black; */
-    /* z-index: 10; */
     box-sizing: border-box;
     box-shadow: 0 0.2rem 0.1rem rgba(143, 0, 0, 0.548);
     backdrop-filter: blur(0.4rem);
+    z-index: 4;
 }
 
 .fnav .algoTitle {
-    /* flex-grow: 1; */
+    flex-grow: 1;
     text-shadow: 0rem 0rem 0.1rem rgb(255, 169, 169);
 }
 
 .fnav .menu {
-    position: absolute;
+    /* position: absolute;
     top: 0.5rem;
-    right: 0.5rem;
+    right: 0.5rem; */
     background: rgb(139, 0, 0);
     border-radius: 0.5rem;
-    /* margin-right: 1rem; */
     font-size: 1.2rem;
     font-weight: 500;
 }

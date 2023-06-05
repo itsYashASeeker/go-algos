@@ -71,7 +71,7 @@ function FNavbar() {
                     onMouseLeave={() => setHoverF(false)}
                     className="menu">
                     {/* <FontAwesomeIcon className="exploreIcon" icon={faCompass} /> */}
-                    <p>{algoOpt}</p>
+                    {algoOpt}
                 </motion.button>
 
             }
