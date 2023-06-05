@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/go-algos/static/css/main.4d6dab22.css",
-    "main.js": "/go-algos/static/js/main.6f652bae.js",
+    "main.css": "/go-algos/static/css/main.84451112.css",
+    "main.js": "/go-algos/static/js/main.2b0fc432.js",
     "static/js/787.1555008f.chunk.js": "/go-algos/static/js/787.1555008f.chunk.js",
+    "static/media/algo1.jpg": "/go-algos/static/media/algo1.71bbaf03271189ee2edd.jpg",
+    "static/media/kjsieit-logo.svg": "/go-algos/static/media/kjsieit-logo.ff02a68bafa79040ba032e35754d2f35.svg",
     "index.html": "/go-algos/index.html",
-    "main.4d6dab22.css.map": "/go-algos/static/css/main.4d6dab22.css.map",
-    "main.6f652bae.js.map": "/go-algos/static/js/main.6f652bae.js.map",
+    "main.84451112.css.map": "/go-algos/static/css/main.84451112.css.map",
+    "main.2b0fc432.js.map": "/go-algos/static/js/main.2b0fc432.js.map",
     "787.1555008f.chunk.js.map": "/go-algos/static/js/787.1555008f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4d6dab22.css",
-    "static/js/main.6f652bae.js"
+    "static/css/main.84451112.css",
+    "static/js/main.2b0fc432.js"
   ]
 }
