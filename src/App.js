@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css'
 
 export default function App() {
 
   const[limit, setlimit] = useState(0);
+  const [arrayE, setAE] = useState([]);
+  const [ev, setEV] = useState();
 
   const clear = () =>{
 
@@ -85,52 +87,81 @@ export default function App() {
           div.innerText = arr[i];
           maindiv.appendChild(div);
         }
+        const headArray = document.createElement('h1');
+        headArray.innerText = '';
+        main.appendChild(headArray);
+        const arrayContainer = document.createElement('div');
+        arrayContainer.id = "arrayContainer";
+        arrayContainer.className = 'arrayContainer';
+        main.appendChild(arrayContainer);
         const Button = document.createElement('button');
         Button.className = 'but';
         Button.innerText = "Start";
         main.appendChild(Button);
-        limit > 0 ? Button.setAttribute('disabled', true) : Button.removeAttribute('disabled'); 
+        // limit > 0 ? Button.setAttribute('disabled', true) : Button.removeAttribute('disabled'); 
 
         //Foruth Page Start
-        Button.addEventListener('click', () => {
-          selectionSort(arr);
-          setlimit(limit + 1);
+        Button.addEventListener('click', async () => {
+          headArray.innerText = 'Sorted Array is-';
+          displayArray(arr);
+          await insertionSort(arr);
+          // setlimit(limit + 1);
         })
 
-        const selectionSort = (arr) => {
-          const maindiv = document.getElementById('maindiv');
-          console.log(arr);
-          let i = 0; 
-          let min = arr[0];
-          const arr1 = [];
-          while(i <= arr.length - 1){
-            for(let j = 0; j < arr.length; j++){
-              if(arr[j] < min){
-                min = arr[j];
-                arr[j] = 999999;
+        async function insertionSort(array) {
+          const n = array.length;
+  
+          for (let i = 1; i < n; i++) {
+              let j = i;
+              while (j > 0 && array[j - 1] > array[j]) {
+                  // Swap elements if they are in the wrong order
+                  
+                  await swap(array, j, j-1)
+  
+                  // // Update the display after each swap
+                  // displayArray(array);
+  
+                  // // Wait for a short delay to observe the animation
+                  // await new Promise((resolve) => setTimeout(resolve, 500));
+  
+                  j--;
               }
-            }
-            console.log(min);
-            arr1[i] = min;
-            i++;
-            min = arr[i]; 
           }
-          console.log(arr1);
-          const br = document.createElement('br');
-          maindiv.appendChild(br);
-          const head = document.createElement('h1');
-          head.innerText = 'The Sorted Array is-';
-          maindiv.appendChild(head);
-          for(let k = 0; k < arr1.length; k++){
-            const div = document.createElement('div');
-            div.className = 'box';
-            div.innerText = arr1[k];
-            maindiv.appendChild(div);
-          }
-          
+      }
+
+      function displayArray(array) {
+        const arrayContainer = document.getElementById("arrayContainer");
+        arrayContainer.innerHTML = "";
+
+        array.forEach((value, index) => {
+            const box = document.createElement("div");
+            box.className = "box";
+            box.textContent = value;
+            box.id = `box-${index}`;
+            // box.style.backgroundColor = 'green';
+            arrayContainer.appendChild(box);
+        });
+    }
+
+      const swap = async (array, a, b) => {
+        [array[b], array[a]] = [array[a], array[b]];
+
+        const boxA = document.getElementById(`box-${a}`);
+        const boxB = document.getElementById(`box-${b}`);
+
+        boxA.style.backgroundColor = 'green';
+        boxB.style.backgroundColor = 'red';
+
+        await new Promise((resolve) => setTimeout(resolve, 750));
+
+        boxA.style.backgroundColor = '';
+        boxB.style.backgroundColor = '';
+
+        displayArray(array);
+      }
           //Fourth Page End
         }
-      })
+      )
     })
   }
 
@@ -138,7 +169,7 @@ export default function App() {
   return (
     <div id='main'>
       <button className = 'but' onClick={clear}>
-        Selection Sort
+        Insertion Sort
       </button>
     </div>
 

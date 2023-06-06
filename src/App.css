@@ -82,3 +82,10 @@ input:focus{
   align-items: center;
   padding: 5vh;
 }
+
+.arrayContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
