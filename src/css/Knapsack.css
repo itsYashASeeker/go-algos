@@ -1,6 +1,3 @@
-
-
-
 .nBox {
     /* display: table-cell; */
     display: flex;
@@ -44,6 +41,28 @@
 }
 
 .mainB1 {
+    font-weight: 600;
+    background: var(--lightSomColor);
+    color: black;
+}
+
+.kTable .krow:nth-child(2) .nBox {
+    background: rgba(109, 1, 1, 0.678);
+    color: white;
+}
+
+.kTable .krow:nth-child(2) .nBox:nth-child(1),
+.kTable .krow:nth-child(2) .nBox:nth-child(2) {
+    background: var(--somColor);
+    color: white;
+}
+
+.kTable .krow .nBox:nth-child(3) {
+    background: rgba(109, 1, 1, 0.678);
+    color: white;
+}
+
+.kTable .krow:nth-child(1) .nBox:nth-child(3) {
     font-weight: 600;
     background: var(--lightSomColor);
     color: black;

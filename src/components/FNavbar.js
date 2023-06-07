@@ -18,24 +18,38 @@ function FNavbar() {
     const [algoTC, setAlgoT] = algoT;
 
     var algoOpt = "";
-    if (algoTC===0) {
-        algoOpt="Home";
+    if (algoTC === 0) {
+        algoOpt = "Home";
     }
     else if (algoTC === 1) {
-        algoOpt="Theory";
+        algoOpt = "Theory";
     }
     else if (algoTC === 2) {
-        algoOpt="Simulator";
+        algoOpt = "Simulator";
     }
     else if (algoTC === 3) {
-        algoOpt="Feedback";
+        algoOpt = "Feedback";
     }
 
     const navigate = useNavigate();
     const algoName = expR[currE[0]][currE[1]][1];
     return (
-        <div className="fnav">
+        <motion.div
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.3 }}
+            className="fnav">
             <h1 className="algoTitle">{expR[currE[0]][currE[1]][0]}</h1>
+            <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+                onMouseEnter={() => setHoverF(true)}
+                onMouseLeave={() => setHoverF(false)}
+                className="menu">
+                {/* <FontAwesomeIcon className="exploreIcon" icon={faCompass} /> */}
+                {algoOpt}
+            </motion.button>
             {hoverF ?
                 <motion.div
                     initial={{
@@ -63,21 +77,12 @@ function FNavbar() {
                     <button className={algoTC === 3 ? "fnB explore" : "fnB "} onClick={() => { navigate("/" + algoName + "/feedback") }}><FontAwesomeIcon className="exploreIcon" icon={faCommentDots} /></button>
                 </motion.div>
                 :
-                <motion.button
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                    onMouseEnter={() => setHoverF(true)}
-                    onMouseLeave={() => setHoverF(false)}
-                    className="menu">
-                    {/* <FontAwesomeIcon className="exploreIcon" icon={faCompass} /> */}
-                    {algoOpt}
-                </motion.button>
+                <></>
 
             }
 
 
-        </div>
+        </motion.div>
     )
 }
 

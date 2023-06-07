@@ -62,7 +62,7 @@ body {
     /* box-shadow: 0 -100vh 0 100vh var(--lightSomColor); */
 }
 
-body::-webkit-scrollbar {
+/* body::-webkit-scrollbar {
     width: 0.8rem;
     height: 0.8rem;
 }
@@ -76,7 +76,7 @@ body::-webkit-scrollbar-thumb:vertical {
     background: var(--lightSomColor);
     border: none;
     border-right: 0.3rem solid rgb(255, 255, 255);
-}
+} */
 
 
 
@@ -447,11 +447,6 @@ input:focus {
     transform: scale(1);
 }
 
-.spec:focus {
-    transform: scale(0.8);
-    box-shadow: 0 0 0rem 0.4rem rgb(110, 124, 255);
-}
-
 .spec:disabled {
     background: var(--specBG);
     /* opacity: 0.5; */
@@ -518,6 +513,52 @@ input:focus {
     box-shadow: 0 0 0.1rem 0.1rem rgb(139, 0, 0);
 }
 
+.animBGY {
+    background: yellow !important;
+    color: black;
+    transition: 0.2s all ease-out;
+}
+
+.normAnime {
+    background: rgb(255, 222, 222) !important;
+    color: black !important;
+}
+
+.bgRed {
+    background: red !important;
+    color: white !important;
+    transition: 0.2s all ease-out;
+}
+
+.bgGreen {
+    background: green !important;
+    color: black !important;
+    transition: 0.2s all ease-out;
+}
+
+.cRed{
+    color: red !important;
+}
+
+.cGreen{
+    color: green !important;
+}
+
+.solC{
+    background: wheat;
+    padding: 0.3rem;
+}
+
+
+/* @keyframes nAnime {
+    0% {
+        background: ;
+    }
+
+    100% {
+        box-shadow: 0 0 0.2rem rgb(255, 255, 255);
+    }
+} */
 
 
 @media (max-width: 700px) {

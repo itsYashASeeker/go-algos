@@ -15,7 +15,7 @@
 
 .fnav .algoTitle {
     flex-grow: 1;
-    text-shadow: 0rem 0rem 0.1rem rgb(255, 169, 169);
+    /* text-shadow: 0rem 0rem 0.1rem rgb(255, 169, 169); */
 }
 
 .fnav .menu {
@@ -26,18 +26,26 @@
     border-radius: 0.5rem;
     font-size: 1.2rem;
     font-weight: 500;
+    transition: 0.3s all ease-out;
+    margin: auto;
 }
+
+.fnav .menu:hover{
+    opacity: 0;
+}
+
+
 
 .fnav .fnavmain {
     position: absolute;
-    top: 0.5rem;
+    top: 0.2rem;
     right: 0.5rem;
     background: white;
     color: rgb(139, 0, 0);
     padding: 0.4rem 0.4rem;
     border-radius: 1.5rem;
     box-shadow: 0 0 0 0.2rem rgb(141, 0, 0);
-    z-index: 2;
+    z-index: 5;
 }
 
 .fnav .fnavmain .exploreIcon {

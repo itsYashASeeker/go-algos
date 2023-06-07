@@ -117,12 +117,12 @@ function Navbar() {
                             onMouseEnter={() => setHovNG(true)}
                             onMouseLeave={() => setHovNG(false)}
                         >
-                            {expR[1].map((elA) => {
+                            {expR[1].map((elA, index) => {
                                 return (
                                     <motion.div className="dropItem"
                                         initial={{ y: 80, opacity: 0 }}
                                         animate={{ y: 0, opacity: 1 }}
-                                        transition={{ duration: 0.1 }}
+                                        transition={{ duration: 0.1, delay: index*0.1 }}
                                     >
                                         <Link className="dropLink" to={"/" + elA[1]}>
                                             <p className={(elA[1] == expR[currE[0]][currE[1]][1]) ? "chosen" : ""} >{elA[0]}</p>
@@ -152,12 +152,13 @@ function Navbar() {
                             onMouseEnter={() => setHovNl(true)}
                             onMouseLeave={() => setHovNl(false)}
                         >
-                            {expR[2].map((elA) => {
+                            {expR[2].map((elA, index) => {
                                 return (
                                     <motion.div className="dropItem"
                                         initial={{ y: 80, opacity: 0 }}
                                         animate={{ y: 0, opacity: 1 }}
-                                        transition={{ duration: 0.1 }}
+                                        transition={{ duration: 0.1, delay: index * 0.1 }}
+                                        
                                     >
                                         <Link className="dropLink" to={"/" + elA[1]}>
                                             <p id="1e0" className={(elA[1] == expR[currE[0]][currE[1]][1]) ? "chosen" : ""} >{elA[0]}</p>
@@ -263,12 +264,12 @@ function Navbar() {
                                     onMouseEnter={() => setHovNG(true)}
                                     onMouseLeave={() => setHovNG(false)}
                                 >
-                                    {expR[1].map((elA) => {
+                                    {expR[1].map((elA, index) => {
                                         return (
                                             <motion.div className="dropItem"
                                                 initial={{ y: 80, opacity: 0 }}
                                                 animate={{ y: 0, opacity: 1 }}
-                                                transition={{ duration: 0.1 }}
+                                                transition={{ duration: 0.1, delay: index * 0.1 }}
                                             >
                                                 <Link className="dropLink" to={"/" + elA[1]}>
                                                     <p className={(elA[1] == expR[currE[0]][currE[1]][1]) ? "chosen" : ""} >{elA[0]}</p>
@@ -298,12 +299,12 @@ function Navbar() {
                                     onMouseEnter={() => setHovNl(true)}
                                     onMouseLeave={() => setHovNl(false)}
                                 >
-                                    {expR[2].map((elA) => {
+                                    {expR[2].map((elA, index) => {
                                         return (
                                             <motion.div className="dropItem"
                                                 initial={{ y: 80, opacity: 0 }}
                                                 animate={{ y: 0, opacity: 1 }}
-                                                transition={{ duration: 0.1 }}
+                                                transition={{ duration: 0.1, delay: index * 0.1 }}
                                             >
                                                 <Link className="dropLink" to={"/" + elA[1]}>
                                                     <p id="1e0" className={(elA[1] == expR[currE[0]][currE[1]][1]) ? "chosen" : ""} >{elA[0]}</p>
