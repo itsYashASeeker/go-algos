@@ -26,6 +26,7 @@ function SKnapsack() {
     const [addPW, setAddPW] = useState(false);
     const [countI, setCountI] = useState(0);
     const [countJ, setCountJ] = useState(0);
+    const [solution, setSolution] = useState();
 
     function retElId(idname) {
         return document.getElementById(idname);
@@ -33,19 +34,22 @@ function SKnapsack() {
 
     const timer = ms => new Promise(res => setTimeout(res, ms));
 
-    // useEffect(() => {
-    //     if () {
-    //         if (stepC === 0) {
-    //             setAddPW(true);
-    //         }
-    //         else {
-    //             setAddPW(false);
-    //         }
-    //     }
-    //     else {
-    //         setAddPW(false);
-    //     }
-    // }, [inProfit, inWeight]);
+
+    function restart() {
+        setStepC(0);
+        setInProfit("");
+        setInWeight("");
+        setInputOk(0);
+        setPwArrs([[]]);
+        setInTotWeight("");
+        setNSacks(0);
+        setSolArr([[]]);
+        setAddPW(false);
+        setCountI(0);
+        setCountJ(0);
+        setSolution();
+        retElId("totweightIn").readOnly = false;
+    }
 
     useEffect(() => {
         for (var i = 1; i < stepC; i++) {
@@ -65,14 +69,7 @@ function SKnapsack() {
         retElId("idAllSteps").lastChild.scrollIntoView({ behavior: "smooth" });
     }, [stepC]);
 
-    // useEffect(()=>{
-    //     const regex = /[^0-9]/;
-    //     var st1 = "1, 2, 3";
-    //     console.log(st1.search(regex));
-    // }, [inProfit, inWeight]);
-
     function checkIfInt(valNum) {
-        console.log(valNum);
         const regex = /[^0-9]/;
         if (valNum.search(regex) === -1) {
             return true;
@@ -88,7 +85,6 @@ function SKnapsack() {
         let totalWeigths = Number(inTotWeight);
         let wIn = Number(inWeight);
         let pIn = Number(inProfit);
-        console.log(pwArrs.length);
         if (pwArrs[0].length === 0) {
             refArrs = [["Profit", "Weight"]];
             refArrs.push([pIn, wIn]);
@@ -106,7 +102,6 @@ function SKnapsack() {
         }
         let iL = refArrs.length + 1;
         let jL = totalWeigths + 1;
-        console.log(pwArrs);
         for (var i = 0; i < iL; i++) {
             solA[i] = [];
             for (var j = 0; j < jL; j++) {
@@ -187,7 +182,7 @@ function SKnapsack() {
                 findI = "bgRed";
                 retElId("sol2").innerHTML = "(" + kMatrix[i - 1][j - weights[pwI]] + " + " + profits[pwI] + " ) < " + kMatrix[i - 1][j];
             }
-            
+
             retElId(`${i - 1}i${j}`).classList.add(jI);
             retElId(`P${i}`).classList.add(pI);
             retElId(`${i - 1}i${j - weights[pwI]}`).classList.add(findI);
@@ -211,7 +206,7 @@ function SKnapsack() {
             if (Number(weights[pwI]) <= Number(j)) {
                 kMatrix[i][j] = Number(weights[pwI]);
                 jI = "bgGreen";
-                retElId("sol2").innerHTML = weights[pwI]+" is selected";
+                retElId("sol2").innerHTML = weights[pwI] + " is selected";
             }
             else {
                 kMatrix[i][j] = Number(kMatrix[i - 1][j]);
@@ -235,13 +230,19 @@ function SKnapsack() {
 
         if (i === n - 1 && j === TotalW) {
             retElId(`${i}i${j}`).classList.remove("animBGY");
+            retElId(`${i}i${j}`).classList.add("bgGreen");
             retElId(`P${i}`).classList.remove("normAnime");
             retElId(`W${i}`).classList.remove("normAnime");
             retElId(eT.id).setAttribute("disabled", "disabled");
             retElId("sol1").innerHTML = "";
             retElId("sol2").innerHTML = "";
+
+            setSolution(kMatrix[i][j]);
+            var currStep = stepC + 1;
+            await timer(500);
+            setStepC(currStep);
         }
-        else{
+        else {
             retElId(eT.id).removeAttribute("disabled", "disabled");
         }
         j++;
@@ -251,6 +252,14 @@ function SKnapsack() {
         setSolArr(kMatrix);
     }
 
+    function etCheck(val, eT) {
+        if (checkIfInt(val)) {
+            retElId(eT.id).classList.remove("inValidIn");
+        }
+        else {
+            retElId(eT.id).classList.add("inValidIn");
+        }
+    }
 
 
     return (
@@ -331,7 +340,7 @@ function SKnapsack() {
                             <div className="content">
                                 <p>Number of sacks: {NSacks}</p>
                                 <p>Total weight:
-                                    <input id="totweightIn" placeholder="total weight" value={inTotWeight} onChange={(e) => { setInTotWeight(e.target.value); }}></input>
+                                    <input id="totweightIn" placeholder="total weight" value={inTotWeight} onChange={(e) => { etCheck(e.target.value, e.target); setInTotWeight(e.target.value); }}></input>
 
                                     {(stepC == 0 && inTotWeight.length > 0 && checkIfInt(inTotWeight)) ?
                                         <motion.button
@@ -351,8 +360,8 @@ function SKnapsack() {
                                         transition={{ duration: 0.3 }}
                                     >
                                         <p>Add profits and weights:</p>
-                                        <input id="profitIn" placeholder="profit" value={inProfit} onChange={(e) => { setInProfit(e.target.value) }}></input>
-                                        <input id="weightIn" placeholder="weight" value={inWeight} onChange={(e) => { setInWeight(e.target.value) }}></input>
+                                        <input id="profitIn" placeholder="profit" value={inProfit} onChange={(e) => { etCheck(e.target.value, e.target); setInProfit(e.target.value) }}></input>
+                                        <input id="weightIn" placeholder="weight" value={inWeight} onChange={(e) => { etCheck(e.target.value, e.target); setInWeight(e.target.value) }}></input>
                                         {(inProfit.length >= 1 && inWeight.length >= 1 && checkIfInt(inProfit) && checkIfInt(inWeight)) ?
                                             <motion.button
                                                 initial={{ y: 20 }}
@@ -388,25 +397,38 @@ function SKnapsack() {
                             >
                                 <p id="step1" className="stepH">Step1: </p>
                                 <div className="content">
-                                    
+
                                     <div className="inStepDivs1">
                                         <p>Condition: k[i][j]=max((k[i - 1][j - weight] + profit), k[i-1][j])</p>
                                         <p>Note: if <b>k[i - 1][j - weight]</b> doesn't exist then <b>k[i-1][j]</b> is considered</p>
                                     </div>
                                     <motion.div
-                                        initial={{opacity: 0}}
-                                        animate={{opacity: 1}}
-                                        transition={{duration: 0.3}}
-                                     className="solC">
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        transition={{ duration: 0.3 }}
+                                        className="solC">
                                         <p id="sol1"></p>
                                         <p id="sol2"></p>
                                     </motion.div>
-                                    <button id="solveknap" className="spec" onClick={(e)=>{doKnap(e.target)}}>Solve</button>
+                                    <button id="solveknap" className="spec" onClick={(e) => { doKnap(e.target) }}>Solve</button>
                                 </div>
                                 <FontAwesomeIcon id="1STDN" className="stepDoneIcon" icon={faCircleCheck} />
 
-
+                                {solution ?
+                                    <motion.div
+                                        initial={{ opacity: 0, y: -20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.3 }}
+                                    >
+                                        <p className="enHead">Maximum profit is: <span className="pgreen">{solution}</span></p>
+                                    </motion.div>
+                                    : <></>
+                                }
                             </motion.div>
+                            : <></>
+                        }
+                        {stepC >= 2 ?
+                            <button className="spec restartb" onClick={restart}>Restart</button>
                             : <></>
                         }
                     </motion.div>

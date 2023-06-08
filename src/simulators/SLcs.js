@@ -22,6 +22,7 @@ function SLcs() {
     const [algoPart, setAlgoPart] = useState(0);
     const [finalSeq, setFinalSeq] = useState("");
     const [anDuration, setAnDuration] = useState(800);
+
     const timer = ms => new Promise(res => setTimeout(res, ms));
 
     useEffect(() => {
@@ -285,35 +286,35 @@ function SLcs() {
                             animate={{ x: 0 }}
                             transition={{ duration: 0.5 }}
                         >
-                        <motion.div className="lcsTable">
-                            <div id="RowHead" className="row">
-                                <div className="lcsBox"></div>
-                                <div className="lcsBox"></div>
-                                {str1 && str1.map((el, index1) => {
-                                    return <div id={`S1M${index1}`} className="lcsBox letter"><p>{el}</p></div>
-                                })}
-                            </div>
+                            <motion.div className="lcsTable">
+                                <div id="RowHead" className="row">
+                                    <div className="lcsBox"></div>
+                                    <div className="lcsBox"></div>
+                                    {str1 && str1.map((el, index1) => {
+                                        return <div id={`S1M${index1}`} className="lcsBox letter"><p>{el}</p></div>
+                                    })}
+                                </div>
 
-                            <div id="Row0" className="row">
-                                <div className="lcsBox"></div>
-                                <div id={`M00`} className="lcsBox th2"><p>0</p></div>
-                                {str1 && str1.map((el, index2) => {
-                                    return <div id={`M0${index2 + 1}`} className="lcsBox th2"><p>0</p></div>
+                                <div id="Row0" className="row">
+                                    <div className="lcsBox"></div>
+                                    <div id={`M00`} className="lcsBox th2"><p>0</p></div>
+                                    {str1 && str1.map((el, index2) => {
+                                        return <div id={`M0${index2 + 1}`} className="lcsBox th2"><p>0</p></div>
+                                    })}
+                                </div>
+                                {str2 && str2.map((el, index1) => {
+                                    return (
+                                        <div id={`Row${index1 + 1}`} className="row">
+                                            <div id={`S2M${index1}`} className="lcsBox letter"><p>{el}</p></div>
+                                            <div id={`M${index1 + 1}0`} className="lcsBox th2"><p>0</p></div>
+                                            {str1 && str1.map((el, index2) => {
+                                                return (
+                                                    <div id={`M${index1 + 1}${index2 + 1}`} className="lcsBox"><p>0</p><FontAwesomeIcon className="iconsS dNone upIcons" icon={faArrowUp} /></div>
+                                                )
+                                            })}
+                                        </div>
+                                    )
                                 })}
-                            </div>
-                            {str2 && str2.map((el, index1) => {
-                                return (
-                                    <div id={`Row${index1 + 1}`} className="row">
-                                        <div id={`S2M${index1}`} className="lcsBox letter"><p>{el}</p></div>
-                                        <div id={`M${index1 + 1}0`} className="lcsBox th2"><p>0</p></div>
-                                        {str1 && str1.map((el, index2) => {
-                                            return (
-                                                <div id={`M${index1 + 1}${index2 + 1}`} className="lcsBox"><p>0</p><FontAwesomeIcon className="iconsS dNone upIcons" icon={faArrowUp} /></div>
-                                            )
-                                        })}
-                                    </div>
-                                )
-                            })}
                             </motion.div>
                         </motion.div> : <></>}
                 </motion.div>
@@ -447,9 +448,9 @@ function SLcs() {
                                         : <></>}
                                     {(algoPart >= 2) && (finalSeq.length === 0) ?
                                         <motion.div
-                                            initial={{ scale: 0.6 }}
-                                            animate={{ scale: 1 }}
-                                            transition={{ duration: 1 }}
+                                            initial={{ opacity: 0, y: -20 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ duration: 0.3 }}
                                         >
                                             <p className="enHead">There is no Longest Common Subsequence !</p>
                                         </motion.div>
@@ -461,7 +462,8 @@ function SLcs() {
                             </motion.div> : <></>
                         }
                         {(algoPart >= 2) ?
-                            <motion.button className="cbutton" onClick={restart}>Restart</motion.button> : <></>
+                            <button className="spec restartb" onClick={restart}>Restart</button>
+                            : <></>
                         }
                     </motion.div>
                 </motion.div>

@@ -510,7 +510,7 @@ input:focus {
 }
 
 .inValidIn {
-    box-shadow: 0 0 0.1rem 0.1rem rgb(139, 0, 0);
+    box-shadow: 0 0 0.1rem 0.15rem rgb(221, 0, 0) !important;
 }
 
 .animBGY {
