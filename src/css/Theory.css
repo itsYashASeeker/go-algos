@@ -1,0 +1,80 @@
+.theorybg{
+    background: rgba(255, 255, 255, 0.199);
+    backdrop-filter: blur(0.11rem);
+    border: 0.14rem solid rgba(116, 116, 116, 0.5);
+    
+    border-radius: 0.3rem;
+    width: 95%;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 8rem;
+}
+
+.sections{
+    background: rgba(253, 213, 213, 0.1);
+    margin: 0.5rem 0;
+    padding: 1rem;
+    border-top: 0.13rem solid rgba(167, 0, 0, 0.2);
+    border-bottom: 0.13rem solid rgba(167, 0, 0, 0.2);
+    box-sizing: border-box;
+}
+
+.sections *{
+    margin: 0.3rem 0;
+}
+
+.title1{
+    font-size: 2rem;
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-style:solid;
+    text-decoration-color: rgb(0, 21, 143);
+    text-align: center;
+}
+
+.title2 {
+    font-size: 1.6rem;
+    font-weight: 650;
+    text-decoration: underline;
+    text-decoration-style: solid;
+    text-decoration-color: rgb(0, 21, 143);
+    text-align: center;
+}
+
+.hightText{
+    background: rgba(255, 75, 75, 0.616);
+    width: fit-content;
+    color: rgb(18, 17, 75);
+    padding: 0.15rem;
+}
+
+.divider{
+    margin: 0.5rem auto;
+    text-align: center;
+    background: rgba(92, 92, 92, 0.644);
+    height: 0.2rem;
+    width: 10rem;
+    border-radius: 2rem;
+}
+
+.note{
+    width: fit-content;
+    border-style: dashed;
+    border-color: black;
+    border-width: 0.2rem;
+    color: black;
+    padding: 0.3rem;
+    display: inline-block;
+}
+
+.note p{
+    display: inline-block;
+    margin: 0 0.3rem;
+}
+
+.nT{
+    font-weight: 650;
+}
+
+
+
