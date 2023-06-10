@@ -1,0 +1,91 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  #main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .but {
+    padding: 2vh;
+    border-radius: 1vh;
+    background-color: white;
+    color: red;
+    cursor: pointer;
+    transition: 0.25s ease-in;
+    border: 2px solid red;
+  }
+  
+  .but:hover {
+    transition: 0.25s ease-out;
+    border: 2px solid red;
+    background-color: red;
+    color: white;
+  }
+  
+  .maindiv{
+    width: 100vw;
+    height: 25vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .box {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(7, 79, 113);
+    color: white;
+    font-weight: 900;
+    border: 1px solid #ccc;
+    margin: 5px;
+    border-radius: 1.5vh;
+  }
+  
+  input{
+    border: none;
+    border-radius: 1vh;
+    padding: 1.5vh;
+    background-color: rgb(254, 165, 165);
+    color: black;
+    font-weight: 600;
+    text-align: center;
+    margin: 5vh 0;
+    width: 25vw;
+    transition: 0.25s ease-in;
+  }
+  
+  input:focus{
+    outline: none;
+    width: 30vw;
+    transition: 0.25s ease-out;
+  }
+  
+  .divmain{
+    border: 2px solid red;
+    border-radius: 1.5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5vh;
+  }
+  
+  .arrayContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }

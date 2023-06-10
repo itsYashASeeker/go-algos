@@ -29,6 +29,7 @@ function Home() {
                         <button name="nqueens" onClick={naviTo}>N-Queens</button>
                         <button name="kruskals" onClick={naviTo}>Kruskal's</button>
                         <button name="knapsack" onClick={naviTo}>Knapsack</button>
+                        <button name="insert" onClick={naviTo}>Insertion Sort</button>
                     </div>
                 </div>
 

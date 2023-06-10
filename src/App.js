@@ -10,6 +10,7 @@ import SKnapsack from "./simulators/SKnapsack";
 import Lcs from "./mainPages/Lcs";
 import TLcs from "./theoryPages/TLcs";
 import FLcs from "./feedback/FLcs";
+import InsertionSort from "./simulators/InsertionSort";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path='/nqueens/simulator' element={<SNQueens />}></Route>
           <Route path="/kruskals/simulator" element={<SKruskals />}></Route>
           <Route path="/knapsack/simulator" element={<SKnapsack />}></Route>
+          <Route path="/insert" element={<InsertionSort />}></Route>
         </Routes>
       </AppProvider>
     </HashRouter >
