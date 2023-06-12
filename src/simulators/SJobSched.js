@@ -11,6 +11,7 @@ import "../css/Lcs.css";
 import "../css/Home.css";
 import "../css/JobSched.css";
 import FNavbar from "../components/FNavbar";
+import Footer from "../components/Footer";
 function SJobSched() {
 
     const [stepC, setStepC] = useState(0);
@@ -374,7 +375,7 @@ function SJobSched() {
                     </motion.div>
                 </motion.div>
             </motion.div>
-
+            <Footer />
         </>
 
     );

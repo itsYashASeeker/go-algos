@@ -40,8 +40,8 @@ body {
 }
 
 ::-webkit-scrollbar {
-    width: 0.8rem;
-    height: 0.8rem;
+    width: 0.5rem;
+    height: 0.5rem;
 }
 
 ::-webkit-scrollbar-button {
@@ -51,14 +51,14 @@ body {
 
 ::-webkit-scrollbar-track {
     background: rgb(255, 255, 255);
-    border: 0.3rem solid rgb(255, 255, 255);
+    /* border: 0.3rem solid rgb(255, 255, 255); */
 }
 
 ::-webkit-scrollbar-thumb {
     border-radius: 0.9rem;
     background: grey;
     background-clip: padding-box;
-    border: 0.3rem solid rgb(255, 255, 255);
+    border: 0.1rem solid rgb(255, 255, 255);
     /* box-shadow: 0 -100vh 0 100vh var(--lightSomColor); */
 }
 
@@ -81,9 +81,9 @@ body::-webkit-scrollbar-thumb:vertical {
 
 
 #root {
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     /* flex-direction: column; */
     background: rgb(37, 37, 37);
     background: linear-gradient(289deg, rgba(37, 37, 37, 1) 0%, rgba(71, 71, 71, 1) 35%, rgba(77, 77, 77, 1) 71%, rgba(125, 125, 125, 1) 100%);
@@ -134,57 +134,314 @@ input:focus {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* flex-direction: column; */
-    /* background: wheat; */
     padding-top: 8rem;
-    /* padding-bottom: 4rem; */
     width: 100%;
     min-height: 100vh;
     box-sizing: border-box;
-    height: 100vh;
+    height: 100%;
     gap: 5vw;
-    /* backdrop-filter: blur(0.2rem); */
+    background: transparent;
 }
 
 .fullbgHOME {
-    padding-top: 4rem;
+    flex-direction: column;
+    /* margin-top: 4rem; */
     /* flex-direction: column; */
-    margin-top: 0;
+    padding-top: 4rem;
+    background: white;
+    gap: 0;
+}
+
+.homeSect {
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column; */
+    box-sizing: border-box;
+}
+
+.sect1 {
+    /* background: rgba(255, 63, 63, 0.541) !important; */
+    /* height: 25rem; */
+    gap: 10vw;
+    /* padding: 0 20%; */
+    padding: 2rem 1rem;
+
+}
+
+.divTitle {
+    /* flex-grow: 1; */
+    /* fl; */
+    overflow: hidden;
+}
+
+.homeTitle {
+    position: relative;
+    /* float: right; */
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 650;
+    max-width: 25rem;
+    line-height: 4rem;
+    background: rgba(255, 255, 255, 0.342);
+    padding: 1rem;
+    border-radius: 0.4rem;
+    box-shadow: inset 0 0 2rem 0.2rem rgba(255, 187, 187, 0.3);
+    backdrop-filter: blur(0.1rem);
+    /* border: 0.2rem solid rgb(243, 248, 167); */
+    /* animation: titleAnimation 2s normal infinite; */
+}
+
+.homeTitle .effect {
+    position: absolute;
+    height: 0;
+    width: 0;
+    background: rgb(73, 255, 235);
+    background: linear-gradient(275deg, rgba(73, 255, 235, 1) 0%, rgba(165, 255, 250, 1) 7%, rgba(235, 255, 254, 1) 13%, rgba(228, 255, 255, 1) 47%, rgba(255, 255, 255, 1) 64%);
+
+    bottom: 0;
+    right: 0;
+    opacity: 1;
+    transform: translateY(20%) rotate(30deg) translateX(10%);
+    animation: effectAn 2s normal 1;
+}
+
+@keyframes effectAn {
+    0% {
+        height: 200%;
+        width: 130%;
+        box-shadow: 0 0 1rem 0.5rem rgb(154, 255, 255);
+        transform: translateY(20%) rotate(30deg) translateX(0);
+    }
+
+    100% {
+        height: 200%;
+        width: 130%;
+        box-shadow: 0 0 1rem 0.5rem rgb(154, 255, 255);
+        transform: translateY(20%) rotate(30deg) translateX(-30rem);
+    }
+}
+
+.algoPic {
+    width: 17rem;
+    /* flex-grow: 1; */
+    /* height: 5rem; */
+}
+
+
+.sect2 {
+    /* background: rgba(153, 205, 50, 0.438); */
+    padding: 3rem 0;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10vw;
+    flex-wrap: wrap;
+    padding: 1rem;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 15rem;
+    width: 14rem;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 0;
+    color: var(--somColor);
+    padding-top: 1rem;
+    gap: 1rem;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    box-shadow: 0 0 0.5rem 0.1rem rgba(172, 172, 172, 0.74);
+    transition: 0.2s all ease-out;
+}
+
+.cards:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.05);
+    box-shadow: 0 0 0.5rem 0.2rem rgba(172, 172, 172, 1);
+}
+
+.cards .algoIcon {
+    font-size: 7rem;
+    font-weight: 300;
+}
+
+
+.cards .algoName {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    flex-grow: 1;
+    /* padding: 0.5rem 0; */
+    background: rgb(182, 0, 0);
+    width: 100%;
+    font-weight: 600;
+    color: white;
+}
+
+.sect3 {
+    padding-top: 1rem;
+    flex-direction: column;
+}
+
+.algB2 {
+    padding: 5rem 0;
+}
+
+.algosButtonH {
+    background: #97081c;
+    padding: 1.3rem;
+    font-size: 2.3rem;
+    border-radius: 0.5rem;
+}
+
+/* .sect4 {
+    background: rgb(249, 253, 190);
+    color: rgb(111, 119, 0) !important;
+} */
+
+.sButton {
+    position: relative;
+    background: rgb(121, 2, 2) !important;
+    z-index: 1;
+    color: white;
+    font-size: 1.3rem;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    border-radius: 0;
+    border-radius: 0.5rem;
+    transition: 0.2s all ease-out;
+    margin: 0 1rem;
+}
+
+.sButton span {
+    position: absolute;
+
+    width: 80%;
+    height: 80%;
+    padding: 0rem;
+    padding: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(111, 119, 0, 0.1);
+    border-radius: 0.7rem;
+    border: 0.2rem solid rgb(119, 0, 0) !important;
+    /* box-sizing: border-box; */
+    z-index: -1;
+    transition: 0.2s all ease-out;
+}
+
+.sButton:hover {
+    opacity: 1;
+}
+
+.sButton:hover span {
+    width: 100%;
+    height: 100%;
+
+    padding: 0.15rem;
+
+}
+
+
+/* .sect5 .sButton {
+    background: rgb(5, 139, 0) !important;
+}
+
+.sect5 .sButton span {
+    background: rgba(5, 139, 0, 0.151);
+    border-radius: 0.5rem;
+    border: 0.2rem solid rgb(5, 139, 0) !important;
+} */
+
+.sect1,
+.sect3 {
+    background: rgba(255, 219, 214, 0.4);
+    color: rgb(1, 46, 194);
+    color: black;
+    /* color: white; */
+}
+
+.sect1 {
+    background: rgb(255, 255, 255);
+    /* color: rgb(5, 139, 0) !important; */
+    color: black;
+}
+
+/* .sect6 h1{
+    background: rgb(1, 46, 194);
+} */
+
+/* .sect6 .sButton {
+    background: rgb(0, 51, 219) !important;
+}
+
+.sect6 .sButton span {
+    background: rgba(1, 46, 194, 0.137);
+    border-radius: 0.5rem;
+    border: 0.2rem solid rgb(1, 51, 212) !important;
+} */
+
+.algosN {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 1rem 0;
+    /* background: wheat; */
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+
 }
 
 .algos {
     display: flex;
     flex-direction: column;
     background: transparent;
-    padding: 1rem;
-    margin-top: 0.5rem;
+    padding-top: 1rem;
     border-radius: 0.5rem;
-    /* backdrop-filter: blur(0.1rem); */
+    backdrop-filter: blur(0.1rem);
+    margin-bottom: 1.5rem;
 }
 
-.algos button {
+/* .algos button {
     background: var(--specBG);
     color: white;
     margin: 0.5rem;
     font-size: 1.5rem;
     padding: 1rem;
     transition: 0.3s all ease-out;
+    box-sizing: border-box;
     border-radius: 0.5rem;
     transition: 0.3s all ease-out;
-}
+} */
 
 .algos button:hover {
-    /* background: #999999; */
     opacity: 0.7;
 }
 
+
 .left-side {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 67.5vw;
     height: 95%;
+    height: 70vh;
+    /* height: ; */
     /* resize: both; */
     /* margin-right: 5vw; */
 }
@@ -197,7 +454,8 @@ input:focus {
     flex-direction: column;
     overflow: auto;
     background: white;
-    box-shadow: 0 0 0.4rem black;
+    box-shadow: 0 0 0.3rem black;
+    border-radius: 0.2rem;
     /* resize: both; */
     width: 100%;
     height: 100%;
@@ -209,7 +467,7 @@ input:focus {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 95%;
+    height: 70vh;
     width: 22.5vw;
 }
 
@@ -536,15 +794,15 @@ input:focus {
     transition: 0.2s all ease-out;
 }
 
-.cRed{
+.cRed {
     color: red !important;
 }
 
-.cGreen{
+.cGreen {
     color: green !important;
 }
 
-.solC{
+.solC {
     background: wheat;
     padding: 0.3rem;
 }
@@ -560,17 +818,27 @@ input:focus {
     }
 } */
 
+@media (max-width: 800px) {
+    .sect1{
+        flex-direction: column;
+        gap: 3rem;
+    }   
+    .homeTitle{
+        max-width: 60vw;
+    } 
+}
+
 
 @media (max-width: 700px) {
     .title {
         font-size: 2rem !important;
     }
 
-    .fnav {
-        display: flex;
-        flex-direction: column;
-        font-size: 0.8rem !important;
-        gap: 0.3rem;
+    .fnav * {
+        /* display: flex; */
+        /* flex-direction: column; */
+        font-size: 1.2rem !important;
+        /* gap: 0.3rem; */
     }
 
     .stepCard {
@@ -587,6 +855,7 @@ input:focus {
     .left-side {
         width: 80vw;
         height: 25rem;
+        margin-bottom: 5rem;
     }
 
     .right-side {
@@ -597,6 +866,8 @@ input:focus {
     .fullbgHOME h1 {
         flex-direction: column;
         font-size: 1.5rem;
+        gap: 0;
+        padding-top: 4rem;
     }
 }
 
@@ -605,8 +876,8 @@ input:focus {
         font-size: 1.5rem !important;
     }
 
-    .fnav {
-        font-size: 0.6rem !important;
+    .fnav * {
+        font-size: 1rem !important;
     }
 
     .stepCard {
@@ -627,6 +898,10 @@ input:focus {
 
     .stepCard {
         font-size: 0.7rem !important;
+    }
+
+    .fnav {
+        justify-content: left !important;
     }
 
     .fullbgHOME,

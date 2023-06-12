@@ -12,6 +12,13 @@
     box-shadow: 0 0 0.8rem rgb(175, 175, 175);
     z-index: 10;
     box-sizing: border-box;
+    opacity: 1;
+    transition: 0.2s all ease-out;
+}
+
+.goUp{
+    top: -4rem;
+    opacity: 0;
 }
 
 .navbar .navImg {
@@ -21,9 +28,45 @@
 }
 
 .navbar .somLogo {
-    width: 10rem;
-    height: 3.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
     /* background: grey; */
+}
+
+.kjLogo{
+    height: 3.5rem;
+}
+
+.dkjLogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+}
+
+.kjsit{
+    font-family: "Ubuntu", sans-serif;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.6rem;
+    width: 15rem;
+    font-weight: 600;
+    color: black;
+    margin-left: 0.4rem;
+    gap: 0.4rem;
+}
+
+.kjhead{
+    font-size: 0.8rem;
+    color: red;
+}
+
+
+.somLogo2{
+    position: absolute;
+    top: 1rem;
+    width: 50%;
+    height: auto;
 }
 
 .navbar .head {
@@ -168,14 +211,29 @@
     display: none;
 }
 
+.somTR{
+    width: 4rem;
+    margin-left: 0.5rem;
+}
 
+.dflex {
+    display: flex !important;
+    margin-bottom: 1rem;
+}
+
+
+@media (max-width:900px) {
+    .dkjLogo, .somTR{
+        display: none;
+    }
+}
 
 @media (max-width: 800px) {
-    .navbar .somLogo {
+    /* .navbar .somLogo {
         position: absolute;
         left: 0;
         width: 8rem;
-    }
+    } */
 
     #idnavLink {
         display: none;
@@ -187,10 +245,14 @@
     .menuBar{
         display: block;
     }
+    .dropNav .drop{
+        right: 50%;
+        transform: translate(50%);
+    }
 }
 
 @media (max-width: 550px) {
-    .somLogo {
-            display: none;
-        }
+    .kjsit{
+        width: 10rem;
+    }
 }

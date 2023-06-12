@@ -1,12 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import "../css/Nqueens.css";
 import {motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faCircleCheck } from '@fortawesome/free-solid-svg-icons';
+
+import "../css/Home.css";
+import "../css/Lcs.css";
+
+
 
 function SNQueens() {
     const [sel, setSel] = useState("");
-    
+    const [stepC, setStepC] = useState(0);
+    const [o, seto] = useState(0);
+    const timer = ms => new Promise(res => setTimeout(res, ms));
     const navigate = useNavigate();
     
     let option = [[0,0,0,0],
@@ -33,9 +43,47 @@ function SNQueens() {
 
 
 
-    const delay = (delayInms) => {
-        return new Promise(resolve => setTimeout(resolve, delayInms));
+    
+
+
+
+    useEffect(() => {
+        for (var i = 1; i < stepC; i++) {
+            if (retElId(`${i}STDN`) != null) {
+                retElId(`${i}STDN`).classList.add("algoDone");
+                retElId(`${i}STDN`).classList.remove("goanime");
+            }
         }
+        if (retElId(`${stepC - 1}STDN`) != null) {
+            retElId(`${stepC - 1}STDN`).classList.remove("goanime");
+            retElId(`${stepC - 1}STDN`).classList.add("algoDone");
+        }
+        if (retElId(`${stepC}STDN`) != null) {
+            retElId(`${stepC}STDN`).classList.add("goanime");
+            retElId(`${stepC}STDN`).classList.remove("algoDone");
+        }
+        retElId("idAllSteps").lastChild.scrollIntoView({ behavior: "smooth" });
+    }, [stepC]);
+
+    
+
+    function retElId(idname) {
+        return document.getElementById(idname);
+    }
+
+
+    async function restart() {
+        seto(0);
+        setSel("");
+        setStepC(0);
+        retElId("wordIn1").removeAttribute("readonly", "readonly");
+        retElId("wordIn2").removeAttribute("readonly", "readonly");
+    }
+
+    
+    function disBut(e) {
+        document.getElementById(e.target.id).setAttribute("disabled", true);
+    }
 
 
     function checkQueensPositions(option, row, col,n){
@@ -51,29 +99,19 @@ function SNQueens() {
         
     }
 
-    // for(let i = 0; i < row; i++){
-    //     if (option[i][col] == ""){
-    //         option[i][col] = "X"
-    //         document.getElementById(`i${i}j${col}`).innerHTML = "X" ;
-    //     }
-        
-    // }
 
     for (let i = row, j = col; i >= 0 && j >= 0; i--, j--){
-        // await delay(1000);
+        
         if (option[i][j] === 1){
             
-        //    document.getElementById(`i${i}j${j}`).style.backgroundColor = "rgb(255, 128, 128)";
            return false ;
         }
         
         
     }
     for (let i = row, j = col; j >= 0 && i < n; i++, j--){
-        // await delay(1000);
+        
         if (option[i][j]){
-            
-            // document.getElementById(`i${i}j${j}`).style.backgroundColor = "rgb(255, 128, 128)";
             return false ;
         }
         
@@ -142,24 +180,17 @@ function nQueenssolve(option, col,n){
         }
     }
     return (
-        <>
-
+        
+            <>
+            <Navbar />
             <motion.div className="fullbg"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1 }}
             >
-                <div className="navbar">
-                    <button className="navHome" onClick={() => { navigate("/") }}>Home</button>
-                    <h1 className="title">N Queens Problem</h1>
-                    <div className="btn">
-                    <button className="alButton" onClick={() => { setSel("4Queens") }}>4Queens</button>
-                    <button className="alButton" onClick={() => { setSel("8Queens") }}>8Queens</button>
-                    <button className="alButton" onClick={() => { queen() }}>Start</button>
-                    </div>
+                <motion.div className="left-side">
                     
-                </div>
-                
+                                
                 {sel === "4Queens"?
                     <div id="cellContainer4">
                     <div className="cell "  cellindex ='0'><h3 id="i0j0"></h3></div>
@@ -270,13 +301,100 @@ function nQueenssolve(option, col,n){
                 
                 :<></>
                     }
-                
-                
-            </motion.div>
+                                
+                </motion.div>
+                <motion.div className="right-side">
+                    <motion.div id="idAllSteps" className="allSteps">
+                        <motion.div className="stepCard" id="0STDN"
+                            initial={{ y: 20 }}
+                            animate={{ y: 0 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <p id="step0" className="stepH">Step0: </p>
+                            <div className="content">
+                                <p className="enHead">Enter two Text Pattern</p>
+                                <div className="btn">
 
+                                <button className="alButton" style={{border:"none",marginRight:'1em'}} onClick={() => { setSel("4Queens");setStepC(1); }}>4Queens</button>
+                                <button className="alButton" onClick={() => { setSel("8Queens");setStepC(1); }}>8Queens</button>
+
+                                </div>
+                                
+                            </div>
+                            <FontAwesomeIcon id="0STDN" className="stepDoneIcon" icon={faCircleCheck} />
+
+                        </motion.div>
+                        {stepC >= 1 ?
+                            <motion.div id="1STDN" className="stepCard"
+                                initial={{ y: 20 }}
+                                animate={{ y: 0 }}
+                                transition={{ duration: 0.5 }}
+
+                            >
+                                <p id="step1" className="stepH">Step1: </p>
+                                <div className="content">
+                                    <p>Rabin-Karp algorithm is an algorithm used for searching/matching patterns in the text </p>
+                                    <p>Using  <i>Hash functionx</i></p>
+                                   
+                                    <p>Create the <button id="createLCS" className={"spec"} onClick={(e) => { disBut(e); setStepC(2);queen();}}>Start</button></p>
+                                </div>
+                                <FontAwesomeIcon id="1STDN" className="stepDoneIcon" icon={faCircleCheck} />
+
+
+                            </motion.div> : <></>
+                        }
+                        {stepC >= 2 ?
+                            <motion.div id="2STDN" className="stepCard"
+                                initial={{ y: 20 }}
+                                animate={{ y: 0 }}
+                                transition={{ duration: 0.5 }}
+                            >
+                                <p id="step2" className="stepH">Step2: </p>
+                                <div className="content">
+                                    <motion.div
+                                        className="inStepDivs1"
+                                    >
+                                        <p id='result'>Hash function: d * hash of pattern + pattern[i].charCodeAt() % q</p>
+                                        
+                                        <p>Text[ASCII] Pattern[ASCII]</p>
+                                    </motion.div>
+                                   
+                                    <motion.div
+                                        initial={{ scale: 0.5, opacity: 0 }}
+                                        animate={{ scale: 1, opacity: 1 }}
+                                        transition={{ delay: 0.5, duration: 0.5 }}
+                                    >
+                                        <p>RabinKarp Algorithm traverses array wise and finds the pattern using hash function</p>
+                                        
+                                    <motion.button
+                                        className={"spec"}
+                                        id="CheckFirstIndex"
+                                        onClick={(e) => { disBut(e);restart()}}
+                                    >Restart</motion.button>
+                                        
+                                        
+                                        
+                                    </motion.div>
+
+                                </div>
+                                <FontAwesomeIcon id="1STDN" className="stepDoneIcon" icon={faCircleCheck} />
+                            </motion.div> : <></>
+                        }
+
+                        
+                        
+
+                        
+                    </motion.div>
+                </motion.div>
+
+            </motion.div>
         </>
+
+        
 
     );
 }
 
 export default SNQueens;
+

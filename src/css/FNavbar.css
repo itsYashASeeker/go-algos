@@ -1,7 +1,8 @@
 .fnav {
     display: flex;
+    align-items: center;
+    justify-content: center;
     position: fixed;
-    text-align: center;
     left: 0rem;
     top: 4rem;
     width: 100%;
@@ -11,23 +12,33 @@
     box-shadow: 0 0.2rem 0.1rem rgba(143, 0, 0, 0.548);
     backdrop-filter: blur(0.4rem);
     z-index: 4;
+    transition: 0.2s all ease-out;
+}
+
+.goUpF{
+    top: 0rem;
 }
 
 .fnav .algoTitle {
-    flex-grow: 1;
+    /* position: absolute; */
+    /* margin-left: 50%; */
+    /* transform: translate(-50%); */
     /* text-shadow: 0rem 0rem 0.1rem rgb(255, 169, 169); */
 }
 
 .fnav .menu {
-    /* position: absolute;
-    top: 0.5rem;
-    right: 0.5rem; */
+    position: absolute;
+    /* top: 0.5rem; */
+    right: 0.5rem;
+    min-height: 80%;
+    /* position: relative;
+    float: right; */
     background: rgb(139, 0, 0);
     border-radius: 0.5rem;
     font-size: 1.2rem;
     font-weight: 500;
     transition: 0.3s all ease-out;
-    margin: auto;
+    
 }
 
 .fnav .menu:hover{

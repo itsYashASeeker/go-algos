@@ -10,22 +10,26 @@
     margin-top: 8rem;
 }
 
-.sections{
+.sectionsT{
     background: rgba(253, 213, 213, 0.1);
     margin: 0.5rem 0;
-    padding: 1rem;
-    border-top: 0.13rem solid rgba(167, 0, 0, 0.2);
-    border-bottom: 0.13rem solid rgba(167, 0, 0, 0.2);
+    padding: 1.5rem;
+    /* border-top: 0.13rem solid rgba(167, 0, 0, 0.2); */
+    /* border-bottom: 0.13rem solid rgba(167, 0, 0, 0.2); */
     box-sizing: border-box;
+    width: 100%;
 }
 
-.sections *{
+/* .sections *{
     margin: 0.3rem 0;
-}
+} */
 
 .title1{
-    font-size: 2rem;
+    font-size: 2.3rem;
     font-weight: 700;
+    /* padding: 0.8rem; */
+    /* background: wheat; */
+    /* width: fit-content; */
     text-decoration: underline;
     text-decoration-style:solid;
     text-decoration-color: rgb(0, 21, 143);
@@ -42,9 +46,16 @@
 }
 
 .hightText{
-    background: rgba(255, 75, 75, 0.616);
+    background: rgba(255, 193, 193, 0.616);
     width: fit-content;
-    color: rgb(18, 17, 75);
+    color: rgb(110, 0, 0);
+    padding: 0.15rem;
+}
+
+.hightText1 {
+    background: rgba(105, 255, 75, 0.616);
+    width: fit-content;
+    color: rgb(4, 3, 73);
     padding: 0.15rem;
 }
 
@@ -60,7 +71,7 @@
 .note{
     width: fit-content;
     border-style: dashed;
-    border-color: black;
+    border-color: rgb(59, 59, 59);
     border-width: 0.2rem;
     color: black;
     padding: 0.3rem;
@@ -75,6 +86,74 @@
 .nT{
     font-weight: 650;
 }
+
+.f1-2{
+    font-size: 1.2rem;
+}
+
+.f1-3{
+    font-size: 1.3rem;
+}
+
+.f1-5{
+    font-size: 1.5rem;
+}
+
+.f2{
+    font-size: 2rem;
+}
+
+.ols{
+    margin-left: 2rem !important;
+}
+
+
+.ols li{
+    margin: 0.8rem 0;
+}
+
+.mUpS{
+    margin-top: 0.5rem;
+}
+
+.mUpM{
+    margin-top: 1.2rem;
+}
+
+.mUpL{
+    margin-top: 1.8rem;
+}
+
+.divf{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.im1{
+    width: 20rem;
+}
+
+.im2{
+    width: 30rem;
+}
+
+.mLeS{
+    margin-left: 1rem;
+}
+
+.linkA{
+    margin: 0 0.5rem;
+    color: var(--somColor);
+}
+
+.dcontainer {
+    flex-direction: row !important;
+    padding-top: 4rem;
+}
+
+
+
 
 
 

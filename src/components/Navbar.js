@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "../css/Navbar.css";
 import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
-import somLogo from "../img/kjsieit-logo.svg";
+import somLogo from "../img/somaiyaLogo.jpg";
+import kjsitLogo from "../img/kjsit.png";
 import algo1 from "../img/algo1.jpg";
 import { animate, delay, motion, spring } from "framer-motion";
 import { faBars, faCancel, faEnvelope, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { expR } from "../data/expRoutes";
 import { AppState } from "../context/appContext";
+import SomTrust from "../img/somaiyaTrust.png";
 
 function Navbar() {
     const navigate = useNavigate();
@@ -19,15 +21,58 @@ function Navbar() {
     const [currE, setCE] = cuE;
     const [algoTC, setAlgoT] = algoT;
     const [openSide, setOSide] = useState(false);
-    // console.log(currE);
+
+    const [scrollTop, setScrollTop] = useState(0);
+    const [prevST, setPrevST] = useState(0);
+
+    useEffect(() => {
+        function updateY() {
+            var prevscTop = scrollTop;
+            var scTop = window.scrollY;
+            var winHeight = window.innerHeight;
+            setPrevST(prevscTop);
+            setScrollTop(window.scrollY);
+            if(scTop===0 || scTop<prevscTop){
+                retElId("idnavbar").classList.remove("goUp");
+            }
+            else{
+                retElId("idnavbar").classList.add("goUp");
+            }
+            
+        }
+        window.addEventListener("scroll", updateY);
+    });
+
+    useEffect(()=>{
+        if(openSide===false){
+            document.body.style.overflow = "scroll";
+        }
+        else{
+            document.body.style.overflow = "hidden";
+        }
+    }, [openSide]);
+
+    function retElId(idname) {
+        return document.getElementById(idname);
+    }
 
     return (
         <motion.div
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.3 }}
-            className="navbar">
-            <img className="somLogo" src={somLogo}></img>
+            className="navbar"
+            id="idnavbar"
+            >
+            <div className="dkjLogo">
+                <img className="somLogo" src={somLogo}></img>
+                <div className="kjsit">
+                    <p className="kjhead">K. J. Somaiya Institute of Technology, Sion</p>
+                    <p>An Autonomous Institute Permanently Affiliated to the University of Mumbai</p>
+                </div>
+            </div>
+            
+            {/* <img className="kjLogo" src={kjsitLogo}></img> */}
             <div className="head">
                 <NavLink to="/" className="headLink">
                     <img className="navImg" src={algo1}></img>
@@ -172,7 +217,7 @@ function Navbar() {
                 </motion.div>
 
             </div>
-            <button id="idcontact" className="contactus"><FontAwesomeIcon icon={faEnvelope} /></button>
+            
 
             {openSide ?
                 <motion.div
@@ -180,8 +225,16 @@ function Navbar() {
                     animate={{ y: 0 }}
                     transition={{ duration: 0.3 }}
                     className="sideBar">
-
+                    <div className="dkjLogo dflex">
+                        <img className="somLogo" src={somLogo}></img>
+                        <div className="kjsit">
+                            <p className="kjhead">K. J. Somaiya Institute of Technology, Sion</p>
+                            <p>An Autonomous Institute Permanently Affiliated to the University of Mumbai</p>
+                        </div>
+                    </div>
+                    <img src={SomTrust} className="somTR dflex" />
                     <div className="naviLinks">
+                        
                         <div
                             onMouseEnter={() => setHovNS(true)}
                             onMouseLeave={() => setHovNS(false)}
@@ -197,6 +250,7 @@ function Navbar() {
                                     onMouseEnter={() => setHovNS(true)}
                                     onMouseLeave={() => setHovNS(false)}
                                 >
+                                
                                     <motion.div className="dropItem"
                                         initial={{ y: 80, opacity: 0 }}
                                         animate={{ y: 0, opacity: 1 }}
@@ -323,7 +377,8 @@ function Navbar() {
                 </motion.div>
                 : <button className="menuBar" onClick={() => { setOSide(true) }}><FontAwesomeIcon icon={faBars}></FontAwesomeIcon></button>
             }
-            {/* <button className="alButton" onClick={() => { }}>New</button> */}
+            <button id="idcontact" className="contactus"><FontAwesomeIcon icon={faEnvelope} /></button>
+            <img src={SomTrust} className="somTR"/>
         </motion.div >
     )
 }

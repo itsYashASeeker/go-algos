@@ -1,6 +1,6 @@
 import React from "react";
-import "../css/FNavbar.css";
 import "../css/Home.css";
+import "../css/FNavbar.css";
 import { useNavigate } from "react-router-dom";
 import { animate, delay, motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,9 +8,11 @@ import { faBookOpen, faCirclePlay, faCommentDots, faCompass, faHouse } from "@fo
 import { useState } from "react";
 import { AppState } from "../context/appContext";
 import { expR } from "../data/expRoutes";
+import { useEffect } from "react";
 
 function FNavbar() {
-
+    const [scrollTop, setScrollTop] = useState(0);
+    const [prevST, setPrevST] = useState(0);
     const [hoverF, setHoverF] = useState(false);
     const { cuE, algoT } = AppState();
 
@@ -33,12 +35,42 @@ function FNavbar() {
 
     const navigate = useNavigate();
     const algoName = expR[currE[0]][currE[1]][1];
+
+    function retElId(idname) {
+        return document.getElementById(idname);
+    }
+
+    useEffect(() => {
+        function updateY() {
+            var prevscTop = scrollTop;
+            var scTop = window.scrollY;
+            var winHeight = window.innerHeight;
+            setPrevST(prevscTop);
+            setScrollTop(window.scrollY);
+            if (scTop === 0 || scTop < prevscTop) {
+                if (retElId("idFNav")){
+                    retElId("idFNav").classList.remove("goUpF");
+                }
+                
+            }
+            else {
+                if (retElId("idFNav")) {
+                    retElId("idFNav").classList.add("goUpF");
+                }
+            }
+
+        }
+        window.addEventListener("scroll", updateY);
+    });
+
     return (
         <motion.div
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.3 }}
-            className="fnav">
+            className="fnav"
+            id="idFNav"
+        >
             <h1 className="algoTitle">{expR[currE[0]][currE[1]][0]}</h1>
             <motion.button
                 initial={{ opacity: 0 }}

@@ -10,6 +10,10 @@ import SKnapsack from "./simulators/SKnapsack";
 import Lcs from "./mainPages/Lcs";
 import TLcs from "./theoryPages/TLcs";
 import FLcs from "./feedback/FLcs";
+import SRabinkarp from "./simulators/SRabinkarp";
+import Sorting from "./pages/Sorting";
+import Greedy from "./pages/Greedy";
+import Dynamic from "./pages/Dynamic";
 
 function App() {
   return (
@@ -17,6 +21,9 @@ function App() {
       <AppProvider>
         <Routes>
           <Route exact path="/" element={<Home />}></Route>
+          <Route exact path="/sorting" element={<Sorting />}></Route>
+          <Route exact path="/greedy" element={<Greedy />}></Route>
+          <Route exact path="/dynamic" element={<Dynamic />}></Route>
           <Route path="/lcs" element={<Lcs />}></Route>
           <Route path="/lcs/theory" element={<TLcs />}></Route>
           <Route path="/lcs/feedback" element={<FLcs />}></Route>
@@ -26,6 +33,7 @@ function App() {
           <Route path='/nqueens/simulator' element={<SNQueens />}></Route>
           <Route path="/kruskals/simulator" element={<SKruskals />}></Route>
           <Route path="/knapsack/simulator" element={<SKnapsack />}></Route>
+          <Route path="/rabinkarp/simulator" element={<SRabinkarp />}></Route>
         </Routes>
       </AppProvider>
     </HashRouter >
