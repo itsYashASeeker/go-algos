@@ -32,22 +32,22 @@ function Navbar() {
             var winHeight = window.innerHeight;
             setPrevST(prevscTop);
             setScrollTop(window.scrollY);
-            if(scTop===0 || scTop<prevscTop){
+            if (scTop === 0 || scTop < prevscTop || prevscTop < 50) {
                 retElId("idnavbar").classList.remove("goUp");
             }
-            else{
+            else {
                 retElId("idnavbar").classList.add("goUp");
             }
-            
+
         }
         window.addEventListener("scroll", updateY);
     });
 
-    useEffect(()=>{
-        if(openSide===false){
+    useEffect(() => {
+        if (openSide === false) {
             document.body.style.overflow = "scroll";
         }
-        else{
+        else {
             document.body.style.overflow = "hidden";
         }
     }, [openSide]);
@@ -63,7 +63,7 @@ function Navbar() {
             transition={{ duration: 0.3 }}
             className="navbar"
             id="idnavbar"
-            >
+        >
             <div className="dkjLogo">
                 <img className="somLogo" src={somLogo}></img>
                 <div className="kjsit">
@@ -71,7 +71,7 @@ function Navbar() {
                     <p>An Autonomous Institute Permanently Affiliated to the University of Mumbai</p>
                 </div>
             </div>
-            
+
             {/* <img className="kjLogo" src={kjsitLogo}></img> */}
             <div className="head">
                 <NavLink to="/" className="headLink">
@@ -167,7 +167,7 @@ function Navbar() {
                                     <motion.div className="dropItem"
                                         initial={{ y: 80, opacity: 0 }}
                                         animate={{ y: 0, opacity: 1 }}
-                                        transition={{ duration: 0.1, delay: index*0.1 }}
+                                        transition={{ duration: 0.1, delay: index * 0.1 }}
                                     >
                                         <Link className="dropLink" to={"/" + elA[1]}>
                                             <p className={(elA[1] == expR[currE[0]][currE[1]][1]) ? "chosen" : ""} >{elA[0]}</p>
@@ -203,7 +203,7 @@ function Navbar() {
                                         initial={{ y: 80, opacity: 0 }}
                                         animate={{ y: 0, opacity: 1 }}
                                         transition={{ duration: 0.1, delay: index * 0.1 }}
-                                        
+
                                     >
                                         <Link className="dropLink" to={"/" + elA[1]}>
                                             <p id="1e0" className={(elA[1] == expR[currE[0]][currE[1]][1]) ? "chosen" : ""} >{elA[0]}</p>
@@ -217,7 +217,7 @@ function Navbar() {
                 </motion.div>
 
             </div>
-            
+
 
             {openSide ?
                 <motion.div
@@ -234,7 +234,7 @@ function Navbar() {
                     </div>
                     <img src={SomTrust} className="somTR dflex" />
                     <div className="naviLinks">
-                        
+
                         <div
                             onMouseEnter={() => setHovNS(true)}
                             onMouseLeave={() => setHovNS(false)}
@@ -250,7 +250,7 @@ function Navbar() {
                                     onMouseEnter={() => setHovNS(true)}
                                     onMouseLeave={() => setHovNS(false)}
                                 >
-                                
+
                                     <motion.div className="dropItem"
                                         initial={{ y: 80, opacity: 0 }}
                                         animate={{ y: 0, opacity: 1 }}
@@ -378,7 +378,7 @@ function Navbar() {
                 : <button className="menuBar" onClick={() => { setOSide(true) }}><FontAwesomeIcon icon={faBars}></FontAwesomeIcon></button>
             }
             <button id="idcontact" className="contactus"><FontAwesomeIcon icon={faEnvelope} /></button>
-            <img src={SomTrust} className="somTR"/>
+            <img src={SomTrust} className="somTR" />
         </motion.div >
     )
 }

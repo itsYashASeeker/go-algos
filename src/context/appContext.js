@@ -22,6 +22,7 @@ const AppProvider = ({ children }) => {
     useEffect(() => {
         var topicI = false;
         var expJ = false;
+        window.scrollTo(0, 0);
         if (location === "/") {
             // console.log("Home");
             setCE([3, 0]);

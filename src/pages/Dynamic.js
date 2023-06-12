@@ -20,8 +20,16 @@ export default function Dynamic() {
             <Navbar />
             <div className="fullbg fullbgHOME dcontainer">
                 <section className="sectionsT">
-                    <p id="title" className="title1">Dynamic Programming</p>
-
+                    <motion.p
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.3 }}
+                        id="title" className="title1">Dynamic Programming</motion.p>
+                    <motion.div
+                        initial={{ opacity: 0, y: 40 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3 }}
+                    >
                     <p className="f1-5 mUpL">
                         <b className="hightText1">Dynamic Programming</b> is defined as a computer programming technique where an algorithmic problem is first broken down into sub-problems, the results are saved, and then the sub-problems are <b>optimized to find the overall solution</b>.
                     </p>
@@ -67,23 +75,23 @@ export default function Dynamic() {
                                         </li>
                                     </ul>
                                 </div>
-                                
+
                             </li>
                             <li>
                                 <div className="mUpL"></div>
                                 <div className="mUpL"></div>
                                 <b>Bottom-up approach</b>
                                 <p className="mUpM">
-                                    In the bottom-up method, once a solution to a problem is written in terms of its subproblems in a way that loops back on itself, users can rewrite the problem by solving the smaller subproblems first and then using their solutions to solve the larger subproblems. 
+                                    In the bottom-up method, once a solution to a problem is written in terms of its subproblems in a way that loops back on itself, users can rewrite the problem by solving the smaller subproblems first and then using their solutions to solve the larger subproblems.
                                 </p>
                                 <div className="mUpM">
                                     <b>Advantages:</b>
                                     <ul className="ols mUpS f1-3">
                                         <li>
-                                            It makes decisions about small reusable subproblems and then decides how they will be put together to create a large problem. 
+                                            It makes decisions about small reusable subproblems and then decides how they will be put together to create a large problem.
                                         </li>
                                         <li>
-                                            It removes recursion, thus promoting the efficient use of memory space. Additionally, this also leads to a reduction in timing complexity. 
+                                            It removes recursion, thus promoting the efficient use of memory space. Additionally, this also leads to a reduction in timing complexity.
                                         </li>
                                     </ul>
                                 </div>
@@ -111,6 +119,7 @@ export default function Dynamic() {
                             </li>
                         </ul>
                     </p>
+                    </motion.div>
                 </section>
             </div>
             <Footer />

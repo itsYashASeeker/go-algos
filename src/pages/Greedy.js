@@ -19,8 +19,16 @@ export default function Greedy() {
             <Navbar />
             <div className="fullbg fullbgHOME dcontainer">
                 <section className="sectionsT">
-                    <p id="title" className="title1">Greedy</p>
-
+                    <motion.p
+                        initial={{opacity: 0, scale: 0.8}}
+                        animate={{opacity: 1, scale: 1}}
+                        transition={{duration: 0.3}}
+                     id="title" className="title1">Greedy</motion.p>
+                    <motion.div
+                        initial={{ opacity: 0, y:40 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3 }}
+                    >
                     <p className="f1-5 mUpL">
                         A <b className="hightText1">greedy</b> algorithm is an approach for solving a problem by <b>selecting</b> the <b>best option available at the moment.</b> It doesn't worry whether the current best result will bring the overall optimal result.
                     </p>
@@ -33,6 +41,7 @@ export default function Greedy() {
                         <button name="dijkstra" className="sButton " onClick={() => { naviTo("dijkstra") }}>Dijkstra<span></span></button>
                         <button name="kruskals" className="sButton " onClick={() => { naviTo("kruskals") }}>Kruskal's<span></span></button>
                     </p>
+                    
                     <p className="f1-5 mUpL">
                         <b className="hightText">We can use Greedy approach:</b>
                         <ol className="ols mUpS f1-3">
@@ -79,6 +88,7 @@ export default function Greedy() {
                             </li>
                         </ul>
                     </p>
+                    </motion.div>
                 </section>
                 {/* </motion.div> */}
             </div>
