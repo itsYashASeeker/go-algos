@@ -9,7 +9,7 @@ import {faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 
 import "../css/Home.css";
 import "../css/Lcs.css";
-
+import FNavbar from "../components/FNavbar.js"
 
 
 function SNQueens() {
@@ -183,6 +183,7 @@ function nQueenssolve(option, col,n){
         
             <>
             <Navbar />
+            <FNavbar/>
             <motion.div className="fullbg"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

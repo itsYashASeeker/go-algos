@@ -10,6 +10,7 @@ import {faCheck, faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import "../css/Home.css";
 import "../css/Lcs.css";
 import "../css/Rabinkarp.css";
+import FNavbar from "../components/FNavbar.js"
 
 function SRabinkarp() {
     const [text, settext] = useState("");
@@ -212,6 +213,7 @@ function SRabinkarp() {
     return (
         <>
             <Navbar />
+            <FNavbar/>
             <motion.div className="fullbg"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

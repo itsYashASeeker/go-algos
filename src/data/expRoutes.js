@@ -8,7 +8,8 @@ export var expR = [
     [
         ["Longest Common Subsequence", "lcs"],
         ["Knapsack", "knapsack"],
-        ["N-Queens", "nqueens"]
+        ["N-Queens", "nqueens"],
+        ["RabinKarp", "rabinkarp"]
     ],
     [
         ["", ""]

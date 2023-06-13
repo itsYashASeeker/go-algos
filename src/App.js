@@ -14,6 +14,9 @@ import SRabinkarp from "./simulators/SRabinkarp";
 import Sorting from "./pages/Sorting";
 import Greedy from "./pages/Greedy";
 import Dynamic from "./pages/Dynamic";
+import RabinkarpTheory from "./theoryPages/RabinkarpTheory";
+import NqueensTheory from "./theoryPages/NqueensTheory";
+import JobSchedTheory from "./theoryPages/JobSchedTheory";
 
 function App() {
   return (
@@ -34,6 +37,9 @@ function App() {
           <Route path="/kruskals/simulator" element={<SKruskals />}></Route>
           <Route path="/knapsack/simulator" element={<SKnapsack />}></Route>
           <Route path="/rabinkarp/simulator" element={<SRabinkarp />}></Route>
+          <Route path="/rabinkarp/theory" element={<RabinkarpTheory />}></Route>
+          <Route path="/nqueens/theory" element={<NqueensTheory />}></Route>
+          <Route path="/job-scheduling/theory" element={<JobSchedTheory />}></Route>
         </Routes>
       </AppProvider>
     </HashRouter >
