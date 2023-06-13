@@ -8,6 +8,7 @@ import algo1 from "../img/algo1.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAddressCard, faArrowUpShortWide, faAtom, faPersonRunning } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../components/Footer";
+import AboutUs from "../components/aboutus";
 
 function Home() {
 
@@ -64,48 +65,10 @@ function Home() {
                     </div>
 
                 </motion.section>
-                {/* <motion.section className="homeSect sect3"
-                    initial={{ opacity: 0, }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                    id="idsect3"
-                >
-                    <h1 className="algosN">Sorting</h1>
-                    <div className="algos">
-                        <button className="sButton">Insertion<span></span></button>
-                        <button className="sButton">Selection<span></span></button>
-                        <button className="sButton">Bubble<span></span></button>
-                    </div>
-                </motion.section>
-                <motion.section className="homeSect sect3 sect4"
-                    initial={{ opacity: 0, }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                    id="idsect4"
-                >
-                    <h1 className="algosN">Greedy</h1>
-                    <div className="algos">
-                        <button className="sButton" name="job-scheduling" onClick={naviTo}>Job Scheduling<span></span></button>
-                        <button className="sButton" name="dijkstra" onClick={naviTo}>Dijkstra<span></span></button>
-                        <button className="sButton" name="kruskals" onClick={naviTo}>Kruskal's<span></span></button>
-                    </div>
-                </motion.section>
-                <motion.section className="homeSect sect3 sect5"
-                    initial={{ opacity: 0, }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                    id="idsect5"
-                >
-                    <h1 className="algosN">Dynamic Programming</h1>
-                    <div className="algos">
-                        <button className="sButton" name="lcs" onClick={naviTo}>Lcs<span></span></button>
-                        <button className="sButton" name="knapsack" onClick={naviTo}>Knapsack<span></span></button>
-                        <button className="sButton" name="rabinkarp" onClick={naviTo}>Rabinkarp<span></span></button>
-                        <button className="sButton" name="nqueens" onClick={naviTo}>N-Queens<span></span></button>
-                    </div>
-                </motion.section> */}
-
+                
+                <AboutUs />
             </motion.div>
+            
             <Footer />
         </>
     );

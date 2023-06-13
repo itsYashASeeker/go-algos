@@ -87,6 +87,10 @@
     font-weight: 650;
 }
 
+.f1-1{
+    font-size: 1.1rem;
+}
+
 .f1-2{
     font-size: 1.2rem;
 }
@@ -152,6 +156,10 @@
     padding-top: 4rem;
 }
 
+.remL{
+    color: var(--somColor);
+    text-decoration: none;
+}
 
 
 
