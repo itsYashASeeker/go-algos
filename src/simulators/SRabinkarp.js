@@ -142,23 +142,23 @@ function SRabinkarp() {
         if(k===1) {
             for (let j = i+1; j <=   pattern.length+i; j++) {
                 if (retElId(`S1M${j}`)) {
-                    retElId(`S1M${j}`).classList.add("Fhight");    
+                    retElId(`S1M${j}`).classList.add("Bhight");    
                 }
             }
             for (let j = 0; j <= pattern.length; j++) {
                 if (retElId(`S2M${j}`)) {
                    
-                    retElId(`S2M${j}`).classList.add("Fhight");
+                    retElId(`S2M${j}`).classList.add("Bhight");
                     
                 } 
             }
             await timer(anDuration);
             for (var j = i+1; j <=   pattern.length+i; j++) {
                 if (retElId(`S1M${j}`)) {
-                    retElId(`S1M${j}`).classList.remove("Fhight");}}
+                    retElId(`S1M${j}`).classList.remove("Bhight");}}
             for (var j = 0; j <= pattern.length; j++) {
                 if (retElId(`S2M${j}`)) {
-                   retElId(`S2M${j}`).classList.remove("Fhight");
+                   retElId(`S2M${j}`).classList.remove("Bhight");
                     }}
         }
         else{

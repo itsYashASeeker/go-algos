@@ -108,11 +108,11 @@
     animation: anHight 0.4s 2;
 }
 
-.Table .row .Fhight,
-.lcsTable .row .Fhight {
+.Table .row .Bhight,
+.lcsTable .row .Bhight {
     /* background: var(--thightDBg); */
     /* color: var(--thightDC); */
-    animation: anFHight 0.4s 2;
+    animation: anBHight 0.4s 2;
 }
 
 .Table .row .hightStr,
@@ -148,7 +148,7 @@
     }   
 }
 
-@keyframes anFHight {
+@keyframes anBHight {
     0% {
         background: var(--tdataColors);
         color: white;
