@@ -334,10 +334,10 @@ function nQueenssolve(option, col,n){
                             >
                                 <p id="step1" className="stepH">Step1: </p>
                                 <div className="content">
-                                    <p>Rabin-Karp algorithm is an algorithm used for searching/matching patterns in the text </p>
-                                    <p>Using  <i>Hash functionx</i></p>
+                                    <p>The N Queen is the problem of placing N chess queens on an N×N chessboard so that no two queens attack each other.</p>
+                                    <p>Mainly Nqueens Problem is Shown using <i>4x4 </i> and <i>8x8 </i> chessboard<i>Hash functionx</i></p>
                                    
-                                    <p>Create the <button id="createLCS" className={"spec"} onClick={(e) => { disBut(e); setStepC(2);queen();}}>Start</button></p>
+                                    <p>Create the<button id="createLCS" className={"spec"} onClick={(e) => { disBut(e); setStepC(2);queen();}}>Start</button></p>
                                 </div>
                                 <FontAwesomeIcon id="1STDN" className="stepDoneIcon" icon={faCircleCheck} />
 
@@ -355,9 +355,11 @@ function nQueenssolve(option, col,n){
                                     <motion.div
                                         className="inStepDivs1"
                                     >
-                                        <p id='result'>Hash function: d * hash of pattern + pattern[i].charCodeAt() % q</p>
+                                        <p id='result'>Let there are 4 queens. The objective is place there 4 queens on 4*4
+                                            chessboard in such a way that no two queens should be placed in the same row, same column or diagonal
+                                            position.</p>
                                         
-                                        <p>Text[ASCII] Pattern[ASCII]</p>
+                                        
                                     </motion.div>
                                    
                                     <motion.div
@@ -365,7 +367,12 @@ function nQueenssolve(option, col,n){
                                         animate={{ scale: 1, opacity: 1 }}
                                         transition={{ delay: 0.5, duration: 0.5 }}
                                     >
-                                        <p>RabinKarp Algorithm traverses array wise and finds the pattern using hash function</p>
+                                        <p>If two queens are placed at positions (i,j) and (k,l). They are on the same diagonal only if<br/>
+                                    i-j=k-l (1) orif<br/>
+                                    i+j=k+l (2).if<br/>
+                                    From (1) and (2) implies j-l=i-k and j-l=k-iif<br/>
+                                    Two queens lie on the same diagonal iff |j-l|=|i-k|if<br/>
+                                    The solution of 8 queens problem can be obtained similar to the solution of 4 queens.</p>
                                         
                                     <motion.button
                                         className={"spec"}
