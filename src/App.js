@@ -17,6 +17,7 @@ import Dynamic from "./pages/Dynamic";
 import RabinkarpTheory from "./theoryPages/RabinkarpTheory";
 import NqueensTheory from "./theoryPages/NqueensTheory";
 import JobSchedTheory from "./theoryPages/JobSchedTheory";
+import KnapsackTheory from "./theoryPages/KnapsackTheory";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <Route path="/rabinkarp/theory" element={<RabinkarpTheory />}></Route>
           <Route path="/nqueens/theory" element={<NqueensTheory />}></Route>
           <Route path="/job-scheduling/theory" element={<JobSchedTheory />}></Route>
+          <Route path="/knapsack/theory" element={<KnapsackTheory />}></Route>
         </Routes>
       </AppProvider>
     </HashRouter >
