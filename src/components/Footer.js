@@ -21,11 +21,11 @@ function Footer() {
             onClick={()=>{setShowL(0)}}
         >
             <div className="row">
-                <img src={kjsitLogo} className="fkjLogo"></img>
-                <img src={somaiyaTrust} className="trustLogo"></img>
-                <p className="dev1 fR"><Link className="compLink" to>Department of Computer Engineering</Link></p>
+                {/* <img src={kjsitLogo} className="fkjLogo"></img>
+                <img src={somaiyaTrust} className="trustLogo"></img> */}
+                <p className="dev1"><Link className="compLink" target="blank" to="https://kjsit.somaiya.edu.in/en/programme/computer-engineering">Department of Computer Engineering</Link></p>
             </div>
-            <div className="divider"></div>
+            {/* <div className="divider"></div> */}
             <div className="row">
                 <p className="dev1">Developed by:
                     <button
@@ -64,7 +64,7 @@ function Footer() {
                 </p>
             </div>
             <div className="row">
-                <p className="dev1">Under guidance of: <Link className="dev2" to>Prof. Mrunali Desai</Link></p>
+                <p className="dev1">Under guidance of: <Link className="dev2" to="https://kjsit.somaiya.edu.in/en/view-member/220066?type=faculty" target="blank">Prof. Mrunali Desai</Link></p>
             </div>
         </div>
     )

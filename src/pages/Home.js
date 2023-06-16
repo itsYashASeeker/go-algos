@@ -6,7 +6,7 @@ import "../css/Home.css";
 import Navbar from "../components/Navbar";
 import algo1 from "../img/algo1.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAddressCard, faArrowUpShortWide, faAtom, faPersonRunning } from "@fortawesome/free-solid-svg-icons";
+import { faAddressCard, faArrowUpShortWide, faAtom, faBackwardFast, faEquals, faPersonRunning } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../components/Footer";
 import AboutUs from "../components/aboutus";
 
@@ -49,7 +49,7 @@ function Home() {
                     transition={{ duration: 0.3 }}
 
                 >
-                    <div className="box">
+                    <div className="boxS">
                         <button className="cards" name="sorting" onClick={() => { naviTo("sorting") }}>
                             <FontAwesomeIcon icon={faArrowUpShortWide} className="algoIcon" />
                             <p className="algoName">Sorting</p>
@@ -61,6 +61,14 @@ function Home() {
                         <button className="cards" name="dynamic-pro" onClick={() => { naviTo("dynamic") }}>
                             <FontAwesomeIcon icon={faAtom} className="algoIcon" />
                             <p className="algoName">Dynamic Programming</p>
+                        </button>
+                        <button className="cards" name="dynamic-pro" onClick={() => { naviTo("backtracking") }}>
+                            <FontAwesomeIcon icon={faBackwardFast} className="algoIcon" />
+                            <p className="algoName">Backtracking</p>
+                        </button>
+                        <button className="cards" name="dynamic-pro" onClick={() => { naviTo("string-match") }}>
+                            <FontAwesomeIcon icon={faEquals} className="algoIcon" />
+                            <p className="algoName">String Matching</p>
                         </button>
                     </div>
 

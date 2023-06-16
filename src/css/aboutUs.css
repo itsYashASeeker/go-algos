@@ -40,7 +40,8 @@
 /* ALl Developer's Cards */
 .all_cards {
     flex-wrap: wrap;
-    gap: 1.5rem;
+    column-gap: 5rem;
+    row-gap: 3rem;
 }
 
 /* Developer Card */
@@ -53,7 +54,7 @@
     box-shadow: 0 0 0.5rem 0.01rem rgb(255, 100, 100);
     border: 0.2rem solid rgba(177, 0, 0, 0.6);
     backdrop-filter: blur(0.1rem);
-    margin: 2rem 0;
+    margin: 3rem 0;
     padding: 1rem;
     z-index: 0;
     transition: all ease-out 0.2s;

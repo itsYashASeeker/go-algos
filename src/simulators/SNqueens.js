@@ -38,14 +38,6 @@ function SNQueens() {
                     [0,0,0,0,0,0,0,0],
                     [0,0,0,0,0,0,0,0],
                     [0,0,0,0,0,0,0,0]];
-   
-
-
-
-
-    
-
-
 
     useEffect(() => {
         for (var i = 1; i < stepC; i++) {
@@ -55,6 +47,7 @@ function SNQueens() {
             }
         }
         if (retElId(`${stepC - 1}STDN`) != null) {
+
             retElId(`${stepC - 1}STDN`).classList.remove("goanime");
             retElId(`${stepC - 1}STDN`).classList.add("algoDone");
         }
@@ -62,7 +55,9 @@ function SNQueens() {
             retElId(`${stepC}STDN`).classList.add("goanime");
             retElId(`${stepC}STDN`).classList.remove("algoDone");
         }
+
         retElId("idAllSteps").lastChild.scrollIntoView({ behavior: "smooth" });
+        // window.scrollTo(0, 0);
     }, [stepC]);
 
     

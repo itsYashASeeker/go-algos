@@ -30,6 +30,12 @@ function SJobSched() {
         // setNewProcs(newProcs);
     }, [procs]);
 
+    async function wait() {
+        retElId("idAllSteps").lastChild.scrollIntoView({ behavior: "smooth" });
+        await timer(200);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
     useEffect(() => {
         for (var i = 1; i < stepC; i++) {
             if (retElId(`${i}STDN`) != null) {
@@ -46,7 +52,10 @@ function SJobSched() {
             retElId(`${stepC}STDN`).classList.add("goanime");
             retElId(`${stepC}STDN`).classList.remove("algoDone");
         }
+
         retElId("idAllSteps").lastChild.scrollIntoView({ behavior: "smooth" });
+        // wait();
+
     }, [stepC]);
 
 
@@ -375,7 +384,7 @@ function SJobSched() {
                     </motion.div>
                 </motion.div>
             </motion.div>
-            <Footer />
+            {/* <Footer /> */}
         </>
 
     );

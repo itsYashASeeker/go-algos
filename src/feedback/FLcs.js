@@ -6,7 +6,9 @@ export default function FLcs() {
         <>
             <Navbar />
             <FNavbar />
-            <h1>Feedback Page LCS</h1>
+            <div className="fullbg">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScGnU7fvnCmcGXkR4M9nt5jRlo_A7FGKRKFPwriCqRXSuDV7g/viewform?embedded=true" className="feedForm" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            </div>
         </>
     )
 }

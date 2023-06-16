@@ -10,6 +10,7 @@ import {faCheck, faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import "../css/Home.css";
 import "../css/Lcs.css";
 import "../css/Rabinkarp.css";
+import FNavbar from "../components/FNavbar.js"
 
 function SRabinkarp() {
     const [text, settext] = useState("");
@@ -33,6 +34,7 @@ function SRabinkarp() {
             }
         }
         if (retElId(`${stepC - 1}STDN`) != null) {
+
             retElId(`${stepC - 1}STDN`).classList.remove("goanime");
             retElId(`${stepC - 1}STDN`).classList.add("algoDone");
         }
@@ -40,7 +42,9 @@ function SRabinkarp() {
             retElId(`${stepC}STDN`).classList.add("goanime");
             retElId(`${stepC}STDN`).classList.remove("algoDone");
         }
+
         retElId("idAllSteps").lastChild.scrollIntoView({ behavior: "smooth" });
+        // window.scrollTo(0, 0);
     }, [stepC]);
 
     
@@ -141,23 +145,23 @@ function SRabinkarp() {
         if(k===1) {
             for (let j = i+1; j <=   pattern.length+i; j++) {
                 if (retElId(`S1M${j}`)) {
-                    retElId(`S1M${j}`).classList.add("Fhight");    
+                    retElId(`S1M${j}`).classList.add("Bhight");    
                 }
             }
             for (let j = 0; j <= pattern.length; j++) {
                 if (retElId(`S2M${j}`)) {
                    
-                    retElId(`S2M${j}`).classList.add("Fhight");
+                    retElId(`S2M${j}`).classList.add("Bhight");
                     
                 } 
             }
             await timer(anDuration);
             for (var j = i+1; j <=   pattern.length+i; j++) {
                 if (retElId(`S1M${j}`)) {
-                    retElId(`S1M${j}`).classList.remove("Fhight");}}
+                    retElId(`S1M${j}`).classList.remove("Bhight");}}
             for (var j = 0; j <= pattern.length; j++) {
                 if (retElId(`S2M${j}`)) {
-                   retElId(`S2M${j}`).classList.remove("Fhight");
+                   retElId(`S2M${j}`).classList.remove("Bhight");
                     }}
         }
         else{
@@ -212,6 +216,7 @@ function SRabinkarp() {
     return (
         <>
             <Navbar />
+            <FNavbar/>
             <motion.div className="fullbg"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

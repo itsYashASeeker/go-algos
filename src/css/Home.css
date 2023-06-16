@@ -11,7 +11,8 @@
     --thightDBg: rgb(161, 161, 161);
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Share+Tech&family=Ubuntu:wght@300&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Share+Tech&family=Ubuntu:wght@300&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Nanum+Gothic+Coding&family=Roboto:wght@500&family=Share+Tech&family=Ubuntu:wght@300&display=swap');
 
 * {
     margin: 0;
@@ -237,11 +238,12 @@ input:focus {
     padding: 3rem 0;
 }
 
-.box {
+.sect2 .boxS {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10vw;
+    row-gap: 5rem;
+    column-gap: 10rem;
     flex-wrap: wrap;
     padding: 1rem;
 }
@@ -807,6 +809,17 @@ input:focus {
     padding: 0.3rem;
 }
 
+.divfC {
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.notFound {
+    padding-top: 5rem;
+    height: -moz-calc(100vh - (20px + 30px));
+    height: -webkit-calc(100% - (20px + 30px));
+    height: calc(100vh - (13rem));
+}
 
 /* @keyframes nAnime {
     0% {
@@ -819,13 +832,14 @@ input:focus {
 } */
 
 @media (max-width: 800px) {
-    .sect1{
+    .sect1 {
         flex-direction: column;
         gap: 3rem;
-    }   
-    .homeTitle{
+    }
+
+    .homeTitle {
         max-width: 60vw;
-    } 
+    }
 }
 
 
@@ -892,7 +906,7 @@ input:focus {
 }
 
 @media (max-width: 300px) {
-    .title {
+    .headLink .title {
         font-size: 1rem !important;
     }
 

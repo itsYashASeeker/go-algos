@@ -16,7 +16,7 @@
     transition: 0.2s all ease-out;
 }
 
-.goUp{
+.goUp {
     top: -4rem;
     opacity: 0;
 }
@@ -33,18 +33,18 @@
     /* background: grey; */
 }
 
-.kjLogo{
+.kjLogo {
     height: 3.5rem;
 }
 
-.dkjLogo{
+.dkjLogo {
     display: flex;
     justify-content: center;
     align-items: center;
     width: fit-content;
 }
 
-.kjsit{
+.kjsit {
     font-family: "Ubuntu", sans-serif;
     display: flex;
     flex-direction: column;
@@ -56,13 +56,13 @@
     gap: 0.4rem;
 }
 
-.kjhead{
+.kjhead {
     font-size: 0.8rem;
     color: red;
 }
 
 
-.somLogo2{
+.somLogo2 {
     position: absolute;
     top: 1rem;
     width: 50%;
@@ -207,11 +207,11 @@
     top: 1rem;
 }
 
-.menuBar{
+.menuBar {
     display: none;
 }
 
-.somTR{
+.somTR {
     width: 4rem;
     margin-left: 0.5rem;
 }
@@ -221,10 +221,54 @@
     margin-bottom: 1rem;
 }
 
+@media (max-width: 1100px) {
+    .kjsit {
+        width: 10rem;
+        font-size: 0.5rem !important;
+    }
+
+    .kjhead {
+        font-size: 0.5rem;
+    }
+
+    .somLogo {
+        width: 2rem !important;
+        height: 2rem !important;
+    }
+
+    .navImg {
+        width: 3rem !important;
+        height: 3rem !important;
+    }
+
+    .headLink .title {
+        font-size: 1.5rem;
+    }
+}
+
 
 @media (max-width:900px) {
-    .dkjLogo, .somTR{
+
+    .dkjLogo,
+    .somTR {
         display: none;
+    }
+
+    #idnavLink {
+        display: none;
+    }
+
+    #idcontact {
+        display: none;
+    }
+
+    .menuBar {
+        display: block;
+    }
+
+    .dropNav .drop {
+        right: 50%;
+        transform: translate(50%);
     }
 }
 
@@ -235,24 +279,12 @@
         width: 8rem;
     } */
 
-    #idnavLink {
-        display: none;
-    }
 
-    #idcontact {
-        display: none;
-    }
-    .menuBar{
-        display: block;
-    }
-    .dropNav .drop{
-        right: 50%;
-        transform: translate(50%);
-    }
 }
 
 @media (max-width: 550px) {
-    .kjsit{
+    .kjsit {
         width: 10rem;
     }
+
 }

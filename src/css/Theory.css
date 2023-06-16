@@ -59,6 +59,27 @@
     padding: 0.15rem;
 }
 
+.hightText2{
+    background: rgb(130, 230, 255);
+    width: fit-content;
+        color: rgb(7, 21, 32);
+        padding: 0.15rem;
+}
+
+.hightText3 {
+    background: rgb(252, 164, 225);
+    width: fit-content;
+    color: rgb(53, 6, 6);
+    padding: 0.15rem;
+}
+
+.hightText4 {
+    background: rgb(242, 255, 183);
+    width: fit-content;
+    color: rgb(53, 6, 6);
+    padding: 0.15rem;
+}
+
 .divider{
     margin: 0.5rem auto;
     text-align: center;
@@ -99,12 +120,24 @@
     font-size: 1.3rem;
 }
 
+.f1-4 {
+    font-size: 1.4rem;
+}
+
 .f1-5{
     font-size: 1.5rem;
 }
 
 .f2{
     font-size: 2rem;
+}
+
+.f4{
+    font-size: 4rem;
+}
+
+.f6{
+    font-size: 6rem;
 }
 
 .ols{
@@ -134,6 +167,11 @@
     align-items: center;
 }
 
+.whF{
+    width: 100vw;
+    height: 100vh;
+}
+
 .im1{
     width: 20rem;
 }
@@ -161,6 +199,44 @@
     text-decoration: none;
 }
 
+
+.lsNone{
+    list-style: none;
+}
+
+.algorithm {
+    padding: 0.5rem;
+    background-color: #dfffc3;
+    color: green;
+    border: none;
+    list-style: none;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-size: 1.1rem !important;
+    line-height: 1.5rem;
+    width: fit-content;
+}
+
+.feedForm{
+    width: 80vw;
+    height: 3462px;
+}
+
+@media (max-width: 600px) {
+    .im1, .im2{
+        width: 80vw;
+    }
+    .kim1{
+        width: 50vw;
+    }
+}
+
+
+@media (max-width:300px) {
+    .egCol{
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
 
 
 

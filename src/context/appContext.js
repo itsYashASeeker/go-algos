@@ -25,43 +25,43 @@ const AppProvider = ({ children }) => {
         window.scrollTo(0, 0);
         if (location === "/") {
             // console.log("Home");
-            setCE([3, 0]);
+            setCE([4, 0]);
         }
         else {
             for (var i = 0; i < expR.length; i++) {
                 for (var j = 0; j < expR[i].length; j++) {
-                    if (!expJ && !topicI && location === expR[i][j][1]) {
+                    if (expJ === false && topicI === false && location === expR[i][j][1]) {
                         topicI = i;
                         expJ = j;
-                        console.log([i, j]);
+                        console.log(expR[i][j][1]);
                         setCE([i, j]);
                         break;
                     }
                 }
             }
         }
-
+        if(expJ===false && topicI===false){
+            setCE([4, 0]);
+        }
     }, [location]);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         if (scLocation === "") {
             setAlgoT(0);
         }
-        else if (scLocation === "theory") {
+        else if (scLocation === "simulator") {
             setAlgoT(1);
         }
-        else if (scLocation === "simulator") {
-            setAlgoT(2);
-        }
         else if (scLocation === "feedback") {
-            setAlgoT(3);
+            setAlgoT(2);
         }
     }, [scLocation])
 
     function retElId(idname) {
         return document.getElementById(idname);
     }
-
+    console.log(algoT);
     return (
         <AppContext.Provider value={{ cuE: [cE, setCE], algoT: [algoT, setAlgoT] }}>{children}</AppContext.Provider>
     )

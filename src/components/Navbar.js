@@ -10,12 +10,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { expR } from "../data/expRoutes";
 import { AppState } from "../context/appContext";
 import SomTrust from "../img/somaiyaTrust.png";
+import SomL from "./somL";
 
 function Navbar() {
     const navigate = useNavigate();
     const [hovNl, setHovNl] = useState(false);
     const [hovNG, setHovNG] = useState(false);
     const [hovNS, setHovNS] = useState(false);
+    const [hovNO, setHovNO] = useState(false);
 
     const { cuE, algoT } = AppState();
     const [currE, setCE] = cuE;
@@ -24,6 +26,7 @@ function Navbar() {
 
     const [scrollTop, setScrollTop] = useState(0);
     const [prevST, setPrevST] = useState(0);
+    // console.log(currE);
 
     useEffect(() => {
         function updateY() {
@@ -38,7 +41,6 @@ function Navbar() {
             else {
                 retElId("idnavbar").classList.add("goUp");
             }
-
         }
         window.addEventListener("scroll", updateY);
     });
@@ -64,13 +66,14 @@ function Navbar() {
             className="navbar"
             id="idnavbar"
         >
-            <div className="dkjLogo">
+            <SomL />
+            {/* <div className="dkjLogo">
                 <img className="somLogo" src={somLogo}></img>
                 <div className="kjsit">
                     <p className="kjhead">K. J. Somaiya Institute of Technology, Sion</p>
                     <p>An Autonomous Institute Permanently Affiliated to the University of Mumbai</p>
                 </div>
-            </div>
+            </div> */}
 
             {/* <img className="kjLogo" src={kjsitLogo}></img> */}
             <div className="head">
@@ -80,11 +83,15 @@ function Navbar() {
                 </NavLink>
             </div>
             <div id="idnavLink" className="naviLinks">
-                <div
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
                     onMouseEnter={() => setHovNS(true)}
                     onMouseLeave={() => setHovNS(false)}
                     id="t0"
-                    className="dropNav">
+                    className={currE[0] === 0 ? "chosen dropNav" : "dropNav"}
+                >
                     <h2 className="nL">Sorting</h2>
                     <span></span>
                     {hovNS ?
@@ -95,55 +102,23 @@ function Navbar() {
                             onMouseEnter={() => setHovNS(true)}
                             onMouseLeave={() => setHovNS(false)}
                         >
-                            <motion.div className="dropItem"
-                                initial={{ y: 80, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }}
-                                transition={{ duration: 0.1 }}
-                            >
-                                <Link className="dropLink" >
-                                    <p>Insertion Sort</p>
-                                </Link>
-                            </motion.div>
-                            <motion.div className="dropItem"
-                                initial={{ y: 80, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }}
-                                transition={{ duration: 0.1, delay: 0.1 }}
-                            >
-                                <Link className="dropLink" >
-                                    <p>Selection Sort</p>
-                                </Link>
-                            </motion.div>
-                            <motion.div className="dropItem"
-                                initial={{ y: 80, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }}
-                                transition={{ duration: 0.1, delay: 0.2 }}
-                            >
-                                <Link className="dropLink" >
-                                    <p>Quick Sort</p>
-                                </Link>
-                            </motion.div>
-                            <motion.div className="dropItem"
-                                initial={{ y: 80, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }}
-                                transition={{ duration: 0.1, delay: 0.3 }}
-                            >
-                                <Link className="dropLink" >
-                                    <p>Merge Sort</p>
-                                </Link>
-                            </motion.div>
-                            <motion.div className="dropItem"
-                                initial={{ y: 80, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }}
-                                transition={{ duration: 0.1, delay: 0.4 }}
-                            >
-                                <Link className="dropLink" >
-                                    <p>Bubble Sort</p>
-                                </Link>
-                            </motion.div>
+                            {expR[0].map((elA, index) => {
+                                return (
+                                    <motion.div className="dropItem"
+                                        initial={{ y: 80, opacity: 0 }}
+                                        animate={{ y: 0, opacity: 1 }}
+                                        transition={{ duration: 0.1, delay: index * 0.1 }}
+                                    >
+                                        <Link className="dropLink" to={"/" + elA[1]}>
+                                            <p className={(elA[1] == expR[currE[0]][currE[1]][1]) ? "chosen" : ""} >{elA[0]}</p>
+                                        </Link>
+                                    </motion.div>
+                                )
+                            })}
                         </motion.div>
                         : <></>
                     }
-                </div>
+                </motion.div>
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -215,169 +190,222 @@ function Navbar() {
                         : <></>
                     }
                 </motion.div>
-
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                    onMouseEnter={() => setHovNO(true)}
+                    onMouseLeave={() => setHovNO(false)}
+                    id="t0"
+                    className={currE[0] && currE[0] === 3 ? "chosen dropNav" : "dropNav"}
+                >
+                    <h2 className="nL">Other</h2>
+                    <span></span>
+                    {hovNO ?
+                        <motion.div className="drop"
+                            initial={{ clipPath: "polygon(0 0, 100% 0%, 100% 0, 0 0)" }}
+                            animate={{ clipPath: "polygon(0 0, 100% 0%, 100% 100%, 0 100%)" }}
+                            transition={{ duration: 0.3 }}
+                            onMouseEnter={() => setHovNO(true)}
+                            onMouseLeave={() => setHovNO(false)}
+                        >
+                            {expR[3].map((elA, index) => {
+                                return (
+                                    <motion.div className="dropItem"
+                                        initial={{ y: 80, opacity: 0 }}
+                                        animate={{ y: 0, opacity: 1 }}
+                                        transition={{ duration: 0.1, delay: index * 0.1 }}
+                                    >
+                                        <Link className="dropLink" to={"/" + elA[1]}>
+                                            <p className={(elA[1] == expR[currE[0]][currE[1]][1]) ? "chosen" : ""} >{elA[0]}</p>
+                                        </Link>
+                                    </motion.div>
+                                )
+                            })}
+                        </motion.div>
+                        : <></>
+                    }
+                </motion.div>
             </div>
 
 
-            {openSide ?
-                <motion.div
-                    initial={{ y: "-100vh" }}
-                    animate={{ y: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="sideBar">
-                    <div className="dkjLogo dflex">
-                        <img className="somLogo" src={somLogo}></img>
-                        <div className="kjsit">
-                            <p className="kjhead">K. J. Somaiya Institute of Technology, Sion</p>
-                            <p>An Autonomous Institute Permanently Affiliated to the University of Mumbai</p>
+            {
+                openSide ?
+                    <motion.div
+                        initial={{ y: "-100vh" }}
+                        animate={{ y: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="sideBar">
+                        <div className="dkjLogo dflex">
+                            <img className="somLogo" src={somLogo}></img>
+                            <div className="kjsit">
+                                <p className="kjhead">K. J. Somaiya Institute of Technology, Sion</p>
+                                <p>An Autonomous Institute Permanently Affiliated to the University of Mumbai</p>
+                            </div>
                         </div>
-                    </div>
-                    <img src={SomTrust} className="somTR dflex" />
-                    <div className="naviLinks">
+                        <img src={SomTrust} className="somTR dflex" />
+                        <div className="naviLinks">
 
-                        <div
-                            onMouseEnter={() => setHovNS(true)}
-                            onMouseLeave={() => setHovNS(false)}
-                            id="t0"
-                            className="dropNav">
-                            <h2 className="nL">Sorting</h2>
-                            <span></span>
-                            {hovNS ?
-                                <motion.div className="drop"
-                                    initial={{ clipPath: "polygon(0 0, 100% 0%, 100% 0, 0 0)" }}
-                                    animate={{ clipPath: "polygon(0 0, 100% 0%, 100% 100%, 0 100%)" }}
-                                    transition={{ duration: 0.3 }}
-                                    onMouseEnter={() => setHovNS(true)}
-                                    onMouseLeave={() => setHovNS(false)}
-                                >
+                            <div
+                                onMouseEnter={() => setHovNS(true)}
+                                onMouseLeave={() => setHovNS(false)}
+                                id="t0"
+                                className="dropNav">
+                                <h2 className="nL">Sorting</h2>
+                                <span></span>
+                                {hovNS ?
+                                    <motion.div className="drop"
+                                        initial={{ clipPath: "polygon(0 0, 100% 0%, 100% 0, 0 0)" }}
+                                        animate={{ clipPath: "polygon(0 0, 100% 0%, 100% 100%, 0 100%)" }}
+                                        transition={{ duration: 0.3 }}
+                                        onMouseEnter={() => setHovNS(true)}
+                                        onMouseLeave={() => setHovNS(false)}
+                                    >
 
-                                    <motion.div className="dropItem"
-                                        initial={{ y: 80, opacity: 0 }}
-                                        animate={{ y: 0, opacity: 1 }}
-                                        transition={{ duration: 0.1 }}
-                                    >
-                                        <Link className="dropLink" >
-                                            <p>Insertion Sort</p>
-                                        </Link>
+                                        <motion.div className="dropItem"
+                                            initial={{ y: 80, opacity: 0 }}
+                                            animate={{ y: 0, opacity: 1 }}
+                                            transition={{ duration: 0.1 }}
+                                        >
+                                            <Link className="dropLink" to="/insertion">
+                                                <p>Insertion Sort</p>
+                                            </Link>
+                                        </motion.div>
+                                        <motion.div className="dropItem"
+                                            initial={{ y: 80, opacity: 0 }}
+                                            animate={{ y: 0, opacity: 1 }}
+                                            transition={{ duration: 0.1, delay: 0.1 }}
+                                        >
+                                            <Link className="dropLink" to="/selection">
+                                                <p>Selection Sort</p>
+                                            </Link>
+                                        </motion.div>
+                                        <motion.div className="dropItem"
+                                            initial={{ y: 80, opacity: 0 }}
+                                            animate={{ y: 0, opacity: 1 }}
+                                            transition={{ duration: 0.1, delay: 0.4 }}
+                                        >
+                                            <Link className="dropLink" to="/bubble">
+                                                <p>Bubble Sort</p>
+                                            </Link>
+                                        </motion.div>
                                     </motion.div>
-                                    <motion.div className="dropItem"
-                                        initial={{ y: 80, opacity: 0 }}
-                                        animate={{ y: 0, opacity: 1 }}
-                                        transition={{ duration: 0.1, delay: 0.1 }}
+                                    : <></>
+                                }
+                            </div>
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.3 }}
+                                onMouseEnter={() => setHovNG(true)}
+                                onMouseLeave={() => setHovNG(false)}
+                                id="t1"
+                                className={currE[0] && currE[0] === 1 ? "chosen dropNav" : "dropNav"}>
+                                <h2 className="nL">Greedy</h2>
+                                <span></span>
+                                {hovNG ?
+                                    <motion.div className="drop"
+                                        initial={{ clipPath: "polygon(0 0, 100% 0%, 100% 0, 0 0)" }}
+                                        animate={{ clipPath: "polygon(0 0, 100% 0%, 100% 100%, 0 100%)" }}
+                                        transition={{ duration: 0.3 }}
+                                        onMouseEnter={() => setHovNG(true)}
+                                        onMouseLeave={() => setHovNG(false)}
                                     >
-                                        <Link className="dropLink" >
-                                            <p>Selection Sort</p>
-                                        </Link>
+                                        {expR[1].map((elA, index) => {
+                                            return (
+                                                <motion.div className="dropItem"
+                                                    initial={{ y: 80, opacity: 0 }}
+                                                    animate={{ y: 0, opacity: 1 }}
+                                                    transition={{ duration: 0.1, delay: index * 0.1 }}
+                                                >
+                                                    <Link className="dropLink" to={"/" + elA[1]}>
+                                                        <p className={(elA[1] == expR[currE[0]][currE[1]][1]) ? "chosen" : ""} >{elA[0]}</p>
+                                                    </Link>
+                                                </motion.div>
+                                            )
+                                        })}
                                     </motion.div>
-                                    <motion.div className="dropItem"
-                                        initial={{ y: 80, opacity: 0 }}
-                                        animate={{ y: 0, opacity: 1 }}
-                                        transition={{ duration: 0.1, delay: 0.2 }}
+                                    : <></>
+                                }
+                            </motion.div>
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.3 }}
+                                onMouseEnter={() => setHovNl(true)}
+                                onMouseLeave={() => setHovNl(false)}
+                                id="t2"
+                                className={currE[0] && currE[0] === 2 ? "chosen dropNav" : "dropNav"}>
+                                <h2 className="nL">Dynamic</h2>
+                                <span></span>
+                                {hovNl ?
+                                    <motion.div className="drop"
+                                        initial={{ clipPath: "polygon(0 0, 100% 0%, 100% 0, 0 0)" }}
+                                        animate={{ clipPath: "polygon(0 0, 100% 0%, 100% 100%, 0 100%)" }}
+                                        transition={{ duration: 0.3 }}
+                                        onMouseEnter={() => setHovNl(true)}
+                                        onMouseLeave={() => setHovNl(false)}
                                     >
-                                        <Link className="dropLink" >
-                                            <p>Quick Sort</p>
-                                        </Link>
+                                        {expR[2].map((elA, index) => {
+                                            return (
+                                                <motion.div className="dropItem"
+                                                    initial={{ y: 80, opacity: 0 }}
+                                                    animate={{ y: 0, opacity: 1 }}
+                                                    transition={{ duration: 0.1, delay: index * 0.1 }}
+                                                >
+                                                    <Link className="dropLink" to={"/" + elA[1]}>
+                                                        <p id="1e0" className={(elA[1] == expR[currE[0]][currE[1]][1]) ? "chosen" : ""} >{elA[0]}</p>
+                                                    </Link>
+                                                </motion.div>
+                                            )
+                                        })}
                                     </motion.div>
-                                    <motion.div className="dropItem"
-                                        initial={{ y: 80, opacity: 0 }}
-                                        animate={{ y: 0, opacity: 1 }}
-                                        transition={{ duration: 0.1, delay: 0.3 }}
+                                    : <></>
+                                }
+                            </motion.div>
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.3 }}
+                                onMouseEnter={() => setHovNO(true)}
+                                onMouseLeave={() => setHovNO(false)}
+                                id="t0"
+                                className={currE[0] && currE[0] === 3 ? "chosen dropNav" : "dropNav"}
+                            >
+                                <h2 className="nL">Other</h2>
+                                <span></span>
+                                {hovNO ?
+                                    <motion.div className="drop"
+                                        initial={{ clipPath: "polygon(0 0, 100% 0%, 100% 0, 0 0)" }}
+                                        animate={{ clipPath: "polygon(0 0, 100% 0%, 100% 100%, 0 100%)" }}
+                                        transition={{ duration: 0.3 }}
+                                        onMouseEnter={() => setHovNO(true)}
+                                        onMouseLeave={() => setHovNO(false)}
                                     >
-                                        <Link className="dropLink" >
-                                            <p>Merge Sort</p>
-                                        </Link>
+                                        {expR[3].map((elA, index) => {
+                                            return (
+                                                <motion.div className="dropItem"
+                                                    initial={{ y: 80, opacity: 0 }}
+                                                    animate={{ y: 0, opacity: 1 }}
+                                                    transition={{ duration: 0.1, delay: index * 0.1 }}
+                                                >
+                                                    <Link className="dropLink" to={"/" + elA[1]}>
+                                                        <p className={(elA[1] == expR[currE[0]][currE[1]][1]) ? "chosen" : ""} >{elA[0]}</p>
+                                                    </Link>
+                                                </motion.div>
+                                            )
+                                        })}
                                     </motion.div>
-                                    <motion.div className="dropItem"
-                                        initial={{ y: 80, opacity: 0 }}
-                                        animate={{ y: 0, opacity: 1 }}
-                                        transition={{ duration: 0.1, delay: 0.4 }}
-                                    >
-                                        <Link className="dropLink" >
-                                            <p>Bubble Sort</p>
-                                        </Link>
-                                    </motion.div>
-                                </motion.div>
-                                : <></>
-                            }
+                                    : <></>
+                                }
+                            </motion.div>
                         </div>
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 0.3 }}
-                            onMouseEnter={() => setHovNG(true)}
-                            onMouseLeave={() => setHovNG(false)}
-                            id="t1"
-                            className={currE[0] && currE[0] === 1 ? "chosen dropNav" : "dropNav"}>
-                            <h2 className="nL">Greedy</h2>
-                            <span></span>
-                            {hovNG ?
-                                <motion.div className="drop"
-                                    initial={{ clipPath: "polygon(0 0, 100% 0%, 100% 0, 0 0)" }}
-                                    animate={{ clipPath: "polygon(0 0, 100% 0%, 100% 100%, 0 100%)" }}
-                                    transition={{ duration: 0.3 }}
-                                    onMouseEnter={() => setHovNG(true)}
-                                    onMouseLeave={() => setHovNG(false)}
-                                >
-                                    {expR[1].map((elA, index) => {
-                                        return (
-                                            <motion.div className="dropItem"
-                                                initial={{ y: 80, opacity: 0 }}
-                                                animate={{ y: 0, opacity: 1 }}
-                                                transition={{ duration: 0.1, delay: index * 0.1 }}
-                                            >
-                                                <Link className="dropLink" to={"/" + elA[1]}>
-                                                    <p className={(elA[1] == expR[currE[0]][currE[1]][1]) ? "chosen" : ""} >{elA[0]}</p>
-                                                </Link>
-                                            </motion.div>
-                                        )
-                                    })}
-                                </motion.div>
-                                : <></>
-                            }
-                        </motion.div>
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 0.3 }}
-                            onMouseEnter={() => setHovNl(true)}
-                            onMouseLeave={() => setHovNl(false)}
-                            id="t2"
-                            className={currE[0] && currE[0] === 2 ? "chosen dropNav" : "dropNav"}>
-                            <h2 className="nL">Dynamic</h2>
-                            <span></span>
-                            {hovNl ?
-                                <motion.div className="drop"
-                                    initial={{ clipPath: "polygon(0 0, 100% 0%, 100% 0, 0 0)" }}
-                                    animate={{ clipPath: "polygon(0 0, 100% 0%, 100% 100%, 0 100%)" }}
-                                    transition={{ duration: 0.3 }}
-                                    onMouseEnter={() => setHovNl(true)}
-                                    onMouseLeave={() => setHovNl(false)}
-                                >
-                                    {expR[2].map((elA, index) => {
-                                        return (
-                                            <motion.div className="dropItem"
-                                                initial={{ y: 80, opacity: 0 }}
-                                                animate={{ y: 0, opacity: 1 }}
-                                                transition={{ duration: 0.1, delay: index * 0.1 }}
-                                            >
-                                                <Link className="dropLink" to={"/" + elA[1]}>
-                                                    <p id="1e0" className={(elA[1] == expR[currE[0]][currE[1]][1]) ? "chosen" : ""} >{elA[0]}</p>
-                                                </Link>
-                                            </motion.div>
-                                        )
-                                    })}
-                                </motion.div>
-                                : <></>
-                            }
-                        </motion.div>
-
-                    </div>
-                    <button className="contactus"><FontAwesomeIcon icon={faEnvelope} /></button>
-                    <button className="cancel" onClick={() => { setOSide(false) }}><FontAwesomeIcon icon={faXmark} /></button>
-                </motion.div>
-                : <button className="menuBar" onClick={() => { setOSide(true) }}><FontAwesomeIcon icon={faBars}></FontAwesomeIcon></button>
+                        <button className="contactus"><FontAwesomeIcon icon={faEnvelope} /></button>
+                        <button className="cancel" onClick={() => { setOSide(false) }}><FontAwesomeIcon icon={faXmark} /></button>
+                    </motion.div>
+                    : <button className="menuBar" onClick={() => { setOSide(true) }}><FontAwesomeIcon icon={faBars}></FontAwesomeIcon></button>
             }
-            <button id="idcontact" className="contactus"><FontAwesomeIcon icon={faEnvelope} /></button>
+            {/* <button id="idcontact" className="contactus"><FontAwesomeIcon icon={faEnvelope} /></button> */}
             <img src={SomTrust} className="somTR" />
         </motion.div >
     )

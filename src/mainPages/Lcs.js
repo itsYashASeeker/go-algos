@@ -1,4 +1,5 @@
 import FNavbar from "../components/FNavbar";
+import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 export default function Lcs(){
@@ -6,7 +7,10 @@ export default function Lcs(){
         <>
             <Navbar />
             <FNavbar />
-            <h1>Main Page LCS</h1>
+            <div className="fullbg">
+                <h1>Aim: LCS</h1>
+            </div>
+            <Footer />
         </>
     )
 }

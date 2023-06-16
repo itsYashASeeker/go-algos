@@ -13,15 +13,8 @@ export default function AboutUs() {
 
     return (
         <div class="ffbg">
-            <b className="f1-5">Guided by:</b> 
-            <div className="divf mUpS">   
-                <div class="guide_card divf">
-                    <b className="f1-5">Prof. Mrunali Desai</b>
-                    <img src={profMD} class="guide_img mUpS"></img>
-                    <Link to="https://kjsit.somaiya.edu.in/en/view-member/220066?type=faculty" target="_blank" className="mUpS">Assistant Professor in Computer Dept.</Link>
-                </div>
-            </div>
-            <b className="f1-5 mUpL">Developed by:</b>
+            
+            <b className="f2 mUpL">Developed by:</b>
             <div class="all_cards divf mUpS">
                 <div id="iddev_card" class="dev_card divf">
                     <b id="iddev_name" class="f1-5">Yash K Chauhan</b>
@@ -58,6 +51,14 @@ export default function AboutUs() {
                         <Link to="https://www.linkedin.com/in/yash-chauhan-180031203/" target="_blank"><img src={linkedinL} className="socIcon"></img></Link>
                         <Link to="https://www.instagram.com/yashck.iso/" target="_blank"><img src={instagramL} className="socIcon"></img></Link>
                     </div>
+                </div>
+            </div>
+            <b className="f2">Guided by:</b>
+            <div className="divf mUpS">
+                <div class="guide_card divf">
+                    <b className="f1-5">Prof. Mrunali Desai</b>
+                    <img src={profMD} class="guide_img mUpS"></img>
+                    <Link to="https://kjsit.somaiya.edu.in/en/view-member/220066?type=faculty" target="_blank" className="mUpS">Assistant Professor in Computer Dept.</Link>
                 </div>
             </div>
         </div>

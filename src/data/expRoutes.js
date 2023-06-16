@@ -1,5 +1,9 @@
 export var expR = [
-    [["Merge Sort", "merge-sort"]],
+    [
+        ["Insertion", "insertion"],
+        ["Selection", "selection"],
+        ["Bubble", "bubble"]
+    ],
     [
         ["Job Scheduling", "job-scheduling"],
         ["Dijkstra", "dijkstra"],
@@ -8,6 +12,9 @@ export var expR = [
     [
         ["Longest Common Subsequence", "lcs"],
         ["Knapsack", "knapsack"],
+    ],
+    [
+        ["Rabinkarp", "rabinkarp"],
         ["N-Queens", "nqueens"]
     ],
     [
