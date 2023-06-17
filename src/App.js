@@ -18,6 +18,7 @@ import RabinkarpTheory from "./theoryPages/RabinkarpTheory";
 import NqueensTheory from "./theoryPages/NqueensTheory";
 import JobSchedTheory from "./theoryPages/JobSchedTheory";
 import KnapsackTheory from "./theoryPages/KnapsackTheory";
+import FRabinkarp from "./feedback/FRabinkarp";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/lcs" element={<Lcs />}></Route>
           <Route path="/lcs/theory" element={<TLcs />}></Route>
           <Route path="/lcs/feedback" element={<FLcs />}></Route>
+          <Route path="/rabinkarp/feedback" element={<FRabinkarp />}></Route>
           <Route path="/job-scheduling/simulator" element={<SJobSched />}></Route>
           <Route path="/lcs/simulator" element={<SLcs />}></Route>
           <Route path="/dijkstra/simulator" element={<SDijkstra />}></Route>
