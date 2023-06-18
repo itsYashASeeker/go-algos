@@ -14,9 +14,16 @@ export default function FRabinkarp() {
   const [Somaiyaemail, setSomaiyaEmail] = useState(null);
 
   const [date, setDate] = useState(null);
-  const [phone, setPhone] = useState(null);
+  
   const [designation, setDesignation] = useState(null);
   const [department, setDepartment] = useState(null);
+  const [Quest1, setQuest1] = useState();
+  const [Quest2, setQuest2] = useState();
+  const [Quest3, setQuest3] = useState();
+  const [Quest4, setQuest4] = useState();
+  const [Quest5, setQuest5] = useState();
+  const [Quest6, setQuest6] = useState("");
+  const [Quest7, setQuest7] = useState("");
   const [institute, setInstitute] = useState(null);
   const { cuE, algoT } = AppState();
 
@@ -65,7 +72,7 @@ export default function FRabinkarp() {
                 marginTop:"1.5rem" }}>
                 Email ID
                 </div>
-                <input placeholder="Please Enter Personal Email ID" className="inputt" value={email} onChange={e => setEmail(e.target.value)}/>
+                <input placeholder="Please Enter Personal Email ID" className="inputt" value={email} onChange={e => setEmail(e.target.value)} required/>
 
 
 
@@ -77,7 +84,7 @@ export default function FRabinkarp() {
                 marginTop:"1.5rem" }}>
                     Name
                 </div>
-                <input value={username} className="inputt" onChange={e => setUsername(e.target.value)} placeholder="Full Name" />
+                <input value={username} className="inputt" onChange={e => setUsername(e.target.value)} placeholder="Full Name" required />
 
 
                 <div style={{ 
@@ -88,7 +95,7 @@ export default function FRabinkarp() {
                 marginTop:"1.5rem" }}>
                     Name Of the Institute
                 </div>
-                <input value={institute} className="inputt" onChange={e => setInstitute(e.target.value)} placeholder="Institute Name" />
+                <input value={institute} className="inputt" onChange={e => setInstitute(e.target.value)} placeholder="Institute Name"  required />
 
                 <div style={{ 
                 marginBottom: "1.0rem", 
@@ -98,7 +105,7 @@ export default function FRabinkarp() {
                 marginTop:"1.5rem" }}>
                     Department
                 </div>
-                <input value={department}  className="inputt" onChange={e => setDepartment(e.target.value)} placeholder="Department Name" />
+                <input value={department}  className="inputt" onChange={e => setDepartment(e.target.value)} placeholder="Department Name"  required/>
 
                 <div style={{ 
                 marginBottom: "1.0rem", 
@@ -109,7 +116,7 @@ export default function FRabinkarp() {
                     Faculty/student/other
 
                 </div>
-                <input value={designation}  className="inputt" onChange={e => setDesignation(e.target.value)} placeholder="Designation" />
+                <input value={designation}  className="inputt" onChange={e => setDesignation(e.target.value)} placeholder="Designation" required />
 
 
                 <div style={{ 
@@ -120,7 +127,7 @@ export default function FRabinkarp() {
                 marginTop:"1.5rem" }}>
                     Date
                 </div>
-                <input type="date" value={date}  className="inputt" onChange={e => setDate(e.target.value)} placeholder="Example: January 7, 2019" />
+                <input type="date" value={date}  className="inputt" onChange={e => setDate(e.target.value)} placeholder="Example: January 7, 2019" required/>
 
                 <div style={{ 
                 marginBottom: "1.0rem", 
@@ -130,7 +137,7 @@ export default function FRabinkarp() {
                 marginTop:"1.5rem" }}>
                 Somaiya Email ID
                 </div>
-                <input placeholder="Please Enter Somaiya Email ID" className="inputt" value={Somaiyaemail} onChange={e => setSomaiyaEmail(e.target.value)}/>
+                <input placeholder="Please Enter Somaiya Email ID" className="inputt" value={Somaiyaemail} onChange={e => setSomaiyaEmail(e.target.value)} required/>
 
                 
                 
@@ -177,20 +184,20 @@ export default function FRabinkarp() {
 
                 </div>
                 <div style={{display:"flex",alignItems:"center"}}>
-                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}}  value="HTML"/>
+                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}} name="Q1" value="Excellent" onClick={setQuest1("Excellent")} required/>
+                    <label for="html">Excellent</label><br/>
+                </div>
+                <div style={{display:"flex",alignItems:"center"}}>
+                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}} name="Q1" value="Good" onClick={setQuest1("Good")} required/>
                     <label for="html">Good</label><br/>
                 </div>
                 <div style={{display:"flex",alignItems:"center"}}>
-                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}}  value="HTML"/>
-                    <label for="html">Very Good</label><br/>
+                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}} name="Q1" value="Fair" onClick={setQuest1("Fair")} required/>
+                    <label for="html">Fair</label><br/>
                 </div>
                 <div style={{display:"flex",alignItems:"center"}}>
-                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}}  value="HTML"/>
-                    <label for="html">bad</label><br/>
-                </div>
-                <div style={{display:"flex",alignItems:"center"}}>
-                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none",}}  value="HTML"/>
-                    <label for="html">worst</label><br/>
+                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none",}} name="Q1" value="Bad" onClick={setQuest1("Bad")} required/>
+                    <label for="html">Bad</label><br/>
                 </div>
                 
                 <div style={{ 
@@ -204,20 +211,20 @@ export default function FRabinkarp() {
 
                 </div>
                 <div style={{display:"flex",alignItems:"center"}}>
-                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}}  value="HTML"/>
+                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}} name="Q2" value="Excellent" onClick={setQuest2("Excellent")} required/>
+                    <label for="html">Excellent</label><br/>
+                </div>
+                <div style={{display:"flex",alignItems:"center"}}>
+                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}} name="Q2" value="Good" onClick={setQuest2("Good")} required/>
                     <label for="html">Good</label><br/>
                 </div>
                 <div style={{display:"flex",alignItems:"center"}}>
-                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}}  value="HTML"/>
-                    <label for="html">Very Good</label><br/>
+                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}} name="Q2" value="Fair" onClick={setQuest2("Fair")} required/>
+                    <label for="html">Fair</label><br/>
                 </div>
                 <div style={{display:"flex",alignItems:"center"}}>
-                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}}  value="HTML"/>
-                    <label for="html">bad</label><br/>
-                </div>
-                <div style={{display:"flex",alignItems:"center"}}>
-                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none",}}  value="HTML"/>
-                    <label for="html">worst</label><br/>
+                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none",}} name="Q2" value="Bad" onClick={setQuest2("Bad")} required/>
+                    <label for="html">Bad</label><br/>
                 </div>
                   
 
@@ -229,21 +236,21 @@ export default function FRabinkarp() {
                 marginTop:"1.5rem" }}>
                3. Relevant theory is provided for all experiments
                </div>
+               <div style={{display:"flex",alignItems:"center"}}>
+                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}} name="Q3" value="Excellent"  onClick={setQuest3("Excellent")} required/>
+                    <label for="html">Excellent</label><br/>
+                </div>
                 <div style={{display:"flex",alignItems:"center"}}>
-                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}}  value="HTML"/>
+                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}} name="Q3" value="Good" onClick={setQuest3("Good")} required/>
                     <label for="html">Good</label><br/>
                 </div>
                 <div style={{display:"flex",alignItems:"center"}}>
-                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}}  value="HTML"/>
-                    <label for="html">Very Good</label><br/>
+                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}} name="Q3" value="Fair"  onClick={setQuest3("Fair")} required/>
+                    <label for="html">Fair</label><br/>
                 </div>
                 <div style={{display:"flex",alignItems:"center"}}>
-                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}}  value="HTML"/>
-                    <label for="html">bad</label><br/>
-                </div>
-                <div style={{display:"flex",alignItems:"center"}}>
-                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none",}}  value="HTML"/>
-                    <label for="html">worst</label><br/>
+                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none",}} name="Q3" value="Bad" onClick={setQuest3("Bad")} required/>
+                    <label for="html">Bad</label><br/>
                 </div>
                   
                 
@@ -279,21 +286,21 @@ export default function FRabinkarp() {
                4. Operating the website is easy and convenient 
 
                </div>
+               <div style={{display:"flex",alignItems:"center"}}>
+                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}} name="Q4" value="Excellent" onClick={setQuest4("Excellent")} />
+                    <label for="html">Excellent</label><br/>
+                </div>
                 <div style={{display:"flex",alignItems:"center"}}>
-                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}}  value="HTML"/>
+                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}} name="Q4" value="Good" onClick={setQuest4("Good")} />
                     <label for="html">Good</label><br/>
                 </div>
                 <div style={{display:"flex",alignItems:"center"}}>
-                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}}  value="HTML"/>
-                    <label for="html">Very Good</label><br/>
+                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}} name="Q4" value="Fair" onClick={setQuest4("Fair")}/>
+                    <label for="html">Fair</label><br/>
                 </div>
                 <div style={{display:"flex",alignItems:"center"}}>
-                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}}  value="HTML"/>
-                    <label for="html">bad</label><br/>
-                </div>
-                <div style={{display:"flex",alignItems:"center"}}>
-                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none",}}  value="HTML"/>
-                    <label for="html">worst</label><br/>
+                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none",}} name="Q4" value="Bad" onClick={setQuest4("Bad")} />
+                    <label for="html">Bad</label><br/>
                 </div>
 
             <div style={{ 
@@ -306,20 +313,20 @@ export default function FRabinkarp() {
 
                </div>
                 <div style={{display:"flex",alignItems:"center"}}>
-                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}}  value="HTML"/>
+                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}} name="Q5" value="Excellent" onClick={setQuest5("Excellent")}/>
+                    <label for="html">Excellent</label><br/>
+                </div>
+                <div style={{display:"flex",alignItems:"center"}}>
+                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}} name="Q5" value="Good" onClick={setQuest5("Good")}/>
                     <label for="html">Good</label><br/>
                 </div>
                 <div style={{display:"flex",alignItems:"center"}}>
-                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}}  value="HTML"/>
-                    <label for="html">Very Good</label><br/>
+                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}} name="Q5" value="Fair" onClick={setQuest5("Excellent")} />
+                    <label for="html">Fair</label><br/>
                 </div>
                 <div style={{display:"flex",alignItems:"center"}}>
-                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none"}}  value="HTML"/>
-                    <label for="html">bad</label><br/>
-                </div>
-                <div style={{display:"flex",alignItems:"center"}}>
-                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none",}}  value="HTML"/>
-                    <label for="html">worst</label><br/>
+                    <input type="radio" style={{fontSize:'3rem',  marginTop:"1rem",width:"1em" ,background:"none",}} name="Q5" value="Bad" onClick={setQuest5("Excellent")} />
+                    <label for="html">Bad</label><br/>
                 </div>
 
             <div style={{ 
@@ -330,7 +337,7 @@ export default function FRabinkarp() {
                 marginTop:"1.5rem" }}>
                6. Suggestions for further improvement 
                 </div>
-                <textarea  style={{fontSize:'3rem',  marginTop:"1rem" ,background:"none"}}  />
+                <textarea  style={{fontSize:'3rem',  marginTop:"1rem" ,background:"none"}} onChange={e => setQuest6(e.target.value)} />
 
 
             <div style={{ 
@@ -341,7 +348,7 @@ export default function FRabinkarp() {
                 marginTop:"1.5rem" }}>
                7. Experiment that can be added and not available in existing Algortithms VLAB.
                 </div>
-                <textarea  style={{fontSize:'3rem',  marginTop:"1rem" ,background:"none"}}  />
+                <textarea  style={{fontSize:'3rem',  marginTop:"1rem" ,background:"none"}} onChange={e => setQuest7(e.target.value)} />
                 
       <div className="formfooter">
       <button className="btn prev" disabled={index===1} onClick={prevbtn} >Previous</button>
