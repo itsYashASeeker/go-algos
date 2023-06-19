@@ -37,6 +37,7 @@ body {
     font-size: 1rem;
     background: black;
     color: var(--somColor);
+    /* overflow-x: hidden; */
 
 }
 
@@ -201,7 +202,8 @@ input:focus {
     height: 0;
     width: 0;
     background: rgb(73, 255, 235);
-    background: linear-gradient(275deg, rgba(73, 255, 235, 1) 0%, rgba(165, 255, 250, 1) 7%, rgba(235, 255, 254, 1) 13%, rgba(228, 255, 255, 1) 47%, rgba(255, 255, 255, 1) 64%);
+    background: white;
+    /* background: linear-gradient(275deg, rgba(73, 255, 235, 1) 0%, rgba(165, 255, 250, 1) 7%, rgba(235, 255, 254, 1) 13%, rgba(228, 255, 255, 1) 47%, rgba(255, 255, 255, 1) 64%); */
 
     bottom: 0;
     right: 0;
@@ -820,6 +822,9 @@ input:focus {
     height: -webkit-calc(100% - (20px + 30px));
     height: calc(100vh - (13rem));
 }
+
+/* Dashboard */
+
 
 /* @keyframes nAnime {
     0% {

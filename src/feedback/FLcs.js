@@ -1,13 +1,34 @@
+import { useNavigate } from "react-router-dom";
 import FNavbar from "../components/FNavbar";
 import Navbar from "../components/Navbar";
+import { AppState } from "../context/appContext";
 
 export default function FLcs() {
+
+    const navigate = useNavigate();
+    const { userD } = AppState();
+
+    const [uD, setUD] = userD;
+
+    function naviTo(locName) {
+        navigate("/" + locName);
+    }
+
     return (
         <>
             <Navbar />
             <FNavbar />
             <div className="fullbg">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScGnU7fvnCmcGXkR4M9nt5jRlo_A7FGKRKFPwriCqRXSuDV7g/viewform?embedded=true" className="feedForm" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                {uD ?
+                    <p>Hello {uD.username}</p>
+                    :
+                    <>
+                        <button onClick={() => { naviTo("login") }}>Login</button>
+                        <button onClick={() => { naviTo("register") }}>Register</button>
+                    </>
+
+                }
+
             </div>
         </>
     )

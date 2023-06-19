@@ -22,18 +22,23 @@
     position: relative;
     flex-direction: column;
     background: rgb(255, 255, 255);
-    border-radius: 1rem;
-    box-shadow: 0 0 1rem 0.01rem rgba(0, 0, 0, 0.164);
+    border-radius: 1.2rem;
+    box-sizing: border-box;
+    box-shadow: 0 0 0.5rem 0.01rem rgba(0, 0, 0, 0.164);
     border: 0.2rem solid rgba(128, 128, 128, 0.288);
     margin: 1rem 0;
     padding: 1rem;
     z-index: 0;
     transition: all ease-out 0.4s;
+    height: 17rem;
 }
 
 .guide_img{
-    height: 15rem;
-    border-radius: 0.5rem;
+    /* height: 15rem; */
+    width: 8rem;
+    border-radius: 50%;
+    margin: 1.2rem 0;
+    /* border-radius: 0.5rem; */
 }
 
 
@@ -51,31 +56,39 @@
     flex-direction: column;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 2rem;
-    box-shadow: 0 0 0.5rem 0.01rem rgb(255, 100, 100);
-    border: 0.2rem solid rgba(177, 0, 0, 0.6);
+    box-shadow: 0 0 0.3rem 0.01rem rgb(255, 143, 143);
+    border: 0.2rem solid rgba(177, 0, 0, 0.452);
     backdrop-filter: blur(0.1rem);
+    box-sizing: border-box;
     margin: 3rem 0;
     padding: 1rem;
     z-index: 0;
     transition: all ease-out 0.2s;
+    width: 15rem;
+    height: 20rem;
 }
 
 .dev_card:hover {
     position: relative;
     /* transform: scale(1.05); */
-    border: 0.2rem solid rgb(177, 0, 0);
-    box-shadow: 0 0 0.5rem 0.01rem rgb(255, 36, 36);
+    border: 0.2rem solid rgb(163, 21, 21);
+    box-shadow: 0 0 0.4rem 0.01rem rgb(245, 71, 71);
     z-index: 0;
     color: rgb(124, 0, 0) !important;
+    transform: translateY(-0.3rem);
 }
 
 .dev_img {
     width: 12.9rem;
     border-radius: 1rem;
     height: auto;
+    width: 8rem;
+    /* height: 9rem; */
+    border-radius: 50%;
+    /* border: 0.2rem solid rgba(202, 52, 52, 0.651); */
+    margin-top: 0.8rem;
+    margin-bottom: 1.2rem;
 }
-
-
 .dev_card_social {
     padding: 0.1rem;
     /* height: 1.5rem; */

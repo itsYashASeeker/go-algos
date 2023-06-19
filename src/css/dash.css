@@ -1,0 +1,59 @@
+.dashBg {
+    padding-top: 4rem;
+    min-height: calc(100vh);
+    width: 100%;
+    box-sizing: border-box;
+    background: rgba(245, 236, 220, 0.753);
+    /* overflow: auto; */
+}
+
+.dashS1 {
+
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+    /* overflow: auto; */
+}
+
+.floR{
+    margin-top: 2rem;
+    /* float: right; */
+    /* right: 0; */
+}
+
+.ftContainer {
+    display: flex;
+    position: relative;
+    overflow: auto;
+    justify-content: baseline;
+    align-items: baseline;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.feedT {
+    background: whitesmoke;
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    overflow: scroll;
+    text-align: center;
+}
+
+.feedT th,
+.feedT td {
+    padding: 0.4rem;
+    max-width: 10rem;
+}
+
+.feedT,
+.feedT tr,
+.feedT th,
+.feedT td {
+    border: 0.2rem solid rgba(36, 12, 12, 0.753);
+    border-collapse: collapse;
+    /* word-break: break-all; */
+    word-wrap: break-word;
+}

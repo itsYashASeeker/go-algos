@@ -2,23 +2,54 @@ import { useEffect } from "react";
 import { useContext } from "react";
 import { useState } from "react";
 import { createContext } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { expR } from "../data/expRoutes";
+import axios from "axios";
 
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
+    const [uData, setUData] = useState(false);
     const [cE, setCE] = useState([3, 0]);
     const [algoT, setAlgoT] = useState(false);
-    const loc = useLocation().pathname.split("/")
+    const fullLocation = useLocation();
+    const loc = fullLocation.pathname.split("/");
     const location = loc[1];
-    if(loc[2]){
+    const navigate = useNavigate();
+
+    if (loc[2]) {
         var scLocation = loc[2];
     }
-    else{
+    else {
         var scLocation = "";
     }
-    
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            var uDD;
+            await axios.get("http://localhost:5013/y/user/g", {
+                withCredentials: true
+            })
+                .then((data) => {
+                    // console.log(data.data);
+                    setUData(data.data);
+                    uDD = data.data;
+                })
+                .catch((err) => {
+                    setUData(false);
+                })
+            if (fullLocation.pathname === "/admin") {
+                if (!uDD || uDD.isAdmin === false) {
+                    navigate("/");
+                }
+
+            }
+        }
+        fetchUser();
+
+    }, [fullLocation]);
+
+
     useEffect(() => {
         var topicI = false;
         var expJ = false;
@@ -33,16 +64,18 @@ const AppProvider = ({ children }) => {
                     if (expJ === false && topicI === false && location === expR[i][j][1]) {
                         topicI = i;
                         expJ = j;
-                        console.log(expR[i][j][1]);
+                        // console.log(expR[i][j][1]);
                         setCE([i, j]);
                         break;
                     }
                 }
             }
         }
-        if(expJ===false && topicI===false){
-            setCE([4, 0]);
+        if (expJ === false && topicI === false) {
+            const arr1 = [4, 0];
+            setCE(arr1);
         }
+
     }, [location]);
 
     useEffect(() => {
@@ -63,7 +96,7 @@ const AppProvider = ({ children }) => {
     }
     console.log(algoT);
     return (
-        <AppContext.Provider value={{ cuE: [cE, setCE], algoT: [algoT, setAlgoT] }}>{children}</AppContext.Provider>
+        <AppContext.Provider value={{ cuE: [cE, setCE], algoT: [algoT, setAlgoT], userD: [uData, setUData] }}>{children}</AppContext.Provider>
     )
 
 };

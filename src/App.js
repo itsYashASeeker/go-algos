@@ -48,13 +48,23 @@ import FInsertion from "./feedback/FInsertionSort";
 import FSelection from "./feedback/FSelection";
 import FBubble from "./feedback/FBubble";
 import PageNotFound from "./components/NotFound";
+import ULogin from "./authentication/ULogin";
+import URegister from "./authentication/URegister";
+import UserDash from "./components/userDash";
+import AdminDash from "./components/adminDash";
 
 function App() {
   return (
     <HashRouter>
       <AppProvider>
         <Routes>
+
           <Route exact path="/" element={<Home />}></Route>
+
+          {/* Authentication */}
+          <Route exact path="/login" element={<ULogin />}></Route>
+          <Route exact path="/register" element={<URegister />}></Route>
+
           {/* pages for concept of algos */}
           <Route path="/sorting" element={<Sorting />}></Route>
           <Route path="/greedy" element={<Greedy />}></Route>
@@ -114,6 +124,9 @@ function App() {
           <Route path="/bubble" element={<TBubbleS />}></Route>
           <Route path="/bubble/simulator" element={<SBubbleSort />}></Route>
           <Route path="/bubble/feedback" element={<FBubble />}></Route>
+
+          <Route path="/user" element={<UserDash />}></Route>
+          <Route path="/admin" element={<AdminDash />}></Route>
 
           <Route path="*" element={<PageNotFound />} />
         </Routes>

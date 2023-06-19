@@ -5,12 +5,13 @@ import somLogo from "../img/somaiyaLogo.jpg";
 import kjsitLogo from "../img/kjsit.png";
 import algo1 from "../img/algo1.jpg";
 import { animate, delay, motion, spring } from "framer-motion";
-import { faBars, faCancel, faEnvelope, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faCancel, faEnvelope, faUser, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { expR } from "../data/expRoutes";
 import { AppState } from "../context/appContext";
 import SomTrust from "../img/somaiyaTrust.png";
 import SomL from "./somL";
+import axios from "axios";
 
 function Navbar() {
     const navigate = useNavigate();
@@ -19,14 +20,29 @@ function Navbar() {
     const [hovNS, setHovNS] = useState(false);
     const [hovNO, setHovNO] = useState(false);
 
-    const { cuE, algoT } = AppState();
+    const { cuE, algoT, userD } = AppState();
     const [currE, setCE] = cuE;
     const [algoTC, setAlgoT] = algoT;
+    const [uD, setUD] = userD;
     const [openSide, setOSide] = useState(false);
 
     const [scrollTop, setScrollTop] = useState(0);
     const [prevST, setPrevST] = useState(0);
-    // console.log(currE);
+    const [showUD, setShowUD] = useState(false);
+
+    const logoutUser = async () => {
+        await axios.post("http://localhost:5013/y/user/logout", {}, { withCredentials: true })
+            .then((data) => {
+                window.location.reload();
+                window.alert(data.data);
+            })
+            .catch((err) => {
+                const errs = err.response.data.error;
+                for (var i = 0; i < errs.length; i++) {
+                    window.alert(errs[i]);
+                }
+            })
+    }
 
     useEffect(() => {
         function updateY() {
@@ -67,15 +83,6 @@ function Navbar() {
             id="idnavbar"
         >
             <SomL />
-            {/* <div className="dkjLogo">
-                <img className="somLogo" src={somLogo}></img>
-                <div className="kjsit">
-                    <p className="kjhead">K. J. Somaiya Institute of Technology, Sion</p>
-                    <p>An Autonomous Institute Permanently Affiliated to the University of Mumbai</p>
-                </div>
-            </div> */}
-
-            {/* <img className="kjLogo" src={kjsitLogo}></img> */}
             <div className="head">
                 <NavLink to="/" className="headLink">
                     <img className="navImg" src={algo1}></img>
@@ -407,6 +414,47 @@ function Navbar() {
             }
             {/* <button id="idcontact" className="contactus"><FontAwesomeIcon icon={faEnvelope} /></button> */}
             <img src={SomTrust} className="somTR" />
+            {uD ?
+                <div className="posR">
+                    <button className="userP"
+                        onClick={() => { setShowUD(!showUD) }}
+                    >
+                        <FontAwesomeIcon icon={faUser} className="uPI" />
+                    </button>
+                    {showUD ?
+                        <motion.div className="userDash"
+                            initial={{ clipPath: "circle(0% at 100% 1%)" }}
+                            animate={{ clipPath: "circle(140.8% at 100% 1%)" }}
+                            exit={{ clipPath: "circle(0% at 100% 1%)" }}
+                            transition={{ duration: 0.3 }}
+                        >
+                            {uD.isAdmin ?
+                                <p className="uTag hightText">Admin</p>
+                                : <p className="uTag hightText">Student</p>
+                            }
+                            <p className="uname">{uD.name}</p>
+                            <p className="uemail">{uD.email}</p>
+                            <div className="dividerN"></div>
+                            {uD.isAdmin ?
+                                <button className="exptP" onClick={() => { navigate("/admin") }}>
+                                    Dashboard
+                                </button>
+                                :
+                                <button className="exptP" onClick={() => { navigate("/user") }}>
+                                    No. of experiments performed: 2
+                                </button>
+                            }
+
+                            <button className="logout" onClick={logoutUser} >Logout</button>
+                        </motion.div>
+                        : <></>
+                    }
+                </div>
+
+                : <button className="spec" onClick={() => { navigate("/login") }}>Login</button>
+            }
+
+
         </motion.div >
     )
 }

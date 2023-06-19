@@ -45,9 +45,9 @@ function Home() {
                 </motion.section>
                 <motion.section className="homeSect sect2"
                     initial={{ opacity: 0, }}
-                    animate={{ opacity: 1 }}
+                    // animate={{ opacity: 1 }}
                     transition={{ duration: 0.3 }}
-
+                    whileInView={{opacity: 1}}
                 >
                     <div className="boxS">
                         <button className="cards" name="sorting" onClick={() => { naviTo("sorting") }}>

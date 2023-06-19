@@ -209,6 +209,8 @@
 
 .menuBar {
     display: none;
+    position: absolute;
+    left: 0.5rem;
 }
 
 .somTR {
@@ -220,6 +222,86 @@
     display: flex !important;
     margin-bottom: 1rem;
 }
+
+.posR{
+    position: relative;
+}
+
+.userP{
+    position: relative;
+    background: rgb(0, 9, 88);
+    color: rgb(255, 255, 255);
+    border-radius: 50%;
+    border: 0.2rem solid rgb(139, 139, 139);
+    margin-left: 0.5rem;
+}
+
+.userP:hover{
+    box-shadow: 0 0 0.1rem 0.1rem rgb(118, 127, 255);
+    opacity: 1;
+}
+
+.uPI{
+    font-size: 1.4rem;
+}
+
+.userDash{
+    position: absolute;
+    top: 3rem;
+    background: white;
+    border: 0.2rem solid rgb(194, 194, 194);
+    width: 10rem;
+    right: 0;
+    /* height: 10rem; */
+    border-radius: 0.4rem;
+    padding: 0.5rem;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.userDash button:hover{
+    opacity: 0.8;
+}
+
+.userDash .uname{
+    font-size: 1.7rem;
+    color: blue;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.userDash .uemail{
+    font-size: 1.2rem;
+    color: rgb(48, 48, 48);
+    margin-top: 0.2rem;
+}
+
+.dividerN{
+    width: 100%;
+    height: 0.12rem;
+    margin: 0.5rem 0;
+    background: rgb(117, 117, 117);
+}
+
+.logout{
+    margin-top: 0.5rem;
+    background: red;
+}
+
+.userDash .exptP{
+    background: whitesmoke;
+    color: black;
+}
+
+.uTag{
+    position: absolute;
+    right: 0.2rem;
+    top: 0.2rem;
+    font-size: 0.8rem;
+    border-radius: 0.5rem;
+    padding: 0.3rem;
+}
+
 
 @media (max-width: 1100px) {
     .kjsit {
@@ -286,5 +368,7 @@
     .kjsit {
         width: 10rem;
     }
-
+    .navbar .headLink{
+        gap: 0.5rem;
+    }
 }
