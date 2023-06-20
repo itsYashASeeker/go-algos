@@ -6,7 +6,8 @@
     flex-direction: column;
     width: 100%;
     box-sizing: border-box;
-    margin-top: 5.4rem;
+    /* margin-top: 5.4rem; */
+    margin: 0.5rem 0;
     /* background: linear-gradient(138deg, rgba(255, 195, 195, 1) 0%, rgba(255, 64, 64, 1) 25%, rgb(187, 14, 14) 50%, rgba(255, 64, 64, 1) 75%, rgba(255, 195, 195, 1) 100%); */
     padding: 1rem 1rem;
     z-index: 0;
@@ -45,8 +46,9 @@
 /* ALl Developer's Cards */
 .all_cards {
     flex-wrap: wrap;
-    column-gap: 5rem;
-    row-gap: 3rem;
+    column-gap: 2rem;
+    row-gap: 2rem;
+    padding: 2rem;
 }
 
 /* Developer Card */
@@ -60,7 +62,7 @@
     border: 0.2rem solid rgba(177, 0, 0, 0.452);
     backdrop-filter: blur(0.1rem);
     box-sizing: border-box;
-    margin: 3rem 0;
+    /* margin: 3rem 0; */
     padding: 1rem;
     z-index: 0;
     transition: all ease-out 0.2s;

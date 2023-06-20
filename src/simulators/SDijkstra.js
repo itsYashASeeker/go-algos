@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { animate, delay, motion } from "framer-motion";
+import { animate, delay, motion, useScroll } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 import Navbar from "../components/Navbar";
@@ -32,6 +32,7 @@ function SDijkstra() {
     const [prevsA, setPrevsA] = useState([]);
     const [mU, setMU] = useState(0);
     const [currSI, setCurrSI] = useState([]);
+    const [resultS, setResultS] = useState();
 
     const timer = ms => new Promise(res => setTimeout(res, ms));
 
@@ -56,60 +57,113 @@ function SDijkstra() {
         // window.scrollTo(0, 0);
     }, [stepC]);
 
-
-    useEffect(() => {
-        const options = {
-            autoResize: true,
-            height: '100%',
-            width: '100%',
-            locale: 'en',
-            interaction: {
-                dragNodes: true,
-                dragView: true,
-                hideEdgesOnDrag: false,
-                hideEdgesOnZoom: false,
-                hideNodesOnDrag: false,
-                // hover: true,
-                hoverConnectedEdges: true,
-                keyboard: {
-                    enabled: false,
-                    speed: { x: 10, y: 10, zoom: 0.02 },
-                    bindToWindow: true,
-                    autoFocus: true,
-                },
-                multiselect: false,
-                navigationButtons: true,
-                selectable: true,
-                selectConnectedEdges: false,
-                tooltipDelay: 300,
-                zoomSpeed: 1,
-                zoomView: true,
-
+    const options = {
+        autoResize: true,
+        height: '100%',
+        width: '100%',
+        locale: 'en',
+        interaction: {
+            dragNodes: true,
+            dragView: true,
+            hideEdgesOnDrag: false,
+            hideEdgesOnZoom: false,
+            hideNodesOnDrag: false,
+            // hover: true,
+            hoverConnectedEdges: true,
+            keyboard: {
+                enabled: false,
+                speed: { x: 10, y: 10, zoom: 0.02 },
+                bindToWindow: true,
+                autoFocus: true,
             },
-            physics: {
-                stabilization: true,
-                // solver: "forceAtlas2Based",
-                enabled: true,
-            },
-            layout: {
-                randomSeed: undefined,
-                improvedLayout: true,
-                clusterThreshold: 150,
-                hierarchical: {
-                    enabled: false,
-                    levelSeparation: 150,
-                    nodeSpacing: 100,
-                    // edgeSpacing: 150,
-                    treeSpacing: 100,
-                    blockShifting: true,
-                    edgeMinimization: true,
-                    parentCentralization: true,
-                    direction: 'DU',        // UD, DU, LR, RL
-                    sortMethod: 'directed',  // hubsize, directed
-                    shakeTowards: 'leaves'  // roots, leaves
+            multiselect: false,
+            navigationButtons: true,
+            selectable: true,
+            selectConnectedEdges: false,
+            tooltipDelay: 300,
+            zoomSpeed: 1,
+            zoomView: true,
+
+        },
+        physics: {
+            stabilization: true,
+            // solver: "forceAtlas2Based",
+            enabled: true,
+        },
+        layout: {
+            randomSeed: undefined,
+            improvedLayout: true,
+            clusterThreshold: 150,
+            hierarchical: {
+                enabled: false,
+                levelSeparation: 150,
+                nodeSpacing: 100,
+                // edgeSpacing: 150,
+                treeSpacing: 100,
+                blockShifting: true,
+                edgeMinimization: true,
+                parentCentralization: true,
+                direction: 'DU',        // UD, DU, LR, RL
+                sortMethod: 'directed',  // hubsize, directed
+                shakeTowards: 'leaves'  // roots, leaves
+            }
+        }
+    };
+
+    function createGraph(idname, gmArr, doOpt) {
+        if (gmArr[0].length >= 1) {
+            var vertices = gmArr.length;
+            var dgMatrix = [];
+            var disR = distanceA;
+            for (var i = 0; i < vertices; i++) {
+                dgMatrix[i] = [];
+                for (var j = 0; j < vertices; j++) {
+                    dgMatrix[i][j] = gmArr[i][j];
                 }
             }
-        };
+
+            var nodes = new DataSet();
+            var edges = new DataSet();
+            var asc = 65;
+            var nArray = [];
+            var eArray = [];
+            var w;
+            for (var i = 0; i < vertices; i++) {
+                if (doOpt) {
+                    // var Ndis = String(disR[i]);
+                    nArray.push({ id: i + 1, label: String.fromCharCode(asc) + " (" + disR[i] + ")", ...nopt });
+                }
+                else {
+                    nArray.push({ id: i + 1, label: String.fromCharCode(asc) + " (inf)", ...nopt });
+                }
+                asc++;
+                for (var j = 0; j < vertices; j++) {
+                    w = dgMatrix[i][j];
+                    if (w != 0) {
+                        eArray.push({ id: `${i + 1}${j + 1}`, from: i + 1, to: j + 1, label: String(w), weight: String(w), ...eOpt });
+                    }
+                    dgMatrix[i][j] = dgMatrix[j][i] = 0;
+                }
+            }
+            nodes.add(nArray);
+            edges.add(eArray);
+            setNodes(nodes);
+            setEdges(edges);
+            // create a network
+            var container = document.getElementById(idname);
+
+            // provide the data in the vis format
+            var data = {
+                nodes: nodes,
+                edges: edges
+            };
+
+            const network = new Network(container, data, options);
+        }
+    }
+
+    useEffect(() => {
+
         const nodeOptions = {
             borderWidth: 2,
             borderWidthSelected: 3,
@@ -148,48 +202,7 @@ function SDijkstra() {
         }
         setNOpt(nodeOptions);
         setEOpt(edgeOptions);
-        if (gMatrix[0].length >= 1) {
-            var vertices = gMatrix.length;
-            var dgMatrix = [];
-            for (var i = 0; i < vertices; i++) {
-                dgMatrix[i] = [];
-                for (var j = 0; j < vertices; j++) {
-                    dgMatrix[i][j] = gMatrix[i][j];
-                }
-            }
-
-            var nodes = new DataSet();
-            var edges = new DataSet();
-            var asc = 65;
-            var nArray = [];
-            var eArray = [];
-            var w;
-            for (var i = 0; i < vertices; i++) {
-                nArray.push({ id: i + 1, label: String.fromCharCode(asc) + " (inf)", ...nopt });
-                asc++;
-                for (var j = 0; j < vertices; j++) {
-                    w = dgMatrix[i][j];
-                    if (w != 0) {
-                        eArray.push({ id: `${i + 1}${j + 1}`, from: i + 1, to: j + 1, label: String(w), weight: String(w), ...eOpt });
-                    }
-                    dgMatrix[i][j] = dgMatrix[j][i] = 0;
-                }
-            }
-            nodes.add(nArray);
-            edges.add(eArray);
-            setNodes(nodes);
-            setEdges(edges);
-            // create a network
-            var container = document.getElementById('mynetwork');
-
-            // provide the data in the vis format
-            var data = {
-                nodes: nodes,
-                edges: edges
-            };
-
-            const network = new Network(container, data, options);
-        }
+        createGraph("mynetwork", gMatrix, false);
     }, [gMatrix]);
 
     function minDistance(dist, sptSet) {
@@ -218,8 +231,17 @@ function SDijkstra() {
         var graph = gMatrix;
         var prevS = prevsA;
         var V = gMatrix.length;
+        var restS = resultS;
 
-        // console.log(graph[u][v]);
+        if (!restS) {
+            restS = [];
+            for (var i = 0; i < graph.length; i++) {
+                restS[i] = [];
+                for (var j = 0; j < graph.length; j++) {
+                    restS[i][j] = 0;
+                }
+            }
+        }
 
         for (var i = 0; i < V; i++) {
             try {
@@ -242,22 +264,22 @@ function SDijkstra() {
 
         var fNode = document.createElement("span");
         fNode.innerHTML = String.fromCharCode(u + 65);
-        fNode.id =  "fN";
+        fNode.id = "fN";
         retElId("edgeStat1").appendChild(fNode);
         fNode = document.createElement("span");
         fNode.innerHTML = "to:";
         retElId("edgeStat1").appendChild(fNode);
 
-        var firstS=true;
+        var firstS = true;
         for (let e = 0; e < V; e++) {
-            if(graph[u][e]!=0){
+            if (graph[u][e] != 0) {
                 if (!firstS) {
                     var comma = document.createElement("span");
                     comma.innerHTML = ", ";
                     retElId("edgeStat1").appendChild(comma);
                 }
-                else{
-                    firstS=false;
+                else {
+                    firstS = false;
                 }
 
                 var indEdge = document.createElement("span");
@@ -265,10 +287,10 @@ function SDijkstra() {
                 indEdge.id = e + "N";
                 retElId("edgeStat1").appendChild(indEdge);
             }
-            
+
         }
         retElId("fN").classList.add("selEShow");
-        retElId(v+"N").classList.add("selEShow");
+        retElId(v + "N").classList.add("selEShow");
 
         try {
             snodes.update({
@@ -320,8 +342,15 @@ function SDijkstra() {
                     color: "#000000",
                     width: 3,
                 });
+
+                if (-1 < prevS[v][0] < graph.length && -1 < prevS[v][1] < graph.length) {
+                    restS[prevS[v][0]][prevS[v][1]] = 0;
+                    restS[prevS[v][1]][prevS[v][0]] = 0;
+                }
                 prevS[v] = [-1, -1];
             }
+            restS[fi][li] = graph[u][v];
+            restS[li][fi] = graph[u][v];
 
             try {
                 snodes.update({
@@ -348,20 +377,19 @@ function SDijkstra() {
             }
         }
         else {
+            // restS[fi][li] = 0;
+            // restS[li][fi] = 0;
             retElId("answerStat").classList.add("dangerC");
             retElId("answerStat").innerHTML = "dist[" + String.fromCharCode(v + 65) + "] > dist[" + String.fromCharCode(u + 65) + "] + cost[" + String.fromCharCode(u + 65) + "][" + String.fromCharCode(v + 65) + "] not satisfied!";
 
         }
         iAsc++;
-        // }
         setDistA(dist);
         setSelSet(sptSet);
         setEdHA(edH);
         setPrevsA(prevS);
-
+        setResultS(restS);
         retElId(eT.id).disabled = false;
-        // console.log(edH);
-        // console.log(prevS);
     }
 
     async function dijkstra(graph) {
@@ -431,11 +459,14 @@ function SDijkstra() {
         var sptSet = selSet;
         var dist = distanceA;
         let u = minDistance(dist, sptSet);
-        console.log(u);
         sptSet[u] = true;
         // await setMU(u);
         setSelSet(sptSet);
         return u;
+    }
+
+    async function createMG() {
+        createGraph("mynetwork2", resultS, true);
     }
 
     async function goToNextDij(eT) {
@@ -443,7 +474,7 @@ function SDijkstra() {
         var v = currSI[1];
         var cI = count + 1;
         var vI = (v + 1);
-        var u=mU;
+        var u = mU;
 
         var found = true;
         while (found) {
@@ -451,16 +482,16 @@ function SDijkstra() {
                 u = initForELoop();
                 setMU(u);
             }
-            else if(vI<gMatrix.length && cI<gMatrix.length){
+            else if (vI < gMatrix.length && cI < gMatrix.length) {
                 // you can go ahead
             }
-            else if (vI === gMatrix.length && cI<gMatrix.length-1) {
+            else if (vI === gMatrix.length && cI < gMatrix.length - 1) {
                 vI = 0;
                 cI++;
                 u = initForELoop();
                 setMU(u);
             }
-            else if (cI===gMatrix.length || vI===gMatrix.length){
+            else if (cI === gMatrix.length || vI === gMatrix.length) {
                 retElId(eT.id).setAttribute("disabled", "disable");
                 setStepC(2);
                 retElId("answerStat").classList.add("successC");
@@ -474,7 +505,11 @@ function SDijkstra() {
                 } catch (error) {
                     console.log(error);
                 }
-
+                retElId("divNetw").classList.add("myNetwork");
+                retElId("mynetwork").classList.add("smallNet");
+                retElId("mynetwork2").classList.add("smallNet");
+                retElId("showMstP").classList.remove("dNoneP");
+                createMG();
                 break;
             }
 
@@ -507,7 +542,7 @@ function SDijkstra() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1 }}
             >
-                <motion.div className="left-side">
+                <motion.div className="left-side graphLSide">
                     <motion.div
                         className="simulation"
                         initial={{ x: 50 }}
@@ -525,7 +560,11 @@ function SDijkstra() {
                             }
 
                         </div>
-                        <div id="mynetwork" className="myNetwork"></div>
+                        <div id="divNetw" className="oldNetwork">
+                            <div id="mynetwork" className="oldSmNet"></div>
+                            <p id="showMstP" className="dNoneP f1-2"><b>MST {"->"}</b></p>
+                            <div id="mynetwork2"></div>
+                        </div>
                     </motion.div>
                 </motion.div>
                 <motion.div className="right-side">

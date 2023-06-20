@@ -150,6 +150,21 @@
     color: rgb(138, 0, 0);
     padding: 0.3rem 0;
     border: 0.2rem solid rgb(218, 148, 148);
+    /* overflow: auto; */
+}
+
+.nestedDrop {
+    position: absolute;
+    top: 3rem;
+    left: 95%;
+    background: rgb(255, 241, 214);
+    border-radius: 0.3rem;
+    color: rgb(138, 0, 0);
+    padding: 0.3rem 0;
+}
+
+.nestDD {
+    top: 5.5rem !important;
 }
 
 .drop .dropItem {
@@ -159,8 +174,14 @@
     width: 100%;
 }
 
+.pR {
+    position: relative;
+    /* width: 25rem; */
+}
+
 .dropItem .dropLink {
     text-decoration: none;
+    color: rgb(138, 0, 0);
 }
 
 .drop .dropItem:hover p {
@@ -203,7 +224,7 @@
 
 .sideBar .cancel {
     position: absolute;
-    right: 1rem;
+    left: 1rem;
     top: 1rem;
 }
 
@@ -223,11 +244,11 @@
     margin-bottom: 1rem;
 }
 
-.posR{
+.posR {
     position: relative;
 }
 
-.userP{
+.userP {
     position: relative;
     background: rgb(0, 9, 88);
     color: rgb(255, 255, 255);
@@ -236,16 +257,16 @@
     margin-left: 0.5rem;
 }
 
-.userP:hover{
+.userP:hover {
     box-shadow: 0 0 0.1rem 0.1rem rgb(118, 127, 255);
     opacity: 1;
 }
 
-.uPI{
+.uPI {
     font-size: 1.4rem;
 }
 
-.userDash{
+.userDash {
     position: absolute;
     top: 3rem;
     background: white;
@@ -259,41 +280,41 @@
     word-wrap: break-word;
 }
 
-.userDash button:hover{
+.userDash button:hover {
     opacity: 0.8;
 }
 
-.userDash .uname{
+.userDash .uname {
     font-size: 1.7rem;
     color: blue;
     font-weight: 600;
     margin-top: 1rem;
 }
 
-.userDash .uemail{
+.userDash .uemail {
     font-size: 1.2rem;
     color: rgb(48, 48, 48);
     margin-top: 0.2rem;
 }
 
-.dividerN{
+.dividerN {
     width: 100%;
     height: 0.12rem;
     margin: 0.5rem 0;
     background: rgb(117, 117, 117);
 }
 
-.logout{
+.logout {
     margin-top: 0.5rem;
     background: red;
 }
 
-.userDash .exptP{
+.userDash .exptP {
     background: whitesmoke;
     color: black;
 }
 
-.uTag{
+.uTag {
     position: absolute;
     right: 0.2rem;
     top: 0.2rem;
@@ -368,7 +389,24 @@
     .kjsit {
         width: 10rem;
     }
-    .navbar .headLink{
+
+    .navbar .headLink {
         gap: 0.5rem;
+    }
+
+    .nestedDrop {
+        left: 0;
+        /* right: 0; */
+        /* transform: translate(50%); */
+    }
+}
+
+@media (max-width: 300px) {
+    .dev_card {
+        width: 90vw !important;
+    }
+
+    .algoPic {
+        width: 90vw !important;
     }
 }

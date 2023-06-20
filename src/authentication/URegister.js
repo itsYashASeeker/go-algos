@@ -33,7 +33,7 @@ export default function URegister() {
             }, config)
                 .then((data) => {
                     window.location.reload();
-                    window.alert("Registration successful");
+                    window.alert(data.data);
                 })
                 .catch((err) => {
                     const errs = err.response.data.error;
@@ -54,7 +54,7 @@ export default function URegister() {
                 password: password,
                 name: uName,
                 username: username
-            }, "admin");
+            }, "user");
         }
         else {
             return;

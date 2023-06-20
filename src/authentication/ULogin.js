@@ -35,8 +35,10 @@ export default function ULogin() {
                 withCredentials: true
             }, config)
                 .then((data) => {
+                    // console.log(data);
                     window.location.reload();
                     window.alert("Login successful");
+                    
                 })
                 .catch((err) => {
                     const errs = err.response.data.error;
@@ -51,13 +53,13 @@ export default function ULogin() {
     }
 
     function subForm(tId) {
-        if (uemail.includes("@")) {
+        if (uemail.includes("@") && retId("loginB")) {
             doLogin({
                 email: uemail,
                 password: password
             }, "user");
         }
-        else if (aEmail.includes("@")) {
+        else if (aEmail.includes("@") && retId("loginBA")) {
             doLogin({
                 email: aEmail,
                 password: aPassword,

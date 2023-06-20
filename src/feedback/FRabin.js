@@ -7,12 +7,9 @@ import Navbar from "../components/Navbar";
 import '../css/progressbar.css';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
-
+import Footer from "../components/Footer";
 
 export default function FRabinkarp() {
-
-
 
     const [username, setUsername] = useState(null);
     const [email, setEmail] = useState(null);
@@ -35,18 +32,11 @@ export default function FRabinkarp() {
     const { cuE, algoT } = AppState();
 
     const [currE, setCE] = cuE;
-
     const { userD } = AppState();
-
     const [uD, setUD] = userD;
-
     const algoName = expR[currE[0]][currE[1]][0];
-
-    //   const [message, setMessage] = useState(null);
     const [index, setIndex] = useState(1);
-    // console.log(index);
     const navigate = useNavigate();
-
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -429,8 +419,6 @@ export default function FRabinkarp() {
             <Navbar />
             <FNavbar />
             {uD ?
-
-
                 <div
                     style={{
                         display: "flex",
@@ -454,11 +442,10 @@ export default function FRabinkarp() {
                 </div>
                 :
                 <div className="fullbg">
-                    {/* <button onClick={() => { naviTo("login") }}>Login</button>
-                    <button onClick={() => { naviTo("register") }}>Register</button> */}
                     <h1>Please Login to Fill the feedback!</h1>
                 </div>
             }
+            <Footer />
         </>
     )
 }

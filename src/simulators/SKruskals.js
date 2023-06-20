@@ -30,6 +30,8 @@ function SKruskals() {
     const [nopt, setNOpt] = useState();
     const [eOpt, setEOpt] = useState();
 
+    const [resultS, setResultS] = useState();
+
     const [currI, setCurrI] = useState(-1);
 
     const timer = ms => new Promise(res => setTimeout(res, ms));
@@ -55,59 +57,107 @@ function SKruskals() {
         // window.scrollTo(0, 0);
     }, [stepC]);
 
-    useEffect(() => {
-        const options = {
-            autoResize: true,
-            height: '100%',
-            width: '100%',
-            locale: 'en',
-            interaction: {
-                dragNodes: true,
-                dragView: true,
-                hideEdgesOnDrag: false,
-                hideEdgesOnZoom: false,
-                hideNodesOnDrag: false,
-                // hover: true,
-                hoverConnectedEdges: true,
-                keyboard: {
-                    enabled: true,
-                    speed: { x: 10, y: 10, zoom: 0.02 },
-                    bindToWindow: true,
-                    autoFocus: true,
-                },
-                multiselect: false,
-                navigationButtons: true,
-                selectable: true,
-                selectConnectedEdges: false,
-                tooltipDelay: 300,
-                zoomSpeed: 1,
-                zoomView: true,
-
-            },
-            physics: {
-                stabilization: true,
-                // solver: "forceAtlas2Based",
+    const options = {
+        autoResize: true,
+        height: '100%',
+        width: '100%',
+        locale: 'en',
+        interaction: {
+            dragNodes: true,
+            dragView: true,
+            hideEdgesOnDrag: false,
+            hideEdgesOnZoom: false,
+            hideNodesOnDrag: false,
+            // hover: true,
+            hoverConnectedEdges: true,
+            keyboard: {
                 enabled: true,
+                speed: { x: 10, y: 10, zoom: 0.02 },
+                bindToWindow: true,
+                autoFocus: true,
             },
-            layout: {
-                randomSeed: undefined,
-                improvedLayout: true,
-                clusterThreshold: 150,
-                hierarchical: {
-                    enabled: false,
-                    levelSeparation: 150,
-                    nodeSpacing: 100,
-                    // edgeSpacing: 150,
-                    treeSpacing: 100,
-                    blockShifting: true,
-                    edgeMinimization: true,
-                    parentCentralization: true,
-                    direction: 'DU',        // UD, DU, LR, RL
-                    sortMethod: 'directed',  // hubsize, directed
-                    shakeTowards: 'leaves'  // roots, leaves
+            multiselect: false,
+            navigationButtons: true,
+            selectable: true,
+            selectConnectedEdges: false,
+            tooltipDelay: 300,
+            zoomSpeed: 1,
+            zoomView: true,
+
+        },
+        physics: {
+            stabilization: true,
+            // solver: "forceAtlas2Based",
+            enabled: true,
+        },
+        layout: {
+            randomSeed: undefined,
+            improvedLayout: true,
+            clusterThreshold: 150,
+            hierarchical: {
+                enabled: false,
+                levelSeparation: 150,
+                nodeSpacing: 100,
+                // edgeSpacing: 150,
+                treeSpacing: 100,
+                blockShifting: true,
+                edgeMinimization: true,
+                parentCentralization: true,
+                direction: 'DU',        // UD, DU, LR, RL
+                sortMethod: 'directed',  // hubsize, directed
+                shakeTowards: 'leaves'  // roots, leaves
+            }
+        }
+    };
+
+    function createGraph(idname, gmArr) {
+        if (gmArr[0].length >= 1) {
+            var vertices = gmArr.length;
+            var dgMatrix = [];
+            for (var i = 0; i < vertices; i++) {
+                dgMatrix[i] = [];
+                for (var j = 0; j < vertices; j++) {
+                    dgMatrix[i][j] = gmArr[i][j];
                 }
             }
-        };
+
+            var nodes = new DataSet();
+            var edges = new DataSet();
+            var asc = 65;
+            var nArray = [];
+            var eArray = [];
+            var w;
+            for (var i = 0; i < vertices; i++) {
+                nArray.push({ id: i, label: String.fromCharCode(asc), ...nopt });
+                asc++;
+                for (var j = 0; j < vertices; j++) {
+                    w = dgMatrix[i][j];
+                    if (w != 0) {
+                        eArray.push({ id: `${i}${j}`, from: i, to: j, label: String(w), weight: String(w), ...eOpt });
+                    }
+                    dgMatrix[i][j] = dgMatrix[j][i] = 0;
+                }
+            }
+            nodes.add(nArray);
+            edges.add(eArray);
+            setNodes(nodes);
+            setEdges(edges);
+            // create a network
+            var container = document.getElementById(idname);
+
+            // provide the data in the vis format
+            var data = {
+                nodes: nodes,
+                edges: edges
+            };
+
+            const network = new Network(container, data, options);
+        }
+
+    }
+
+    useEffect(() => {
+
         const nodeOptions = {
             borderWidth: 2,
             borderWidthSelected: 3,
@@ -146,48 +196,8 @@ function SKruskals() {
         }
         setNOpt(nodeOptions);
         setEOpt(edgeOptions);
-        if (gMatrix[0].length >= 1) {
-            var vertices = gMatrix.length;
-            var dgMatrix = [];
-            for (var i = 0; i < vertices; i++) {
-                dgMatrix[i] = [];
-                for (var j = 0; j < vertices; j++) {
-                    dgMatrix[i][j] = gMatrix[i][j];
-                }
-            }
 
-            var nodes = new DataSet();
-            var edges = new DataSet();
-            var asc = 65;
-            var nArray = [];
-            var eArray = [];
-            var w;
-            for (var i = 0; i < vertices; i++) {
-                nArray.push({ id: i, label: String.fromCharCode(asc), ...nopt });
-                asc++;
-                for (var j = 0; j < vertices; j++) {
-                    w = dgMatrix[i][j];
-                    if (w != 0) {
-                        eArray.push({ id: `${i}${j}`, from: i, to: j, label: String(w), weight: String(w), ...eOpt });
-                    }
-                    dgMatrix[i][j] = dgMatrix[j][i] = 0;
-                }
-            }
-            nodes.add(nArray);
-            edges.add(eArray);
-            setNodes(nodes);
-            setEdges(edges);
-            // create a network
-            var container = document.getElementById('mynetwork');
-
-            // provide the data in the vis format
-            var data = {
-                nodes: nodes,
-                edges: edges
-            };
-
-            const network = new Network(container, data, options);
-        }
+        createGraph("mynetwork", gMatrix);
     }, [gMatrix]);
 
     function retElId(idname) {
@@ -237,6 +247,32 @@ function SKruskals() {
         }
         setRankA(rank);
         setPA(parent);
+    }
+
+    async function createMG() {
+        var edgeM = resultS;
+        var graphM = gMatrix;
+        var gn = graphM.length;
+        var newGM = [];
+        for (var i = 0; i < gn; i++) {
+            newGM.push([]);
+            for (var j = 0; j < gn; j++) {
+                var takenB = false;
+                for (var k = 0; k < edgeM.length; k++) {
+                    if ((i === edgeM[k][0] && j === edgeM[k][1]) || (i === edgeM[k][1] && j === edgeM[k][0])) {
+                        newGM[i][j] = edgeM[k][2];
+                        takenB = true;
+                        break;
+                    }
+                }
+                if (!takenB) {
+                    newGM[i][j] = 0;
+                }
+            }
+        }
+
+        await timer(100);
+        createGraph("mynetwork2", newGM);
     }
 
     async function nextEdge(i, eT) {
@@ -294,6 +330,12 @@ function SKruskals() {
 
         await timer(500);
         if (v1 != v2) {
+            var resT = [];
+            if (resultS) {
+                resT = resultS;
+            }
+            resT.push(edge[i]);
+            setResultS(resT);
             retElId("answerStat").innerHTML = "Loop will not be created, so select edge " + wt;
             await timer(300);
             unionSet(v1, v2, parent, rank, n);
@@ -386,6 +428,7 @@ function SKruskals() {
     function doKruskals(eT) {
         retElId(eT.id).setAttribute("disabled", "disable");
         kruskalAlgo(5, graphD[2].mK);
+
     }
 
     function goNextEdge(eT) {
@@ -401,7 +444,16 @@ function SKruskals() {
             retElId("answerStat").classList.add("successC");
             retElId("answerStat").innerHTML = "Minimum Cost is " + mCost;
             retElId(eT.id).setAttribute("disabled", "disable");
+            retElId("divNetw").classList.add("myNetwork");
+            retElId("mynetwork").classList.add("smallNet");
+            retElId("mynetwork2").classList.add("smallNet");
+            retElId("showMstP").classList.remove("dNoneP");
+            createMG();
+
+            console.log(resultS);
+            // retElId("mynetwork").classList.add("smallNet");
             setStepC(2);
+
         }
         if (cI === edgeMatrix.length - 1) {
             retElId("nextEd").innerHTML = "Answer";
@@ -418,7 +470,7 @@ function SKruskals() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1 }}
             >
-                <motion.div className="left-side">
+                <motion.div className="left-side graphLSide">
                     <motion.div
                         className="simulation"
                         initial={{ x: 50 }}
@@ -437,8 +489,11 @@ function SKruskals() {
 
                         </div>
 
-
-                        <div id="mynetwork" className="myNetwork"></div>
+                        <div id="divNetw" className="oldNetwork">
+                            <div id="mynetwork" className="oldSmNet"></div>
+                            <p id="showMstP" className="dNoneP f1-2"><b>MST {"->"}</b></p>
+                            <div id="mynetwork2"></div>
+                        </div>
 
 
                     </motion.div>
