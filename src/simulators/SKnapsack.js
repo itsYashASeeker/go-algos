@@ -27,6 +27,7 @@ function SKnapsack() {
     const [countI, setCountI] = useState(0);
     const [countJ, setCountJ] = useState(0);
     const [solution, setSolution] = useState();
+    const [autoSim, setAutoSim] = useState(false);
 
     function retElId(idname) {
         return document.getElementById(idname);
@@ -48,6 +49,7 @@ function SKnapsack() {
         setCountI(0);
         setCountJ(0);
         setSolution();
+        setAutoSim(false);
         retElId("totweightIn").readOnly = false;
     }
 
@@ -71,6 +73,16 @@ function SKnapsack() {
         retElId("idAllSteps").lastChild.scrollIntoView({ behavior: "smooth" });
         // window.scrollTo(0, 0);
     }, [stepC]);
+
+    useEffect(() => {
+        if (countI === pwArrs.length - 1 && countJ === Number(inTotWeight) + 1) {
+            return;
+        }
+        else if (autoSim) {
+            retElId("solveknap2").setAttribute("disabled", "disabled");
+            doKnap("solveknap");
+        }
+    }, [countI, countJ, autoSim]);
 
     function checkIfInt(valNum) {
         const regex = /[^0-9]/;
@@ -121,15 +133,16 @@ function SKnapsack() {
         retElId("idAddTotWeight").style.display = "none";
     }
 
-    async function doKnap(eT) {
+    async function doKnap(eTId) {
         var profits = [];
         var weights = [];
         var TotalW = Number(inTotWeight);
         var pAndWA = pwArrs;
         var n = pAndWA.length;
         var kMatrix = solArr;
-        var i = countI;
-        var j = countJ;
+        var i = Number(countI);
+        var j = Number(countJ);
+        // console.log(countI + " , " + countJ);
 
         for (var k = 1; k < n; k++) {
             profits[k - 1] = Number(pAndWA[k][0]);
@@ -140,9 +153,9 @@ function SKnapsack() {
         let pI;
         let findI;
         var totL = TotalW + 1;
-        retElId(eT.id).setAttribute("disabled", "disabled");
+        retElId(eTId).setAttribute("disabled", "disabled");
         // --------------
-        if (i % n === 0 || j % totL === 0) {
+        if ((i % n === 0 || j % totL === 0) && i < n) {
             i++;
             j = 1;
             retElId(`${i - 1}i${totL - 1}`).classList.remove("animBGY");
@@ -236,7 +249,7 @@ function SKnapsack() {
             retElId(`${i}i${j}`).classList.add("bgGreen");
             retElId(`P${i}`).classList.remove("normAnime");
             retElId(`W${i}`).classList.remove("normAnime");
-            retElId(eT.id).setAttribute("disabled", "disabled");
+            retElId(eTId).setAttribute("disabled", "disabled");
             retElId("sol1").innerHTML = "";
             retElId("sol2").innerHTML = "";
 
@@ -244,15 +257,31 @@ function SKnapsack() {
             var currStep = stepC + 1;
             await timer(500);
             setStepC(currStep);
+            j = j + 1;
+            setCountI(prevSt => {
+                return i;
+            });
+            setCountJ(prevSt => {
+                return j;
+            });
+            setSolArr(kMatrix);
+            return true;
         }
         else {
-            retElId(eT.id).removeAttribute("disabled", "disabled");
+            retElId(eTId).removeAttribute("disabled", "disabled");
+            j = j + 1;
+            setCountI(prevSt => {
+                return i;
+            });
+            setCountJ(prevSt => {
+                return j;
+            });
+            // await timer(1000);
+            // console.log(i, j);
+            setSolArr(kMatrix);
+            return false;
         }
-        j++;
-        setCountI(i);
-        setCountJ(j);
-        // }
-        setSolArr(kMatrix);
+
     }
 
     function etCheck(val, eT) {
@@ -413,7 +442,8 @@ function SKnapsack() {
                                         <p id="sol1"></p>
                                         <p id="sol2"></p>
                                     </motion.div>
-                                    <button id="solveknap" className="spec" onClick={(e) => { doKnap(e.target) }}>Solve</button>
+                                    <button id="solveknap" className="spec" onClick={(e) => { doKnap("solveknap") }}>Solve</button>
+                                    <button id="solveknap2" className="spec" onClick={(e) => { setAutoSim(true); }}>Auto</button>
                                 </div>
                                 <FontAwesomeIcon id="1STDN" className="stepDoneIcon" icon={faCircleCheck} />
 
