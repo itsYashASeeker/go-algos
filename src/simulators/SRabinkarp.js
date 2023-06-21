@@ -233,11 +233,11 @@ function SRabinkarp() {
                         <motion.div id="div">
 
                         </motion.div>
-                        <div id="Row0" className="row">
+                        // <div id="Row0" className="row">
                                 
-                                <div style={{padding:'3px',background:'none',color:'red',border:"none"}} id={`MMM`} className="lcsBox th2"><p>Hash Value: {hasht}</p></div>
+                        //         <div style={{padding:'3px',background:'none',color:'red',border:"none"}} id={`MMM`} className="lcsBox th2"><p>Hash Value: {hasht}</p></div>
                                 
-                            </div>
+                        //     </div>
                         <motion.div className="lcsTable">
                             <div id="RowHead" className="row">
                                
@@ -280,11 +280,11 @@ function SRabinkarp() {
                             </div>
 
                             </motion.div>
-                            <div id="Row0" className="row">
+                            // <div id="Row0" className="row">
                                 
-                                <div style={{padding:'3px',background:'none',color:'red',border:"none"}} id={`MMM`} className="lcsBox th2"><p>Hash Value: {hashp}</p></div>
+                            //     <div style={{padding:'3px',background:'none',color:'red',border:"none"}} id={`MMM`} className="lcsBox th2"><p>Hash Value: {hashp}</p></div>
                                 
-                            </div>
+                            // </div>
                         </motion.div> : <></>}
                     
                 </motion.div>
