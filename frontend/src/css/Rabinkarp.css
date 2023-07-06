@@ -1,0 +1,16 @@
+.Table .row .Bhight,
+.lcsTable .row .Bhight {
+    animation: anBight 0.4s 2;
+}
+
+@keyframes anBight {
+    0% {
+        background: var(--tdataColors);
+        color: white;
+    }
+
+    100% {
+        background: lightgreen;
+        color: rgb(216, 39, 60);
+    }
+}
