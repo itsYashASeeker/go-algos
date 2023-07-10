@@ -49,6 +49,7 @@
     column-gap: 2rem;
     row-gap: 2rem;
     padding: 2rem;
+    overflow: hidden;
 }
 
 /* Developer Card */
@@ -74,8 +75,9 @@
     position: relative;
     /* transform: scale(1.05); */
     border: 0.2rem solid rgb(163, 21, 21);
-    box-shadow: 0 0 0.4rem 0.01rem rgb(245, 71, 71);
+    box-shadow: 0 0.2rem 0.4rem 0.2rem rgba(245, 71, 71, 0.6);
     z-index: 0;
+    /* box-shadow: 0 0 1rem 50rem rgba(212, 212, 212, 0.1); */
     color: rgb(124, 0, 0) !important;
     transform: translateY(-0.3rem) !important;
 }
