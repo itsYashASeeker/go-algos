@@ -12,6 +12,7 @@ import { AppState } from "../context/appContext";
 import SomTrust from "../img/somaiyaTrust.png";
 import SomL from "./somL";
 import axios from "axios";
+import { ErrNoti } from "../funcs/swals";
 
 function Navbar() {
     const navigate = useNavigate();
@@ -36,13 +37,14 @@ function Navbar() {
         await axios.post(`${process.env.REACT_APP_BACKEND_DOMAIN}/y/user/logout`, {}, { withCredentials: true })
             .then((data) => {
                 window.location.reload();
-                window.alert(data.data);
             })
             .catch((err) => {
-                const errs = err.response.data.error;
-                for (var i = 0; i < errs.length; i++) {
-                    window.alert(errs[i]);
+                if (!err.response) {
+                    ErrNoti({ errMessage: "Some error occurred, Please try again!" })
+                    return;
                 }
+                const errs = err.response.data.error;
+                ErrNoti({ errMessage: errs })
             })
     }
 

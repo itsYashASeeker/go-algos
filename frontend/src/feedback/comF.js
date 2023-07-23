@@ -9,6 +9,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Footer from "../components/Footer";
 import PageNotFound from "../components/NotFound";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function ComF() {
 
@@ -32,6 +34,30 @@ export default function ComF() {
     const [algoName, setAlgN] = useState();
     const [index, setIndex] = useState(1);
     const navigate = useNavigate();
+
+    const notifyS = () => toast.success('Feedback Posted Successfully!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "colored",
+    });
+
+    function notifyE(errM) {
+        toast.error(errM, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            theme: "colored",
+        });
+    }
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -87,6 +113,11 @@ export default function ComF() {
                 "Content-type": "application/json"
             }
         }
+        if (!algoName || !uD.institute || !uD.department || !uD.designation || !Quest1 || !Quest2 || !Quest3 || !Quest4 || !Quest5 || !Quest6 || !Quest7 || !date) {
+            console.log("Fill all details!");
+            notifyE("Please fill all fields!");
+            return;
+        }
         const dataF = {
             algoName,
             institute: uD.institute,
@@ -107,18 +138,17 @@ export default function ComF() {
             }, config)
                 .then((data) => {
                     console.clear();
-                    window.alert(data.data);
+                    // window.alert(data.data);
+                    notifyS();
                     reloadStates();
                 })
                 .catch((err) => {
                     console.clear();
-                    const errs = err.response.data.error;
-                    for (var i = 0; i < errs.length; i++) {
-                        window.alert(errs[i]);
-                    }
+                    notifyE(err.response.data.error[0]);
                 })
         } catch (error) {
-            window.alert(error);
+            console.clear();
+            notifyE("Some error Occurred!");
         }
     }
 
@@ -393,7 +423,7 @@ export default function ComF() {
                         {(Quest1 && Quest2 && Quest3 && Quest4 && Quest5) ?
                             <div className="formfooter">
                                 <button className="spec prev" disabled={index === 1} onClick={prevbtn} >Previous</button>
-                                <button className="spec next" type='submit' onClick={submitFeed}>Submit</button>
+                                <button className="spec next" onClick={submitFeed}>Submit</button>
                             </div>
                             :
                             <>
@@ -426,6 +456,7 @@ export default function ComF() {
                         {
                             uD ?
                                 <div className="fullbg">
+                                    <ToastContainer />
                                     <div
                                         className="feedDiv"
                                     >

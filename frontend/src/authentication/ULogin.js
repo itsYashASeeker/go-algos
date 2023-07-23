@@ -7,6 +7,8 @@ import "../css/Theory.css";
 import "../css/login.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Swal from "sweetalert2";
+import { ErrNoti, SuccNoti } from "../funcs/swals";
 
 export default function ULogin() {
     const [uemail, setuemail] = useState();
@@ -32,27 +34,38 @@ export default function ULogin() {
         }
         // console.log(uData);
         try {
+            const bId = uType === "user" ? "loginB" : "loginBA";
+            retId(bId).setAttribute("disabled", "disabled");
             await axios.post(`${process.env.REACT_APP_BACKEND_DOMAIN}/y/` + uType + "/login", uData, {
                 withCredentials: true
             }, config)
                 .then((data) => {
                     console.clear();
-                    const bId = uType === "user" ? "loginB" : "loginBA";
-                    retId(bId).setAttribute("disabled", "disabled");
-                    window.alert("Login successful");
-                    navigate("/");
+                    const doN = async () => {
+                        const resultS = await SuccNoti({ title: "Login successful!", message: "You are logged in successful" })
+                        if (resultS.isConfirmed) {
+                            navigate("/");
+                        }
+                        else {
+                            window.location.reload();
+                        }
+                    }
+                    doN();
                 })
                 .catch((err) => {
+                    retId(bId).removeAttribute("disabled", "disabled");
                     console.clear();
-                    const errs = err.response.data.error;
-                    for (var i = 0; i < errs.length; i++) {
-                        window.alert(errs[i]);
+                    if (!err.response) {
+                        ErrNoti({ errMessage: "Some error occurred, Please try again!" })
+                        return;
                     }
+                    const errs = err.response.data.error;
+                    ErrNoti({ errMessage: errs })
                 })
         }
         catch (err) {
             console.clear();
-            window.alert(err);
+            ErrNoti({ errMessage: "Some error occurred, Please try again!" })
         }
     }
 

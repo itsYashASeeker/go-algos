@@ -7,6 +7,8 @@ import "../../css/Theory.css";
 import "../../css/login.css";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import Swal from "sweetalert2";
+import { ErrNoti, SuccNoti } from "../../funcs/swals";
 
 export default function FPUser() {
     const [uemail, setuemail] = useState();
@@ -40,22 +42,32 @@ export default function FPUser() {
             }, config)
                 .then((data) => {
                     console.clear();
-                    window.alert("Link has been sent to your email!");
-                    navigate("/login");
+                    const doN = async () => {
+                        const resultS = await SuccNoti({ title: "Link has been sent to your email!", message: "Please check your inbox!" })
+                        if (resultS.isConfirmed) {
+                            navigate("/login");
+                        }
+                        else {
+                            navigate("/login");
+                        }
+                    }
+                    doN();
                 })
                 .catch((err) => {
                     retId("changePL").removeAttribute("disabled");
                     console.clear();
-                    const errs = err.response.data.error;
-                    for (var i = 0; i < errs.length; i++) {
-                        window.alert(errs[i]);
+                    if (!err.response) {
+                        ErrNoti({ errMessage: "Some error occurred, Please try again!" })
+                        return;
                     }
+                    const errs = err.response.data.error;
+                    ErrNoti({ errMessage: errs })
                 })
         }
         catch (err) {
             retId("changePL").removeAttribute("disabled");
             console.clear();
-            window.alert(err);
+            ErrNoti({ errMessage: "Some error occurred, Please try again!" })
         }
     }
 

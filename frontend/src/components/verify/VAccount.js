@@ -6,6 +6,7 @@ import giphC from "../../img/giphy.gif";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSadTear } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import { ErrNoti, SuccNoti } from "../../funcs/swals";
 
 export default function VAccount() {
 
@@ -39,15 +40,26 @@ export default function VAccount() {
         await axios.post(`${process.env.REACT_APP_BACKEND_DOMAIN}/y/user/auth/account/verify/g/do`, { token: pToken.tt })
             .then((data) => {
                 console.clear();
-                window.alert(data.data)
+                const doN = async () => {
+                    const resultS = await SuccNoti({ title: "Account Verified!", message: "Your account has been successfully verified! You can proceed to Login!" })
+                    if (resultS.isConfirmed) {
+                        navigate("/login");
+                    }
+                    else {
+                        // navigate("/login");
+                    }
+                }
+                doN();
                 setAVerified(1);
             })
             .catch((err) => {
                 console.clear();
-                const errs = err.response.data.error;
-                for (var i = 0; i < errs.length; i++) {
-                    window.alert(errs[i]);
+                if (!err.response) {
+                    ErrNoti({ errMessage: "Some error occurred, Please try again!" })
+                    return;
                 }
+                const errs = err.response.data.error;
+                ErrNoti({ errMessage: errs })
             })
     }
 

@@ -9,6 +9,7 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSadTear } from "@fortawesome/free-solid-svg-icons";
+import { ErrNoti, SuccNoti } from "../../funcs/swals";
 
 export default function ChangePassUser() {
     const [uemail, setuemail] = useState();
@@ -80,18 +81,30 @@ export default function ChangePassUser() {
                 .then((data) => {
                     setPChanged(true);
                     console.clear();
-                    window.alert(data.data);
+                    const doN = async () => {
+                        const resultS = await SuccNoti({ title: "Password Changed!", message: "Password has been successfully changed for your registered account!" })
+                        if (resultS.isConfirmed) {
+                            window.location.reload();
+                        }
+                        else {
+                            window.location.reload();
+                        }
+                    }
+                    doN();
 
                 })
                 .catch((err) => {
                     console.clear();
-                    const errs = err.response.data.error;
-                    for (var i = 0; i < errs.length; i++) {
-                        window.alert(errs[i]);
+                    if (!err.response) {
+                        ErrNoti({ errMessage: "Some error occurred, Please try again!" })
+                        return;
                     }
+                    const errs = err.response.data.error;
+                    ErrNoti({ errMessage: errs })
                 })
         } catch (error) {
             console.clear();
+            ErrNoti({ errMessage: "Some error occurred, Please try again!" })
         }
     }
 
