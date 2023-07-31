@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Nanum+Gothic+Coding&family=Roboto:wght@500&family=Share+Tech&family=Ubuntu:wght@300&display=swap"
+        rel="stylesheet" type="text/css" />
+    <title>Algorithm Vlab[Forgot-Password]</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Nanum+Gothic+Coding&family=Roboto:wght@500&family=Share+Tech&family=Ubuntu:wght@300&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Share Tech', sans-serif;
+            color: #97081c;
+        }
+
+        body {
+            background: rgb(255, 255, 255);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgb(255, 232, 232) 30%, rgb(252, 223, 223) 46%, rgb(252, 206, 206) 70%, rgba(255, 162, 162, 1) 100%);
+        }
+
+        .maindiv {
+            padding: 2rem;
+        }
+
+        .spT {
+            padding: 0.25rem;
+            background: white;
+            border-radius: 0.2rem;
+            font-size: 1.2rem;
+        }
+
+        .fL {
+            font-size: 2.2rem;
+            font-weight: 600;
+        }
+
+        .fM {
+            font-size: 1.6rem;
+            /* font-weight: 600; */
+        }
+
+        .fullW {
+            width: 100%;
+        }
+
+        .img1 {
+            width: 10rem;
+        }
+
+        .pL {
+            padding: 2rem 0;
+        }
+
+        .cGap {
+            padding: 1rem;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            * {
+                color: #97081c !important;
+            }
+
+            body {
+                background: rgb(255, 255, 255) !important;
+                background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgb(255, 232, 232) 30%, rgb(252, 223, 223) 46%, rgb(252, 206, 206) 70%, rgba(255, 162, 162, 1) 100%) !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <table height="100%" class="maindiv fullW">
+        <tr class="fullW">
+            <td align="center">
+                <table>
+                    <tr>
+                        <td align="center">
+                            <a href={{frontEndLink}} class="cGap">
+                                <img class="img1"
+                                    src="http://localhost:3000/go-algos/static/media/acLogo3.5bc4210d7c2a77771311.png">
+                                </img>
+                            </a>
+                        </td>
+                        <td align="center">
+                            <a href="https://kjsit.somaiya.edu.in/" class="cGap">
+                                <img class="img1"
+                                    src="https://upload.wikimedia.org/wikipedia/commons/0/00/Kjsit_logo.png"></img>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        </td>
+        </tr>
+        <tr class="fullW">
+            <td align="center" style="text-align: center;">
+                <p class="fL pL">Hello {{name}}!</p>
+            </td>
+        </tr>
+        <tr class="fullW">
+            <td align="center" style="text-align: center;">
+                <p class="fM ">{{contentp1}}</p>
+            </td>
+        </tr>
+        <tr class="fullW">
+            <td align="center" style="text-align: center;">
+                <p class="fM"><a href={{ulink}}>{{contentp2}}</a></p>
+            </td>
+        </tr>
+        <tr class="fullW">
+            <td align="center" style="text-align: center; padding-top: 4rem;">
+                <p style="font-size: 1.2rem;">Thank you for being an active user!</p>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

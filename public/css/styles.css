@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Nanum+Gothic+Coding&family=Roboto:wght@500&family=Share+Tech&family=Ubuntu:wght@300&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Share Tech', sans-serif;
+    color: #97081c;
+}
+
+.maindiv {
+    flex-direction: column;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 219, 219, 1) 30%, rgba(255, 203, 203, 1) 46%, rgba(255, 195, 195, 1) 70%, rgba(255, 162, 162, 1) 100%);
+    padding: 2rem;
+}
+
+.fDirC {
+    flex-direction: column;
+}
+
+.fM {
+    font-size: 1.5rem;
+}
+
+.spT {
+    padding: 0.25rem;
+    background: white;
+    border-radius: 0.2rem;
+    font-size: 1.2rem;
+}
+
+.fL {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.divf {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.g1 {
+    gap: 1rem;
+}
+
+.g2 {
+    gap: 3rem;
+}
+
+.spec {
+    background: conic-gradient(from 90deg at 50% 50%, #9b0b0b, #eb3232);
+    font-size: 1.8rem;
+    padding: 0.3rem;
+    color: white;
+    opacity: 1;
+    margin: 0.3rem;
+    box-shadow: 0 0 0rem 0.2rem rgb(255, 110, 110);
+    transition: 0.3s all ease-out;
+    transform: scale(1);
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+}
+
+.spec:hover {
+    opacity: 1;
+    color: white;
+    box-shadow: 0 0 0rem 0.4rem rgb(255, 110, 110);
+}
+
+.img1 {
+    width: 10rem;
+}

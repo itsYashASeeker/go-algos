@@ -1,0 +1,25 @@
+{
+  "name": "backalgos",
+  "version": "1.0.0",
+  "description": "Backend for Algorithms VLAB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yash K Chauhan",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.2.0",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.3.0",
+    "nodemailer": "^6.9.3",
+    "nodemailer-express-handlebars": "^6.1.0",
+    "nodemon": "^2.0.22",
+    "xlsx": "^0.18.5"
+  }
+}
