@@ -37,28 +37,28 @@ function FNavbar() {
         return document.getElementById(idname);
     }
 
-    useEffect(() => {
-        function updateY() {
-            var prevscTop = scrollTop;
-            var scTop = window.scrollY;
-            var winHeight = window.innerHeight;
-            setPrevST(prevscTop);
-            setScrollTop(window.scrollY);
-            if (scTop === 0 || scTop < prevscTop || prevscTop < 20) {
-                if (retElId("idFNav")) {
-                    retElId("idFNav").classList.remove("goUpF");
-                }
-
-            }
-            else {
-                if (retElId("idFNav")) {
-                    retElId("idFNav").classList.add("goUpF");
-                }
+    // useEffect(() => {
+    function updateY() {
+        var prevscTop = scrollTop;
+        var scTop = window.scrollY;
+        var winHeight = window.innerHeight;
+        setPrevST(prevscTop);
+        setScrollTop(window.scrollY);
+        if (scTop === 0 || scTop < prevscTop || prevscTop < 20) {
+            if (retElId("idFNav")) {
+                retElId("idFNav").classList.remove("goUpF");
             }
 
         }
-        window.addEventListener("scroll", updateY);
-    });
+        else {
+            if (retElId("idFNav")) {
+                retElId("idFNav").classList.add("goUpF");
+            }
+        }
+
+    }
+    window.addEventListener("scroll", updateY);
+    // });
 
     return (
         <motion.div

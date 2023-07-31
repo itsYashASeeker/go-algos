@@ -186,7 +186,7 @@ export default function ULogin() {
                                     <p className="pComment">Password must contain atleast one Uppercase/Lowercase letters and digit, and atleast 8 letters long</p>
                                 </div>
                                 <div className="divf ldivFUV">
-                                    <button className="bNone" onClick={(e) => { e.preventDefault(); navigate("/login/forgot-password") }}>Forgot Password?</button>
+                                    <button type="button" className="bNone" onClick={(e) => { e.preventDefault(); navigate("/login/forgot-password") }}>Forgot Password?</button>
                                 </div>
                                 <button type="submit" id="loginBA" className="goLogB" onClick={(e) => { subForm(e, e.target.id) }}>Login</button>
                                 {/* <button className="bNone">Don't have an Account?</button> */}
@@ -210,8 +210,8 @@ export default function ULogin() {
                                 </div>
 
                                 <div className="divf ldivFUV">
-                                    <button className="bNone" onClick={(e) => { e.preventDefault(); navigate("/login/forgot-password") }}>Forgot Password?</button>
-                                    <button className="bNone" onClick={(e) => { e.preventDefault(); navigate("/register") }}>Don't have an Account?</button>
+                                    <button type="button" className="bNone" onClick={(e) => { e.preventDefault(); navigate("/login/forgot-password") }}>Forgot Password?</button>
+                                    <button type="button" className="bNone" onClick={(e) => { e.preventDefault(); navigate("/register") }}>Don't have an Account?</button>
                                 </div>
                                 <button type="submit" id="loginB" className="goLogB" onClick={(e) => { subForm(e, e.target.id) }}>Login</button>
                             </form>

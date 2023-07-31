@@ -366,9 +366,7 @@ export default function URegister(props) {
                         >
                             Register
                         </button>
-                        {/* <button className="bNone">Don't have an Account?</button> */}
                     </form>
-                    {/* </div> */}
                 </div>
             </div>
             <Footer />

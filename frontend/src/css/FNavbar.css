@@ -12,7 +12,7 @@
     box-shadow: 0 0.2rem 0.1rem rgba(143, 0, 0, 0.548);
     backdrop-filter: blur(0.4rem);
     z-index: 4;
-    transition: 0.2s all ease-out;
+    transition: 0.4s all ease-out;
 }
 
 .goUpF {
@@ -134,25 +134,34 @@
     opacity: 1;
 }
 
-
-@media (max-width: 450px) {
+@media (max-width: 600px) {
     .algoTitle {
-        position: absolute;
-        margin: 1rem 0;
-        left: 0.5rem;
-
+        font-size: 1.5rem;
     }
 
     .fnav {
-        height: 2.5rem;
+        height: 3rem;
+    }
+
+    .fnav .fnavmain {
+        top: 50%;
+        transform: translateY(-50%);
     }
 
     .fnav .fnB {
-        margin: 0 0.15rem;
-        padding: 0.2rem;
+        margin: 0.1rem;
+        padding: 0.1rem 0.2rem;
     }
 
     .fnav .fnavmain .exploreIcon {
         font-size: 1rem !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .algoTitle {
+        position: absolute;
+        left: 0.5rem;
+        font-size: 1.2rem;
     }
 }

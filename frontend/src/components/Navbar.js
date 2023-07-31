@@ -50,34 +50,60 @@ function Navbar() {
 
     const currL = useLocation();
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        function updateY() {
+    //     function updateY() {
 
-            var prevscTop = scrollTop;
-            var scTop = window.scrollY;
-            var winHeight = window.innerHeight;
-            setPrevST(prevscTop);
-            setScrollTop(window.scrollY);
-            var cname = "goUp";
-            var currN = currL.pathname.split("/")[1];
-            for (var i = 0; i < 4; i++) {
-                for (var j = 0; j < expR[i].length; j++) {
-                    if (currN === expR[i][j][1]) {
-                        cname = "goUpA";
-                        break;
-                    }
+    //         var prevscTop = scrollTop;
+    //         var scTop = window.scrollY;
+    //         var winHeight = window.innerHeight;
+    //         setPrevST(prevscTop);
+    //         setScrollTop(window.scrollY);
+    //         var cname = "goUp";
+    //         var currN = currL.pathname.split("/")[1];
+    //         for (var i = 0; i < 4; i++) {
+    //             for (var j = 0; j < expR[i].length; j++) {
+    //                 if (currN === expR[i][j][1]) {
+    //                     cname = "goUpA";
+    //                     break;
+    //                 }
+    //             }
+    //         }
+    //         if (scTop === 0 || scTop < prevscTop || prevscTop < 20) {
+    //             retElId("idnavbar").classList.remove(cname);
+    //         }
+    //         else {
+    //             retElId("idnavbar").classList.add(cname);
+    //         }
+    //     }
+    //     window.addEventListener("scroll", updateY);
+    // });
+
+    function updateY() {
+
+        var prevscTop = scrollTop;
+        var scTop = window.scrollY;
+        var winHeight = window.innerHeight;
+        setPrevST(prevscTop);
+        setScrollTop(window.scrollY);
+        var cname = "goUp";
+        var currN = currL.pathname.split("/")[1];
+        for (var i = 0; i < 4; i++) {
+            for (var j = 0; j < expR[i].length; j++) {
+                if (currN === expR[i][j][1]) {
+                    cname = "goUpA";
+                    break;
                 }
             }
-            if (scTop === 0 || scTop < prevscTop || prevscTop < 20) {
-                retElId("idnavbar").classList.remove(cname);
-            }
-            else {
-                retElId("idnavbar").classList.add(cname);
-            }
         }
-        window.addEventListener("scroll", updateY);
-    });
+        if (scTop === 0 || scTop < prevscTop || prevscTop < 20) {
+            retElId("idnavbar").classList.remove(cname);
+        }
+        else {
+            retElId("idnavbar").classList.add(cname);
+        }
+    }
+    window.addEventListener("scroll", updateY);
 
     useEffect(() => {
         if (openSide === false) {

@@ -15,7 +15,7 @@
     z-index: 10;
     box-sizing: border-box;
     opacity: 1;
-    transition: 0.2s all ease-out;
+    transition: 0.4s all ease-out;
 }
 
 .navR1 {
@@ -443,9 +443,18 @@
     }
 }
 
-@media (max-width: 300px) {
+@media (max-width: 330px) {
     .navSL {
         /* width: 40vw; */
+    }
+
+    .headLink .title {
+        font-size: 1.3rem;
+    }
+
+    .navbar .navImg {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
     }
 
     .all_cards {
