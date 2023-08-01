@@ -1,0 +1,110 @@
+.ffbg {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    /* margin-top: 5.4rem; */
+    margin: 0.5rem 0;
+    /* background: linear-gradient(138deg, rgba(255, 195, 195, 1) 0%, rgba(255, 64, 64, 1) 25%, rgb(187, 14, 14) 50%, rgba(255, 64, 64, 1) 75%, rgba(255, 195, 195, 1) 100%); */
+    padding: 1rem 1rem;
+    z-index: 0;
+}
+
+.blackfullbg {
+    background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 29, 33, 1) 100%);
+}
+
+/* Guide's Card */
+
+.guide_card {
+    position: relative;
+    flex-direction: column;
+    background: rgb(255, 255, 255);
+    border-radius: 1.2rem;
+    box-sizing: border-box;
+    box-shadow: 0 0 0.5rem 0.01rem rgba(0, 0, 0, 0.164);
+    border: 0.2rem solid rgba(128, 128, 128, 0.288);
+    margin: 1rem 0;
+    padding: 1rem;
+    z-index: 0;
+    transition: all ease-out 0.4s;
+    height: 17rem;
+}
+
+.guide_img {
+    /* height: 15rem; */
+    width: 8rem;
+    border-radius: 50%;
+    margin: 1.2rem 0;
+    /* border-radius: 0.5rem; */
+}
+
+
+/* ALl Developer's Cards */
+.all_cards {
+    flex-wrap: wrap;
+    column-gap: 2rem;
+    row-gap: 2rem;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+/* Developer Card */
+
+.dev_card {
+    position: relative;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 2rem;
+    box-shadow: 0 0 0.3rem 0.01rem rgb(255, 143, 143);
+    border: 0.2rem solid rgba(177, 0, 0, 0.452);
+    backdrop-filter: blur(0.1rem);
+    box-sizing: border-box;
+    /* margin: 3rem 0; */
+    padding: 1rem;
+    z-index: 0;
+    transition: all ease-out 0.2s;
+    width: 15rem;
+    height: 20rem;
+}
+
+.dev_card:hover {
+    position: relative;
+    /* transform: scale(1.05); */
+    border: 0.2rem solid rgb(163, 21, 21);
+    box-shadow: 0 0.2rem 0.4rem 0.2rem rgba(245, 71, 71, 0.6);
+    z-index: 0;
+    /* box-shadow: 0 0 1rem 50rem rgba(212, 212, 212, 0.1); */
+    color: rgb(124, 0, 0) !important;
+    transform: translateY(-0.3rem) !important;
+}
+
+.dev_img {
+    width: 12.9rem;
+    border-radius: 1rem;
+    height: auto;
+    width: 8rem;
+    /* height: 9rem; */
+    border-radius: 50%;
+    /* border: 0.2rem solid rgba(202, 52, 52, 0.651); */
+    margin-top: 0.8rem;
+    margin-bottom: 1.2rem;
+}
+
+.dev_card_social {
+    padding: 0.1rem;
+    /* height: 1.5rem; */
+    gap: 0.6rem;
+}
+
+.dev_card_social .socIcon {
+    text-align: center;
+    /* margin: 0rem 0.3rem; */
+    font-size: 1.5rem;
+    width: 1.5rem;
+    /* background: white; */
+    color: white;
+}

@@ -1,0 +1,89 @@
+.nqT {
+    display: grid;
+    border: 0.11rem solid rgb(44, 44, 44);
+}
+
+#cellContainer4 {
+    grid-template-columns: repeat(4, auto);
+}
+
+
+#cellContainer8 {
+    grid-template-columns: repeat(8, auto);
+}
+
+.cell {
+    width: 50px;
+    height: 50px;
+    border: 0.11rem solid rgb(44, 44, 44);
+    display: grid;
+    /* cursor: pointer; */
+    font-size: 2rem;
+    place-items: center;
+    text-align: center;
+    color: rgb(95, 94, 93);
+    background: white;
+    border-collapse: separate;
+    /* font-family: cursive; */
+
+}
+
+.noCell {
+    background: rgb(230, 230, 230);
+    color: black;
+}
+
+.nqT h3 {
+    font-size: 2rem;
+    color: black;
+    transition: 0.1s all ease-out;
+}
+
+
+.NqDone {
+    background: rgb(196, 255, 196);
+    transition: 0.2s all ease-out;
+    color: rgb(0, 75, 0);
+}
+
+.NgCurr {
+    background: rgb(141, 255, 141);
+    transition: 0.2s all ease-out;
+    color: rgb(0, 75, 0);
+    animation: anCurrN 0.8s normal infinite;
+}
+
+.rangeI {
+    box-shadow: 0 0 0 0 transparent !important;
+}
+
+.nqD {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    /* flex-direction: column; */
+    overflow: auto;
+    width: 100%;
+    /* height: 100%; */
+}
+
+@keyframes anCurrN {
+    0% {
+        background: rgb(180, 255, 180);
+    }
+
+    100% {
+        background: rgb(7, 255, 7);
+    }
+}
+
+
+@media (max-width: 600px) {
+    .nqLS {
+        height: clamp(35rem, 80vh, 50rem) !important;
+    }
+
+    .nqD {
+        justify-content: flex-start;
+    }
+}

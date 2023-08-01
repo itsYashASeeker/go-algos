@@ -1,0 +1,266 @@
+:root {
+    --fColor: rgb(0, 28, 104);
+    --bColor: rgb(16, 54, 224);
+    --pColor: rgb(137, 178, 255);
+}
+
+.loginCard {
+    position: relative;
+    flex-direction: column;
+    /* background: linear-gradient(180deg, rgba(250, 170, 170, 0.5),rgba(255, 215, 215, 0.5),rgb(250, 249, 249)); */
+    background: white;
+    border-radius: 0.7rem;
+    /* padding: 1rem; */
+    border: 0.2rem solid rgb(0, 43, 161);
+    border: 0.3rem solid var(--somColor);
+    transition: 0.2s all ease-out;
+    color: var(--fColor);
+    gap: 1rem;
+    /* padding: 1rem 1rem; */
+    box-sizing: border-box;
+    min-width: 0rem;
+    min-height: 28rem;
+    padding-top: 3rem;
+    margin: 3rem 0;
+}
+
+.fpCard{
+    min-height: 10rem;
+}
+
+.loginCard button {
+    font-family: 'Share Tech', sans-serif;
+}
+
+.logC {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 0.6rem;
+}
+
+/* .lpd0 {
+    padding-top: 0;
+} */
+
+.inRow {
+    display: inline-flex;
+    /* flex-wrap: wrap; */
+    /* width: 100%; */
+    column-gap: clamp(1rem, 10vw, 2rem);
+}
+
+.registerMW {
+    min-width: clamp(10rem, 80vw, 40rem);
+}
+
+.takeInD {
+    position: relative;
+    /* width: 100%; */
+}
+
+.wLogin{
+    width: clamp(10rem, 50vw, 22rem);
+}
+
+.lIns {
+    border: 0.2rem solid var(--bColor);
+    /* margin: 1rem 0; */
+    margin-top: 1rem;
+    transition: 0.2s all ease-out;
+    padding: 0.5rem;
+    padding-top: 1.5rem;
+    text-align: center;
+    color: var(--fColor);
+    width: clamp(10rem, 50vw, 22rem);
+    box-sizing: border-box;
+    border-radius: 0.4rem;
+}
+
+.rIns {
+    margin: 1rem 0;
+    width: clamp(10rem, 25vw, 22rem);
+}
+
+.notValid {
+    border: 0.2rem solid rgb(170, 0, 0);
+    background: whitesmoke;
+    animation: nValid 1s normal infinite;
+}
+
+@keyframes nValid {
+    0% {
+        border: 0.2rem solid rgb(170, 0, 0);
+        background: rgb(223, 210, 210);
+    }
+
+    100% {
+        border: 0.2rem solid rgb(236, 0, 0);
+        background: rgb(255, 255, 255);
+    }
+}
+
+.valid {
+    border: 0.2rem solid rgb(0, 75, 0);
+}
+
+.lIns:focus {
+
+    padding: 0.5rem;
+    /* border: 0.2rem solid rgb(0, 47, 255); */
+}
+
+.lIns:focus+.hideL {
+    top: 0rem;
+    opacity: 0;
+}
+
+.pComment {
+    font-size: 1rem !important;
+    width: clamp(10rem, 50vw, 22rem);
+    color: red;
+}
+
+.hideL {
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translate(-50%);
+    opacity: 1;
+    transition: 0.2s all ease-out;
+    background: var(--pColor);
+    color: var(--fColor);
+    padding: 0.2rem 0.2rem;
+    font-size: 1.1rem;
+    /* width: 100%; */
+    /* border-radius: 0.2rem; */
+}
+
+.goLogB {
+    position: relative;
+    background: blue;
+    color: white;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    border-radius: 0.3rem;
+    opacity: 0.8;
+    transition: 0.2s all ease-out;
+}
+
+.goLogB:disabled {
+    background: red;
+    cursor: auto;
+}
+
+.goLogB:disabled:hover {
+    opacity: 0.8;
+}
+
+.goLogB::before {
+    content: ">>";
+    position: absolute;
+    left: 0.8rem;
+    opacity: 0;
+    transition: 0.2s all ease-out;
+}
+
+.goLogB:enabled:hover {
+    opacity: 1;
+    padding-right: 1.9rem;
+}
+
+.goLogB:enabled:hover::before {
+    opacity: 1;
+    left: 3.3rem;
+    left: 70%;
+}
+
+.fpBut:enabled:hover::before{
+    left: 80%;
+}
+
+
+.loginBG {
+    padding-top: var(--pTopH);
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.lOptions {
+    position: absolute;
+    top: 0;
+    margin-top: 0;
+    width: 100%;
+    background: var(--somColor);
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+    overflow: hidden;
+    padding: 0 0.3rem;
+    box-sizing: border-box;
+    height: 3rem;
+    /* flex-grow: 1; */
+}
+
+.lOptions button {
+    /* flex-grow: 1; */
+    position: relative;
+    width: 50%;
+    height: 100%;
+    font-size: 1.5rem;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background: transparent;
+
+}
+
+.wFullBL {
+    width: 100% !important;
+}
+
+.lOptions button:hover {
+    opacity: 1;
+}
+
+.lOptions .sel {
+    background: white;
+    color: var(--somColor);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.bNone {
+    background: none;
+    color: black;
+    padding: 0;
+    font-size: 1.1rem;
+}
+
+.ldivFUV {
+    justify-content: space-between !important;
+    width: clamp(10rem, 50vw, 22rem);
+}
+
+
+@keyframes anLogin {
+    0% {
+        border: none;
+    }
+
+    100% {
+        border: 0.2rem solid red;
+    }
+}
+
+
+@media (max-width: 430px) {
+    .inRow {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .lIns, .wLogin {
+        width: 70vw;
+    }
+}

@@ -1,0 +1,167 @@
+.fnav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 0rem;
+    top: 7.5rem;
+    width: 100%;
+    padding: 0.5rem;
+    background: linear-gradient(rgba(209, 209, 209, 0.5), rgba(233, 233, 233, 0.411), rgba(255, 255, 255, 0.616));
+    box-sizing: border-box;
+    box-shadow: 0 0.2rem 0.1rem rgba(143, 0, 0, 0.548);
+    backdrop-filter: blur(0.4rem);
+    z-index: 4;
+    transition: 0.4s all ease-out;
+}
+
+.goUpF {
+    top: 0rem;
+}
+
+.fnav .algoTitle {
+    /* position: absolute; */
+    /* margin-left: 50%; */
+    /* transform: translate(-50%); */
+    /* text-shadow: 0rem 0rem 0.1rem rgb(255, 169, 169); */
+}
+
+.fnav .menu {
+    position: absolute;
+    /* top: 0.5rem; */
+    right: 0.5rem;
+    min-height: 80%;
+    /* position: relative;
+    float: right; */
+    background: rgb(139, 0, 0);
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: 0.3s all ease-out;
+
+}
+
+.fnav .menu:hover {
+    opacity: 0;
+}
+
+
+
+.fnav .fnavmain {
+    position: absolute;
+    top: 0.2rem;
+    right: 0.5rem;
+    background: white;
+    color: rgb(139, 0, 0);
+    padding: 0.3rem 0.3rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 0 0 0.2rem rgb(141, 0, 0);
+    z-index: 5;
+}
+
+.fnav .fnavmain .exploreIcon {
+    color: rgb(139, 0, 0);
+}
+
+.fnav .fnB {
+    /* display: block; */
+    position: relative;
+    /* border-radius: 50%; */
+    margin: 0 0.2rem;
+    background: transparent;
+    padding: 0.35rem;
+    box-sizing: border-box;
+    overflow: visible;
+    /* border-radius: 0; */
+    /* display: flex;
+    flex-direction: column; */
+}
+
+.fnav .fnB:hover {
+    opacity: 1;
+}
+
+.fnav .fnB:hover .exploreIcon {
+    opacity: 0.8;
+}
+
+.fnav .explore {
+    background: rgb(139, 0, 0);
+    /* box-shadow: 0 0 0.1rem 0.1rem rgb(129, 129, 129); */
+    border: 0.2rem solid rgb(139, 0, 0);
+    box-shadow: inset 0 0 0.1rem 0.2rem rgb(255, 255, 255);
+}
+
+.fnav .explore .exploreIcon {
+    color: rgb(255, 255, 255);
+    transition: 0.2s all ease-out;
+}
+
+.fnav .fnavmain .exploreIcon {
+    display: block;
+    font-size: 1.3rem;
+}
+
+.hovT {
+    transform: scale(0) translate(-25%, 0%);
+    position: absolute;
+    bottom: -2.3rem;
+    left: 0;
+    padding: 0.1rem;
+    border-radius: 0.2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgb(85, 0, 0);
+    background: rgb(250, 227, 227);
+    transition: 0.1s all ease-out;
+    z-index: 10;
+    opacity: 1;
+}
+
+.fnB:nth-child(4) .hovT {
+    transform: scale(0);
+    left: auto;
+    right: 0;
+}
+
+.fnB:hover .hovT {
+    transform: scale(1) translate(-25%, 0%);
+    opacity: 1;
+}
+
+.fnB:nth-child(4):hover .hovT {
+    transform: scale(1);
+    opacity: 1;
+}
+
+@media (max-width: 600px) {
+    .algoTitle {
+        font-size: 1.5rem;
+    }
+
+    .fnav {
+        height: 3rem;
+    }
+
+    .fnav .fnavmain {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .fnav .fnB {
+        margin: 0.1rem;
+        padding: 0.1rem 0.2rem;
+    }
+
+    .fnav .fnavmain .exploreIcon {
+        font-size: 1rem !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .algoTitle {
+        position: absolute;
+        left: 0.5rem;
+        font-size: 1.2rem;
+    }
+}
