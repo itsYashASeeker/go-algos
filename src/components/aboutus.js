@@ -44,9 +44,9 @@ export default function AboutUs() {
                         <b class="f1-1 ">yashkumar.d@somaiya.edu</b>
                     </Link>
                     <div class="divf dev_card_social mUpS">
-                        <Link to="https://github.com/itsYashASeeker" target="_blank"><img src={githubL} className="socIcon"></img></Link>
-                        <Link to="https://www.linkedin.com/in/yash-chauhan-180031203/" target="_blank"><img src={linkedinL} className="socIcon"></img></Link>
-                        <Link to="https://www.instagram.com/yashck.iso/" target="_blank"><img src={instagramL} className="socIcon"></img></Link>
+                        <Link to="https://github.com/yashAPro1" target="_blank"><img src={githubL} className="socIcon"></img></Link>
+                        <Link to="https://www.linkedin.com/in/yashkumar-dubey-716933222" target="_blank"><img src={linkedinL} className="socIcon"></img></Link>
+                        <Link to="https://www.instagram.com/dubeyyash758/" target="_blank"><img src={instagramL} className="socIcon"></img></Link>
                     </div>
                 </motion.div>
                 <motion.div id="iddev_card" class="dev_card divf"
@@ -60,9 +60,9 @@ export default function AboutUs() {
                         <b class="f1-1 ">kushal.h@somaiya.edu</b>
                     </Link>
                     <div class="divf dev_card_social mUpS">
-                        <Link to="https://github.com/itsYashASeeker" target="_blank"><img src={githubL} className="socIcon"></img></Link>
-                        <Link to="https://www.linkedin.com/in/yash-chauhan-180031203/" target="_blank"><img src={linkedinL} className="socIcon"></img></Link>
-                        <Link to="https://www.instagram.com/yashck.iso/" target="_blank"><img src={instagramL} className="socIcon"></img></Link>
+                        <Link to="https://github.com/kushalharsora" target="_blank"><img src={githubL} className="socIcon"></img></Link>
+                        <Link to="https://www.linkedin.com/in/kushal-harsora" target="_blank"><img src={linkedinL} className="socIcon"></img></Link>
+                        <Link to="https://www.instagram.com/kushal_harsora/" target="_blank"><img src={instagramL} className="socIcon"></img></Link>
                     </div>
                 </motion.div>
             </div>
