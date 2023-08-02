@@ -12,7 +12,7 @@
     box-shadow: 0 0.2rem 0.1rem rgba(143, 0, 0, 0.548);
     backdrop-filter: blur(0.4rem);
     z-index: 4;
-    transition: 0.4s all ease-out;
+    transition: 0.3s all ease-out;
 }
 
 .goUpF {
