@@ -50,35 +50,6 @@ function Navbar() {
 
     const currL = useLocation();
 
-    // useEffect(() => {
-
-    //     function updateY() {
-
-    //         var prevscTop = scrollTop;
-    //         var scTop = window.scrollY;
-    //         var winHeight = window.innerHeight;
-    //         setPrevST(prevscTop);
-    //         setScrollTop(window.scrollY);
-    //         var cname = "goUp";
-    //         var currN = currL.pathname.split("/")[1];
-    //         for (var i = 0; i < 4; i++) {
-    //             for (var j = 0; j < expR[i].length; j++) {
-    //                 if (currN === expR[i][j][1]) {
-    //                     cname = "goUpA";
-    //                     break;
-    //                 }
-    //             }
-    //         }
-    //         if (scTop === 0 || scTop < prevscTop || prevscTop < 20) {
-    //             retElId("idnavbar").classList.remove(cname);
-    //         }
-    //         else {
-    //             retElId("idnavbar").classList.add(cname);
-    //         }
-    //     }
-    //     window.addEventListener("scroll", updateY);
-    // });
-
     function updateY() {
 
         var prevscTop = scrollTop;
@@ -114,26 +85,26 @@ function Navbar() {
         }
     }, [openSide]);
 
-    useEffect(() => {
-        const updateUser = async () => {
-            await axios.get(`${process.env.REACT_APP_BACKEND_DOMAIN}/y/user/g`, {
-                withCredentials: true
-            })
-                .then((data) => {
-                    console.clear();
-                    setUD(data.data);
-                })
-                .catch((err) => {
-                    setUD(false);
-                    console.clear();
-                    var errs = err.response.data.error;
-                    for (var i = 0; i < errs.length; i++) {
-                        console.log(errs[i]);
-                    }
-                })
-        }
-        updateUser();
-    }, [])
+    // useEffect(() => {
+    //     const updateUser = async () => {
+    //         await axios.get(`${process.env.REACT_APP_BACKEND_DOMAIN}/y/user/g`, {
+    //             withCredentials: true
+    //         })
+    //             .then((data) => {
+    //                 console.clear();
+    //                 setUD(data.data);
+    //             })
+    //             .catch((err) => {
+    //                 setUD(false);
+    //                 console.clear();
+    //                 var errs = err.response.data.error;
+    //                 for (var i = 0; i < errs.length; i++) {
+    //                     console.log(errs[i]);
+    //                 }
+    //             })
+    //     }
+    //     updateUser();
+    // }, [])
 
     function retElId(idname) {
         return document.getElementById(idname);
