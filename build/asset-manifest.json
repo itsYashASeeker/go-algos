@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.ec321ddb.css",
-    "main.js": "/static/js/main.8162f56d.js",
+    "main.js": "/static/js/main.fe6c6fa1.js",
     "static/js/787.1555008f.chunk.js": "/static/js/787.1555008f.chunk.js",
     "static/media/giphy.gif": "/static/media/giphy.09185a8687dc0e72f1ec.gif",
     "static/media/somaiyaLogo.png": "/static/media/somaiyaLogo.09de8d126d2e218a70d4.png",
@@ -41,11 +41,11 @@
     "index.html": "/index.html",
     "static/media/linkedin.svg": "/static/media/linkedin.42f56d2e4ae6f93ca987e172233e3da8.svg",
     "main.ec321ddb.css.map": "/static/css/main.ec321ddb.css.map",
-    "main.8162f56d.js.map": "/static/js/main.8162f56d.js.map",
+    "main.fe6c6fa1.js.map": "/static/js/main.fe6c6fa1.js.map",
     "787.1555008f.chunk.js.map": "/static/js/787.1555008f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ec321ddb.css",
-    "static/js/main.8162f56d.js"
+    "static/js/main.fe6c6fa1.js"
   ]
 }
