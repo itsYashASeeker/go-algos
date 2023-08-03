@@ -16,13 +16,15 @@ export async function AlgoPer(props) {
     })
         .then((data) => {
             console.clear();
-            window.alert(data.data);
+            // window.alert(data.data);
+            console.log(data.data);
         })
         .catch((err) => {
             console.clear();
             const errs = err.response.data.error;
             for (var i = 0; i < errs.length; i++) {
-                window.alert(errs[i]);
+                console.log(errs[i]);
+                // window.alert(errs[i]);
             }
         })
 

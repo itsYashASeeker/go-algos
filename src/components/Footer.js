@@ -18,7 +18,7 @@ function Footer() {
 
     return (
         <div className="footer"
-            onClick={()=>{setShowL(0)}}
+            onClick={() => { setShowL(0) }}
         >
             <div className="row">
                 {/* <img src={kjsitLogo} className="fkjLogo"></img>
@@ -30,34 +30,34 @@ function Footer() {
                 <p className="dev1">Developed by:
                     <button
                         className="dev2"
-                        onClick={(e)=>{e.stopPropagation(); e.preventDefault(); setShowL(1)}}>
+                        onClick={(e) => { e.stopPropagation(); e.preventDefault(); setShowL(1) }}>
                         {showL === 1 ?
                             <div className="links">
-                                <Link className="linkL" to="https://github.com/itsYashASeeker" target="_blank"><img src={githubL} /></Link>
-                                <Link className="linkL" to="https://www.linkedin.com/in/yash-chauhan-180031203/" target="_blank"><img src={linkedinL} /></Link>
-                                <Link className="linkL" to="https://www.instagram.com/yashck.iso/" target="_blank"><img src={instagramL} /></Link>
+                                <Link className="linkL" to="https://github.com/itsYashASeeker" target="_blank" onClick={(e) => { e.stopPropagation(); }}><img src={githubL} /></Link>
+                                <Link className="linkL" to="https://www.linkedin.com/in/yash-chauhan-180031203/" target="_blank" onClick={(e) => { e.stopPropagation(); }}><img src={linkedinL} /></Link>
+                                <Link className="linkL" to="https://www.instagram.com/yashck.iso/" target="_blank" onClick={(e) => { e.stopPropagation(); }}><img src={instagramL} /></Link>
                             </div>
                             : <></>
                         }Yash K Chauhan</button>
                     <button
                         className="dev2"
-                        onClick={(e)=>{e.stopPropagation(); e.preventDefault(); setShowL(2)}}>
+                        onClick={(e) => { e.stopPropagation(); e.preventDefault(); setShowL(2) }}>
                         {showL === 2 ?
                             <div className="links">
-                                <Link className="linkL" to="https://github.com/yashAPro1" target="_blank"><img src={githubL} /></Link>
-                                <Link className="linkL" to="https://www.linkedin.com/in/yashkumar-dubey-716933222" target="_blank"><img src={linkedinL} /></Link>
-                                <Link className="linkL" to="https://www.instagram.com/dubeyyash758/" target="_blank"><img src={instagramL} /></Link>
+                                <Link className="linkL" to="https://github.com/yashAPro1" target="_blank" onClick={(e) => { e.stopPropagation(); }}><img src={githubL} /></Link>
+                                <Link className="linkL" to="https://www.linkedin.com/in/yashkumar-dubey-716933222" target="_blank" onClick={(e) => { e.stopPropagation(); }}><img src={linkedinL} /></Link>
+                                <Link className="linkL" to="https://www.instagram.com/dubeyyash758/" target="_blank" onClick={(e) => { e.stopPropagation(); }}><img src={instagramL} /></Link>
                             </div>
                             : <></>
                         }Yashkumar S Dubey</button>
                     <button
                         className="dev2"
-                        onClick={(e)=>{e.stopPropagation(); e.preventDefault(); setShowL(3)}}>
+                        onClick={(e) => { e.stopPropagation(); e.preventDefault(); setShowL(3) }}>
                         {showL === 3 ?
                             <div className="links">
-                                <Link className="linkL" to="https://github.com/kushalharsora" target="_blank"><img src={githubL} /></Link>
-                                <Link className="linkL" to="https://www.linkedin.com/in/kushal-harsora" target="_blank"><img src={linkedinL} /></Link>
-                                <Link className="linkL" to="https://www.instagram.com/kushal_harsora/" target="_blank"><img src={instagramL} /></Link>
+                                <Link className="linkL" to="https://github.com/kushalharsora" target="_blank" onClick={(e) => { e.stopPropagation(); }}><img src={githubL} /></Link>
+                                <Link className="linkL" to="https://www.linkedin.com/in/kushal-harsora" target="_blank" onClick={(e) => { e.stopPropagation(); }}><img src={linkedinL} /></Link>
+                                <Link className="linkL" to="https://www.instagram.com/kushal_harsora/" target="_blank" onClick={(e) => { e.stopPropagation(); }}><img src={instagramL} /></Link>
                             </div>
                             : <></>
                         }Kushal C Harsora</button>
