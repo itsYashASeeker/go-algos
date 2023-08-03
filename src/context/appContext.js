@@ -28,19 +28,19 @@ const AppProvider = ({ children }) => {
     useEffect(() => {
         const fetchUser = async () => {
             var uDD;
-            console.log(process.env.REACT_APP_BACKEND_DOMAIN);
+            // console.log(process.env.REACT_APP_BACKEND_DOMAIN);
             await axios.get(process.env.REACT_APP_BACKEND_DOMAIN + "/y/user/g", {
                 withCredentials: true
             })
                 .then((data) => {
-                    // console.clear();
+                    console.clear();
                     setUData(data.data);
                     uDD = data.data;
                     console.log(uDD.isAdmin ? "Hello Admin" : "Hello User");
                 })
                 .catch((err) => {
                     setUData(false);
-                    // console.clear();
+                    console.clear();
                     var errs = err.response.data.error;
                     for (var i = 0; i < errs.length; i++) {
                         console.log(errs[i]);
