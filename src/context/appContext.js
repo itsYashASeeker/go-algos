@@ -28,9 +28,7 @@ const AppProvider = ({ children }) => {
     useEffect(() => {
         const fetchUser = async () => {
             var uDD;
-            await axios.get(process.env.REACT_APP_BACKEND_DOMAIN + "/y/user/g", {
-                withCredentials: true
-            })
+            await axios.get(process.env.REACT_APP_BACKEND_DOMAIN + "/y/user/g")
                 .then((data) => {
                     console.clear();
                     setUData(data.data);
