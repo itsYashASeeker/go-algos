@@ -1,0 +1,180 @@
+.dashBg {
+    padding-top: var(--pTopH);
+    min-height: calc(100vh);
+    width: 100%;
+    box-sizing: border-box;
+    /* background: rgba(245, 238, 227, 0.2); */
+    /* backdrop-filter: blur(0.3rem); */
+    /* overflow: auto; */
+}
+
+.dashS1 {
+
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+    /* overflow: auto; */
+}
+
+.floR {
+    margin-top: 2rem;
+    /* float: right; */
+    /* right: 0; */
+}
+
+.ftContainer {
+    display: flex;
+    position: relative;
+    overflow: auto;
+    justify-content: center;
+    align-items: baseline;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    max-height: 100vh;
+    max-height: -moz-calc(100vh - (5.5rem));
+    max-height: -webkit-calc(100vh - (5.5rem));
+    max-height: calc(100vh - (5.5rem));
+}
+
+.jusLeft {
+    justify-content: left !important;
+}
+
+.feedT,
+.adTable {
+    background: rgb(255, 255, 255);
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    overflow: scroll;
+    text-align: center;
+}
+
+.feedT th,
+.adTable th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    font-weight: 550;
+}
+
+.feedT td,
+.adTable td {
+    font-weight: 600;
+}
+
+.feedT th,
+.feedT td,
+.adTableth th,
+.adTable td {
+    padding: 0.4rem;
+    max-width: 10rem;
+}
+
+.feedT,
+.feedT tr,
+.feedT th,
+.feedT td {
+    border: 0.2rem solid rgba(36, 12, 12, 0.753);
+    border: 0.13rem solid rgb(165, 165, 165);
+    border-collapse: collapse;
+    /* word-break: break-all; */
+    word-wrap: break-word;
+}
+
+.feedT {
+    /* border: 0.2rem solid var(--somColor); */
+}
+
+.divudInfo {
+    justify-content: space-between !important;
+}
+
+.tCenter {
+    text-align: center;
+}
+
+.divVA1 {
+    position: relative;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.inVA1 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.inVBut {
+    position: absolute;
+    top: 21.6%;
+    left: 20.5%;
+    font-family: 'Share Tech', sans-serif;
+    /* transform: translate(-50%, -50%); */
+    font-size: 3.2rem;
+    padding: 2.4rem;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 0 1rem 0.3rem rgb(114, 44, 44);
+    color: var(--somColor);
+    animation: anV1 0.5s normal infinite;
+    border-radius: 0.5rem;
+    /* z-index: 10; */
+}
+
+.inVBut:hover {
+    opacity: 1;
+    box-shadow: 0 0 1rem 0.3rem rgb(114, 44, 44), inset 0 0 2rem 2rem rgb(255, 202, 202);
+}
+
+@keyframes anV1 {
+    0% {
+        transform: translateY(0rem) rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(6deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@media (max-width: 2000px) {
+    #feedbackT{
+        justify-content: left !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .AuserD {
+        justify-content: left !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .divudInfo {
+        display: block !important;
+    }
+
+    .divVA1 {
+        width: 10rem;
+        height: 10rem;
+    }
+
+    .inVBut {
+        font-size: 1.5rem;
+        padding: 1.2rem;
+    }
+}
+
+/* .uDashInfo {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+} */

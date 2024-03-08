@@ -1,0 +1,140 @@
+:root {
+    --gChartBoxSize: 5rem;
+    --gChartBoxFontSize: 1rem;
+}
+
+
+.goBack {
+    position: absolute;
+    font-size: 1.5rem;
+    text-decoration: dashed;
+    cursor: pointer;
+    top: 5rem;
+    left: 1rem;
+}
+
+.allRowP {
+    transition: 0.3s all ease-out;
+}
+
+.ganttChart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.Boxes {
+    display: flexbox;
+}
+
+.BoxContainer {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--gChartBoxSize);
+    height: var(--gChartBoxSize);
+    margin: 1.5rem 0;
+}
+
+.Box {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+    font-size: 2rem;
+    transition: 0.3s all ease-out;
+    border: 0.3rem solid rgb(2, 2, 2);
+    color: black;
+}
+
+.deadlinesBoxes {
+    display: inline-block;
+}
+
+.dBox {
+    position: absolute;
+    text-align: right;
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    bottom: -1.5rem;
+    color: black;
+}
+
+.BoxContainer .zeroDBox {
+    text-align: left;
+}
+
+.theory-content {
+    font-size: 1.5rem;
+    margin: 2rem 0;
+}
+
+.Table .row {
+    background: var(--tdataColors);
+}
+
+.Table .row:nth-child(1) .JSBox{
+    border-top: 0.2rem solid black;
+}
+
+
+
+.Table .JSBox {
+    display: table-cell;
+    /* background: var(--tdataColors); */
+    border-bottom: 0.2rem solid black;
+    border-right: 0.2rem solid black;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    text-align: center;
+    /* color: black; */
+}
+
+.Table .row .JSBox:nth-child(1){
+    border-left: 0.2rem solid black;
+}
+
+
+.makeBold {
+    font-weight: 600;
+}
+
+.t2 {
+    font-size: 1.5rem;
+}
+
+
+.Table .selectedBox {
+    background: rgb(0, 17, 71);
+    /* background: black; */
+    color: white;
+
+    font-weight: 600;
+}
+
+.Table .goBox {
+    background: rgb(37, 37, 3);
+    background: rgb(163, 163, 0);
+    color: white;
+}
+
+.Table .matchBox {
+    background: green;
+    color: white;
+    font-weight: 600;
+    box-shadow: none;
+}
+
+.selHight {
+    animation: anHight infinite 1s normal;
+}

@@ -1,0 +1,480 @@
+.navbar {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* padding: 0 0.5rem; */
+    height: 7.5rem;
+    /* gap: 0.5rem; */
+    flex-direction: column;
+    background: white;
+    box-shadow: 0 0 0.8rem rgb(175, 175, 175);
+    z-index: 10;
+    box-sizing: border-box;
+    opacity: 1;
+    transition: 0.3s all ease-out;
+}
+
+.navR1 {
+    position: relative;
+    background: rgb(247, 247, 247);
+    height: 100%;
+    justify-content: space-between !important;
+    width: 100%;
+    border-bottom: 0.15rem solid rgb(199, 199, 199);
+    padding: 0.2rem 1rem;
+    box-sizing: border-box;
+}
+
+.navR2 {
+    position: relative;
+    /* background: yellow; */
+    width: 100%;
+    height: 100%;
+}
+
+.goUp {
+    top: -4rem;
+    opacity: 0;
+}
+
+.goUpA {
+    top: -7.5rem;
+}
+
+.navbar .navImg {
+    width: 3.5rem;
+    height: 3.5rem;
+
+}
+
+.navbar .somLogo {
+    width: 3rem;
+    height: 3rem;
+    /* background: grey; */
+}
+
+.kjLogo {
+    height: 3.5rem;
+}
+
+.dkjLogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+}
+
+.kjsit {
+    font-family: "Ubuntu", sans-serif;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.65rem;
+    width: 20rem;
+    font-weight: 600;
+    color: black;
+    margin-left: 0.4rem;
+    gap: 0.25rem;
+}
+
+.kjhead {
+    font-size: 1rem;
+    color: var(--somColor);
+}
+
+
+.somLogo2 {
+    position: absolute;
+    top: 1rem;
+    width: 50%;
+    height: auto;
+}
+
+.navbar .head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    box-sizing: border-box;
+    /* background: rgb(226, 226, 226); */
+
+
+}
+
+.navbar .headLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    gap: 1rem;
+    color: var(--somColor);
+}
+
+.navbar .naviLinks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 4;
+    gap: 1rem;
+}
+
+.naviLinks .dropNav {
+    position: relative;
+    /* background: grey; */
+}
+
+.dropNav .nL {
+    position: relative;
+    font-size: 1.5rem;
+    /* font-weight: 550; */
+    background: rgba(255, 238, 205, 0.3);
+    padding: 0.35rem;
+    border-radius: 0.5rem;
+    /* cursor: pointer; */
+    transition: 0.3s all ease-out;
+    box-sizing: border-box;
+    margin-bottom: 0.5rem;
+}
+
+.dropNav .nL:hover {
+    background: rgba(255, 238, 205, 0.7);
+}
+
+.naviLinks .chosen .nL {
+    background: rgba(255, 238, 205, 0.8);
+    font-weight: 600;
+}
+
+
+.naviLinks .chosen span {
+    position: absolute;
+    bottom: 0.15rem;
+    left: 10%;
+    width: 80%;
+    height: 0.1rem;
+    background: var(--somColor);
+}
+
+.navbar .contactus {
+    background: rgb(0, 0, 97);
+}
+
+.dropNav .drop {
+    position: absolute;
+    top: 2.6rem;
+    right: 50%;
+    transform: translate(50%);
+    z-index: 5;
+    min-width: 5rem;
+    max-width: clamp(2rem, 11rem, 80vw);
+    width: max-content;
+    background: rgb(255, 241, 214);
+    border-radius: 0.3rem;
+    color: rgb(138, 0, 0);
+    padding: 0.3rem 0;
+    border: 0.2rem solid rgb(218, 148, 148);
+    /* overflow: auto; */
+}
+
+.nestedDrop {
+    position: absolute;
+    top: 3rem;
+    left: 95%;
+    background: rgb(255, 241, 214);
+    border-radius: 0.3rem;
+    color: rgb(138, 0, 0);
+    padding: 0.3rem 0;
+}
+
+.nestDD {
+    top: 5.5rem !important;
+}
+
+.drop .dropItem {
+    text-align: center;
+    text-decoration: none;
+    transition: 0.3s all ease-out;
+    width: 100%;
+}
+
+.pR {
+    position: relative;
+    /* width: 25rem; */
+}
+
+.dropItem .dropLink {
+    text-decoration: none;
+    color: rgb(138, 0, 0);
+}
+
+.drop .dropItem:hover p {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.drop .dropItem p {
+    /* background: white; */
+    padding: 0.5rem;
+    font-size: 1.3rem;
+    color: var(--somColor);
+    transition: 0.3s all ease-out;
+    /* border-bottom: 0.15rem solid rgb(185, 185, 185); */
+}
+
+.dropItem .chosen,
+.dropItem .dropItem:hover .chosen {
+    background: white !important;
+    font-weight: 600;
+}
+
+.sideBar {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(0.6rem);
+}
+
+.sideBar .naviLinks {
+    flex-direction: column;
+    flex-grow: 0;
+    margin-bottom: 1rem;
+}
+
+.sideBar .cancel {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+}
+
+.menuBar {
+    display: none;
+    position: absolute;
+    left: 0.5rem;
+}
+
+.somTR {
+    width: 4rem;
+    margin-left: 0.5rem;
+}
+
+.dflex {
+    display: flex !important;
+    margin-bottom: 1rem;
+}
+
+.posR {
+    position: relative;
+}
+
+.userP {
+    position: relative;
+    background: rgb(0, 9, 88);
+    color: rgb(255, 255, 255);
+    border-radius: 50%;
+    border: 0.2rem solid rgb(139, 139, 139);
+    margin-left: 0.5rem;
+}
+
+.userP:hover {
+    box-shadow: 0 0 0.1rem 0.1rem rgb(118, 127, 255);
+    opacity: 1;
+}
+
+.uPI {
+    font-size: 1.4rem;
+}
+
+.userDash {
+    position: absolute;
+    top: 3rem;
+    background: rgb(255, 255, 255);
+    border: 0.2rem solid rgba(156, 0, 0, 0.4);
+    width: 10rem;
+    right: 0;
+    /* height: 10rem; */
+    border-radius: 0.4rem;
+    padding: 0.5rem;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.userDash button:hover {
+    opacity: 0.8;
+}
+
+.userDash .uname {
+    font-size: 1.7rem;
+    /* color: blue; */
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.userDash .uemail {
+    font-size: 1.2rem;
+    /* color: rgb(48, 48, 48); */
+    margin-top: 0.2rem;
+}
+
+.dividerN {
+    width: 100%;
+    height: 0.12rem;
+    margin: 0.5rem 0;
+    background: rgb(117, 117, 117);
+}
+
+.logout {
+    margin-top: 0.5rem;
+    background: var(--somColor);
+}
+
+.userDash .exptP {
+    background: whitesmoke;
+    color: black;
+}
+
+.uTag {
+    position: absolute;
+    right: 0.2rem;
+    top: 0.2rem;
+    font-size: 0.8rem;
+    border-radius: 0.5rem;
+    padding: 0.3rem;
+}
+
+.backW {
+    background: white;
+}
+
+@media (max-width: 1100px) {
+    /* .kjsit {
+        width: 10rem;
+        font-size: 0.5rem !important;
+    }
+
+    .kjhead {
+        font-size: 0.5rem;
+    } */
+
+    .somLogo {
+        width: 2rem !important;
+        height: 2rem !important;
+    }
+
+    .navImg {
+        width: 3rem !important;
+        height: 3rem !important;
+    }
+
+    .headLink .title {
+        font-size: 1.5rem;
+    }
+}
+
+
+@media (max-width:650px) {
+
+    /* .dkjLogo,
+    .somTR {
+        display: none;
+    } */
+
+    #idnavLink {
+        display: none;
+    }
+
+    /* #idcontact {
+        display: none;
+    } */
+
+    .menuBar {
+        display: block;
+    }
+
+    .dropNav .drop {
+        right: 50%;
+        transform: translate(50%);
+    }
+
+    .headLink {
+        gap: 0.2rem !important;
+    }
+}
+
+@media (max-width: 550px) {
+    /* .kjsit {
+        width: 10rem;
+    } */
+
+    /* .navbar .headLink {
+        gap: 0.5rem;
+    } */
+
+    .nestedDrop {
+        left: 0;
+        /* right: 0; */
+        /* transform: translate(50%); */
+    }
+}
+
+@media (max-width: 460px) {
+    .navSL {
+        width: 60vw;
+        font-size: 0.5rem !important;
+    }
+
+    .navR1 {
+        padding: 0.2rem 0.3rem !important;
+    }
+
+    .navSL .kjhead {
+        font-size: 0.85rem !important;
+    }
+
+    .somTR {
+        width: clamp(12vw, 15vw, 2rem);
+    }
+}
+
+@media (max-width: 330px) {
+    .navSL {
+        /* width: 40vw; */
+    }
+
+    .headLink .title {
+        font-size: 1.3rem;
+    }
+
+    .navbar .navImg {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+    }
+
+    .all_cards {
+        padding: 1rem 0 !important;
+        margin: 2rem 0;
+    }
+
+    .head {
+        padding-left: 2rem !important;
+    }
+
+    .dev_card {
+        width: 95vw !important;
+    }
+
+    .algoPic {
+        width: 90vw !important;
+    }
+
+    .homeTitle {
+        max-width: 90vw;
+    }
+}

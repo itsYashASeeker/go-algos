@@ -1,0 +1,986 @@
+:root {
+    --specBG: conic-gradient(from 90deg at 50% 50%, #9b0b0b, #eb3232);
+    --somColor: #97081c;
+    --lightSomColor: #e30c2a;
+    --thightDBgwhite: white;
+    --theaderColors: #9b0000;
+    --tdataColors: rgb(204, 204, 204);
+    --tfontSize: 1.2rem;
+    --tdataSize: 2.2rem;
+    --thightDC: rgb(0, 82, 114);
+    --thightDBg: rgb(161, 161, 161);
+    --pTopH: 7.5rem;
+    --pTopA: 11.5rem;
+}
+
+/* @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Share+Tech&family=Ubuntu:wght@300&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Nanum+Gothic+Coding&family=Roboto:wght@500&family=Share+Tech&family=Ubuntu:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE10+/Edge */
+    user-select: none;
+    /* Standard */
+    overflow-wrap: break-word;
+
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Share Tech', sans-serif;
+    /* font-family: "Ubuntu", sans-serif; */
+    font-size: 1rem;
+    background: black;
+    color: var(--somColor);
+    /* overflow-x: hidden; */
+
+}
+
+img {
+    user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+::-webkit-scrollbar-button {
+    height: 0;
+    width: 0;
+}
+
+::-webkit-scrollbar-track {
+    background: rgb(255, 255, 255);
+    /* border: 0.3rem solid rgb(255, 255, 255); */
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 0.9rem;
+    background: grey;
+    background-clip: padding-box;
+    border: 0.1rem solid rgb(255, 255, 255);
+    /* box-shadow: 0 -100vh 0 100vh var(--lightSomColor); */
+}
+
+/* body::-webkit-scrollbar {
+    width: 0.8rem;
+    height: 0.8rem;
+}
+
+body::-webkit-scrollbar-track:vertical {
+    border: none;
+    border-right: 0.3rem solid rgb(255, 255, 255);
+}
+
+body::-webkit-scrollbar-thumb:vertical {
+    background: var(--lightSomColor);
+    border: none;
+    border-right: 0.3rem solid rgb(255, 255, 255);
+} */
+
+
+
+#root {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    /* flex-direction: column; */
+    background: rgb(37, 37, 37);
+    background: linear-gradient(289deg, rgba(37, 37, 37, 1) 0%, rgba(71, 71, 71, 1) 35%, rgba(77, 77, 77, 1) 71%, rgba(125, 125, 125, 1) 100%);
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: repeat;
+    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.575), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.575)), url("data:image/svg+xml;utf8,%3Csvg viewBox=%220 0 1000 667%22 xmlns=%22http:%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cmask id=%22b%22 x=%220%22 y=%220%22 width=%221000%22 height=%22667%22%3E%3Cpath fill=%22url(%23a)%22 d=%22M0 0h1000v667H0z%22%2F%3E%3C%2Fmask%3E%3Cpath fill=%22%23fff%22 d=%22M0 0h1000v667H0z%22%2F%3E%3Cg style=%22transform-origin:center center%22 clip-rule=%22evenodd%22 stroke=%22%239f9f9f%22 mask=%22url(%23b)%22%3E%3Cg fill-rule=%22evenodd%22%3E%3Cpath d=%22M115.5 22.443v44.403l38.498 22.204V44.646L115.5 22.443Z%22 fill=%22%239f9f9f33%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22M153.998 89.05 192.5 66.846V22.443l-38.502 22.203V89.05Z%22 fill=%22%239f9f9f24%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m115.5 22.443 38.498-22.2 38.502 22.2-38.502 22.203L115.5 22.443Z%22 fill=%22%239f9f9f12%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M192.5 22.443v44.403l38.498 22.204V44.646L192.5 22.443ZM230.998 89.05 269.5 66.846V22.443l-38.502 22.203V89.05Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m192.5 22.443 38.498-22.2 38.502 22.2-38.502 22.203L192.5 22.443Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M269.5 22.443v44.403l38.498 22.204V44.646L269.5 22.443ZM307.998 89.05 346.5 66.846V22.443l-38.502 22.203V89.05Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m269.5 22.443 38.498-22.2 38.502 22.2-38.502 22.203L269.5 22.443Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M346.5 22.443v44.403l38.498 22.204V44.646L346.5 22.443ZM384.998 89.05 423.5 66.846V22.443l-38.502 22.203V89.05Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m346.5 22.443 38.498-22.2 38.502 22.2-38.502 22.203L346.5 22.443Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M500.5 22.443v44.403l38.498 22.204V44.646L500.5 22.443ZM538.998 89.05 577.5 66.846V22.443l-38.502 22.203V89.05Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m500.5 22.443 38.498-22.2 38.502 22.2-38.502 22.203L500.5 22.443Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill-rule=%22evenodd%22%3E%3Cpath d=%22M808.5 22.443v44.403l38.498 22.204V44.646L808.5 22.443Z%22 fill=%22%239f9f9f47%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22M846.998 89.05 885.5 66.846V22.443l-38.502 22.203V89.05Z%22 fill=%22%239f9f9f32%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m808.5 22.443 38.498-22.2 38.502 22.2-38.502 22.203L808.5 22.443Z%22 fill=%22%239f9f9f19%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M0 89.176v44.404l38.498 22.203V111.38L0 89.176ZM38.498 155.783 77 133.58V89.176L38.498 111.38v44.403Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m0 89.176 38.498-22.2L77 89.176 38.498 111.38 0 89.176Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M77 89.176v44.404l38.498 22.203V111.38L77 89.176ZM115.498 155.783 154 133.58V89.176l-38.502 22.204v44.403Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m77 89.176 38.498-22.2L154 89.176l-38.502 22.204L77 89.176Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill-rule=%22evenodd%22%3E%3Cpath d=%22M154 89.176v44.404l38.498 22.203V111.38L154 89.176Z%22 fill=%22%239f9f9f17%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22M192.498 155.783 231 133.58V89.176l-38.502 22.204v44.403Z%22 fill=%22%239f9f9f10%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m154 89.176 38.498-22.2L231 89.176l-38.502 22.204L154 89.176Z%22 fill=%22%239f9f9f08%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M308 89.176v44.404l38.498 22.203V111.38L308 89.176ZM346.498 155.783 385 133.58V89.176l-38.502 22.204v44.403Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m308 89.176 38.498-22.2L385 89.176l-38.502 22.204L308 89.176Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M462 89.176v44.404l38.498 22.203V111.38L462 89.176ZM500.498 155.783 539 133.58V89.176l-38.502 22.204v44.403Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m462 89.176 38.498-22.2L539 89.176l-38.502 22.204L462 89.176Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M693 89.176v44.404l38.498 22.203V111.38L693 89.176ZM731.498 155.783 770 133.58V89.176l-38.502 22.204v44.403Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m693 89.176 38.498-22.2L770 89.176l-38.502 22.204L693 89.176Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M924 89.176v44.404l38.498 22.203V111.38L924 89.176ZM962.498 155.783 1001 133.58V89.176l-38.502 22.204v44.403Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m924 89.176 38.498-22.2 38.502 22.2-38.502 22.204L924 89.176Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill-rule=%22evenodd%22%3E%3Cpath d=%22M192.5 155.91v44.403l38.498 22.203v-44.403L192.5 155.91Z%22 fill=%22%239f9f9f90%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m230.998 222.516 38.502-22.203V155.91l-38.502 22.203v44.403Z%22 fill=%22%239f9f9f65%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m192.5 155.91 38.498-22.2 38.502 22.2-38.502 22.203L192.5 155.91Z%22 fill=%22%239f9f9f33%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M269.5 155.91v44.403l38.498 22.203v-44.403L269.5 155.91ZM307.998 222.516l38.502-22.203V155.91l-38.502 22.203v44.403Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m269.5 155.91 38.498-22.2 38.502 22.2-38.502 22.203L269.5 155.91Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill-rule=%22evenodd%22%3E%3Cpath d=%22M0 222.643v44.403l38.498 22.204v-44.404L0 222.643Z%22 fill=%22%239f9f9fed%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22M38.498 289.25 77 267.046v-44.403l-38.502 22.203v44.404Z%22 fill=%22%239f9f9fa6%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m0 222.643 38.498-22.2L77 222.643l-38.502 22.203L0 222.643Z%22 fill=%22%239f9f9f53%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M77 222.643v44.403l38.498 22.204v-44.404L77 222.643ZM115.498 289.25 154 267.046v-44.403l-38.502 22.203v44.404Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m77 222.643 38.498-22.2 38.502 22.2-38.502 22.203L77 222.643Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M154 222.643v44.403l38.498 22.204v-44.404L154 222.643ZM192.498 289.25 231 267.046v-44.403l-38.502 22.203v44.404Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m154 222.643 38.498-22.2 38.502 22.2-38.502 22.203L154 222.643Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill-rule=%22evenodd%22%3E%3Cpath d=%22M308 222.643v44.403l38.498 22.204v-44.404L308 222.643Z%22 fill=%22%239f9f9fcf%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22M346.498 289.25 385 267.046v-44.403l-38.502 22.203v44.404Z%22 fill=%22%239f9f9f91%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m308 222.643 38.498-22.2 38.502 22.2-38.502 22.203L308 222.643Z%22 fill=%22%239f9f9f49%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M385 222.643v44.403l38.498 22.204v-44.404L385 222.643ZM423.498 289.25 462 267.046v-44.403l-38.502 22.203v44.404Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m385 222.643 38.498-22.2 38.502 22.2-38.502 22.203L385 222.643Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M539 222.643v44.403l38.498 22.204v-44.404L539 222.643ZM577.498 289.25 616 267.046v-44.403l-38.502 22.203v44.404Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m539 222.643 38.498-22.2 38.502 22.2-38.502 22.203L539 222.643Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M616 222.643v44.403l38.498 22.204v-44.404L616 222.643ZM654.498 289.25 693 267.046v-44.403l-38.502 22.203v44.404Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m616 222.643 38.498-22.2 38.502 22.2-38.502 22.203L616 222.643Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill-rule=%22evenodd%22%3E%3Cpath d=%22M693 222.643v44.403l38.498 22.204v-44.404L693 222.643Z%22 fill=%22%239f9f9f3c%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22M731.498 289.25 770 267.046v-44.403l-38.502 22.203v44.404Z%22 fill=%22%239f9f9f2a%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m693 222.643 38.498-22.2 38.502 22.2-38.502 22.203L693 222.643Z%22 fill=%22%239f9f9f15%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill-rule=%22evenodd%22%3E%3Cpath d=%22M847 222.643v44.403l38.498 22.204v-44.404L847 222.643Z%22 fill=%22%239f9f9f87%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22M885.498 289.25 924 267.046v-44.403l-38.502 22.203v44.404Z%22 fill=%22%239f9f9f5f%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m847 222.643 38.498-22.2 38.502 22.2-38.502 22.203L847 222.643Z%22 fill=%22%239f9f9f2f%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M192.5 289.376v44.404l38.498 22.203V311.58L192.5 289.376ZM230.998 355.983 269.5 333.78v-44.404l-38.502 22.204v44.403Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m192.5 289.376 38.498-22.2 38.502 22.2-38.502 22.204-38.498-22.204Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M346.5 289.376v44.404l38.498 22.203V311.58L346.5 289.376ZM384.998 355.983 423.5 333.78v-44.404l-38.502 22.204v44.403Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m346.5 289.376 38.498-22.2 38.502 22.2-38.502 22.204-38.498-22.204Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M577.5 289.376v44.404l38.498 22.203V311.58L577.5 289.376ZM615.998 355.983 654.5 333.78v-44.404l-38.502 22.204v44.403Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m577.5 289.376 38.498-22.2 38.502 22.2-38.502 22.204-38.498-22.204Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M731.5 289.376v44.404l38.498 22.203V311.58L731.5 289.376ZM769.998 355.983 808.5 333.78v-44.404l-38.502 22.204v44.403Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m731.5 289.376 38.498-22.2 38.502 22.2-38.502 22.204-38.498-22.204Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M808.5 289.376v44.404l38.498 22.203V311.58L808.5 289.376ZM846.998 355.983 885.5 333.78v-44.404l-38.502 22.204v44.403Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m808.5 289.376 38.498-22.2 38.502 22.2-38.502 22.204-38.498-22.204Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M885.5 289.376v44.404l38.498 22.203V311.58L885.5 289.376ZM923.998 355.983 962.5 333.78v-44.404l-38.502 22.204v44.403Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m885.5 289.376 38.498-22.2 38.502 22.2-38.502 22.204-38.498-22.204Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M962.5 289.376v44.404l38.498 22.203V311.58L962.5 289.376ZM1000.998 355.983l38.502-22.203v-44.404l-38.502 22.204v44.403Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m962.5 289.376 38.498-22.2 38.502 22.2-38.502 22.204-38.498-22.204Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M77 356.11v44.403l38.498 22.203v-44.403L77 356.11ZM115.498 422.716 154 400.513V356.11l-38.502 22.203v44.403Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m77 356.11 38.498-22.2L154 356.11l-38.502 22.203L77 356.11Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M231 356.11v44.403l38.498 22.203v-44.403L231 356.11ZM269.498 422.716 308 400.513V356.11l-38.502 22.203v44.403Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m231 356.11 38.498-22.2L308 356.11l-38.502 22.203L231 356.11Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill-rule=%22evenodd%22%3E%3Cpath d=%22M308 356.11v44.403l38.498 22.203v-44.403L308 356.11Z%22 fill=%22%239f9f9fd9%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22M346.498 422.716 385 400.513V356.11l-38.502 22.203v44.403Z%22 fill=%22%239f9f9f98%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m308 356.11 38.498-22.2L385 356.11l-38.502 22.203L308 356.11Z%22 fill=%22%239f9f9f4c%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M462 356.11v44.403l38.498 22.203v-44.403L462 356.11ZM500.498 422.716 539 400.513V356.11l-38.502 22.203v44.403Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m462 356.11 38.498-22.2L539 356.11l-38.502 22.203L462 356.11Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill-rule=%22evenodd%22%3E%3Cpath d=%22M616 356.11v44.403l38.498 22.203v-44.403L616 356.11Z%22 fill=%22%239f9f9f48%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22M654.498 422.716 693 400.513V356.11l-38.502 22.203v44.403Z%22 fill=%22%239f9f9f33%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m616 356.11 38.498-22.2L693 356.11l-38.502 22.203L616 356.11Z%22 fill=%22%239f9f9f19%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M693 356.11v44.403l38.498 22.203v-44.403L693 356.11ZM731.498 422.716 770 400.513V356.11l-38.502 22.203v44.403Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m693 356.11 38.498-22.2L770 356.11l-38.502 22.203L693 356.11Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill-rule=%22evenodd%22%3E%3Cpath d=%22M770 356.11v44.403l38.498 22.203v-44.403L770 356.11Z%22 fill=%22%239f9f9f78%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22M808.498 422.716 847 400.513V356.11l-38.502 22.203v44.403Z%22 fill=%22%239f9f9f54%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m770 356.11 38.498-22.2L847 356.11l-38.502 22.203L770 356.11Z%22 fill=%22%239f9f9f2a%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M847 356.11v44.403l38.498 22.203v-44.403L847 356.11ZM885.498 422.716 924 400.513V356.11l-38.502 22.203v44.403Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m847 356.11 38.498-22.2L924 356.11l-38.502 22.203L847 356.11Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill-rule=%22evenodd%22%3E%3Cpath d=%22M115.5 422.843v44.403l38.498 22.204v-44.404L115.5 422.843Z%22 fill=%22%239f9f9f60%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m153.998 489.45 38.502-22.204v-44.403l-38.502 22.203v44.404Z%22 fill=%22%239f9f9f43%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m115.5 422.843 38.498-22.2 38.502 22.2-38.502 22.203-38.498-22.203Z%22 fill=%22%239f9f9f22%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M500.5 422.843v44.403l38.498 22.204v-44.404L500.5 422.843ZM538.998 489.45l38.502-22.204v-44.403l-38.502 22.203v44.404Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m500.5 422.843 38.498-22.2 38.502 22.2-38.502 22.203-38.498-22.203Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M885.5 422.843v44.403l38.498 22.204v-44.404L885.5 422.843ZM923.998 489.45l38.502-22.204v-44.403l-38.502 22.203v44.404Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m885.5 422.843 38.498-22.2 38.502 22.2-38.502 22.203-38.498-22.203Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M0 489.576v44.404l38.498 22.203V511.78L0 489.576ZM38.498 556.183 77 533.98v-44.404L38.498 511.78v44.403Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m0 489.576 38.498-22.2L77 489.576 38.498 511.78 0 489.576Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M154 489.576v44.404l38.498 22.203V511.78L154 489.576ZM192.498 556.183 231 533.98v-44.404l-38.502 22.204v44.403Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m154 489.576 38.498-22.2 38.502 22.2-38.502 22.204L154 489.576Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill-rule=%22evenodd%22%3E%3Cpath d=%22M385 489.576v44.404l38.498 22.203V511.78L385 489.576Z%22 fill=%22%239f9f9f2f%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22M423.498 556.183 462 533.98v-44.404l-38.502 22.204v44.403Z%22 fill=%22%239f9f9f21%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m385 489.576 38.498-22.2 38.502 22.2-38.502 22.204L385 489.576Z%22 fill=%22%239f9f9f10%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M462 489.576v44.404l38.498 22.203V511.78L462 489.576ZM500.498 556.183 539 533.98v-44.404l-38.502 22.204v44.403Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m462 489.576 38.498-22.2 38.502 22.2-38.502 22.204L462 489.576Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M693 489.576v44.404l38.498 22.203V511.78L693 489.576ZM731.498 556.183 770 533.98v-44.404l-38.502 22.204v44.403Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m693 489.576 38.498-22.2 38.502 22.2-38.502 22.204L693 489.576Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill-rule=%22evenodd%22%3E%3Cpath d=%22M924 489.576v44.404l38.498 22.203V511.78L924 489.576Z%22 fill=%22%239f9f9f52%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22M962.498 556.183 1001 533.98v-44.404l-38.502 22.204v44.403Z%22 fill=%22%239f9f9f3a%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m924 489.576 38.498-22.2 38.502 22.2-38.502 22.204L924 489.576Z%22 fill=%22%239f9f9f1d%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M115.5 556.31v44.403l38.498 22.203v-44.403L115.5 556.31ZM153.998 622.916l38.502-22.203V556.31l-38.502 22.203v44.403Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m115.5 556.31 38.498-22.2 38.502 22.2-38.502 22.203L115.5 556.31Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill-rule=%22evenodd%22%3E%3Cpath d=%22M192.5 556.31v44.403l38.498 22.203v-44.403L192.5 556.31Z%22 fill=%22%239f9f9ff3%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m230.998 622.916 38.502-22.203V556.31l-38.502 22.203v44.403Z%22 fill=%22%239f9f9faa%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m192.5 556.31 38.498-22.2 38.502 22.2-38.502 22.203L192.5 556.31Z%22 fill=%22%239f9f9f55%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M346.5 556.31v44.403l38.498 22.203v-44.403L346.5 556.31ZM384.998 622.916l38.502-22.203V556.31l-38.502 22.203v44.403Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m346.5 556.31 38.498-22.2 38.502 22.2-38.502 22.203L346.5 556.31Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M423.5 556.31v44.403l38.498 22.203v-44.403L423.5 556.31ZM461.998 622.916l38.502-22.203V556.31l-38.502 22.203v44.403Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m423.5 556.31 38.498-22.2 38.502 22.2-38.502 22.203L423.5 556.31Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill-rule=%22evenodd%22%3E%3Cpath d=%22M500.5 556.31v44.403l38.498 22.203v-44.403L500.5 556.31Z%22 fill=%22%239f9f9f97%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m538.998 622.916 38.502-22.203V556.31l-38.502 22.203v44.403Z%22 fill=%22%239f9f9f69%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m500.5 556.31 38.498-22.2 38.502 22.2-38.502 22.203L500.5 556.31Z%22 fill=%22%239f9f9f35%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M808.5 556.31v44.403l38.498 22.203v-44.403L808.5 556.31ZM846.998 622.916l38.502-22.203V556.31l-38.502 22.203v44.403Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m808.5 556.31 38.498-22.2 38.502 22.2-38.502 22.203L808.5 556.31Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M154 623.043v44.403l38.498 22.204v-44.404L154 623.043ZM192.498 689.65 231 667.446v-44.403l-38.502 22.203v44.404Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m154 623.043 38.498-22.2 38.502 22.2-38.502 22.203L154 623.043Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill-rule=%22evenodd%22%3E%3Cpath d=%22M231 623.043v44.403l38.498 22.204v-44.404L231 623.043Z%22 fill=%22%239f9f9f06%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22M269.498 689.65 308 667.446v-44.403l-38.502 22.203v44.404Z%22 fill=%22%239f9f9f04%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m231 623.043 38.498-22.2 38.502 22.2-38.502 22.203L231 623.043Z%22 fill=%22%239f9f9f02%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M308 623.043v44.403l38.498 22.204v-44.404L308 623.043ZM346.498 689.65 385 667.446v-44.403l-38.502 22.203v44.404Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m308 623.043 38.498-22.2 38.502 22.2-38.502 22.203L308 623.043Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M539 623.043v44.403l38.498 22.204v-44.404L539 623.043ZM577.498 689.65 616 667.446v-44.403l-38.502 22.203v44.404Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m539 623.043 38.498-22.2 38.502 22.2-38.502 22.203L539 623.043Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill-rule=%22evenodd%22%3E%3Cpath d=%22M693 623.043v44.403l38.498 22.204v-44.404L693 623.043Z%22 fill=%22%239f9f9f6a%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22M731.498 689.65 770 667.446v-44.403l-38.502 22.203v44.404Z%22 fill=%22%239f9f9f4a%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m693 623.043 38.498-22.2 38.502 22.2-38.502 22.203L693 623.043Z%22 fill=%22%239f9f9f25%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill=%22none%22%3E%3Cpath d=%22M770 623.043v44.403l38.498 22.204v-44.404L770 623.043ZM808.498 689.65 847 667.446v-44.403l-38.502 22.203v44.404Z%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m770 623.043 38.498-22.2 38.502 22.2-38.502 22.203L770 623.043Z%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3Cg fill-rule=%22evenodd%22%3E%3Cpath d=%22M924 623.043v44.403l38.498 22.204v-44.404L924 623.043Z%22 fill=%22%239f9f9f4d%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22M962.498 689.65 1001 667.446v-44.403l-38.502 22.203v44.404Z%22 fill=%22%239f9f9f36%22 stroke-width=%22.25667%22%2F%3E%3Cpath d=%22m924 623.043 38.498-22.2 38.502 22.2-38.502 22.203L924 623.043Z%22 fill=%22%239f9f9f1b%22 stroke-width=%22.25667%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3Cdefs%3E%3CradialGradient id=%22a%22%3E%3Cstop offset=%220%22 stop-color=%22%23fff%22%2F%3E%3Cstop offset=%221%22 stop-color=%22%23fff%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3C%2Fsvg%3E");
+    min-height: 100vh;
+}
+
+button {
+    background: none;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 0.5rem;
+    cursor: pointer;
+    background: rgb(53, 53, 53);
+    border-radius: 0.2rem;
+    transition: 0.3s all ease-out;
+}
+
+button:hover {
+    opacity: 0.5;
+}
+
+input {
+    background: white;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    transition: 0.3s all ease-out;
+    color: black;
+    outline: none;
+    border: none;
+    margin: 0.5rem;
+    font-size: 1rem;
+}
+
+input:focus {
+    outline: none;
+}
+
+
+
+.fullbg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: var(--pTopA);
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    height: 100%;
+    gap: 5vw;
+    background: transparent;
+}
+
+.fullbgHOME {
+    flex-direction: column;
+    /* margin-top: 4rem; */
+    /* flex-direction: column; */
+    padding-top: var(--pTopH);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(0.1rem);
+    gap: 0;
+}
+
+.simbg {
+    padding-top: 4rem;
+}
+
+.aboveSim {
+    height: 7.5rem;
+}
+
+.homeSect {
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column; */
+    box-sizing: border-box;
+}
+
+.sect1 {
+    background: linear-gradient(white, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.5));
+    /* height: 25rem; */
+    gap: 10vw;
+    /* padding: 0 20%; */
+    padding: 2rem 1rem;
+
+}
+
+.divTitle {
+    /* flex-grow: 1; */
+    /* fl; */
+    overflow: hidden;
+}
+
+.homeTitle {
+    position: relative;
+    /* float: right; */
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 650;
+    max-width: 25rem;
+    line-height: 4rem;
+    background: rgba(255, 255, 255, 0.342);
+    padding: 1rem;
+    border-radius: 0.4rem;
+    box-shadow: inset 0 0 2rem 0.2rem rgba(255, 211, 211, 0.3);
+    backdrop-filter: blur(0.1rem);
+    color: var(--somColor);
+    /* border: 0.2rem solid rgb(243, 248, 167); */
+    /* animation: titleAnimation 2s normal infinite; */
+}
+
+.homeTitle .effect {
+    position: absolute;
+    height: 0;
+    width: 0;
+    background: rgb(73, 255, 235);
+    background: white;
+    /* background: linear-gradient(275deg, rgba(73, 255, 235, 1) 0%, rgba(165, 255, 250, 1) 7%, rgba(235, 255, 254, 1) 13%, rgba(228, 255, 255, 1) 47%, rgba(255, 255, 255, 1) 64%); */
+
+    bottom: 0;
+    right: 0;
+    opacity: 1;
+    /* height: 200%;
+        width: 130%;
+        box-shadow: 0 0 1rem 0.5rem rgb(154, 255, 255); */
+    /* transform: translateY(10%) rotate(30deg) translateX(10%);  */
+    animation: effectAn 2s normal 1;
+}
+
+@keyframes effectAn {
+    0% {
+        height: 300%;
+        width: 110%;
+        box-shadow: 0 0 1rem 0.5rem rgb(154, 255, 255);
+        transform: translateY(23%) rotate(25deg) translateX(10%);
+    }
+
+    100% {
+        height: 300%;
+        width: 110%;
+        box-shadow: 0 0 1rem 0.5rem rgb(154, 255, 255);
+        transform: translateY(23%) rotate(25deg) translateX(-30rem);
+    }
+}
+
+.algoPic {
+    width: 17rem;
+    /* flex-grow: 1; */
+    /* height: 5rem; */
+}
+
+
+.sect2 {
+    /* background: rgba(153, 205, 50, 0.438); */
+    padding: 3rem 0;
+}
+
+.sect2 .boxS {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    row-gap: 5rem;
+    column-gap: 10rem;
+    flex-wrap: wrap;
+    padding: 1rem;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 15rem;
+    width: 14rem;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 0;
+    color: var(--somColor);
+    padding-top: 1rem;
+    gap: 1rem;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    box-shadow: 0 0 0.5rem 0.1rem rgba(172, 172, 172, 0.74);
+    transition: 0.2s all ease-out;
+}
+
+.cards:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.05) !important;
+    box-shadow: 0 0 0.5rem 0.2rem rgba(172, 172, 172, 1);
+}
+
+.cards .algoIcon {
+    font-size: 7rem;
+    font-weight: 300;
+}
+
+
+.cards .algoName {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    flex-grow: 1;
+    /* padding: 0.5rem 0; */
+    background: rgb(182, 0, 0);
+    width: 100%;
+    font-weight: 600;
+    color: white;
+}
+
+.sect3 {
+    padding-top: 1rem;
+    flex-direction: column;
+}
+
+.algB2 {
+    padding: 5rem 0;
+}
+
+.algosButtonH {
+    background: #97081c;
+    padding: 1.3rem;
+    font-size: 2.3rem;
+    border-radius: 0.5rem;
+}
+
+/* .sect4 {
+    background: rgb(249, 253, 190);
+    color: rgb(111, 119, 0) !important;
+} */
+
+.sButton {
+    position: relative;
+    background: rgb(121, 2, 2) !important;
+    z-index: 1;
+    color: white;
+    font-size: 1.3rem;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    border-radius: 0;
+    border-radius: 0.5rem;
+    transition: 0.2s all ease-out;
+    margin: 0 1rem;
+}
+
+.sButton span {
+    position: absolute;
+
+    width: 80%;
+    height: 80%;
+    padding: 0rem;
+    padding: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(111, 119, 0, 0.1);
+    border-radius: 0.7rem;
+    border: 0.2rem solid rgb(119, 0, 0) !important;
+    /* box-sizing: border-box; */
+    z-index: -1;
+    transition: 0.2s all ease-out;
+}
+
+.sButton:hover {
+    opacity: 1;
+}
+
+.sButton:hover span {
+    width: 100%;
+    height: 100%;
+
+    padding: 0.15rem;
+
+}
+
+.sectM {
+    width: 100%;
+    /* background: wheat; */
+}
+
+.ddM {
+    flex-direction: column;
+    max-width: clamp(35rem, 50vw, 40rem);
+    max-width: 35rem;
+    padding: 2rem 0.5rem;
+    text-align: left;
+    align-items: start !important;
+}
+
+.mt1 {
+    font-size: 3rem;
+    font-weight: 600;
+    /* margin-bottom: 1rem; */
+}
+
+.mt2 {
+    font-size: 2rem;
+}
+
+.algosN {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 1rem 0;
+    /* background: wheat; */
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+
+}
+
+.algos {
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+    padding-top: 1rem;
+    border-radius: 0.5rem;
+    backdrop-filter: blur(0.1rem);
+    margin-bottom: 1.5rem;
+}
+
+/* .algos button {
+    background: var(--specBG);
+    color: white;
+    margin: 0.5rem;
+    font-size: 1.5rem;
+    padding: 1rem;
+    transition: 0.3s all ease-out;
+    box-sizing: border-box;
+    border-radius: 0.5rem;
+    transition: 0.3s all ease-out;
+} */
+
+.algos button:hover {
+    opacity: 0.7;
+}
+
+
+.left-side {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 67.5vw;
+    height: 95%;
+    height: -moz-calc(100vh - (5.5rem));
+    height: -webkit-calc(100vh - (5.5rem));
+    height: calc(100vh - (5.5rem));
+    /* height: ; */
+    /* resize: both; */
+    /* margin-right: 5vw; */
+}
+
+.left-side .simulation {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: auto;
+    background: white;
+    box-shadow: 0 0 0.3rem black;
+    border-radius: 0.2rem;
+    /* resize: both; */
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.left-side .simPT {
+    padding-top: 4rem;
+}
+
+.right-side {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 70vh;
+    height: -moz-calc(100vh - (5.5rem));
+    height: -webkit-calc(100vh - (5.5rem));
+    height: calc(100vh - (5.5rem));
+    width: 22.5vw;
+}
+
+
+
+/* .fullbgHOME {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+    color: white;
+} */
+
+.Table {
+    display: table-row-group;
+    font-size: var(--tfontSize);
+}
+
+.Table .row {
+    display: table-row;
+    color: black;
+}
+
+.Table .BTitle {
+    background: var(--theaderColors);
+    color: white;
+}
+
+.allSteps {
+    position: relative;
+    height: auto;
+    width: 100%;
+    padding: 0.5rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    font-size: 1rem;
+}
+
+.right-side p {
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+}
+
+.right-side .enHead {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.right-side .pgreen {
+    color: white;
+    background: green;
+    padding: 0.3rem;
+    text-align: center;
+    font-size: 2rem;
+    /* margin: 0 0.5rem; */
+}
+
+.right-side .inputsDiv {
+    margin-bottom: 1rem;
+}
+
+.stepCard {
+    position: relative;
+    background: black;
+    background: var(--somColor);
+    color: rgb(0, 24, 129);
+    /* color: var(--somColor); */
+    border: 0.2rem solid rgb(218, 218, 218);
+    /* display: flex; */
+    padding: 1rem;
+    padding-bottom: 2rem;
+    margin: 0.5rem 0;
+    border-radius: 0.3rem;
+    text-align: left;
+    box-shadow: inset 0 0 0.2rem grey;
+}
+
+
+
+.stepCard .stepH {
+    font-weight: 650;
+    margin-right: 0.5rem;
+}
+
+.stepCard input {
+    background: white;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    transition: 0.3s all ease-out;
+    color: black;
+    outline: none;
+    border: none;
+    margin: 0.5rem;
+    font-size: 1rem;
+    min-width: 2rem;
+    max-width: 4rem;
+    box-shadow: 0 0 0rem 0.1rem rgb(110, 124, 255);
+    transition: 0.3s all ease-out;
+}
+
+.stepCard input:focus {
+    background: rgb(224, 224, 224);
+    box-shadow: 0 0 0rem 0.2rem rgb(110, 124, 255);
+}
+
+.stepCard input:read-only,
+.stepCard input:read-only:focus {
+    background: rgb(186, 186, 255);
+    color: rgb(7, 0, 75);
+    box-shadow: 0 0 0rem 0.15rem rgb(110, 124, 255);
+}
+
+.algoDone input {
+    box-shadow: 0 0 0.1rem 0.1rem darkred;
+}
+
+.algoDone input:focus {
+    box-shadow: 0 0 0.1rem 0.2rem darkred;
+}
+
+
+.stepCard .stepDoneIcon {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    font-size: 1.2rem;
+    transition: 0.1s all ease-out;
+    opacity: 0.8;
+    border: 0.2rem solid rgb(197, 197, 197);
+    background: rgb(255, 255, 255);
+    border-radius: 50%;
+}
+
+.stepCard .inStepDivs1 {
+    background: white;
+    padding: 0.3rem;
+    box-shadow: inset 0 0 0.2rem black;
+    margin-bottom: 0.5rem;
+}
+
+
+
+.goanime {
+    animation: goanimate 1s normal infinite;
+}
+
+
+.Table .row .hight,
+.lcsTable .row .hight {
+    /* background: var(--thightDBg); */
+    /* color: var(--thightDC); */
+    animation: anHight 0.4s 2;
+}
+
+.Table .row .Fhight,
+.lcsTable .row .Fhight {
+    /* background: var(--thightDBg); */
+    /* color: var(--thightDC); */
+    animation: anFHight 0.4s 2;
+}
+
+.Table .row .hightStr,
+.lcsTable .row .hightStr {
+    /* background: var(--thightDBg); */
+    /* color: var(--thightDC); */
+}
+
+@keyframes goanimate {
+    0% {
+        /* opacity: 0.5; */
+        /* background: rgb(49, 49, 49); */
+        background: rgb(189, 189, 189);
+        border: 0.2rem solid rgb(255, 255, 255);
+    }
+
+    100% {
+        background: black;
+        background: white;
+        border: 0.2rem solid rgb(0, 38, 255);
+    }
+}
+
+@keyframes anHight {
+    0% {
+        background: var(--tdataColors);
+        color: white;
+    }
+
+    100% {
+        background: var(--thightDBgwhite);
+        color: var(--thightDC);
+    }
+}
+
+@keyframes anFHight {
+    0% {
+        background: var(--tdataColors);
+        color: white;
+    }
+
+    100% {
+        background: var(--thightDBgwhite);
+        color: red;
+    }
+}
+
+
+.algoDone {
+    background: rgb(0, 0, 0);
+    background: whitesmoke;
+    color: var(--somColor);
+    /* border: 0.2rem solid rgb(110, 110, 255); */
+    border: 0.2rem solid var(--somColor);
+}
+
+
+.dNone {
+    display: none;
+}
+
+.spec {
+    margin: 0.5rem 0;
+    /* background: rgb(73, 73, 73); */
+    background: conic-gradient(from 90deg at 50% 50%, rgba(0, 16, 197, 1), rgba(108, 103, 250, 1));
+    font-size: 1.2rem;
+    padding: 0.3rem;
+    color: white;
+    opacity: 1;
+    margin: 0.3rem;
+    box-shadow: 0 0 0rem 0.1rem rgb(110, 124, 255);
+    transition: 0.3s all ease-out;
+    transform: scale(1);
+}
+
+.spec:disabled {
+    background: var(--specBG);
+    /* opacity: 0.5; */
+    cursor: not-allowed;
+    box-shadow: 0 0 0rem 0.1rem rgb(255, 110, 110);
+}
+
+.spec:disabled:hover {
+    box-shadow: 0 0 0rem 0.1rem rgb(255, 110, 110);
+}
+
+.spec:hover {
+    opacity: 1;
+    color: white;
+    /* background: conic-gradient(from 270deg at 50% 50%, #ff0037, #ff4870); */
+    box-shadow: 0 0 0rem 0.25rem rgb(110, 124, 255);
+}
+
+.stepCard .content .cbutton {
+    background: none;
+    padding: 0.2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--somColor);
+    color: black;
+    /* text-shadow: 0 0 0.2rem var(--lightSomColor); */
+    -webkit-text-stroke-color: rgb(255, 108, 108);
+    -webkit-text-stroke-width: 0.01rem;
+    /* background: rgb(255, 247, 233); */
+    transition: 0.3s all ease-out;
+    /* border: 0.2rem solid rgb(0, 0, 172); */
+
+}
+
+.stepCard .content .cbutton:hover {
+    /* color: var(--lightSomColor); */
+    opacity: 0.8;
+}
+
+.stepCard .insL {
+    max-width: 6rem;
+}
+
+.restartb {
+    width: 100%;
+    background: var(--specBG);
+    box-shadow: 0 0 0rem 0.1rem rgb(255, 110, 110);
+}
+
+.restartb:hover {
+    opacity: 1;
+    box-shadow: 0 0 0rem 0.25rem rgb(255, 110, 110);
+}
+
+.writeCheck {
+    color: rgb(0, 24, 129);
+    background: none;
+    font-size: 1.2rem;
+}
+
+.Table .row .bStrs,
+.lcsTable .row .bStrs {
+    background: green;
+    color: white;
+}
+
+.inValidIn {
+    box-shadow: 0 0 0.1rem 0.15rem rgb(221, 0, 0) !important;
+}
+
+.animBGY {
+    background: yellow !important;
+    color: black;
+    transition: 0.2s all ease-out;
+}
+
+.normAnime {
+    background: rgb(255, 222, 222) !important;
+    color: black !important;
+}
+
+.bgRed {
+    background: red !important;
+    color: white !important;
+    transition: 0.2s all ease-out;
+}
+
+.bgGreen {
+    background: green !important;
+    color: black !important;
+    transition: 0.2s all ease-out;
+}
+
+.cRed {
+    color: red !important;
+}
+
+.cGreen {
+    color: green !important;
+}
+
+.solC {
+    background: wheat;
+    padding: 0.3rem;
+}
+
+.divfC {
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.notFound {
+    padding-top: 5rem;
+    height: -moz-calc(100vh - (20px + 30px));
+    height: -webkit-calc(100% - (20px + 30px));
+    height: calc(100vh - (13rem));
+}
+
+/* Dashboard */
+
+
+/* @keyframes nAnime {
+    0% {
+        background: ;
+    }
+
+    100% {
+        box-shadow: 0 0 0.2rem rgb(255, 255, 255);
+    }
+} */
+
+/* Animator loader */
+
+.loader1 {
+    padding: 2rem;
+    width: 100%;
+}
+
+.lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+
+.lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #000000;
+    border-color: #363636 transparent #363636 transparent;
+    border-style: dotted;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.nfound1 {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 1rem;
+}
+
+@media (max-width: 800px) {
+    .sect1 {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .homeTitle {
+        max-width: 60vw;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .stepCard {
+        font-size: 1rem !important;
+    }
+
+    .fullbg {
+        flex-direction: column-reverse;
+        gap: 5rem;
+        height: 100%;
+        /* padding-top: 10rem; */
+    }
+
+    .left-side {
+        width: 80vw;
+        height: clamp(35rem, 80vh, 50rem);
+        margin-bottom: 5rem;
+    }
+
+    .right-side {
+        width: 80vw;
+    }
+
+    .fullbgHOME {
+        flex-direction: column;
+        /* font-size: 1.5rem; */
+        gap: 0;
+        padding-top: 7rem;
+    }
+}
+
+@media (max-width: 400px) {
+    /* .title {
+        font-size: 1.5rem !important;
+    } */
+
+    /* .fnav * {
+        font-size: 1rem !important;
+    } */
+
+    .stepCard {
+        font-size: 0.8rem !important;
+    }
+
+    .fullbgHOME,
+    .fullbgHOME h1 {
+        flex-direction: column;
+        /* font-size: 1.5rem; */
+    }
+}
+
+@media (max-width: 300px) {
+    /* .headLink .title {
+        font-size: 1rem !important;
+    } */
+
+    .stepCard {
+        font-size: 0.7rem !important;
+    }
+
+    .fnav {
+        justify-content: left !important;
+    }
+
+    .fullbgHOME,
+    .fullbgHOME h1 {
+        flex-direction: column;
+        /* font-size: 1.5rem; */
+    }
+}

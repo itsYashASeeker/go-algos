@@ -1,0 +1,21 @@
+{
+  "short_name": "algo-vlab",
+  "name": "Algorithm Virtual Lab",
+  "start_url": ".",
+  "description": "Algorithm Virtual Lab. KJSIT-Computer Department",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "%PUBLIC_URL%/acLogo3.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "%PUBLIC_URL%/logo192.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

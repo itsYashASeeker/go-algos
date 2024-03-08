@@ -1,0 +1,112 @@
+.lcsTable {
+    display: flex;
+    justify-content: baseline;
+    align-items: baseline;
+    flex-direction: column;
+    min-height: 10%;
+    min-width: 10%;
+    max-height: 100%;
+    max-width: 100%;
+    font-size: var(--tfontSize);
+    background: white;
+    /* box-shadow: 0 0 0.4rem black; */
+    /* row-gap: 0; */
+    /* overflow: scroll; */
+
+}
+
+.lcsTable .row {
+    display: inline-flex;
+    width: auto;
+    /* row-gap: 0; */
+    /* overflow: scroll; */
+}
+
+.lcsTable .row .lcsBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--tdataSize);
+    height: var(--tdataSize);
+    font-size: var(--tfontSize);
+    /* padding: 0.5rem; */
+    background: var(--tdataColors);
+    border-bottom: 0.2rem solid black;
+    border-right: 0.2rem solid black;
+    color: black;
+}
+
+
+
+.lcsBox .row .letter {
+    color: var(--somColor);
+    font-weight: 700;
+}
+
+.lcsTable .row .bStrs {
+    background: green;
+    color: white;
+}
+
+.lcsTable .row .wStrs {
+    background: #9b2928;
+    color: white;
+}
+
+.lcsTable .row .lcsBox:nth-child(1) {
+    background: none;
+    border: none;
+    color: var(--somColor);
+    font-weight: 600;
+}
+
+.lcsTable .row .lcsBox:nth-child(2) {
+    border-left: 0.2rem solid rgb(0, 0, 0);
+}
+
+.lcsTable .row:nth-child(1) .lcsBox {
+    background: none;
+    color: var(--somColor);
+    font-weight: 600;
+    border-bottom: 0.2rem solid rgba(0, 0, 0, 0);
+    border-right: 0.2rem solid rgba(0, 0, 0, 0);
+}
+
+.lcsTable .row:nth-child(1) .lcsBox:nth-child(2) {
+    border-left: 0.2rem solid rgba(0, 0, 0, 0);
+}
+
+.lcsTable .row:nth-child(2) .lcsBox {
+    border-top: 0.2rem solid rgb(0, 0, 0);
+    /* border-top: 0.2rem solid rgb(0, 0, 0); */
+}
+
+.lcsTable .row:nth-child(1) .lcsBox:nth-child(1),
+.lcsTable .row:nth-child(2) .lcsBox:nth-child(1) {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.lcsTable .row .th2 {
+    background: var(--theaderColors);
+    color: white;
+}
+
+.iconsS {
+    position: relative;
+    right: -0.2rem;
+    bottom: -0.5rem;
+    font-size: 0.8rem;
+}
+
+.lcsTable .row .lcsBox .upIcons {}
+
+.lcsTable .row .lcsBox .diagonalIcons {
+
+    transform: rotate(315deg);
+}
+
+.lcsTable .row .lcsBox .leftIcons {
+    transform: rotate(270deg);
+}
