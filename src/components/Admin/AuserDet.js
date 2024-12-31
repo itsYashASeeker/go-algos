@@ -9,11 +9,14 @@ import Footer from "../Footer";
 import download from "downloadjs";
 
 export default function AUserDet() {
+
+    // create the app state
     const { cuE, algoT, userD } = AppState();
     const [currE, setCE] = cuE;
     const [algoTC, setAlgoT] = algoT;
     const [uD, setUD] = userD;
 
+    // handle data using states
     const [uData, setuData] = useState();
     const timer = ms => new Promise(res => setTimeout(res, ms));
     const navigate = useNavigate();

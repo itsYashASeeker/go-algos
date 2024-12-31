@@ -10,8 +10,10 @@ import somaiyaTrust from "../img/somaiyaTrust.png";
 
 function Footer() {
 
+    // handle data using state
     const [showL, setShowL] = useState(0);
 
+    // handle show links
     const showLinks = () => {
         console.log("hello");
     }

@@ -11,10 +11,15 @@ import Swal from "sweetalert2";
 import { ErrNoti, SuccNoti } from "../../funcs/swals";
 
 export default function FPUser() {
+
+    // handle data using states
     const [uemail, setuemail] = useState();
     const [password, setPassword] = useState();
+
+    // handle navigation
     const navigate = useNavigate();
 
+    // create the app state
     const { userD } = AppState();
 
     const [uD, setUD] = userD;
@@ -25,6 +30,7 @@ export default function FPUser() {
         }
     }, [])
 
+    // function for password change
     async function reqPassChange(uData) {
         const config = {
             headers: {
@@ -71,6 +77,7 @@ export default function FPUser() {
         }
     }
 
+    // handle the form submit
     function subForm(e, tId) {
         var f = document.getElementsByTagName('form')[0];
         var em = uemail;

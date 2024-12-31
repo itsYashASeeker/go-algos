@@ -2,6 +2,8 @@ import "../css/Navbar.css";
 import somLogo from "../img/somaiyaLogo.png";
 
 export default function SomL(){
+
+    // render the somaiya institute logo
     return (<div className="dkjLogo">
         <img className="somLogo" src={somLogo}></img>
         <div className="kjsit">

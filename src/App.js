@@ -42,6 +42,7 @@ import DAdmins from "./components/Admin/Dadmins";
 function App() {
   return (
 
+    // create a brwoser router to handle the navigation routes
     <BrowserRouter>
       <AppProvider>
         <Routes>
@@ -128,7 +129,7 @@ function App() {
           <Route path="/account/user/change-password/:pT" element={<ChangePassUser />}></Route>
           <Route path="/account/user/verify/:tt" element={<VAccount />}></Route>
 
-
+          {/* if page not found then route to this page */}
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </AppProvider>

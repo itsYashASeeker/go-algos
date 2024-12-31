@@ -14,7 +14,11 @@ import { AlgoPer } from "../funcs/AlgoP";
 import { expR } from "../data/expRoutes";
 
 function SLcs() {
+
+    // handle navigation
     const navigate = useNavigate();
+
+    // handle data using states
     const [str1, setStr1] = useState();
     const [str2, setStr2] = useState();
     const [inStr1, setInStr1] = useState("");
@@ -26,6 +30,7 @@ function SLcs() {
     const [finalSeq, setFinalSeq] = useState("");
     const [anDuration, setAnDuration] = useState(800);
 
+    // create app state
     const { cuE, algoT, userD } = AppState();
     const [currE, setCE] = cuE;
 
@@ -74,6 +79,7 @@ function SLcs() {
         return document.getElementById(idname);
     }
 
+    /* LCS simulation functions start */
     function saveIns() {
         setDoneIns(false);
         setStepC(1);
@@ -279,8 +285,6 @@ function SLcs() {
         document.getElementById(e.target.id).setAttribute("disabled", true);
     }
 
-
-
     function netCheck(val, eT) {
         if (subLcsStrings(val)) {
             retElId(eT.id).classList.remove("inValidIn");
@@ -289,6 +293,8 @@ function SLcs() {
             retElId(eT.id).classList.add("inValidIn");
         }
     }
+
+    /* LCS simulation functions end */
 
     return (
         <>

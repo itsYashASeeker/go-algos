@@ -13,6 +13,8 @@ import { AppState } from "../context/appContext";
 import { AlgoPer } from "../funcs/AlgoP";
 
 export default function SInsertionSort() {
+
+  // handle data using state
   const [stepC, setStepC] = useState(0);
   const [array1, setArray1] = useState([]);
 

@@ -3,6 +3,8 @@ import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 
 function Arrow() {
+
+    // render arrow icon
     return (
         <FontAwesomeIcon className="upArrow" icon={faArrowUp} />
     )

@@ -18,6 +18,7 @@ import { expR } from "../data/expRoutes";
 
 function SKnapsack() {
 
+    // handle data using states
     const [stepC, setStepC] = useState(0);
     const [inProfit, setInProfit] = useState("");
     const [inWeight, setInWeight] = useState("");
@@ -33,6 +34,7 @@ function SKnapsack() {
     const [autoSim, setAutoSim] = useState(false);
     const [startSolv, setStSol] = useState(false);
 
+    // create app state
     const { cuE, algoT, userD } = AppState();
     const [currE, setCE] = cuE;
 
@@ -42,7 +44,7 @@ function SKnapsack() {
 
     const timer = ms => new Promise(res => setTimeout(res, ms));
 
-
+    // restart function
     function restart() {
         setStepC(0);
         setInProfit("");
@@ -95,6 +97,7 @@ function SKnapsack() {
         }
     }, [countI, countJ, autoSim]);
 
+    // simulation functions
     function checkIfInt(valNum) {
         const regex = /[^0-9]/;
         if (valNum.search(regex) === -1) {

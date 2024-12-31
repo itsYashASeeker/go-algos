@@ -8,6 +8,7 @@ import Footer from "../components/Footer";
 
 export default function Greedy() {
 
+    // handle navigation
     const navigate = useNavigate();
 
     const naviTo = (toLink) => {

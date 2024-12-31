@@ -3,6 +3,8 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 export default function JobSched() {
+
+    // Job Scheduling main page
     return (
         <>
             <Navbar />

@@ -8,8 +8,11 @@ import { AppState } from "../context/appContext";
 import { expR } from "../data/expRoutes";
 
 export default function TInsertionSort() {
+
+  // handle navigations
   const navigate = useNavigate();
 
+  // create app state
   const { cuE, algoT } = AppState();
 
   const [currE, setCE] = cuE;

@@ -11,17 +11,23 @@ import Swal from "sweetalert2";
 import { ErrNoti, SuccNoti } from "../funcs/swals";
 
 export default function ULogin() {
+
+    // states declarations to handle data
     const [uemail, setuemail] = useState();
     const [password, setPassword] = useState();
     const [aEmail, setAEmail] = useState();
     const [aPassword, setAPassword] = useState();
+
+    // handle navigation
     const navigate = useNavigate();
 
+    // create the app state
     const { userD } = AppState();
 
     const [uD, setUD] = userD;
     const [currLS, setCurrLS] = useState(false);
 
+    // handle the login
     async function doLogin(uData, uType) {
         const config = {
             headers: {
@@ -69,6 +75,7 @@ export default function ULogin() {
         }
     }
 
+
     function subForm(e, tId) {
         var f = document.getElementsByTagName('form')[0];
         var uType = "user";
@@ -102,6 +109,7 @@ export default function ULogin() {
         return document.getElementById(idName);
     }
 
+    // handle different login types
     useEffect(() => {
         if ((!uemail || !password) && retId("loginB")) {
             retId("loginB").setAttribute("disabled", "disabled");
@@ -128,6 +136,7 @@ export default function ULogin() {
         }
     }
 
+    // handle the css properties
     useEffect(() => {
         if (!currLS) {
             retId("adminS").classList.remove("sel");
@@ -213,6 +222,7 @@ export default function ULogin() {
                                     <button type="button" className="bNone" onClick={(e) => { e.preventDefault(); navigate("/login/forgot-password") }}>Forgot Password?</button>
                                     <button type="button" className="bNone" onClick={(e) => { e.preventDefault(); navigate("/register") }}>Don't have an Account?</button>
                                 </div>
+                                {/* Handle the Submit of Form */}
                                 <button type="submit" id="loginB" className="goLogB" onClick={(e) => { subForm(e, e.target.id) }}>Login</button>
                             </form>
                         </div>

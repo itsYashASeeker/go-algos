@@ -7,8 +7,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { expR } from "../data/expRoutes";
 import axios from "axios";
 
+// handle create context
 const AppContext = createContext();
 
+// create app provider
 const AppProvider = ({ children }) => {
     const [uData, setUData] = useState(false);
     const [cE, setCE] = useState([3, 0]);
@@ -16,6 +18,8 @@ const AppProvider = ({ children }) => {
     const fullLocation = useLocation();
     const loc = fullLocation.pathname.split("/");
     const location = loc[1];
+
+    // handle navigation
     const navigate = useNavigate();
 
     if (loc[2]) {

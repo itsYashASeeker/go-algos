@@ -3,6 +3,8 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 export default function Insertion() {
+
+    // insertion sort main page
     return (
         <>
             <Navbar />

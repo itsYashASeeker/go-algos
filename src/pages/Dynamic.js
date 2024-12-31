@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 
 export default function Dynamic() {
 
-
+    // handle navigation
     const navigate = useNavigate();
 
     const naviTo = (toLink) => {

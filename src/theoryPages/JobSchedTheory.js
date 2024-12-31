@@ -18,12 +18,14 @@ import { expR } from "../data/expRoutes";
 
 export default function JobSchedTheory() {
 
+    // handle navigatiions
     const navigate = useNavigate();
 
     const naviTo = (toLink) => {
         navigate("/" + toLink + "/simulator");
     }
 
+    // create app state
     const { cuE, algoT } = AppState();
 
     const [currE, setCE] = cuE;

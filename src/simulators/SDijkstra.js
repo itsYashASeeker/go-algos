@@ -21,6 +21,8 @@ import { expR } from "../data/expRoutes";
 
 
 function SDijkstra() {
+
+    // handle data using states
     const [stepC, setStepC] = useState(0);
 
     const [noNodes, setNoNodes] = useState();
@@ -45,6 +47,7 @@ function SDijkstra() {
     const [currSI, setCurrSI] = useState([]);
     const [resultS, setResultS] = useState();
 
+    // create app state
     const { cuE, algoT, userD } = AppState();
     const [currE, setCE] = cuE;
 
@@ -75,6 +78,7 @@ function SDijkstra() {
         createGraph("mynetwork", gMatrix, false);
     }, gMatrix);
 
+    /* Dijkstra simulation functions start */
     function createGraph(idname, gmArr, doOpt) {
         if (gmArr[0].length >= 1) {
             var vertices = gmArr.length;
@@ -211,7 +215,6 @@ function SDijkstra() {
                 indEdge.id = e + "N";
                 retElId("edgeStat1").appendChild(indEdge);
             }
-
         }
         retElId("fN").classList.add("selEShow");
         retElId(v + "N").classList.add("selEShow");
@@ -561,7 +564,7 @@ function SDijkstra() {
         setEdV("");
     }
 
-    console.log(distanceA);
+    /* Dijkstra simulation functions end */
 
     return (
         <>

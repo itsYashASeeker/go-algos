@@ -7,6 +7,8 @@ import { Link, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 
 export default function Backtracking() {
+
+    // handle navigation
     const navigate = useNavigate();
 
     const naviTo = (toLink) => {

@@ -12,9 +12,13 @@ import { AlgoPer } from "../funcs/AlgoP";
 import { algosData } from "../data/algos";
 
 export default function UserDash() {
+
+    // create app state
     const { cuE, algoT, userD } = AppState();
     const [currE, setCE] = cuE;
     const [algoTC, setAlgoT] = algoT;
+
+    // handle data using states
     const [uDY, setuDY] = useState();
     const [feedD, setFeedD] = useState();
     const navigate = useNavigate();

@@ -15,7 +15,11 @@ import axios from "axios";
 import { ErrNoti } from "../funcs/swals";
 
 function Navbar() {
+
+    // handle navigation
     const navigate = useNavigate();
+
+    // handle data using states
     const [hovNl, setHovNl] = useState(false);
     const [hovNG, setHovNG] = useState(false);
     const [hovNS, setHovNS] = useState(false);

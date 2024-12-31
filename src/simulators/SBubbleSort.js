@@ -13,9 +13,12 @@ import { AlgoPer } from "../funcs/AlgoP";
 import { expR } from "../data/expRoutes";
 
 export default function SInsertionSort() {
+
+  // handle data using states
   const [stepC, setStepC] = useState(0);
   const [array1, setArray1] = useState([]);
 
+  // create app state
   const { cuE, algoT, userD } = AppState();
   const [currE, setCE] = cuE;
 

@@ -21,6 +21,7 @@ import { expR } from "../data/expRoutes";
 
 function SKruskals() {
 
+    // handle data using states
     const [stepC, setStepC] = useState(0);
 
     const [noNodes, setNoNodes] = useState();
@@ -42,6 +43,7 @@ function SKruskals() {
 
     const [currI, setCurrI] = useState(-1);
 
+    // create app state
     const { cuE, algoT, userD } = AppState();
     const [currE, setCE] = cuE;
 
@@ -68,6 +70,7 @@ function SKruskals() {
         // window.scrollTo(0, 0);
     }, [stepC]);
 
+    /* Kruskal simulation functions start */
     function createGraph(idname, edgeM) {
         if (edgeM[0].length >= 1) {
             var nEdges = edgeM.length;
@@ -425,6 +428,7 @@ function SKruskals() {
         setEdV("");
     }
 
+    /* Kruskal simulation functions end */
 
     return (
         <>

@@ -11,9 +11,13 @@ import { expR } from "../data/expRoutes";
 import { useEffect } from "react";
 
 function FNavbar() {
+
+    // handle data using states
     const [scrollTop, setScrollTop] = useState(0);
     const [prevST, setPrevST] = useState(0);
     const [hoverF, setHoverF] = useState(false);
+
+    // create the app state
     const { cuE, algoT } = AppState();
 
     const [currE, setCE] = cuE;

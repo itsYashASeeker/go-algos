@@ -9,11 +9,14 @@ import Footer from "../Footer";
 import download from "downloadjs";
 
 export default function AFeedbacks() {
+
+    // create the app state
     const { cuE, algoT, userD } = AppState();
     const [currE, setCE] = cuE;
-    const [algoTC, setAlgoT] = algoT;
+    const [algoTC, setAlgoT] = algoT;// handle data using states
     const [uD, setUD] = userD;
 
+    
     const [fData, setFData] = useState();
     const timer = ms => new Promise(res => setTimeout(res, ms));
     const navigate = useNavigate();
@@ -40,7 +43,7 @@ export default function AFeedbacks() {
         fetchFeeds();
     }, []);
 
-
+    // handle the authentication
     const downEx = async () => {
         try {
             const authA = await axios.get(`${process.env.REACT_APP_BACKEND_DOMAIN}/y/admin/auth`, { withCredentials: true })

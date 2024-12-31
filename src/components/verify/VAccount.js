@@ -11,11 +11,15 @@ import { ErrNoti, SuccNoti } from "../../funcs/swals";
 export default function VAccount() {
 
     const pToken = useParams();
+
+    // handle data using states
     const [texist, setTExist] = useState(0);
     const [aVerified, setAVerified] = useState(0);
 
+    // handle navigation
     const navigate = useNavigate();
 
+    // verify the user
     useEffect(() => {
         const fetchTT = async () => {
             const config = {
@@ -36,6 +40,7 @@ export default function VAccount() {
         fetchTT();
     }, []);
 
+    // verify account
     const doVerifyAcc = async () => {
         await axios.post(`${process.env.REACT_APP_BACKEND_DOMAIN}/y/user/auth/account/verify/g/do`, { token: pToken.tt })
             .then((data) => {

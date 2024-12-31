@@ -5,6 +5,8 @@ import '../css/progressbar.css';
 
 export default function Multiprogressbar(props) {
     
+  // render multiprogress-bar component
+
   return (
     
     <div>

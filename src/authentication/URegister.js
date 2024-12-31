@@ -8,6 +8,8 @@ import Footer from "../components/Footer";
 import Swal from "sweetalert2";
 
 export default function URegister(props) {
+
+    // states declarations to handle data
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
     const [cpassword, setCPassword] = useState();
@@ -17,13 +19,17 @@ export default function URegister(props) {
     const [uInst, setUInst] = useState();
     const [uDept, setUDept] = useState();
     const [uDesig, setUDesig] = useState("Student");
+
+    // handle navigation
     const navigate = useNavigate();
 
+    // create the app state
     const { userD } = AppState();
 
     const [uD, setUD] = userD;
     const [currLS, setCurrLS] = useState(false);
 
+    // function to handle the registration process
     async function doRegister(uData, uType) {
         const config = {
             headers: {
@@ -120,6 +126,7 @@ export default function URegister(props) {
         }
     }
 
+    // handle form submit
     function subForm(e, tId) {
         var f = document.getElementsByTagName("form")[0];
         if (f.reportValidity()) {
@@ -183,6 +190,7 @@ export default function URegister(props) {
         }
     }, [uD]);
 
+    // return the html document
     function retId(idName) {
         return document.getElementById(idName);
     }
@@ -355,7 +363,7 @@ export default function URegister(props) {
                                 and digit, and atleast 8 letters long
                             </p>
                         </div>
-
+                        {/* Handle the sumbit button of the form */}
                         <button
                             type="submit"
                             id="registerB"

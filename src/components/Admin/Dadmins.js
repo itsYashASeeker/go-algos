@@ -11,10 +11,14 @@ import download from "downloadjs";
 import PageNotFound from "../NotFound";
 
 export default function DAdmins() {
+
+    // create the app state
     const { cuE, algoT, userD } = AppState();
     const [currE, setCE] = cuE;
     const [algoTC, setAlgoT] = algoT;
     const [uD, setUD] = userD;
+
+    // handle data using states
     const [fData, setFData] = useState();
     const timer = ms => new Promise(res => setTimeout(res, ms));
     const navigate = useNavigate();

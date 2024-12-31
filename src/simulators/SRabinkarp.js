@@ -16,6 +16,8 @@ import { AlgoPer } from "../funcs/AlgoP";
 import { expR } from "../data/expRoutes";
 
 function SRabinkarp() {
+
+    // handle data using states
     const [text, settext] = useState("");
     const [found, setFound] = useState(0);
     const [pattern, setpattern] = useState("");
@@ -27,6 +29,7 @@ function SRabinkarp() {
     const [anDuration, setAnDuration] = useState(800);
     const timer = ms => new Promise(res => setTimeout(res, ms));
 
+    // create app state
     const { cuE, algoT, userD } = AppState();
     const [currE, setCE] = cuE;
 
@@ -51,8 +54,6 @@ function SRabinkarp() {
         // window.scrollTo(0, 0);
     }, [stepC]);
 
-
-
     function retElId(idname) {
         return document.getElementById(idname);
     }
@@ -70,7 +71,7 @@ function SRabinkarp() {
 
     let d = 256;
 
-
+    /* Rabin Karp simulation functions start */
     async function rabin(pat, txt, q) {
         let M = pat.length;
         let N = txt.length;
@@ -126,19 +127,14 @@ function SRabinkarp() {
                     s += txt[j];
                 }
 
-
                 // console.log(s);
                 // console.log(z)
                 setHashT(z);
                 await timer(1000);
-
-
             }
         }
 
     }
-
-
 
     async function hightRow(i, k) {
         if (k === 1) {
@@ -194,7 +190,6 @@ function SRabinkarp() {
         }
     }
 
-
     function subLcsStrings(val) {
         const regex = /[^A-Za-z ]/;
         if (val.search(regex) === -1) {
@@ -244,7 +239,7 @@ function SRabinkarp() {
         document.getElementById(e.target.id).setAttribute("disabled", true);
     }
 
-
+    /* Rabin Karp simulation functions end */
 
     return (
         <>

@@ -17,6 +17,7 @@ import { AlgoPer } from "../funcs/AlgoP";
 import { expR } from "../data/expRoutes";
 function SJobSched() {
 
+    // handle data using states
     const [stepC, setStepC] = useState(0);
     const [procs, setProcs] = useState([]);
     const [allDeads, setAllDeads] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);

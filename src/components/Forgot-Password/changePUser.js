@@ -12,13 +12,18 @@ import { faSadTear } from "@fortawesome/free-solid-svg-icons";
 import { ErrNoti, SuccNoti } from "../../funcs/swals";
 
 export default function ChangePassUser() {
+
+    // handle data using states
     const [uemail, setuemail] = useState();
     const [password, setPassword] = useState();
     const [cpassword, setCPassword] = useState();
     const [tVerified, setTverified] = useState();
     const [pChanged, setPChanged] = useState();
+
+    // handle navigation
     const navigate = useNavigate();
 
+    // create the app state
     const { userD } = AppState();
 
     const [uD, setUD] = userD;
@@ -26,6 +31,7 @@ export default function ChangePassUser() {
 
     const passToken = useParams();
 
+    // verify password token
     useEffect(() => {
         async function verifyPassToken() {
             const cpToken = passToken.pT;
@@ -64,7 +70,7 @@ export default function ChangePassUser() {
         }
     }, [uemail, password, cpassword]);
 
-
+    // handle change password
     async function changePassUser(uData) {
         if (!uemail || !password || !cpassword) {
             window.alert("Please fill the entries");
@@ -108,6 +114,7 @@ export default function ChangePassUser() {
         }
     }
 
+    // handle the form submit
     function subForm(e, tId) {
         var f = document.getElementsByTagName('form')[0];
         if (f.reportValidity()) {

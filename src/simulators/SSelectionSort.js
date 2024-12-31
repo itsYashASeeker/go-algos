@@ -13,9 +13,12 @@ import { AlgoPer } from "../funcs/AlgoP";
 import { expR } from "../data/expRoutes";
 
 export default function SInsertionSort() {
+
+  // handle data using states
   const [stepC, setStepC] = useState(0);
   const [array1, setArray1] = useState([]);
 
+  // create app state
   const { cuE, algoT, userD } = AppState();
   const [currE, setCE] = cuE;
 
@@ -46,6 +49,7 @@ export default function SInsertionSort() {
 
   const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 
+  /* Selection Sort simulation functions start */
   const update = () => {
     const firstInput = document.getElementById("firstInput");
     const firstButton = document.getElementById("firstButton");
@@ -160,7 +164,8 @@ export default function SInsertionSort() {
     setStepC(3);
   }
 
-  //Main HTML Code Start
+  /* Selection Sort simulation functions end */
+
   return (
     <>
       <Navbar />

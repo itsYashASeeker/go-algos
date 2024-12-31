@@ -14,6 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function ComF() {
 
+    // create a new Data for feedback
     const cd = new Date();
     const [date, setDate] = useState(
         `${cd.getDate()}/${cd.getMonth() + 1}/${cd.getFullYear()}`

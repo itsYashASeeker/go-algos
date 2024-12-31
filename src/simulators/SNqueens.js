@@ -16,6 +16,8 @@ import { expR } from "../data/expRoutes";
 
 
 function SNQueens() {
+
+    // handle data using states
     const [sel, setSel] = useState("");
     const [stepC, setStepC] = useState(0);
     const [o, seto] = useState(0);
@@ -23,8 +25,11 @@ function SNQueens() {
     const [startA, setStA] = useState(false);
     const [algoDone, setAlgD] = useState(99);
     const timer = ms => new Promise(res => setTimeout(res, ms));
+
+    // handle navigation
     const navigate = useNavigate();
 
+    // create app state
     const { cuE, algoT, userD } = AppState();
     const [currE, setCE] = cuE;
 
@@ -76,13 +81,11 @@ function SNQueens() {
         retElId("idAllSteps").lastChild.scrollIntoView({ behavior: "smooth" });
     }, [stepC]);
 
-
-
     function retElId(idname) {
         return document.getElementById(idname);
     }
 
-
+    /* N-Queens simulation functions start */
     async function restart() {
         seto(0);
         setSel("");
@@ -227,8 +230,6 @@ function SNQueens() {
                 // await timer(100);
             }
             retElId(`i${i}j${col}`).innerHTML = null;
-
-
         }
         retElId("sol2").classList.remove("successC");
         retElId("sol2").classList.add("dangerC");
@@ -256,7 +257,6 @@ function SNQueens() {
         }
     }
 
-
     function showQ(n) {
         retElId("btn4Q").setAttribute("disabled", "disabled");
         retElId("btn8Q").setAttribute("disabled", "disabled");
@@ -264,6 +264,7 @@ function SNQueens() {
         setStepC(1);
     }
 
+    /* N-Queens simulation functions end */
 
     return (
 

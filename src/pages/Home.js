@@ -11,7 +11,7 @@ import AboutUs from "../components/aboutus";
 
 function Home() {
 
-
+    // handle navigation
     const navigate = useNavigate();
 
     const naviTo = (toLink) => {

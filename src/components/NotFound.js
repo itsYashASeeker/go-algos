@@ -7,6 +7,8 @@ import Footer from "./Footer";
 import notf1 from "../img/404I1.png";
 
 export default function PageNotFound() {
+
+    // render not-found component
     return (
         <>
             <Navbar />
